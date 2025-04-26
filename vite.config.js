@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   // Base configuration for Vite
   server: {
-    port: 3000,
+    port: 8080,
     open: true
   },
   // Configure asset handling
