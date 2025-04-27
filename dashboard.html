@@ -1,0 +1,309 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboard - JE Tech Hub</title>
+    
+    <!-- Include all the existing CSS files -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/icofont.css">
+    <link rel="stylesheet" href="css/slicknav.min.css">
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <link rel="stylesheet" href="css/datepicker.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .dashboard-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .welcome-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .course-progress {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background: #1A76D1;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card h3 {
+            color: #1A76D1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+        
+        .logout-btn:hover {
+            background: #c82333;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 1rem;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <!-- Header Inner -->
+		<div class="header-inner">
+		<div class="container">
+		<div class="inner">
+		<div class="row">
+		<div class="col-lg-3 col-md-3 col-12">
+		<!-- Start Logo -->
+		<div class="logo">
+		<a href="index.html"><img src="images/JE Techhub logo.png"></a>
+		</div>
+		<!-- End Logo -->
+		<!-- Mobile Nav -->
+		<div class="mobile-nav"></div>
+		<!-- End Mobile Nav -->
+		</div>
+		<div class="col-lg-7 col-md-9 col-12">
+		<!-- Main Menu -->
+		<div class="main-menu">
+		<nav class="navigation">
+		<ul class="nav menu">
+		<li ><a href="index.html">Home</a></li>
+
+
+		<li ><a href="index.html#about">About Us </a></li>
+		<li><a href='programs.html'>Programms</a></li>
+
+
+		<li><a href="contact.html">Contact Us</a></li>
+		</ul>
+		</nav>
+		</div>
+		<!--/ End Main Menu -->
+		</div>
+
+		</div>
+		</div>
+		</div>
+		</div>
+		<!--/ End Header Inner -->
+    </header>
+
+    <main class="dashboard-container">
+        <div class="welcome-card">
+            <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            <h1>Welcome, <span id="userName">Student</span>!</h1>
+            <p>Your learning journey begins here.</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <h3>Your Course</h3>
+                <p id="userCourse">Loading...</p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+                <p>0% Complete</p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Next Class</h3>
+                <p>Scheduled for: TBA</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer ">
+		<!-- Footer Top -->
+		<div class="footer-top">
+		<div class="container">
+		<div class="row">
+		<div class="col-lg-3 col-md-6 col-12">
+		<div class="single-footer">
+		<!-- Social -->
+		<ul class="social">
+		<li><a href="https://www.instagram.com/joe.express1?igsh=NXZjcnFoZWI1bWI0&utm_source=qr"><i class="icofont-instagram"></i></a></li>
+		<li><a href="#"><i class="icofont-google-plus"></i></a></li>
+		<li><a href="#"><i class="icofont-twitter"></i></a></li>
+		<li><a href="#"><i class="icofont-vimeo"></i></a></li>
+		<li><a href="#"><i class="icofont-pinterest"></i></a></li>
+		</ul>
+		<!-- End Social -->
+		</div>
+		</div>
+		<div class="col-lg-3 col-md-6 col-12">
+		<div class="single-footer f-link">
+		<h2>Quick Links</h2>
+		<div class="row">
+		<div class="col-lg-6 col-md-6 col-12">
+		<ul>
+		<li><a href="index.html"><i class="fa fa-caret-right"
+		aria-hidden="true"></i>Home</a>
+		</li>
+		<li><a href="about.html"><i class="fa fa-caret-right"
+		aria-hidden="true"></i>About
+		Us</a></li>
+		<li><a href="Programs.html"><i class="fa fa-caret-right"
+		aria-hidden="true"></i>Services</a>
+		</li>
+		<li><a href="contact.html"><i class="fa fa-caret-right"
+		aria-hidden="true"></i>Contact
+		Us</a></li>
+		</ul>
+		</div>
+		</div>
+		</div>
+		</div>
+		<div class="col-lg-3 col-md-6 col-12">
+		<div class="single-footer">
+		<h2>Open Hours</h2>
+
+		<ul class="time-sidual">
+		<li class="day">Mondays - Fridays <span>8.00-20.00</span></li>
+		<li class="day">Saturdays <span>9.00-18.30</span></li>
+		</li>
+		</ul>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		<!--/ End Footer Top -->
+		<!-- Copyright -->
+		<div class="copyright">
+		<div class="container">
+		<div class="row">
+		<div class="col-lg-12 col-md-12 col-12">
+		<div class="copyright-content">
+		<p>© Copyright 2018 | All Rights Reserved  </p>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		<!--/ End Copyright -->
+		</footer>
+
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.0.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/easing.js"></script>
+	<script src="js/colors.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/jquery.nav.js"></script>
+	<script src="js/slicknav.min.js"></script>
+	<script src="js/jquery.scrollUp.min.js"></script>
+	<script src="js/niceselect.js"></script>
+	<script src="js/tilt.jquery.min.js"></script>
+	<script src="js/owl-carousel.js"></script>
+	<script src="js/jquery.counterup.min.js"></script>
+	<script src="js/steller.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+
+    <script>
+    // Check authentication
+    document.addEventListener('DOMContentLoaded', function() {
+        const userProfile = JSON.parse(localStorage.getItem('userProfile'));
+        
+        if (!userProfile) {
+            window.location.href = 'getStarted.html';
+            return;
+        }
+        
+        // Update UI with user data
+        document.getElementById('userName').textContent = userProfile.firstName;
+        document.getElementById('userCourse').textContent = userProfile.course;
+        
+        // Hide loader
+        const loader = document.querySelector('.loader-wrapper');
+        setTimeout(() => {
+            loader.classList.add('hidden');
+        }, 1000);
+        
+        // Simulate progress (in a real app, this would come from the backend)
+        setTimeout(() => {
+            document.querySelector('.progress-bar-fill').style.width = '25%';
+            document.querySelector('.progress-bar').nextElementSibling.textContent = '25% Complete';
+        }, 1500);
+    });
+
+    function handleLogout() {
+        localStorage.removeItem('userProfile');
+        window.location.href = 'index.html';
+    }
+    </script>
+</body>
+</html>

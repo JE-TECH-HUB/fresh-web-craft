@@ -177,6 +177,60 @@ text-align: center;
 color: #000;
 
 }
+
+/* Enhanced loader styles */
+.loader-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader {
+    width: 70px;
+    height: 70px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #1A76D1;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Enhanced form validation styles */
+.error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.form-success {
+    background: #28a745;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.input-error {
+    border-color: #dc3545 !important;
+}
 </style>
 </head>
 <body>
@@ -228,6 +282,10 @@ color: #000;
 
 <main>
 
+<!-- Loading Spinner -->
+<div class="loader-wrapper">
+    <div class="loader"></div>
+</div>
 
 <div class="breadcrumbs overlay">
 <div class="container">
@@ -261,25 +319,26 @@ color: #000;
 <form name="userForm" id="userForm" onsubmit="return handleFormSubmit(event)">
 <div class="title">
 <h2>Register here</h2>
+<div class="form-success">Registration successful!</div>
 </div>
 <div class="info">
-<input class="fname" type="text" name="firstName" placeholder="First name" required>
+<input class="fname" type="text" name="firstName" placeholder="First name" required pattern="[A-Za-z ]{2,50}" title="Name should only contain letters and be 2-50 characters long">
 <div id="firstNameError" class="error"></div>
-<input class="fname" type="text" name="lastName" placeholder="Last name" required>
+<input class="fname" type="text" name="lastName" placeholder="Last name" required pattern="[A-Za-z ]{2,50}" title="Name should only contain letters and be 2-50 characters long">
 <div id="lastNameError" class="error"></div>
-<input type="email" name="email" placeholder="Enter your email" required>
+<input type="email" name="email" placeholder="Enter your email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
 <div id="emailError" class="error"></div>
 <input type="tel" name="phone" placeholder="Phone number">
-<input type="password" id="passwordInput" placeholder="Enter your password" oninput="checkPasswordStrength()" required>
+<input type="password" id="passwordInput" placeholder="Enter your password" oninput="checkPasswordStrength()" required minlength="8">
 <div id="passwordStrength"></div>
 <select name="course" required>
 <option value="">Select Program</option>
-<option value="HTML">Data Analysis</option>
-<option value="CSS">Software Development</option>
-<option value="JavaScript">Video Editing / Graphgics Design</option>
-<option value="TailwindCss">Forex Trading</option>
-<option value="TailwindCss">Gadgets/Sales and Repairs</option>
-<option value="TailwindCss">Join As A Member</option>
+<option value="dataAnalysis">Data Analysis</option>
+<option value="softwareDev">Software Development</option>
+<option value="videoGraphics">Video Editing / Graphics Design</option>
+<option value="forex">Forex Trading</option>
+<option value="gadgets">Gadgets/Sales and Repairs</option>
+<option value="member">Join As A Member</option>
 </select>
 <div id="courseError" class="error"></div>
 </div>
@@ -380,40 +439,24 @@ async function handleFormSubmit(event) {
         const formData = {
             firstName: document.querySelector("input[name='firstName']").value,
             lastName: document.querySelector("input[name='lastName']").value,
+            email: document.querySelector("input[name='email']").value,
             course: document.querySelector("select[name='course']").value
         };
 
         try {
-            const response = await fetch('https://je-tech-hub.github.io/joeExpress/registrationsServer.json', {
-                method: 'POST', 
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const result = await response.json();
-            console.log('Success:', result);
+            // Store in localStorage for now (in a real app, this would go to a backend)
+            localStorage.setItem("userProfile", JSON.stringify(formData));
+            
+            // Show success message
+            document.querySelector('.form-success').style.display = 'block';
+            
+            // Redirect to dashboard after short delay
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1500);
         } catch (error) {
-            alert('Error: ' + error.message);
-            return;
+            alert('Error saving data: ' + error.message);
         }
-
-        // Store data in localStorage
-        localStorage.setItem("formData", JSON.stringify(formData));
-
-        let getInfo = JSON.parse(localStorage.getItem("formData"));
-        console.log(getInfo);
-
-        // Display congratulations message
-        document.getElementById("overlay").style.display = "flex";
-
-        // Set welcome message
-        document.querySelector(".welcomeMessage p").textContent = `Hello, ${formData.firstName} ${formData.lastName}!`;
     }
 }
 
@@ -424,33 +467,69 @@ function clearErrors() {
 }
 
 function validateForm() {
-    let form = document.forms["userForm"];
-    let firstName = form["firstName"].value.trim();
-    let lastName = form["lastName"].value.trim();
-    let course = form["course"].value;
-    let valid = true;
-
-    if (!firstName) {
-        document.getElementById("firstNameError").textContent = "First name must be filled out";
-        valid = false;
+    let isValid = true;
+    const form = document.forms["userForm"];
+    
+    // Validate first name
+    if (!validateField(form["firstName"], "firstNameError", "Please enter a valid first name")) {
+        isValid = false;
     }
-
-    if (!lastName) {
-        document.getElementById("lastNameError").textContent = "Last name must be filled out";
-        valid = false;
+    
+    // Validate last name
+    if (!validateField(form["lastName"], "lastNameError", "Please enter a valid last name")) {
+        isValid = false;
     }
-
-    if (!course) {
-        document.getElementById("courseError").textContent = "Please select a course";
-        valid = false;
+    
+    // Validate email
+    if (!validateEmail(form["email"])) {
+        isValid = false;
     }
+    
+    // Validate password
+    if (!validatePassword(form["passwordInput"])) {
+        isValid = false;
+    }
+    
+    // Validate course selection
+    if (!validateField(form["course"], "courseError", "Please select a course")) {
+        isValid = false;
+    }
+    
+    return isValid;
+}
 
-    return valid;
+function validateField(field, errorId, message) {
+    if (!field.value.trim()) {
+        document.getElementById(errorId).textContent = message;
+        field.classList.add('input-error');
+        return false;
+    }
+    return true;
+}
+
+function validateEmail(emailField) {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailPattern.test(emailField.value)) {
+        document.getElementById("emailError").textContent = "Please enter a valid email address";
+        emailField.classList.add('input-error');
+        return false;
+    }
+    return true;
+}
+
+function validatePassword(passwordField) {
+    if (passwordField.value.length < 8) {
+        document.getElementById("passwordStrength").textContent = "Password must be at least 8 characters";
+        document.getElementById("passwordStrength").className = "error";
+        passwordField.classList.add('input-error');
+        return false;
+    }
+    return true;
 }
 
 function checkPasswordStrength() {
     const password = document.getElementById("passwordInput").value;
-    const passwordStrength = document.getElementById("passwordStrength");
+    const strengthIndicator = document.getElementById("passwordStrength");
     let strength = 0;
 
     if (password.match(/[a-z]/)) strength++;
@@ -458,19 +537,19 @@ function checkPasswordStrength() {
     if (password.match(/[0-9]/)) strength++;
     if (password.length >= 8) strength++;
 
-    passwordStrength.className = "";
+    strengthIndicator.className = "";
     
     if (strength === 0) {
-        passwordStrength.textContent = "";
+        strengthIndicator.textContent = "";
     } else if (strength <= 2) {
-        passwordStrength.textContent = "Password Strength: Weak";
-        passwordStrength.classList.add("weak");
+        strengthIndicator.textContent = "Password Strength: Weak";
+        strengthIndicator.classList.add("weak");
     } else if (strength === 3) {
-        passwordStrength.textContent = "Password Strength: Medium";
-        passwordStrength.classList.add("medium");
+        strengthIndicator.textContent = "Password Strength: Medium";
+        strengthIndicator.classList.add("medium");
     } else {
-        passwordStrength.textContent = "Password Strength: Strong";
-        passwordStrength.classList.add("strong");
+        strengthIndicator.textContent = "Password Strength: Strong";
+        strengthIndicator.classList.add("strong");
     }
 }
 
@@ -479,7 +558,14 @@ function goToAnotherPage() {
     window.location.href = "profile.html";
 }
 
-	</script>
+window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader-wrapper');
+    setTimeout(function() {
+        loader.classList.add('hidden');
+    }, 1000);
+});
+
+</script>
 <!--/ End Copyright -->
 </footer>
 <!--/ End Footer Area -->
