@@ -151,8 +151,35 @@ color: orange;
 color: green;
 }
 
+/* Login/Register toggle */
+.auth-toggle {
+display: flex;
+justify-content: center;
+margin-bottom: 20px;
+}
 
+.auth-toggle button {
+background: transparent;
+border: none;
+color: #333;
+font-weight: bold;
+padding: 10px 20px;
+cursor: pointer;
+}
 
+.auth-toggle button.active {
+color: darkblue;
+border-bottom: 2px solid darkblue;
+}
+
+/* Form tabs */
+#loginForm, #registerForm {
+display: none;
+}
+
+.active-form {
+display: block !important;
+}
 
 /* Transparent overlay */
 #overlay {
@@ -231,11 +258,20 @@ color: #000;
 .input-error {
     border-color: #dc3545 !important;
 }
+
+/* API error message */
+.api-error {
+    background: #dc3545;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+}
 </style>
 </head>
 <body>
 
-<!-- Header Area -->
 <!-- Header Area -->
 <header class="header" >
 <!-- Header Inner -->
@@ -258,14 +294,10 @@ color: #000;
 <div class="main-menu">
 <nav class="navigation">
 <ul class="nav menu">
-<li class="active"><a href="index.html">Home</a></li>
-
-
-<li><a href="index.html#about">About Us </a></li>
-<li><a href="index.html#>programms">Programms</a></li>
-
-
-<li><a href="contact.html">Contact Us</a></li>
+<li><a href="index.html" class="scroll">Home</a></li>
+<li><a href="index.html#about" class="scroll">About Us</a></li>
+<li><a href="programs.html" class="scroll">Programs</a></li>
+<li><a href="contact.html" class="scroll">Contact Us</a></li>
 </ul>
 </nav>
 </div>
@@ -296,7 +328,7 @@ color: #000;
 <ul class="bread-list">
 <li><a href="index.html">Home</a></li>
 <li><i class="icofont-simple-right"></i></li>
-<li class="active">About Us</li>
+<li class="active">Register</li>
 </ul>
 </div>
 </div>
@@ -306,48 +338,81 @@ color: #000;
 
 <div class="containerBox">
 <div class="welcomeMessage">
-
 <p>
 	Join a community of like-minded learners and industry professionals who are
 	passionate about technology and personal growth.	
 </p>
 
-<button>Learn More</button>
-
-
-</div>
-<form name="userForm" id="userForm" onsubmit="return handleFormSubmit(event)">
-<div class="title">
-<h2>Register here</h2>
-<div class="form-success">Registration successful!</div>
-</div>
-<div class="info">
-<input class="fname" type="text" name="firstName" placeholder="First name" required pattern="[A-Za-z ]{2,50}" title="Name should only contain letters and be 2-50 characters long">
-<div id="firstNameError" class="error"></div>
-<input class="fname" type="text" name="lastName" placeholder="Last name" required pattern="[A-Za-z ]{2,50}" title="Name should only contain letters and be 2-50 characters long">
-<div id="lastNameError" class="error"></div>
-<input type="email" name="email" placeholder="Enter your email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-<div id="emailError" class="error"></div>
-<input type="tel" name="phone" placeholder="Phone number">
-<input type="password" id="passwordInput" placeholder="Enter your password" oninput="checkPasswordStrength()" required minlength="8">
-<div id="passwordStrength"></div>
-<select name="course" required>
-<option value="">Select Program</option>
-<option value="dataAnalysis">Data Analysis</option>
-<option value="softwareDev">Software Development</option>
-<option value="videoGraphics">Video Editing / Graphics Design</option>
-<option value="forex">Forex Trading</option>
-<option value="gadgets">Gadgets/Sales and Repairs</option>
-<option value="member">Join As A Member</option>
-</select>
-<div id="courseError" class="error"></div>
-</div>
-<button type="submit" id="submitButton">Submit</button>
-</form>
-
-
+<button onclick="window.location.href='programs.html'">Learn More</button>
 
 </div>
+
+<div>
+    <div class="auth-toggle">
+        <button id="loginToggle" onclick="showForm('loginForm')">Login</button>
+        <button id="registerToggle" class="active" onclick="showForm('registerForm')">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form name="loginForm" id="loginForm" onsubmit="return handleLoginSubmit(event)">
+        <div class="title">
+            <h2>Login to your account</h2>
+            <div class="form-success">Login successful!</div>
+            <div class="api-error" id="loginApiError"></div>
+        </div>
+        <div class="info">
+            <input type="email" name="email" placeholder="Your email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+            <div id="loginEmailError" class="error"></div>
+            
+            <input type="password" name="password" placeholder="Your password" required minlength="8">
+            <div id="loginPasswordError" class="error"></div>
+        </div>
+        <button type="submit" id="loginButton">Login</button>
+        <p style="text-align: center; margin-top: 15px;">
+            Don't have an account? <a href="#" onclick="showForm('registerForm'); return false;">Register here</a>
+        </p>
+    </form>
+
+    <!-- Register Form -->
+    <form name="registerForm" id="registerForm" class="active-form" onsubmit="return handleRegisterSubmit(event)">
+        <div class="title">
+            <h2>Register here</h2>
+            <div class="form-success">Registration successful!</div>
+            <div class="api-error" id="registerApiError"></div>
+        </div>
+        <div class="info">
+            <input class="fname" type="text" name="firstName" placeholder="First name" required pattern="[A-Za-z ]{2,50}" title="Name should only contain letters and be 2-50 characters long">
+            <div id="firstNameError" class="error"></div>
+            
+            <input class="fname" type="text" name="lastName" placeholder="Last name" required pattern="[A-Za-z ]{2,50}" title="Name should only contain letters and be 2-50 characters long">
+            <div id="lastNameError" class="error"></div>
+            
+            <input type="email" name="email" placeholder="Enter your email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+            <div id="emailError" class="error"></div>
+            
+            <input type="tel" name="phone" placeholder="Phone number">
+            
+            <input type="password" id="passwordInput" name="password" placeholder="Enter your password" oninput="checkPasswordStrength()" required minlength="8">
+            <div id="passwordStrength"></div>
+            
+            <select name="course" required>
+                <option value="">Select Program</option>
+                <option value="dataAnalysis">Data Analysis</option>
+                <option value="softwareDev">Software Development</option>
+                <option value="videoGraphics">Video Editing / Graphics Design</option>
+                <option value="forex">Forex Trading</option>
+                <option value="gadgets">Gadgets/Sales and Repairs</option>
+                <option value="member">Join As A Member</option>
+            </select>
+            <div id="courseError" class="error"></div>
+        </div>
+        <button type="submit" id="registerButton">Register</button>
+        <p style="text-align: center; margin-top: 15px;">
+            Already have an account? <a href="#" onclick="showForm('loginForm'); return false;">Login here</a>
+        </p>
+    </form>
+</div>
+
 <!-- Transparent overlay and congratulations message -->
 <div id="overlay">
 <div id="congratsMessage">
@@ -426,49 +491,157 @@ color: #000;
 </div>
 </div>
 
+<script>
+// API base URL - Change this to your actual API URL in production
+const API_BASE_URL = 'http://localhost:5000/api';
 
+// Show the selected form and update toggle buttons
+function showForm(formId) {
+    // Hide all forms
+    document.getElementById('loginForm').classList.remove('active-form');
+    document.getElementById('registerForm').classList.remove('active-form');
+    
+    // Show the selected form
+    document.getElementById(formId).classList.add('active-form');
+    
+    // Update toggle buttons
+    document.getElementById('loginToggle').classList.remove('active');
+    document.getElementById('registerToggle').classList.remove('active');
+    
+    if (formId === 'loginForm') {
+        document.getElementById('loginToggle').classList.add('active');
+    } else {
+        document.getElementById('registerToggle').classList.add('active');
+    }
+}
 
-<script>document.getElementById("userForm").addEventListener("submit", handleFormSubmit);
-document.getElementById("passwordInput").addEventListener("input", checkPasswordStrength);
+// Clear all error messages
+function clearErrors(formId) {
+    if (formId === 'loginForm') {
+        document.getElementById("loginEmailError").textContent = "";
+        document.getElementById("loginPasswordError").textContent = "";
+        document.getElementById("loginApiError").style.display = "none";
+    } else {
+        document.getElementById("firstNameError").textContent = "";
+        document.getElementById("lastNameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("courseError").textContent = "";
+        document.getElementById("registerApiError").style.display = "none";
+    }
+}
 
-async function handleFormSubmit(event) {
-    event.preventDefault(); // Prevent default form submission
-    clearErrors();
+// Handle login form submission
+async function handleLoginSubmit(event) {
+    event.preventDefault();
+    clearErrors('loginForm');
+    const form = document.forms["loginForm"];
+    
+    const email = form["email"].value;
+    const password = form["password"].value;
+    
+    try {
+        document.querySelector('.loader-wrapper').classList.remove('hidden');
+        
+        const response = await fetch(`${API_BASE_URL}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.message || 'Login failed');
+        }
+        
+        // Save token and user data
+        localStorage.setItem('jwtToken', data.token);
+        localStorage.setItem('userProfile', JSON.stringify(data.user));
+        
+        // Show success message
+        document.querySelector('.form-success').style.display = 'block';
+        
+        // Redirect to dashboard
+        setTimeout(() => {
+            window.location.href = 'dashboard.html';
+        }, 1500);
+    } catch (error) {
+        console.error('Login error:', error);
+        const apiError = document.getElementById('loginApiError');
+        apiError.textContent = error.message || 'An error occurred. Please try again.';
+        apiError.style.display = 'block';
+    } finally {
+        document.querySelector('.loader-wrapper').classList.add('hidden');
+    }
+    
+    return false;
+}
 
+// Handle registration form submission
+async function handleRegisterSubmit(event) {
+    event.preventDefault();
+    clearErrors('registerForm');
+    
     if (validateForm()) {
+        const form = document.forms["registerForm"];
+        
         const formData = {
-            firstName: document.querySelector("input[name='firstName']").value,
-            lastName: document.querySelector("input[name='lastName']").value,
-            email: document.querySelector("input[name='email']").value,
-            course: document.querySelector("select[name='course']").value
+            firstName: form["firstName"].value,
+            lastName: form["lastName"].value,
+            email: form["email"].value,
+            password: form["password"].value,
+            course: form["course"].value
         };
-
+        
         try {
-            // Store in localStorage for now (in a real app, this would go to a backend)
-            localStorage.setItem("userProfile", JSON.stringify(formData));
+            document.querySelector('.loader-wrapper').classList.remove('hidden');
+            
+            const response = await fetch(`${API_BASE_URL}/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const data = await response.json();
+            
+            if (!response.ok) {
+                throw new Error(data.message || 'Registration failed');
+            }
+            
+            // Save token and user data
+            localStorage.setItem('jwtToken', data.token);
+            localStorage.setItem('userProfile', JSON.stringify(data.user));
             
             // Show success message
             document.querySelector('.form-success').style.display = 'block';
             
-            // Redirect to dashboard after short delay
+            // Redirect to dashboard
             setTimeout(() => {
                 window.location.href = 'dashboard.html';
             }, 1500);
         } catch (error) {
-            alert('Error saving data: ' + error.message);
+            console.error('Registration error:', error);
+            const apiError = document.getElementById('registerApiError');
+            apiError.textContent = error.message || 'An error occurred. Please try again.';
+            apiError.style.display = 'block';
+        } finally {
+            document.querySelector('.loader-wrapper').classList.add('hidden');
         }
     }
-}
-
-function clearErrors() {
-    document.getElementById("firstNameError").textContent = "";
-    document.getElementById("lastNameError").textContent = "";
-    document.getElementById("courseError").textContent = "";
+    
+    return false;
 }
 
 function validateForm() {
     let isValid = true;
-    const form = document.forms["userForm"];
+    const form = document.forms["registerForm"];
     
     // Validate first name
     if (!validateField(form["firstName"], "firstNameError", "Please enter a valid first name")) {
@@ -486,7 +659,7 @@ function validateForm() {
     }
     
     // Validate password
-    if (!validatePassword(form["passwordInput"])) {
+    if (!validatePassword(form["password"])) {
         isValid = false;
     }
     
@@ -508,7 +681,7 @@ function validateField(field, errorId, message) {
 }
 
 function validateEmail(emailField) {
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$/;
     if (!emailPattern.test(emailField.value)) {
         document.getElementById("emailError").textContent = "Please enter a valid email address";
         emailField.classList.add('input-error');
@@ -555,7 +728,15 @@ function checkPasswordStrength() {
 
 function goToAnotherPage() {
     document.getElementById("overlay").style.display = "none";
-    window.location.href = "profile.html";
+    window.location.href = "dashboard.html";
+}
+
+// Check if user is already logged in
+function checkAuth() {
+    const token = localStorage.getItem('jwtToken');
+    if (token) {
+        window.location.href = 'dashboard.html';
+    }
 }
 
 window.addEventListener('load', function() {
@@ -563,8 +744,10 @@ window.addEventListener('load', function() {
     setTimeout(function() {
         loader.classList.add('hidden');
     }, 1000);
+    
+    // Check if user is already logged in
+    checkAuth();
 });
-
 </script>
 <!--/ End Copyright -->
 </footer>

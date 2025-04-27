@@ -285,26 +285,74 @@ Version:	1.1
 			Animate Scroll JS
 		=========================*/
 		$('.scroll').on("click", function (e) {
-			var anchor = $(this);
-				$('html, body').stop().animate({
-					scrollTop: $(anchor.attr('href')).offset().top - 100
-				}, 1000);
 			e.preventDefault();
-		});
+            
+            // Get the target element
+            const targetHref = $(this).attr('href');
+            
+            // Handle external links
+            if (!targetHref.includes('#') || targetHref === '#') {
+                window.location.href = targetHref;
+                return;
+            }
+            
+            let targetId;
+            // Check if the href contains a hash and is pointing to another page
+            if (targetHref.includes('#') && targetHref.split('#')[0] !== '') {
+                // This is a link to another page with a hash
+                const pageName = targetHref.split('#')[0];
+                const currentPage = window.location.pathname.split('/').pop();
+                
+                // If we're not on the target page, navigate there
+                if (!currentPage.includes(pageName)) {
+                    window.location.href = targetHref;
+                    return;
+                }
+                
+                // Extract the hash part for scrolling on this page
+                targetId = targetHref.split('#')[1];
+            } else {
+                // Just a hash link on the current page
+                targetId = targetHref.replace('#', '');
+            }
+            
+            const $target = $('#' + targetId);
+            
+            // Only scroll if the target element exists
+            if ($target.length) {
+                const headerHeight = $('.header').outerHeight() || 0;
+                
+                $('html, body').stop().animate({
+                    scrollTop: $target.offset().top - headerHeight - 20
+                }, 1000, 'easeInOutExpo');
+                
+                // Update active class
+                $('.nav.menu li a').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
 
         // Active link highlighting when scrolling
         $(window).on('scroll', function() {
             const scrollPos = $(window).scrollTop();
+            const headerHeight = $('.header').outerHeight() || 0;
             
             // Check each section's position and update active class accordingly
-            $('section[id]').each(function() {
-                const sectionTop = $(this).offset().top - 150;
+            $('section[id], div[id="services"], div[id="about"]').each(function() {
+                const sectionTop = $(this).offset().top - headerHeight - 100;
                 const sectionBottom = sectionTop + $(this).outerHeight();
                 const sectionId = $(this).attr('id');
                 
                 if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
                     $('.nav.menu li a').removeClass('active');
-                    $('.nav.menu li a[href="#' + sectionId + '"]').addClass('active');
+                    
+                    // Find any nav link that points to this section
+                    $('.nav.menu li a').each(function() {
+                        const href = $(this).attr('href');
+                        if (href && (href === '#' + sectionId || href.endsWith('#' + sectionId))) {
+                            $(this).addClass('active');
+                        }
+                    });
                 }
             });
         });
@@ -347,8 +395,28 @@ Version:	1.1
         setTimeout(function() {
             $('.loader-wrapper').addClass('hidden');
         }, 1000);
+        
+        // Initialize active menu link based on URL
+        initActiveMenuLink();
 	});
 	
+    // Function to initialize active menu link based on current URL
+    function initActiveMenuLink() {
+        const currentUrl = window.location.pathname;
+        const currentHash = window.location.hash;
+        
+        $('.nav.menu li a').each(function() {
+            const linkHref = $(this).attr('href');
+            
+            // Check if this is the current page
+            if (currentUrl.endsWith(linkHref) || 
+                (currentHash && linkHref && linkHref.endsWith(currentHash))) {
+                $('.nav.menu li').removeClass('active');
+                $(this).parent('li').addClass('active');
+                $(this).addClass('active');
+            }
+        });
+    }
 	
 })(jQuery);
 
@@ -406,11 +474,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Active link highlighting when scrolling
     window.addEventListener('scroll', function() {
-        const scrollPos = window.scrollTop || document.documentElement.scrollTop;
+        const scrollPos = window.scrollY || document.documentElement.scrollTop;
+        const headerHeight = document.querySelector('.header').offsetHeight || 0;
         
         // Check each section's position and update active class accordingly
-        document.querySelectorAll('section[id]').forEach(section => {
-            const sectionTop = section.offsetTop - 150;
+        document.querySelectorAll('section[id], div[id="services"], div[id="about"]').forEach(section => {
+            const sectionTop = section.offsetTop - headerHeight - 100;
             const sectionBottom = sectionTop + section.offsetHeight;
             const sectionId = section.getAttribute('id');
             
@@ -425,4 +494,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Initialize active menu link based on current URL
+    initActiveMenuLinkDom();
 });
+
+// Function to initialize active menu link based on current URL for vanilla JS
+function initActiveMenuLinkDom() {
+    const currentUrl = window.location.pathname;
+    const currentHash = window.location.hash;
+    
+    document.querySelectorAll('.nav.menu li a').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        
+        // Check if this is the current page
+        if (currentUrl.endsWith(linkHref) || 
+            (currentHash && linkHref && linkHref.endsWith(currentHash))) {
+            document.querySelectorAll('.nav.menu li').forEach(item => {
+                item.classList.remove('active');
+            });
+            link.parentElement.classList.add('active');
+            link.classList.add('active');
+        }
+    });
+}
