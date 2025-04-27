@@ -1,15 +1,17 @@
+
 <!doctype html>
+<html lang="en">
 <head>
 <!-- Meta Tags -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="keywords" content="Site keywords here">
-<meta name="description" content="">
-<meta name='copyright' content=''>
+<meta name="keywords" content="JE Tech Hub, Technology Training, Tech Education, Web Development, Data Analysis, UI/UX Design, Forex Trading, Graphics Design">
+<meta name="description" content="JE Tech Hub - Your gateway to tech excellence. Professional courses in software development, data analysis, UI/UX design, forex trading, and graphics design. Join our community and transform your tech skills.">
+<meta name='copyright' content='JE Tech Hub'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
 <script src="https://kit.fontawesome.com/69d2ba44c8.js" crossorigin="anonymous"></script>
 <!-- Title -->
-<title>JOE_EXPRESS</title>
+<title>JE Tech Hub - Technology Education and Training Center</title>
 
 <!-- Favicon -->
 <link rel="icon" href="images/JE Techhub logo - Copy.png">
@@ -42,10 +44,167 @@ rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/responsive.css">
 
+<style>
+  /* Loading Spinner */
+  .loader-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  .loader {
+    width: 70px;
+    height: 70px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #1A76D1;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* Enhanced Hot Deals Section */
+  .card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+  }
+  
+  .card-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .card:hover .card-image img {
+    transform: scale(1.05);
+  }
+  
+  .card-content {
+    padding: 20px;
+    background: #fff;
+  }
+  
+  .card-title {
+    color: #1A76D1;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .card-description {
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .card-button {
+    background: #1A76D1;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    display: inline-block;
+  }
+  
+  .card-button:hover {
+    background: #0d62b8;
+  }
+  
+  .card-button a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* Enhanced Contact Form */
+  .appointment .form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  }
+  
+  .appointment .form input,
+  .appointment .form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .appointment .form input:focus,
+  .appointment .form textarea:focus {
+    border-color: #1A76D1;
+    box-shadow: 0 0 10px rgba(26,118,209,0.1);
+  }
+  
+  .appointment .form textarea {
+    height: 120px;
+    resize: none;
+  }
+  
+  .appointment .form input[type="submit"] {
+    background: #1A76D1;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    width: auto;
+    padding: 12px 30px;
+  }
+  
+  .appointment .form input[type="submit"]:hover {
+    background: #0d62b8;
+  }
+</style>
 
 </head>
 
 <body>
+
+<!-- Loading Spinner -->
+<div class="loader-wrapper">
+  <div class="loader"></div>
+</div>
 
 <!-- Preloader -->
 <div class="preloader">
@@ -56,56 +215,51 @@ rel="stylesheet">
 </div>
 <!-- End Preloader -->
 
+<!-- Header Area -->
+<header class="header" >
+<!-- Header Inner -->
+<div class="header-inner">
+<div class="container">
+<div class="inner">
+<div class="row">
+<div class="col-lg-3 col-md-3 col-12">
+<!-- Start Logo -->
+<div class="logo">
+<a href="index.html"><img src="images/JE Techhub logo.png#"></a>
+</div>
+<!-- End Logo -->
+<!-- Mobile Nav -->
+<div class="mobile-nav"></div>
+<!-- End Mobile Nav -->
+</div>
+<div class="col-lg-7 col-md-9 col-12">
+<!-- Main Menu -->
+<div class="main-menu">
+<nav class="navigation">
+<ul class="nav menu">
+<li class="active"><a href="#" class="scroll">Home</a></li>
+<li><a href="#about" class="scroll">About Us</a></li>
+<li><a href="#programms" class="scroll">Programs</a></li>
+<li><a href="courses.html">Courses</a></li>
+<li><a href="#contact" class="scroll">Contact Us</a></li>
+</ul>
+</nav>
+</div>
+<!--/ End Main Menu -->
+</div>
 
-
-	<!-- Header Area -->
-	<header class="header" >
-	<!-- Header Inner -->
-	<div class="header-inner">
-	<div class="container">
-	<div class="inner">
-	<div class="row">
-	<div class="col-lg-3 col-md-3 col-12">
-	<!-- Start Logo -->
-	<div class="logo">
-	<a href="index.html"><img src="images/JE Techhub logo.png#"></a>
-	</div>
-	<!-- End Logo -->
-	<!-- Mobile Nav -->
-	<div class="mobile-nav"></div>
-	<!-- End Mobile Nav -->
-	</div>
-	<div class="col-lg-7 col-md-9 col-12">
-	<!-- Main Menu -->
-	<div class="main-menu">
-	<nav class="navigation">
-	<ul class="nav menu">
-	<li class="active"><a href="index.html">Home</a></li>
-	
-	
-	<li><a href="about.html">About Us</a>
-	<li><a href="programs.html">programms</a></li>
-
-
-	<li><a href="contact.html">Contact Us</a></li>
-	</ul>
-	</nav>
-	</div>
-	<!--/ End Main Menu -->
-	</div>
-
-	</div>
-	</div>
-	</div>
-	</div>
-	<!--/ End Header Inner -->
-	</header>
-	<!-- End Header Area -->
+</div>
+</div>
+</div>
+</div>
+<!--/ End Header Inner -->
+</header>
+<!-- End Header Area -->
 
 
 <main>
 <!-- Slider Area -->
-<section class="slider">
+<section class="slider" id="home">
 <div class="hero-slider">
 <!-- Start Single Slider -->
 <div class="single-slider"
@@ -158,7 +312,7 @@ cutting-edge solutions </p>
 <div class="text">
 <h1>
 Get the <span>skills</span> mentorship, and resources you
-need to thrive<span> in today’s digital world. </span></h1>
+need to thrive<span> in today's digital world. </span></h1>
 <div class="button">
 <a href="getStarted.html" class="btn">joinUs</a>
 <a href="contact.html" class="btn primary">Contact Now</a>
@@ -297,7 +451,7 @@ we offer the knowledge,
 
 
 </div>
-<h3 class="left-header" >Our Cutting-Edge Programms</h3>
+<h3 class="left-header" >Our Cutting-Edge Programs</h3>
 
 
 
@@ -305,7 +459,7 @@ we offer the knowledge,
 guidance across various tech-driven fields with several ongoing training programs empower our you with the skills you
 need to excel.
 </p> 
-<p class="largerParagraphs fadeSection lineHeight">CheckOut Our advanced IT training, software development courses and more </p>
+<p class="largerParagraphs fadeSection lineHeight">Check Out Our advanced IT training, software development courses and more </p>
  <h6 class="card-title">#Training Courses: </h6>
 
 <div class="cards-container col-lg-12">
@@ -322,7 +476,7 @@ personal blogs, business websites, or complex web applications, our
 courses will equip you with the skills to succeed in the tech industry.
 </p>
 
-<button class="card-button"><a href="programs.html#webDev">Learn More</button>
+<button class="card-button"><a href="courses.html">Learn More</a></button>
 </div>
 </div>
 
@@ -341,7 +495,7 @@ Resolve. At the same time, develop skills in graphic design with tools
 like Photoshop, Illustrator, and Canva to create eye-catching logos,
 posters, social media content, and marketing materials.
 </p>
-<button class="card-button"><a href="programs.html#vidGraphics">Learn More</button>
+<button class="card-button"><a href="courses.html">Learn More</a></button>
 </div>
 </div>
 
@@ -356,7 +510,7 @@ Turn data into insights and make data-driven decisions. Learn how to use
 tools like Excel, Python, SQL, and Power BI to analyze and visualize
 data, helping businesses and organizations optimize their performance.
 </p>
-<button class="card-button"><a href="programs.html#dataAnalysis">Learn More</button>
+<button class="card-button"><a href="courses.html">Learn More</a></button>
 </div>
 </div>
 
@@ -372,7 +526,7 @@ investment decisions. Learn the fundamentals of forex trading, technical
 and fundamental analysis, risk management, and strategies to become a
 successful trader.
 </p>
-<button class="card-button"><a href="programs.html#trading">Learn More</button>
+<button class="card-button"><a href="courses.html">Learn More</a></button>
 </div>
 </div>
 
@@ -387,7 +541,7 @@ interfaces. Learn the principles of user experience (UX) and user
 interface (UI) design using tools like Figma and Adobe XD to craft
 intuitive and engaging digital experiences.
 </p>
-<button class="card-button"><a href="programs.html#UIUX">Learn More</button>
+<button class="card-button"><a href="courses.html">Learn More</a></button>
 </div>
 </div>
 
@@ -397,13 +551,13 @@ intuitive and engaging digital experiences.
 class="card-image" />
 <div class="card-content">
 <h3 class="card-title">
-Mobile Phones And Other Gadgets Sales&Repairs
+Mobile Phones And Other Gadgets Sales & Repairs
 </h3>
 <p class="card-description">
-Top-Quality Gadgets, or reliable repair services? We offer a wide range of mobile devices,accesories and tech essentials at unbeatable prices...
-	wheather you need a brand-new, high-performance gadget or expert repairs for your damaged device, We are ready to assist.
+Top-Quality Gadgets, or reliable repair services? We offer a wide range of mobile devices, accessories and tech essentials at unbeatable prices...
+Whether you need a brand-new, high-performance gadget or expert repairs for your damaged device, We are ready to assist.
 </p>
-<button class="card-button"><a href="gadgets.html">Learn More</button>
+<button class="card-button"><a href="gadgets.html">Learn More</a></button>
 </div>
 </div>
 
@@ -425,7 +579,7 @@ Top-Quality Gadgets, or reliable repair services? We offer a wide range of mobil
 <p class="ready lineHeight fadeSection largerParagraphs">Whether you're interested
 in web development, graphic design, data analysis, or other innovative
 sectors, our tailored courses equip you with the skills needed to excel in
-today’s fast-paced digital landscape. 
+today's fast-paced digital landscape. 
 <div class="horizontal-line"></div>
 
 </p>
@@ -436,7 +590,7 @@ today’s fast-paced digital landscape.
 <p class="ready fadeSection lineHeight largerParagraphs">
 Join a community of like-minded learners and industry professionals who are
 passionate about technology and personal growth. Get the skills, mentorship,
-and resources you need to thrive in today’s digital world.</p>
+and resources you need to thrive in today's digital world.</p>
 
 <button class="card-button"><a href='getStarted.html'>Get Started</a></button>
 
@@ -504,7 +658,7 @@ max-height="250px" max-width="450px" alt="">
 <div class="row">
 <div class="col-lg-12 col-md-12 col-12">
 <div class="content">
-<h2>Need More Information?Contact Us Call @ 1234 56789</h2>
+<h2>Need More Information? Contact Us Call @ 1234 56789</h2>
 <!-- Social -->
 <ul class="socials">
 <li><a href="https://www.instagram.com/je_techhub?igsh=dGZjc29oNnRsOGF2&utm_source=qr"><i class="icofont-instagram"></i></a></li>
@@ -514,7 +668,7 @@ max-height="250px" max-width="450px" alt="">
 </ul>
 <!-- End Social -->
 <div class="button">
-<a href="contact.html" class="btn">Contact Now</a>
+<a href="#contact" class="btn scroll">Contact Now</a>
 
 
 <a href="about.html" class="btn second">Learn More<i
@@ -527,108 +681,7 @@ class="fa fa-long-arrow-right"></i></a>
 </section>
 <!--/ End Call to action -->
 
-<!-- Start portfolio -->
-<!--
-<section class="portfolio section">
-
-<div class="col-lg-12">
-<div class="section-title">
-<h2>Testimonials </h2>
-<p>Meet The Team</p>
-
-</div>
-</div>
-<div class="container-fluid">
-<div class="row">
-<div class="col-lg-12 col-12">
-<div class="owl-carousel portfolio-slider">
-
-	<div class="teamPerson">
-	
-
-		<img src="images/11WhatsApp Image 2024-06-09 at 5.41.23 PM (2).jpeg">
-	
-		
-	<span class="personTitile">
-	JOE EXPRESS <br>
-	CEO TECH-HUB
-	</span>
-	<p class="personDiscription">
-	Lorem ipsum dolor sit amet consectetur adipisicing elit.
-	Blanditiis
-	</p>
-	</div>
-	<div class="teamPerson">
-		
-	
-		<img src="images/11WhatsApp Image 2024-06-09 at 5.41.23 PM (2).jpeg">
-	
-		
-	<span class="personTitile">
-	Mr Taiwo <br>
-	Graphics Design & Video Edits
-	</span>
-	<p class="personDiscription">
-	Lorem ipsum dolor sit amet consectetur adipisicing elit.
-	Blanditiis
-	</p>
-	</div>
-
-	<div class="teamPerson">
-	
-
-		<img src="images/11WhatsApp Image 2024-06-09 at 5.41.23 PM (2).jpeg">
-	
-		
-	<span class="personTitile">
-	Ahmad Tawfiq <br>
-	Web Development
-	</span>
-	<p class="personDiscription">
-	Lorem ipsum dolor sit amet consectetur adipisicing elit.
-	Blanditiis
-	</p>
-	</div>
-	
-<div class="teamPerson">
-	
-
-	<img src="images/11WhatsApp Image 2024-06-09 at 5.41.23 PM (2).jpeg">
-
-	
-<span class="personTitile">
-Mr Mike <br>
-Data Analysis
-</span>
-<p class="personDiscription">
-Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Blanditiis
-</p>
-</div>
-
-<div class="teamPerson">
-	
-
-	<img src="images/11WhatsApp Image 2024-06-09 at 5.41.23 PM (2).jpeg">
-
-	
-<span class="personTitile">
-JOE EXPRESS
-</span>
-<p class="personDiscription">
-Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Blanditiis
-</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</section>-->
-<!--/ End portfolio -->
-
-<!-- Start Blog Area --> 
+<!-- Blog Area -->
 <section class="blog section" id="blog">
   <div class="container">
 
@@ -649,11 +702,11 @@ Blanditiis
           <div class="news-body">
             <div class="news-content">
               <div class="news-head">
-                <img src="img/blog1.jpg" alt="#">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sarah Jones">
               </div>
               <h2>Sarah Jones</h2>
               <p class="text">"JE Techhub transformed my career. The hands-on training and expert instructors helped me gain the skills I needed to land my first job in web development. The community and support I received here were amazing!"</p>
-              <div class="date">22 Aug, 2020</div>
+              <div class="date">22 Aug, 2023</div>
             </div>
           </div>
         </div>
@@ -666,11 +719,11 @@ Blanditiis
           <div class="news-body">
             <div class="news-content">
               <div class="news-head">
-                <img src="img/blog1.jpg" alt="#">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Michael Smith">
               </div>
               <h2>Michael Smith</h2>
-              <p class="text">"I’ve been through several tech training programs, but none compared to the quality of JE Techhub. The curriculum was up-to-date, and I learned everything I needed to start my own freelance business in digital marketing. Highly recommend!"</p>
-              <div class="date">15 Sept, 2021</div>
+              <p class="text">"I've been through several tech training programs, but none compared to the quality of JE Techhub. The curriculum was up-to-date, and I learned everything I needed to start my own freelance business in digital marketing. Highly recommend!"</p>
+              <div class="date">15 Sept, 2023</div>
             </div>
           </div>
         </div>
@@ -683,11 +736,11 @@ Blanditiis
           <div class="news-body">
             <div class="news-content">
               <div class="news-head">
-                <img src="img/blog1.jpg" alt="#">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1588&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Emma Watson">
               </div>
               <h2>Emma Watson</h2>
-              <p class="text">"Thanks to JE Techhub’s software development course, I now have the skills to build my own applications. The instructors were not only experts but also genuinely caring, and the practical training helped me grow fast!"</p>
-              <div class="date">5 Jan, 2022</div>
+              <p class="text">"Thanks to JE Techhub's software development course, I now have the skills to build my own applications. The instructors were not only experts but also genuinely caring, and the practical training helped me grow fast!"</p>
+              <div class="date">5 Jan, 2024</div>
             </div>
           </div>
         </div>
@@ -700,13 +753,13 @@ Blanditiis
 
 
 <!-- Start Appointment -->
-<section class="appointment">
+<section class="appointment" id="contact">
 <div class="container">
 <div class="row">
 <div class="col-lg-12">
 <div class="section-title">
 <h2 class="card-title">We Are Always Ready For You</h2>
-<p>You Can Send Us A Message</p>
+<p>Send Us A Message And We'll Get Back To You</p>
 </div>
 </div>
 </div>
@@ -716,17 +769,22 @@ Blanditiis
 <div class="row">
       <div class="col-lg-6 col-md-6 col-12">
         <div class="form-group">
-          <input name="name" type="text" placeholder="Name" required>
+          <input name="name" type="text" placeholder="Full Name" required>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-12">
         <div class="form-group">
-          <input name="email" type="email" placeholder="Email" required>
+          <input name="email" type="email" placeholder="Email Address" required>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-12">
         <div class="form-group">
-          <input name="phone" type="text" placeholder="Phone" required>
+          <input name="phone" type="text" placeholder="Phone Number" required>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-12">
+        <div class="form-group">
+          <input name="subject" type="text" placeholder="Subject" required>
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-12">
@@ -736,12 +794,17 @@ Blanditiis
       </div>
       <div class="col-lg-12 col-md-12 col-12">
         <div class="form-group">
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit Message">
         </div>
       </div>
     </div>
 </form>
 
+</div>
+<div class="col-lg-6 col-md-12 col-12">
+  <div class="appointment-image">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Contact Us">
+  </div>
 </div>
 </div>
 </div>
@@ -757,13 +820,13 @@ Blanditiis
 <div class="row">
 <div class="col-lg-3 col-md-6 col-12">
 <div class="single-footer">
+<h2>About Us</h2>
+<p>JE Tech Hub is dedicated to empowering individuals with cutting-edge technology skills through hands-on training and innovative solutions.</p>
 <!-- Social -->
 <ul class="social">
-<li><a href="https://www.instagram.com/joe.express1?igsh=NXZjcnFoZWI1bWI0&utm_source=qr"><i class="icofont-instagram"></i></a></li>
+<li><a href="https://www.instagram.com/je_techhub?igsh=dGZjc29oNnRsOGF2&utm_source=qr"><i class="icofont-instagram"></i></a></li>
 <li><a href="#"><i class="icofont-google-plus"></i></a></li>
 <li><a href="#"><i class="icofont-twitter"></i></a></li>
-<li><a href="#"><i class="icofont-vimeo"></i></a></li>
-<li><a href="#"><i class="icofont-pinterest"></i></a></li>
 </ul>
 <!-- End Social -->
 </div>
@@ -774,18 +837,11 @@ Blanditiis
 <div class="row">
 <div class="col-lg-6 col-md-6 col-12">
 <ul>
-<li><a href="index.html"><i class="fa fa-caret-right"
-aria-hidden="true"></i>Home</a>
-</li>
-<li><a href="about.html"><i class="fa fa-caret-right"
-aria-hidden="true"></i>About
-Us</a></li>
-<li><a href="Programs.html"><i class="fa fa-caret-right"
-aria-hidden="true"></i>Services</a>
-</li>
-<li><a href="contact.html"><i class="fa fa-caret-right"
-aria-hidden="true"></i>Contact
-Us</a></li>
+<li><a href="index.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
+<li><a href="about.html"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+<li><a href="courses.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Courses</a></li>
+<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Programs</a></li>
+<li><a href="contact.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
 </ul>
 </div>
 </div>
@@ -793,8 +849,19 @@ Us</a></li>
 </div>
 <div class="col-lg-3 col-md-6 col-12">
 <div class="single-footer">
+<h2>Our Services</h2>
+<ul>
+<li><a href="programs.html#webDev"><i class="fa fa-caret-right" aria-hidden="true"></i>Software Development</a></li>
+<li><a href="programs.html#dataAnalysis"><i class="fa fa-caret-right" aria-hidden="true"></i>Data Analysis</a></li>
+<li><a href="programs.html#UIUX"><i class="fa fa-caret-right" aria-hidden="true"></i>UI/UX Design</a></li>
+<li><a href="programs.html#trading"><i class="fa fa-caret-right" aria-hidden="true"></i>Forex Trading</a></li>
+<li><a href="programs.html#vidGraphics"><i class="fa fa-caret-right" aria-hidden="true"></i>Graphics & Video</a></li>
+</ul>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
 <h2>Open Hours</h2>
-
 <ul class="time-sidual">
 <li class="day">Mondays - Fridays <span>8.00-20.00</span></li>
 <li class="day">Saturdays <span>9.00-18.30</span></li>
@@ -812,7 +879,7 @@ Us</a></li>
 <div class="row">
 <div class="col-lg-12 col-md-12 col-12">
 <div class="copyright-content">
-<p>© Copyright 2018 | All Rights Reserved  </p>
+<p>© Copyright 2024 | All Rights Reserved by <a href="index.html">JE Tech Hub</a></p>
 </div>
 </div>
 </div>
@@ -823,27 +890,38 @@ Us</a></li>
 <!--/ End Footer Area -->
 </main>
 
-	<script>
-    // Function to handle form submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevents the form from submitting in the traditional way
-
-      // Collect form data
-      const formData = {
-        name: document.querySelector('[name="name"]').value,
-        email: document.querySelector('[name="email"]').value,
-        phone: document.querySelector('[name="phone"]').value,
-        message: document.querySelector('[name="message"]').value
-      };
-
-      // Convert form data to JSON and log to console
-      const formDataJSON = JSON.stringify(formData, null, 2); 
-      console.log(formDataJSON);
-
-	    
-      // Clear the input fields after submission
-      document.getElementById('contactForm').reset();
-    }); </script>
+<script>
+// Function to handle form submission with improved feedback
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Prevents the form from submitting traditionally
+  
+  // Collect form data
+  const formData = {
+    name: document.querySelector('[name="name"]').value,
+    email: document.querySelector('[name="email"]').value,
+    phone: document.querySelector('[name="phone"]').value,
+    subject: document.querySelector('[name="subject"]').value,
+    message: document.querySelector('[name="message"]').value
+  };
+  
+  // Convert form data to JSON and log to console (in production, send to server)
+  const formDataJSON = JSON.stringify(formData, null, 2); 
+  console.log("Form submission data:", formDataJSON);
+  
+  // Show success message to user
+  const submitButton = document.querySelector('[type="submit"]');
+  const originalText = submitButton.value;
+  submitButton.value = "Message Sent!";
+  submitButton.style.backgroundColor = "#28a745";
+  
+  // Reset the form
+  setTimeout(function() {
+    document.getElementById('contactForm').reset();
+    submitButton.value = originalText;
+    submitButton.style.backgroundColor = "#1A76D1";
+  }, 3000);
+});
+</script>
 	
 <!-- Main Js -->
 <script src="./jscript.js"></script>
@@ -882,7 +960,7 @@ Us</a></li>
 <!-- Magnific Popup JS -->
 <script src="js/jquery.magnific-popup.min.js"></script>
 <!-- Counter Up CDN JS -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 <!-- Bootstrap JS -->
 <script src="js/bootstrap.min.js"></script>
 <!-- Main JS -->

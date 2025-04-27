@@ -1,0 +1,512 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Meta Tags -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="JE Tech Hub, Tech Training, Courses, Software Development, Data Analysis, UI/UX Design, Forex Trading, Graphics Design">
+<meta name="description" content="Explore JE Tech Hub's comprehensive courses in software development, data analysis, UI/UX design, forex trading, and graphic design. Hands-on learning with expert instructors.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+<script src="https://kit.fontawesome.com/69d2ba44c8.js" crossorigin="anonymous"></script>
+<!-- Title -->
+<title>JE Tech Hub - Professional Technology Courses</title>
+
+<!-- Favicon -->
+<link rel="icon" href="images/JE Techhub logo - Copy.png">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Nice Select CSS -->
+<link rel="stylesheet" href="css/nice-select.css">
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<!-- icofont CSS -->
+<link rel="stylesheet" href="css/icofont.css">
+<!-- Slicknav -->
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="css/owl-carousel.css">
+<!-- Datepicker CSS -->
+<link rel="stylesheet" href="css/datepicker.css">
+<!-- Animate CSS -->
+<link rel="stylesheet" href="css/animate.min.css">
+<!-- Magnific Popup CSS -->
+<link rel="stylesheet" href="css/magnific-popup.css">
+
+<!-- Medipro CSS -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<style>
+  .course-section {
+    padding: 100px 0 50px;
+  }
+  
+  .course-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
+  
+  .course-image {
+    height: 250px;
+    overflow: hidden;
+  }
+  
+  .course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .course-card:hover .course-image img {
+    transform: scale(1.05);
+  }
+  
+  .course-content {
+    padding: 25px;
+  }
+  
+  .course-title {
+    color: #1A76D1;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  
+  .course-description {
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .course-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .course-duration, .course-level {
+    display: flex;
+    align-items: center;
+  }
+  
+  .course-duration i, .course-level i {
+    margin-right: 5px;
+    color: #1A76D1;
+  }
+  
+  .register-btn {
+    background: #1A76D1;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+  
+  .register-btn:hover {
+    background: #0d62b8;
+    color: #fff;
+  }
+
+  /* Loading Spinner */
+  .loader-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  .loader {
+    width: 70px;
+    height: 70px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #1A76D1;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+</style>
+</head>
+
+<body>
+<!-- Loading Spinner -->
+<div class="loader-wrapper">
+  <div class="loader"></div>
+</div>
+
+<!-- Header Area -->
+<header class="header" >
+<!-- Header Inner -->
+<div class="header-inner">
+<div class="container">
+<div class="inner">
+<div class="row">
+<div class="col-lg-3 col-md-3 col-12">
+<!-- Start Logo -->
+<div class="logo">
+<a href="index.html"><img src="images/JE Techhub logo.png#"></a>
+</div>
+<!-- End Logo -->
+<!-- Mobile Nav -->
+<div class="mobile-nav"></div>
+<!-- End Mobile Nav -->
+</div>
+<div class="col-lg-7 col-md-9 col-12">
+<!-- Main Menu -->
+<div class="main-menu">
+<nav class="navigation">
+<ul class="nav menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li class="active"><a href="courses.html">Courses</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+</nav>
+</div>
+<!--/ End Main Menu -->
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<!--/ End Header Inner -->
+</header>
+<!-- End Header Area -->
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs overlay">
+  <div class="container">
+    <div class="bread-inner">
+      <div class="row">
+        <div class="col-12">
+          <h2>Our Professional Courses</h2>
+          <ul class="bread-list">
+            <li><a href="index.html">Home</a></li>
+            <li><i class="icofont-simple-right"></i></li>
+            <li class="active">Courses</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Breadcrumbs -->
+
+<!-- Courses Section -->
+<section class="course-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h2>Advance Your Tech Career With Our Expert-Led Courses</h2>
+          <p>Our curriculum is designed to provide practical skills that meet industry demands</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <!-- Software Development Course -->
+      <div class="col-lg-6 col-md-6 col-12">
+        <div class="course-card">
+          <div class="course-image">
+            <img src="images/soft.jpg" alt="Software Development">
+          </div>
+          <div class="course-content">
+            <h3 class="course-title">Software Development</h3>
+            <div class="course-meta">
+              <div class="course-duration">
+                <i class="fa fa-clock-o"></i> 10 Weeks
+              </div>
+              <div class="course-level">
+                <i class="fa fa-signal"></i> Beginner to Intermediate
+              </div>
+            </div>
+            <div class="course-description">
+              <p>Our comprehensive Software Development program equips you with the skills to build dynamic, responsive applications from the ground up. Starting with fundamentals of HTML, CSS, and JavaScript, you'll progress to advanced concepts including backend development with Node.js, database integration, and modern frameworks.</p>
+              
+              <p>This hands-on course focuses on real-world project development, giving you the practical experience employers seek. You'll build a portfolio of applications while learning industry best practices, version control with Git, and deployment strategies. Our experienced instructors provide personalized guidance as you develop the technical proficiency and problem-solving skills needed to launch your career in software development.</p>
+            </div>
+            <a href="getStarted.html" class="register-btn">Register Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Data Analysis Course -->
+      <div class="col-lg-6 col-md-6 col-12">
+        <div class="course-card">
+          <div class="course-image">
+            <img src="images/analysis.jpg" alt="Data Analysis">
+          </div>
+          <div class="course-content">
+            <h3 class="course-title">Data Analysis</h3>
+            <div class="course-meta">
+              <div class="course-duration">
+                <i class="fa fa-clock-o"></i> 8 Weeks
+              </div>
+              <div class="course-level">
+                <i class="fa fa-signal"></i> All Levels
+              </div>
+            </div>
+            <div class="course-description">
+              <p>Master the art of transforming raw data into actionable insights with our Data Analysis course. This comprehensive program covers the entire data pipeline, from collection and cleaning to visualization and interpretation. You'll gain proficiency in essential tools including Excel, SQL, Python, and industry-standard visualization platforms like Power BI and Tableau.</p>
+              
+              <p>Through real-world case studies and practical assignments, you'll develop the analytical thinking required to identify patterns, make predictions, and communicate findings effectively. Our curriculum emphasizes both technical skills and business acumen, preparing you for roles where you can drive data-informed decision making. By course completion, you'll possess the technical ability and strategic mindset needed to excel in this high-demand field.</p>
+            </div>
+            <a href="getStarted.html" class="register-btn">Register Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- UI/UX Design Course -->
+      <div class="col-lg-6 col-md-6 col-12">
+        <div class="course-card">
+          <div class="course-image">
+            <img src="images/Uiux.jpg" alt="UI/UX Design">
+          </div>
+          <div class="course-content">
+            <h3 class="course-title">UI/UX Design</h3>
+            <div class="course-meta">
+              <div class="course-duration">
+                <i class="fa fa-clock-o"></i> 6 Weeks
+              </div>
+              <div class="course-level">
+                <i class="fa fa-signal"></i> Beginner to Intermediate
+              </div>
+            </div>
+            <div class="course-description">
+              <p>Our UI/UX Design course empowers you to create digital experiences that are both visually appealing and functionally intuitive. You'll master the complete design process from user research and wireframing to prototyping and usability testing. Working with industry-standard tools including Figma and Adobe XD, you'll develop a solid foundation in design principles, color theory, typography, and information architecture.</p>
+              
+              <p>Through project-based learning, you'll build a professional portfolio that showcases your ability to solve real design challenges. Our curriculum balances theoretical knowledge with practical application, emphasizing user-centered design methodologies. You'll graduate with the ability to create compelling digital interfaces that meet both user needs and business objectives, preparing you for a rewarding career in this creative and in-demand field.</p>
+            </div>
+            <a href="getStarted.html" class="register-btn">Register Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Forex Trading Course -->
+      <div class="col-lg-6 col-md-6 col-12">
+        <div class="course-card">
+          <div class="course-image">
+            <img src="images/forex.jpeg" alt="Forex Trading">
+          </div>
+          <div class="course-content">
+            <h3 class="course-title">Forex Trading</h3>
+            <div class="course-meta">
+              <div class="course-duration">
+                <i class="fa fa-clock-o"></i> 6 Weeks
+              </div>
+              <div class="course-level">
+                <i class="fa fa-signal"></i> All Levels
+              </div>
+            </div>
+            <div class="course-description">
+              <p>Our Forex Trading course provides a comprehensive education in navigating the world's largest financial market. Starting with fundamental concepts, you'll progress to advanced trading strategies, technical analysis, and risk management techniques. Through our structured curriculum, you'll learn to interpret economic indicators, analyze market trends, and develop disciplined trading plans that optimize potential returns while controlling risk.</p>
+              
+              <p>What sets our program apart is our emphasis on practical application. You'll participate in simulated trading sessions using real market data, allowing you to practice strategies without financial risk. Our experienced instructors provide personalized feedback on your trading decisions and help you develop the emotional discipline essential for success. Whether you're looking to trade professionally or manage your personal investments more effectively, this course equips you with the knowledge and skills to approach the forex market with confidence.</p>
+            </div>
+            <a href="getStarted.html" class="register-btn">Register Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Graphics Design and Video Editing Course -->
+      <div class="col-lg-6 col-md-6 col-12">
+        <div class="course-card">
+          <div class="course-image">
+            <img src="images/graphics1.jpg" alt="Graphics Design and Video Editing">
+          </div>
+          <div class="course-content">
+            <h3 class="course-title">Graphics Design & Video Editing</h3>
+            <div class="course-meta">
+              <div class="course-duration">
+                <i class="fa fa-clock-o"></i> 8 Weeks
+              </div>
+              <div class="course-level">
+                <i class="fa fa-signal"></i> All Levels
+              </div>
+            </div>
+            <div class="course-description">
+              <p>Our Graphics Design and Video Editing course combines two complementary creative disciplines, equipping you with a versatile skill set highly valued in today's digital economy. In the graphics component, you'll master industry-standard software including Adobe Photoshop and Illustrator, developing proficiency in logo design, branding materials, social media assets, and print collateral. You'll build a strong foundation in design principles, color theory, and typography while learning to translate client briefs into compelling visual solutions.</p>
+              
+              <p>The video editing portion covers the entire post-production workflow using premier tools like Adobe Premiere Pro and After Effects. You'll learn professional techniques for cutting footage, color grading, adding motion graphics, and implementing sound design. Throughout the course, our project-based approach ensures you develop a diverse portfolio showcasing your ability to create professional-quality visual content across multiple formats. Whether you're pursuing freelance opportunities or employment in creative agencies, this course provides the technical skills and creative vision needed to succeed.</p>
+            </div>
+            <a href="getStarted.html" class="register-btn">Register Now</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+<!-- End Courses Section -->
+
+<!-- Footer Area -->
+<footer id="footer" class="footer">
+<!-- Footer Top -->
+<div class="footer-top">
+<div class="container">
+<div class="row">
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>About Us</h2>
+<p>JE Tech Hub is dedicated to empowering individuals with cutting-edge technology skills through hands-on training and innovative solutions.</p>
+<!-- Social -->
+<ul class="social">
+<li><a href="https://www.instagram.com/je_techhub?igsh=dGZjc29oNnRsOGF2&utm_source=qr"><i class="icofont-instagram"></i></a></li>
+<li><a href="#"><i class="icofont-google-plus"></i></a></li>
+<li><a href="#"><i class="icofont-twitter"></i></a></li>
+</ul>
+<!-- End Social -->
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer f-link">
+<h2>Quick Links</h2>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-12">
+<ul>
+<li><a href="index.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
+<li><a href="about.html"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+<li><a href="courses.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Courses</a></li>
+<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Programs</a></li>
+<li><a href="contact.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>Our Services</h2>
+<ul>
+<li><a href="programs.html#webDev"><i class="fa fa-caret-right" aria-hidden="true"></i>Software Development</a></li>
+<li><a href="programs.html#dataAnalysis"><i class="fa fa-caret-right" aria-hidden="true"></i>Data Analysis</a></li>
+<li><a href="programs.html#UIUX"><i class="fa fa-caret-right" aria-hidden="true"></i>UI/UX Design</a></li>
+<li><a href="programs.html#trading"><i class="fa fa-caret-right" aria-hidden="true"></i>Forex Trading</a></li>
+<li><a href="programs.html#vidGraphics"><i class="fa fa-caret-right" aria-hidden="true"></i>Graphics & Video</a></li>
+</ul>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>Open Hours</h2>
+<ul class="time-sidual">
+<li class="day">Mondays - Fridays <span>8.00-20.00</span></li>
+<li class="day">Saturdays <span>9.00-18.30</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--/ End Footer Top -->
+<!-- Copyright -->
+<div class="copyright">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-12">
+<div class="copyright-content">
+<p>© Copyright 2024 | All Rights Reserved by <a href="index.html">JE Tech Hub</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--/ End Copyright -->
+</footer>
+<!--/ End Footer Area -->
+
+<!-- jquery Min JS -->
+<script src="js/jquery.min.js"></script>
+<!-- jquery Migrate JS -->
+<script src="js/jquery-migrate-3.0.0.js"></script>
+<!-- jquery Ui JS -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Easing JS -->
+<script src="js/easing.js"></script>
+<!-- Color JS -->
+<script src="js/colors.js"></script>
+<!-- Popper JS -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap Datepicker JS -->
+<script src="js/bootstrap-datepicker.js"></script>
+<!-- Jquery Nav JS -->
+<script src="js/jquery.nav.js"></script>
+<!-- Slicknav JS -->
+<script src="js/slicknav.min.js"></script>
+<!-- ScrollUp JS -->
+<script src="js/jquery.scrollUp.min.js"></script>
+<!-- Niceselect JS -->
+<script src="js/niceselect.js"></script>
+<!-- Tilt Jquery JS -->
+<script src="js/tilt.jquery.min.js"></script>
+<!-- Owl Carousel JS -->
+<script src="js/owl-carousel.js"></script>
+<!-- counterup JS -->
+<script src="js/jquery.counterup.min.js"></script>
+<!-- Steller JS -->
+<script src="js/steller.js"></script>
+<!-- Wow JS -->
+<script src="js/wow.min.js"></script>
+<!-- Magnific Popup JS -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- Counter Up CDN JS -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
+
+<script>
+  // Loading spinner
+  window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader-wrapper');
+    setTimeout(function() {
+      loader.classList.add('hidden');
+    }, 1000);
+  });
+</script>
+</body>
+</html>

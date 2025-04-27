@@ -1,3 +1,4 @@
+
 /* =====================================
 Template Name: 	Mediplus.
 Author Name: Naimur Rahman
@@ -270,8 +271,8 @@ Version:	1.1
 			if(window_width > 767){
             new WOW().init();
 		}
-	
-		/*===================
+
+        /*===================
 			Scroll Up JS
 		=====================*/
 		$.scrollUp({
@@ -291,6 +292,23 @@ Version:	1.1
 				}, 1000);
 			e.preventDefault();
 		});
+
+        // Active link highlighting when scrolling
+        $(window).on('scroll', function() {
+            const scrollPos = $(window).scrollTop();
+            
+            // Check each section's position and update active class accordingly
+            $('section[id]').each(function() {
+                const sectionTop = $(this).offset().top - 150;
+                const sectionBottom = sectionTop + $(this).outerHeight();
+                const sectionId = $(this).attr('id');
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                    $('.nav.menu li a').removeClass('active');
+                    $('.nav.menu li a[href="#' + sectionId + '"]').addClass('active');
+                }
+            });
+        });
 		
 		/*=======================
 			Stellar JS
@@ -325,6 +343,11 @@ Version:	1.1
 	======================*/
 	$(window).on('load', function() {
 		$('.preloader').addClass('preloader-deactivate');
+        
+        // Add delay to hide the loader wrapper
+        setTimeout(function() {
+            $('.loader-wrapper').addClass('hidden');
+        }, 1000);
 	});
 	
 	
