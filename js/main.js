@@ -1,4 +1,3 @@
-
 /* =====================================
 Template Name: 	Mediplus.
 Author Name: Naimur Rahman
@@ -352,3 +351,78 @@ Version:	1.1
 	
 	
 })(jQuery);
+
+// Improved smooth scrolling functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation links with the 'scroll' class
+    const scrollLinks = document.querySelectorAll('a.scroll');
+    
+    // Add click event to each navigation link
+    scrollLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the target section ID from the href attribute
+            const targetId = this.getAttribute('href');
+            
+            // Handle external links (those that don't start with # or contain a full URL)
+            if (!targetId.startsWith('#') && (targetId.includes('http') || !targetId.includes('#'))) {
+                window.location.href = targetId;
+                return;
+            }
+            
+            // Extract just the hash part for IDs
+            const hashPart = targetId.includes('#') ? targetId.split('#')[1] : targetId.replace('#', '');
+            
+            // Find the target element
+            const targetElement = document.getElementById(hashPart);
+            
+            // If target element exists, scroll to it
+            if (targetElement) {
+                // Get header height for offset
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                
+                // Calculate position
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
+                
+                // Smooth scroll to element
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Update active class
+                scrollLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            } else {
+                // If it's a link to another page with no hash
+                if (!targetId.includes('#')) {
+                    window.location.href = targetId;
+                }
+            }
+        });
+    });
+    
+    // Active link highlighting when scrolling
+    window.addEventListener('scroll', function() {
+        const scrollPos = window.scrollTop || document.documentElement.scrollTop;
+        
+        // Check each section's position and update active class accordingly
+        document.querySelectorAll('section[id]').forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                document.querySelectorAll('.nav.menu li a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + sectionId || 
+                        link.getAttribute('href').endsWith('#' + sectionId)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+});
