@@ -11,10 +11,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize each slideshow
     slideshows.forEach(slideshow => {
         const images = slideshow.querySelectorAll('img');
-        const container = slideshow.closest('.course-image') || slideshow.parentElement;
+        const container = slideshow.closest('.course-image') || slideshow.closest('.card-image') || slideshow.parentElement;
         let currentIndex = 0;
         
-        // Create dots for navigation
+        // Handle fallback images
+        images.forEach(img => {
+            img.addEventListener('error', function() {
+                // Use a default placeholder image if the image fails to load
+                const category = img.closest('.gadget-item')?.dataset?.category || 'general';
+                let fallbackSrc = 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60'; // Default tech image
+                
+                if (category === 'phone') {
+                    fallbackSrc = 'https://images.unsplash.com/photo-1511707171634-5f897ff02ff9?w=800&auto=format&fit=crop&q=60';
+                } else if (category === 'laptop') {
+                    fallbackSrc = 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&auto=format&fit=crop&q=60';
+                } else if (category === 'tablet') {
+                    fallbackSrc = 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=60';
+                } else if (category === 'accessory') {
+                    fallbackSrc = 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=60';
+                }
+                
+                this.src = fallbackSrc;
+            });
+        });
+        
+        // Create dots for navigation only if there are multiple images
         if (images.length > 1) {
             const dotsContainer = document.createElement('div');
             dotsContainer.className = 'slideshow-controls';
@@ -54,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentIndex = index;
         }
         
-        // Auto-rotate images every 5 seconds
+        // Auto-rotate images every 5 seconds if there are multiple images
         if (images.length > 1) {
             setInterval(() => {
                 currentIndex = (currentIndex + 1) % images.length;
