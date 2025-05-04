@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize each slideshow
     slideshows.forEach(slideshow => {
         const images = slideshow.querySelectorAll('img');
-        const container = slideshow.closest('.course-image');
+        const container = slideshow.closest('.course-image') || slideshow.parentElement;
         let currentIndex = 0;
         
         // Create dots for navigation
@@ -62,4 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 5000);
         }
     });
+
+    console.log("Slideshow script initialized with", document.querySelectorAll('.card-slideshow').length, "slideshows");
 });
