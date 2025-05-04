@@ -518,3 +518,23 @@ function initActiveMenuLinkDom() {
         }
     });
 }
+
+// Add iOS Safari detection and fadeSection fix at the end of the document ready function
+document.addEventListener("DOMContentLoaded", function() {
+    // Fix for fadeSection visibility on iOS Safari
+    function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
+    
+    if (isIOS()) {
+        // Apply specific iOS fixes
+        const fadeSections = document.querySelectorAll('.fadeSection');
+        fadeSections.forEach(section => {
+            section.style.opacity = '1';
+            section.style.transform = 'none';
+            section.style.visibility = 'visible';
+        });
+        
+        console.log("iOS detected - Applied fadeSection visibility fix");
+    }
+});

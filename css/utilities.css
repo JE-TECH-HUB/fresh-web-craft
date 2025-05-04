@@ -1,50 +1,19 @@
 
-/* Better Buttons */
-.btn {
-  background: #1A76D1;
-  color: #fff;
-  padding: 13px 25px;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+/* ... keep existing code */
+
+/* Fix for fadeSection visibility issues on iOS Safari */
+.fadeSection {
+  opacity: 1 !important; /* Force visibility */
+  -webkit-transform: none !important; /* Reset any transforms that might cause issues */
+  transform: none !important;
+  -webkit-backface-visibility: visible !important; /* Fix common iOS rendering issue */
+  backface-visibility: visible !important;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  -webkit-font-smoothing: antialiased; /* Improve text rendering */
+  visibility: visible !important; /* Ensure visibility */
 }
 
-.btn:hover {
-  background: #0d62b8;
-  color: #fff;
-}
+/* If you want to retain fade animations on non-iOS devices, use feature detection in JavaScript instead */
 
-.btn.primary {
-  background: transparent;
-  color: #fff;
-  border: 2px solid #fff;
-}
-
-.btn.primary:hover {
-  background: #fff;
-  color: #1A76D1;
-}
-
-/* Breadcrumbs Enhancement */
-.breadcrumbs {
-  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/hero1.jpeg');
-  background-size: cover;
-  background-position: center;
-  padding: 80px 0;
-}
-
-.breadcrumbs h2 {
-  color: #fff;
-  font-weight: 700;
-}
-
-.breadcrumbs ul li a {
-  color: #1A76D1;
-}
-
-/* Active Navigation Link */
-.nav li a.active {
-  color: #1A76D1 !important;
-  font-weight: 600;
-}
+/* ... keep existing code */
