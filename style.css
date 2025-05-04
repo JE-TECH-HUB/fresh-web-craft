@@ -72,7 +72,7 @@ body{
 .horizontal-line{
 	width: 50%;
 	margin: auto;
-	background: blue;
+background:darkblue;
 	height: 2px;
       margin-top: 1em;
 	}
@@ -750,7 +750,7 @@ display: none;
 	position: relative;
 	font-family: serif;
 	margin-bottom: 1em;
-	color: darkblue;
+	color: var(--blue);
 	}
 	
 	.left-header::before{
@@ -776,7 +776,7 @@ display: none;
 .blueHr{
 width:50%;
 height: 5px;
-color:darkblue;
+color:var(--blue);
 
 }
 
@@ -1109,7 +1109,7 @@ SERVICES
 	Start Call to action CSS
 =================================*/
 .call-action{
-	background-image:url("images/ChatGPTImage.png");
+	background-image:url("images/th.jpeg");
 	background-size:cover;
 	background-position:center;
 	position:relative;
@@ -1506,7 +1506,7 @@ SERVICES
 	border-radius: 3px;
 	margin: 0 0 0 -52px;
 	margin-top: 49px;
-	box-sizing: ;
+	box-sizing:boder-box ;
 }
 .testimonials .owl-dots .owl-dot {
 	display: inline-block;

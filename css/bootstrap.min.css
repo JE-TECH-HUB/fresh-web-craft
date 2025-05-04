@@ -6,8 +6,8 @@
  */
 
 :root {
-    --blue: #007bff;
-    --indigo: #6610f2;
+    --blue: #00008b;
+    --indigo: #4110f2;
     --purple: #6f42c1;
     --pink: #e83e8c;
     --red: #dc3545;
@@ -19,7 +19,7 @@
     --white: #fff;
     --gray: #868e96;
     --gray-dark: #343a40;
-    --primary: #007bff;
+    --primary: darkblue;
     --secondary: #868e96;
     --success: #28a745;
     --info: #17a2b8;

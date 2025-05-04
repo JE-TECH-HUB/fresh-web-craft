@@ -44,135 +44,134 @@ rel="stylesheet">
 <link rel="stylesheet" href="css/responsive.css">
 
 <style>
-  .course-section {
-    padding: 100px 0 50px;
-  }
-  
-  .course-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    margin-bottom: 40px;
-    transition: all 0.3s ease;
-    overflow: hidden;
-  }
-  
-  .course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  }
-  
-  .course-image {
-    height: 250px;
-    overflow: hidden;
-  }
-  
-  .course-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  
-  .course-card:hover .course-image img {
-    transform: scale(1.05);
-  }
-  
-  .course-content {
-    padding: 25px;
-  }
-  
-  .course-title {
-    color: #1A76D1;
-    margin-bottom: 15px;
-    font-weight: 600;
-    font-size: 24px;
-  }
-  
-  .course-description {
-    margin-bottom: 20px;
-    color: #555;
-  }
-  
-  .course-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .course-duration, .course-level {
-    display: flex;
-    align-items: center;
-  }
-  
-  .course-duration i, .course-level i {
-    margin-right: 5px;
-    color: #1A76D1;
-  }
-  
-  .register-btn {
-    background: #1A76D1;
-    color: #fff;
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 14px;
-  }
-  
-  .register-btn:hover {
-    background: #0d62b8;
-    color: #fff;
-  }
+.course-section {
+padding: 100px 0 50px;
+}
 
-  /* Loading Spinner */
-  .loader-wrapper {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-  }
+.course-card {
+background: #fff;
+border-radius: 8px;
+box-shadow: 0 0 20px rgba(0,0,0,0.1);
+margin-bottom: 40px;
+transition: all 0.3s ease;
+overflow: hidden;
+}
 
-  .loader {
-    width: 70px;
-    height: 70px;
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #1A76D1;
-    border-radius: 50%;
-    animation: spin 1.5s linear infinite;
-  }
+.course-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
 
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+.course-image {
+height: 250px;
+overflow: hidden;
+}
 
-  .hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
+.course-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.5s ease;
+}
+
+.course-card:hover .course-image img {
+transform: scale(1.05);
+}
+
+.course-content {
+padding: 25px;
+}
+
+.course-title {
+color: darkblue;
+margin-bottom: 15px;
+font-weight: 600;
+font-size: 24px;
+}
+
+.course-description {
+margin-bottom: 20px;
+color: #272727;
+}
+
+.course-meta {
+display: flex;
+justify-content: space-between;
+margin-bottom: 15px;
+padding-bottom: 15px;
+border-bottom: 1px solid #eee;
+}
+
+.course-duration, .course-level {
+display: flex;
+align-items: center;
+}
+
+.course-duration i, .course-level i {
+margin-right: 5px;
+color: darkblue;
+}
+
+.register-btn {
+background: darkblue;
+color:#eee !important;
+padding: 12px 25px;
+border-radius: 5px;
+text-decoration: none;
+display: inline-block;
+font-weight: 500;
+transition: all 0.3s ease;
+border: none;
+cursor: pointer;
+text-transform: uppercase;
+letter-spacing: 1px;
+font-size: 14px;
+}
+
+.register-btn:hover {
+background: orange;
+color: #000 !important;  }
+
+/* Loading Spinner */
+.loader-wrapper {
+position: fixed;
+width: 100%;
+height: 100%;
+background: rgba(255, 255, 255, 0.95);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+top: 0;
+left: 0;
+transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader {
+width: 70px;
+height: 70px;
+border: 6px solid #f3f3f3;
+border-top: 6px solid darkblue;
+border-radius: 50%;
+animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+.hidden {
+opacity: 0;
+visibility: hidden;
+}
 </style>
 </head>
 
 <body>
 <!-- Loading Spinner -->
 <div class="loader-wrapper">
-  <div class="loader"></div>
+<div class="loader"></div>
 </div>
 
 <!-- Header Area -->
@@ -217,168 +216,271 @@ rel="stylesheet">
 
 <!-- Breadcrumbs -->
 <div class="breadcrumbs overlay">
-  <div class="container">
-    <div class="bread-inner">
-      <div class="row">
-        <div class="col-12">
-          <h2>Our Professional Courses</h2>
-          <ul class="bread-list">
-            <li><a href="index.html">Home</a></li>
-            <li><i class="icofont-simple-right"></i></li>
-            <li class="active">Courses</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="bread-inner">
+<div class="row">
+<div class="col-12">
+<h2>Our Professional Courses</h2>
+<ul class="bread-list">
+<li><a href="index.html">Home</a></li>
+<li><i class="icofont-simple-right"></i></li>
+<li class="active">Courses</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <!-- End Breadcrumbs -->
 
+
+<!-- Programs intro -->
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-12">
+<div class="row">
+<div class="col-12">
+<div class="single-main">
+<!-- News Head -->
+<div class="single-post">
+<div class="news-head">
+<br>
+<h2 class="left-header">
+JOE-EXPRESS</h2>
+
+
+<h2 class="news-title card-title"> INNOVATION AY YOUR FINGERTIPS</h2>
+<p class="largerParagraphs fadeSection lineHeight">
+<span class="clip-text">
+In today's fast-paced world, technology is not a luxury—it's a necessity. At JE Tech Hub, we are dedicated to providing the best tech training to keep you ahead in the digital era.</span>
+</p>
+<div class=" col-12">
+<div class="main-sidebar">
+
+<!-- Single Post -->
+<div class="single-post">
+<div class="single-widget side-tags">
+<h3 class="title">Courses</h3>
+<ul class="tag">
+<li><a href="#UIUX">UI/UX</a></li>
+
+<li><a href="#dataAnalysis">Data Analysis</a></li>
+<li><a href="#webDev">Web Design</a></li>
+<li><a href="#trading">Forex Trading</a></li>
+<li><a href="#vidGraphics">Graphgics Design</a></li>
+<li><a href="#vidGraphics">Video Editing</a></li>
+</ul>
+</div></div>
+<!-- End Single Post -->
+</div>
+
+</div>
+</div>
+</div>
+</div></div></div></div>
+</div></div>	
 <!-- Courses Section -->
 <section class="course-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="section-title">
-          <h2>Advance Your Tech Career With Our Expert-Led Courses</h2>
-          <p>Our curriculum is designed to provide practical skills that meet industry demands</p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="row">
-      <!-- Software Development Course -->
-      <div class="col-lg-6 col-md-6 col-12">
-        <div class="course-card">
-          <div class="course-image">
-            <img src="images/soft.jpg" alt="Software Development">
-          </div>
-          <div class="course-content">
-            <h3 class="course-title">Software Development</h3>
-            <div class="course-meta">
-              <div class="course-duration">
-                <i class="fa fa-clock-o"></i> 10 Weeks
-              </div>
-              <div class="course-level">
-                <i class="fa fa-signal"></i> Beginner to Intermediate
-              </div>
-            </div>
-            <div class="course-description">
-              <p>Our comprehensive Software Development program equips you with the skills to build dynamic, responsive applications from the ground up. Starting with fundamentals of HTML, CSS, and JavaScript, you'll progress to advanced concepts including backend development with Node.js, database integration, and modern frameworks.</p>
-              
-              <p>This hands-on course focuses on real-world project development, giving you the practical experience employers seek. You'll build a portfolio of applications while learning industry best practices, version control with Git, and deployment strategies. Our experienced instructors provide personalized guidance as you develop the technical proficiency and problem-solving skills needed to launch your career in software development.</p>
-            </div>
-            <a href="getStarted.html" class="register-btn">Register Now</a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Data Analysis Course -->
-      <div class="col-lg-6 col-md-6 col-12">
-        <div class="course-card">
-          <div class="course-image">
-            <img src="images/analysis.jpg" alt="Data Analysis">
-          </div>
-          <div class="course-content">
-            <h3 class="course-title">Data Analysis</h3>
-            <div class="course-meta">
-              <div class="course-duration">
-                <i class="fa fa-clock-o"></i> 8 Weeks
-              </div>
-              <div class="course-level">
-                <i class="fa fa-signal"></i> All Levels
-              </div>
-            </div>
-            <div class="course-description">
-              <p>Master the art of transforming raw data into actionable insights with our Data Analysis course. This comprehensive program covers the entire data pipeline, from collection and cleaning to visualization and interpretation. You'll gain proficiency in essential tools including Excel, SQL, Python, and industry-standard visualization platforms like Power BI and Tableau.</p>
-              
-              <p>Through real-world case studies and practical assignments, you'll develop the analytical thinking required to identify patterns, make predictions, and communicate findings effectively. Our curriculum emphasizes both technical skills and business acumen, preparing you for roles where you can drive data-informed decision making. By course completion, you'll possess the technical ability and strategic mindset needed to excel in this high-demand field.</p>
-            </div>
-            <a href="getStarted.html" class="register-btn">Register Now</a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- UI/UX Design Course -->
-      <div class="col-lg-6 col-md-6 col-12">
-        <div class="course-card">
-          <div class="course-image">
-            <img src="images/Uiux.jpg" alt="UI/UX Design">
-          </div>
-          <div class="course-content">
-            <h3 class="course-title">UI/UX Design</h3>
-            <div class="course-meta">
-              <div class="course-duration">
-                <i class="fa fa-clock-o"></i> 6 Weeks
-              </div>
-              <div class="course-level">
-                <i class="fa fa-signal"></i> Beginner to Intermediate
-              </div>
-            </div>
-            <div class="course-description">
-              <p>Our UI/UX Design course empowers you to create digital experiences that are both visually appealing and functionally intuitive. You'll master the complete design process from user research and wireframing to prototyping and usability testing. Working with industry-standard tools including Figma and Adobe XD, you'll develop a solid foundation in design principles, color theory, typography, and information architecture.</p>
-              
-              <p>Through project-based learning, you'll build a professional portfolio that showcases your ability to solve real design challenges. Our curriculum balances theoretical knowledge with practical application, emphasizing user-centered design methodologies. You'll graduate with the ability to create compelling digital interfaces that meet both user needs and business objectives, preparing you for a rewarding career in this creative and in-demand field.</p>
-            </div>
-            <a href="getStarted.html" class="register-btn">Register Now</a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Forex Trading Course -->
-      <div class="col-lg-6 col-md-6 col-12">
-        <div class="course-card">
-          <div class="course-image">
-            <img src="images/forex.jpeg" alt="Forex Trading">
-          </div>
-          <div class="course-content">
-            <h3 class="course-title">Forex Trading</h3>
-            <div class="course-meta">
-              <div class="course-duration">
-                <i class="fa fa-clock-o"></i> 6 Weeks
-              </div>
-              <div class="course-level">
-                <i class="fa fa-signal"></i> All Levels
-              </div>
-            </div>
-            <div class="course-description">
-              <p>Our Forex Trading course provides a comprehensive education in navigating the world's largest financial market. Starting with fundamental concepts, you'll progress to advanced trading strategies, technical analysis, and risk management techniques. Through our structured curriculum, you'll learn to interpret economic indicators, analyze market trends, and develop disciplined trading plans that optimize potential returns while controlling risk.</p>
-              
-              <p>What sets our program apart is our emphasis on practical application. You'll participate in simulated trading sessions using real market data, allowing you to practice strategies without financial risk. Our experienced instructors provide personalized feedback on your trading decisions and help you develop the emotional discipline essential for success. Whether you're looking to trade professionally or manage your personal investments more effectively, this course equips you with the knowledge and skills to approach the forex market with confidence.</p>
-            </div>
-            <a href="getStarted.html" class="register-btn">Register Now</a>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Graphics Design and Video Editing Course -->
-      <div class="col-lg-6 col-md-6 col-12">
-        <div class="course-card">
-          <div class="course-image">
-            <img src="images/graphics1.jpg" alt="Graphics Design and Video Editing">
-          </div>
-          <div class="course-content">
-            <h3 class="course-title">Graphics Design & Video Editing</h3>
-            <div class="course-meta">
-              <div class="course-duration">
-                <i class="fa fa-clock-o"></i> 8 Weeks
-              </div>
-              <div class="course-level">
-                <i class="fa fa-signal"></i> All Levels
-              </div>
-            </div>
-            <div class="course-description">
-              <p>Our Graphics Design and Video Editing course combines two complementary creative disciplines, equipping you with a versatile skill set highly valued in today's digital economy. In the graphics component, you'll master industry-standard software including Adobe Photoshop and Illustrator, developing proficiency in logo design, branding materials, social media assets, and print collateral. You'll build a strong foundation in design principles, color theory, and typography while learning to translate client briefs into compelling visual solutions.</p>
-              
-              <p>The video editing portion covers the entire post-production workflow using premier tools like Adobe Premiere Pro and After Effects. You'll learn professional techniques for cutting footage, color grading, adding motion graphics, and implementing sound design. Throughout the course, our project-based approach ensures you develop a diverse portfolio showcasing your ability to create professional-quality visual content across multiple formats. Whether you're pursuing freelance opportunities or employment in creative agencies, this course provides the technical skills and creative vision needed to succeed.</p>
-            </div>
-            <a href="getStarted.html" class="register-btn">Register Now</a>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+<div class="container">
+<div class="row">
+<div class="col-12">
+<div class="section-title">
+<h3 class="news-title card-title"> Advance Your Tech Career With Our Expert-Led Courses</h3>
+
+</div>
+</div>
+</div>
+
+<div class="row">
+<!-- Software Development Course -->
+<div class="col-lg-6 col-md-6 col-12">
+<div class="course-card">
+<div class="course-image">
+<img src="images/soft.jpg" alt="Software Development">
+</div>
+<div class="course-content">
+<h3 class="course-title">Software Development</h3>
+<div class="course-meta">
+<div class="course-duration">
+<i class="fa fa-clock-o"></i> 10 Weeks
+</div>
+<div class="course-level">
+<i class="fa fa-signal"></i> Beginner to Intermediate
+</div>
+</div>
+<div class="course-description">
+<p>The internet is the foundation of modern business, and web development is one of the most in-demand skills in the tech industry. Our Software Development program takes you through the full journey of building websites and applications using cutting-edge technologies. You'll learn HTML, CSS, JavaScript, and backend development with tools like Node.js, Express, and databases like MongoDB or MySQL.
+
+	<ul>
+	<li>✔ Frontend Development – Build interactive user interfaces with HTML, CSS, and JavaScript.</li>
+	<li>✔ Responsive Design – Create mobile-friendly websites that look great on all devices.</li>
+	<li>✔ Backend & Databases – Learn to create dynamic websites with Node.js, Express, and database integration.</li>
+	<li>✔ Real-World Projects – Work on practical apps that showcase your skills and build your portfolio.</li>
+	</ul>
+	
+	Whether you want to become a full-stack developer, freelancer, or launch your own product, this course gives you everything you need to succeed. You'll graduate with a strong foundation and the confidence to step into the world of software engineering.
+	</p>
+</div>
+<a href="getStarted.html" class="register-btn">Register Now</a>
+</div>
+</div>
+</div>
+
+<!-- Data Analysis Course -->
+<div class="col-lg-6 col-md-6 col-12">
+<div class="course-card">
+<div class="course-image">
+<img src="images/analysis.jpg" alt="Data Analysis">
+</div>
+<div class="course-content">
+<h3 class="course-title">Data Analysis</h3>
+<div class="course-meta">
+<div class="course-duration">
+<i class="fa fa-clock-o"></i> 8 Weeks
+</div>
+<div class="course-level">
+<i class="fa fa-signal"></i> All Levels
+</div>
+</div>
+<div class="course-description">
+<p><p class="program">
+	Data is the new oil, and businesses rely heavily on analysts who can transform raw data into powerful insights. Our Data Analysis training is crafted to teach you how to organize, analyze, and visualize data that drives business decisions. You'll gain hands-on experience with industry tools like Excel, SQL, Python, Tableau, Power BI, and more. With practical lessons and case studies, you'll learn how to approach data like a pro and turn numbers into narratives.
+	
+	<ul>
+	<li>✔ Data Collection & Cleaning – Learn how to work with raw data and organize it for meaningful analysis.</li>
+	<li>✔ Excel, Python & SQL – Master essential tools for handling large datasets and performing calculations.</li>
+	<li>✔ Data Visualization – Create compelling reports and dashboards using Power BI, Tableau, and Matplotlib.</li>
+	<li>✔ Real-World Case Studies – Work on practical projects that prepare you for real business challenges.</li>
+	</ul>
+	
+	Whether you want to become a data analyst, business intelligence expert, or use data to grow your business, this program gives you the skills to make a real impact. With mentorship, community, and job-ready training, you'll be equipped to confidently enter a high-demand career field.
+	</p>
+</div>
+<a href="getStarted.html" class="register-btn">Register Now</a>
+</div>
+</div>
+</div>
+
+<!-- UI/UX Design Course -->
+<div class="col-lg-6 col-md-6 col-12">
+<div class="course-card">
+<div class="course-image">
+<img src="images/Uiux.jpg" alt="UI/UX Design">
+</div>
+<div class="course-content">
+<h3 class="course-title">UI/UX Design</h3>
+<div class="course-meta">
+<div class="course-duration">
+<i class="fa fa-clock-o"></i> 6 Weeks
+</div>
+<div class="course-level">
+<i class="fa fa-signal"></i> Beginner to Intermediate
+</div>
+</div>
+<div class="course-description">
+<p><p class="program">
+	Great apps and websites don't just look beautiful—they feel right. UI/UX design is the art of making digital products intuitive, engaging, and user-centered. Our course introduces you to the full design process: from research and wireframing to prototyping and testing. You'll work with popular tools like Figma and Adobe XD, and learn the principles behind layout, navigation, and user behavior.
+	
+	<ul>
+	<li>✔ Understanding User Behavior – Learn how users think and interact with websites and apps.</li>
+	<li>✔ Wireframing & Prototyping – Use Figma and Adobe XD to create professional website and mobile app prototypes.</li>
+	<li>✔ Color Theory & Typography – Master the principles of attractive and functional design.</li>
+	<li>✔ User Testing & Research – Understand how to conduct usability testing and improve designs based on feedback.</li>
+	</ul>
+	
+	This course is perfect if you're creative, enjoy solving problems, and want to work in tech without coding. With a portfolio of real projects, you'll be ready to land jobs or freelance opportunities in UI/UX design.
+	</p>
+</div>
+<a href="getStarted.html" class="register-btn">Register Now</a>
+</div>
+</div>
+</div>
+
+<!-- Forex Trading Course -->
+<div class="col-lg-6 col-md-6 col-12">
+<div class="course-card">
+<div class="course-image">
+<img src="images/forex.jpeg" alt="Forex Trading">
+</div>
+<div class="course-content">
+<h3 class="course-title">Forex Trading</h3>
+<div class="course-meta">
+<div class="course-duration">
+<i class="fa fa-clock-o"></i> 6 Weeks
+</div>
+<div class="course-level">
+<i class="fa fa-signal"></i> All Levels
+</div>
+</div>
+<div class="course-description">
+<p><p class="program">
+	The foreign exchange (forex) market is one of the most profitable financial arenas—if you understand how to navigate it. Our Forex Trading course is built for beginners and intermediate traders who want to learn how to analyze the market, trade smartly, and manage risks. You'll understand how to use technical and fundamental analysis, identify market trends, and plan trades with discipline and strategy.
+	
+	<ul>
+	<li>✔ Market Analysis & Trading Psychology – Understand market trends and the mindset needed for profitable trading.</li>
+	<li>✔ Technical & Fundamental Analysis – Learn how to read charts, use indicators, and analyze economic news.</li>
+	<li>✔ Risk Management Strategies – Develop techniques to minimize losses and maximize profits.</li>
+	<li>✔ Live Trading Sessions – Get hands-on experience with real-time market analysis and demo trading.</li>
+	</ul>
+	
+	This course doesn't just teach theory—it's hands-on, practical, and designed to help you start trading confidently. You'll gain the discipline and technical know-how to avoid common mistakes and make better decisions in a highly volatile market.
+	</p>
+</div>
+<a href="getStarted.html" class="register-btn">Register Now</a>
+</div>
+</div>
+</div>
+
+<!-- Graphics Design and Video Editing Course -->
+<div class="col-lg-6 col-md-6 col-12">
+<div class="course-card">
+<div class="course-image">
+<img src="images/graphics1.jpg" alt="Graphics Design and Video Editing">
+</div>
+<div class="course-content">
+<h3 class="course-title">Graphics Design & Video Editing</h3>
+<div class="course-meta">
+<div class="course-duration">
+<i class="fa fa-clock-o"></i> 8 Weeks
+</div>
+<div class="course-level">
+<i class="fa fa-signal"></i> All Levels
+</div>
+</div>
+<div class="course-description">
+<p><p class="program">
+	In the age of content creation, brands rely on high-quality visuals to tell stories, build trust, and convert customers. Our Graphics Design and Video Editing course trains you to produce professional-grade visuals using the same tools used in the creative industry. You'll learn to edit photos, design logos, create social media graphics, and bring videos to life with animation and transitions.
+	
+	<ul>
+	<li>✔ Adobe Photoshop & Illustrator – Master image editing, logo design, and branding.</li>
+	<li>✔ Canva & Digital Marketing Graphics – Learn how to design social media graphics and marketing materials.</li>
+	<li>✔ Video Editing with Premiere Pro & After Effects – Create professional-quality videos for YouTube, commercials, and social media.</li>
+	<li>✔ Motion Graphics & Animations – Learn how to add special effects and animations to your videos.</li>
+	</ul>
+	
+	With these skills, you can start freelancing, work for marketing agencies, or create content for your own brand. It's a perfect blend of creativity and tech—designed to help you earn from your visual talents.
+	</p>
+</div>
+<a href="getStarted.html" class="register-btn">Register Now</a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="container">
+<div class="row">
+<p style="color:black;" >
+we believe technology is more than just devices and software—it's an opportunity to learn, create, and transform lives.
+<a href="#" style="text-decoration: underline;color:blue;">
+Located in Gwagwalada, Abuja.
+</a> we are a one-stop tech hub where you can gain hands-on skills in forex trading, web development, UI/UX design, and more.</p>
+<a href="getStarted.html" class="register-btn">GET STARTED</a>
+</div>
+</div>
+
+</div>
 </section>
 <!-- End Courses Section -->
 
@@ -500,13 +602,13 @@ rel="stylesheet">
 <script src="js/main.js"></script>
 
 <script>
-  // Loading spinner
-  window.addEventListener('load', function() {
-    const loader = document.querySelector('.loader-wrapper');
-    setTimeout(function() {
-      loader.classList.add('hidden');
-    }, 1000);
-  });
+// Loading spinner
+window.addEventListener('load', function() {
+const loader = document.querySelector('.loader-wrapper');
+setTimeout(function() {
+loader.classList.add('hidden');
+}, 1000);
+});
 </script>
 </body>
 </html>
