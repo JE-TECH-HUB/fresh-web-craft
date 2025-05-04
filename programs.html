@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +41,9 @@ rel="stylesheet">
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/cards.css">
+<link rel="stylesheet" href="css/slideshow.css">
 
 <style>
 .course-section {
@@ -66,16 +68,32 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 .course-image {
 height: 250px;
 overflow: hidden;
+position: relative;
 }
 
-.course-image img {
+.card-slideshow {
+width: 100%;
+height: 100%;
+position: relative;
+}
+
+.card-slideshow img {
 width: 100%;
 height: 100%;
 object-fit: cover;
 transition: transform 0.5s ease;
+position: absolute;
+top: 0;
+left: 0;
+opacity: 0;
 }
 
-.course-card:hover .course-image img {
+.card-slideshow img.active {
+opacity: 1;
+z-index: 1;
+}
+
+.course-card:hover .card-slideshow img.active {
 transform: scale(1.05);
 }
 
@@ -306,7 +324,12 @@ In today's fast-paced world, technology is not a luxury—it's a necessity. At J
 <div class="col-lg-6 col-md-6 col-12">
 <div class="course-card">
 <div class="course-image">
-<img src="images/soft.jpg" alt="Software Development">
+<div class="card-slideshow">
+<img src="images/soft.jpg" alt="Software Development" class="active">
+<img src="images/code1.jpg" alt="Software Development">
+<img src="images/code2.jpg" alt="Software Development">
+<img src="images/code3.jpg" alt="Software Development">
+</div>
 </div>
 <div class="course-content">
 <h3 class="course-title  card-title">Software Development</h3>
@@ -340,7 +363,12 @@ In today's fast-paced world, technology is not a luxury—it's a necessity. At J
 <div class="col-lg-6 col-md-6 col-12">
 <div class="course-card">
 <div class="course-image">
-<img src="images/analysis.jpg" alt="Data Analysis">
+<div class="card-slideshow">
+<img src="images/analysis.jpg" alt="Data Analysis" class="active">
+<img src="images/data1.jpg" alt="Data Analysis">
+<img src="images/data2.jpg" alt="Data Analysis">
+<img src="images/data3.jpg" alt="Data Analysis">
+</div>
 </div>
 <div class="course-content">
 <h3 class="course-title  card-title">Data Analysis</h3>
@@ -375,7 +403,12 @@ In today's fast-paced world, technology is not a luxury—it's a necessity. At J
 <div class="col-lg-6 col-md-6 col-12">
 <div class="course-card">
 <div class="course-image">
-<img src="images/Uiux.jpg" alt="UI/UX Design">
+<div class="card-slideshow">
+<img src="images/Uiux.jpg" alt="UI/UX Design" class="active">
+<img src="images/uiux1.jpg" alt="UI/UX Design">
+<img src="images/uiux2.jpg" alt="UI/UX Design">
+<img src="images/uiux3.jpg" alt="UI/UX Design">
+</div>
 </div>
 <div class="course-content">
 <h3 class="course-title  card-title">UI/UX Design</h3>
@@ -410,7 +443,12 @@ In today's fast-paced world, technology is not a luxury—it's a necessity. At J
 <div class="col-lg-6 col-md-6 col-12">
 <div class="course-card">
 <div class="course-image">
-<img src="images/forex.jpeg" alt="Forex Trading">
+<div class="card-slideshow">
+<img src="images/forex.jpeg" alt="Forex Trading" class="active">
+<img src="images/forex1.jpg" alt="Forex Trading">
+<img src="images/forex2.jpg" alt="Forex Trading">
+<img src="images/forex3.jpg" alt="Forex Trading">
+</div>
 </div>
 <div class="course-content">
 <h3 class="course-title  card-title">Forex Trading</h3>
@@ -445,7 +483,12 @@ In today's fast-paced world, technology is not a luxury—it's a necessity. At J
 <div class="col-lg-6 col-md-6 col-12">
 <div class="course-card">
 <div class="course-image">
-<img src="images/graphics1.jpg" alt="Graphics Design and Video Editing">
+<div class="card-slideshow">
+<img src="images/graphics1.jpg" alt="Graphics Design and Video Editing" class="active">
+<img src="images/graphics2.jpg" alt="Graphics Design and Video Editing">
+<img src="images/graphics3.jpg" alt="Graphics Design and Video Editing">
+<img src="images/graphics4.jpg" alt="Graphics Design and Video Editing">
+</div>
 </div>
 <div class="course-content">
 <h3 class="course-title  card-title">Graphics Design & Video Editing</h3>
@@ -610,6 +653,8 @@ Located in Gwagwalada, Abuja.
 <script src="js/bootstrap.min.js"></script>
 <!-- Main JS -->
 <script src="js/main.js"></script>
+<!-- Slideshow JS -->
+<script src="js/slideshow.js"></script>
 
 <script>
 // Loading spinner

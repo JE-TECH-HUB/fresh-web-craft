@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize each slideshow
     slideshows.forEach(slideshow => {
         const images = slideshow.querySelectorAll('img');
-        const container = slideshow.closest('.card-image');
+        const container = slideshow.closest('.course-image');
         let currentIndex = 0;
         
         // Create dots for navigation

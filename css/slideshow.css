@@ -1,0 +1,47 @@
+
+/* Image Slideshow Styles */
+.card-slideshow {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.card-slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.card-slideshow img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Image Slideshow Controls */
+.slideshow-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+.slideshow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+.slideshow-dot.active {
+  background: #fff;
+}
