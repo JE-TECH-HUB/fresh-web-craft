@@ -8,6 +8,7 @@
 @import url('footer.css');
 @import url('utilities.css');
 @import url('loaders.css');
+@import url('gadgets.css');
 
 /* Better Responsive Layout */
 @media only screen and (max-width: 767px) {

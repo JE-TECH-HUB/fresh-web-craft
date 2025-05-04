@@ -1,0 +1,511 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tech Gadgets Marketplace - JE TechHub</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/JE Techhub logo - Copy.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Slideshow CSS -->
+    <link rel="stylesheet" href="css/slideshow.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Area -->
+    <header class="header">
+        <!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-12">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="index.html"><img src="images/JE Techhub logo.png" alt="JE TechHub logo"></a>
+                            </div>
+                            <!-- End Logo -->
+                            <!-- Mobile Nav -->
+                            <div class="mobile-nav"></div>
+                            <!-- End Mobile Nav -->
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-12">
+                            <!-- Main Menu -->
+                            <div class="main-menu">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="courses.html">Courses</a></li>
+                                        <li><a href="programs.html">Programs</a></li>
+                                        <li class="active"><a href="gadgets.html">Gadgets</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- End Main Menu -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Header Inner -->
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bread-inner">
+                        <h2>Tech Gadgets Marketplace</h2>
+                        <ul class="bread-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><a href="gadgets.html">Gadgets</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <!-- Gadgets Section -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Browse Tech Gadgets</h2>
+                        <p>Explore our selection of high-quality tech gadgets available for purchase or swap</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Options -->
+            <div class="row mb-4">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <select id="categoryFilter" class="form-control">
+                        <option value="all">All Categories</option>
+                        <option value="phone">Smartphones</option>
+                        <option value="laptop">Laptops</option>
+                        <option value="tablet">Tablets</option>
+                        <option value="accessory">Accessories</option>
+                    </select>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <select id="priceFilter" class="form-control">
+                        <option value="all">All Price Ranges</option>
+                        <option value="0-100">$0 - $100</option>
+                        <option value="100-500">$100 - $500</option>
+                        <option value="500-1000">$500 - $1000</option>
+                        <option value="1000+">$1000+</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Gadgets Grid -->
+            <div class="row" id="gadgetsContainer">
+                <!-- Gadget Item 1 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="phone" data-price="500">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/smartphone1.jpg" alt="Smartphone" class="active">
+                                <img src="images/gadgets/smartphone2.jpg" alt="Smartphone">
+                                <img src="images/gadgets/smartphone3.jpg" alt="Smartphone">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Premium Smartphone X1</h4>
+                            <div class="gadget-category">Category: <span>Smartphone</span></div>
+                            <div class="gadget-price">Price: <span>$499</span></div>
+                            <p class="card-description">The latest model with stunning camera features, 128GB storage, and all-day battery life. Perfect for professionals and photography enthusiasts.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(1)">Contact Seller</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(1)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gadget Item 2 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="laptop" data-price="1000">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/laptop1.jpg" alt="Laptop" class="active">
+                                <img src="images/gadgets/laptop2.jpg" alt="Laptop">
+                                <img src="images/gadgets/laptop3.jpg" alt="Laptop">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Developer Pro Laptop</h4>
+                            <div class="gadget-category">Category: <span>Laptop</span></div>
+                            <div class="gadget-price">Price: <span>$1,299</span></div>
+                            <p class="card-description">High-performance laptop with 16GB RAM, 512GB SSD, and dedicated graphics card. Ideal for programming, design, and gaming.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(2)">Contact Seller</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(2)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gadget Item 3 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="tablet" data-price="300">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/tablet1.jpg" alt="Tablet" class="active">
+                                <img src="images/gadgets/tablet2.jpg" alt="Tablet">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Ultra-Slim Tablet</h4>
+                            <div class="gadget-category">Category: <span>Tablet</span></div>
+                            <div class="gadget-price">Price: <span>$349</span></div>
+                            <p class="card-description">10-inch display, perfect for reading, browsing, and entertainment. Includes stylus and protective case.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(3)">Contact Seller</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(3)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gadget Item 4 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="accessory" data-price="100">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/headphones1.jpg" alt="Headphones" class="active">
+                                <img src="images/gadgets/headphones2.jpg" alt="Headphones">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Premium Wireless Headphones</h4>
+                            <div class="gadget-category">Category: <span>Accessory</span></div>
+                            <div class="gadget-price">Price: <span>$89</span></div>
+                            <p class="card-description">Noise-cancelling headphones with premium sound quality, Bluetooth 5.0, and 30-hour battery life.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(4)">Contact Seller</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(4)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gadget Item 5 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="phone" data-price="300">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/smartphone4.jpg" alt="Budget Smartphone" class="active">
+                                <img src="images/gadgets/smartphone5.jpg" alt="Budget Smartphone">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Budget-Friendly Smartphone</h4>
+                            <div class="gadget-category">Category: <span>Smartphone</span></div>
+                            <div class="gadget-price">Price: <span>$299</span></div>
+                            <p class="card-description">Great entry-level smartphone with excellent battery life, 64GB storage, and dual-camera system.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(5)">Contact Seller</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(5)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gadget Item 6 -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="laptop" data-price="500">
+                    <div class="card">
+                        <div class="card-image">
+                            <div class="card-slideshow">
+                                <img src="images/gadgets/laptop4.jpg" alt="Budget Laptop" class="active">
+                                <img src="images/gadgets/laptop5.jpg" alt="Budget Laptop">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Student Laptop</h4>
+                            <div class="gadget-category">Category: <span>Laptop</span></div>
+                            <div class="gadget-price">Price: <span>$599</span></div>
+                            <p class="card-description">Perfect for students and everyday tasks. Features 8GB RAM, 256GB SSD, and lightweight design.</p>
+                            <div class="gadget-actions">
+                                <button class="card-button" onclick="contactSeller(6)">Contact Seller</button>
+                                <button class="card-button swap-button" onclick="openSwapModal(6)">Apply for Swap</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Gadgets Section -->
+    
+    <!-- Swap Modal -->
+    <div class="modal fade" id="swapModal" tabindex="-1" role="dialog" aria-labelledby="swapModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="swapModalLabel">Apply for Swap</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="swapForm">
+                        <input type="hidden" id="gadgetId" name="gadgetId">
+                        <div class="form-group">
+                            <label for="swapName">Your Name</label>
+                            <input type="text" class="form-control" id="swapName" name="swapName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapEmail">Email Address</label>
+                            <input type="email" class="form-control" id="swapEmail" name="swapEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapPhone">Phone Number</label>
+                            <input type="text" class="form-control" id="swapPhone" name="swapPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapItemName">Your Item Name</label>
+                            <input type="text" class="form-control" id="swapItemName" name="swapItemName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapItemValue">Estimated Value ($)</label>
+                            <input type="number" class="form-control" id="swapItemValue" name="swapItemValue" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapItemImage">Upload Item Image</label>
+                            <input type="file" class="form-control-file" id="swapItemImage" name="swapItemImage">
+                            <small class="form-text text-muted">Upload a clear image of your item (optional)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="swapItemDescription">Item Description</label>
+                            <textarea class="form-control" id="swapItemDescription" name="swapItemDescription" rows="3" required></textarea>
+                        </div>
+                    </form>
+                    <div id="swapSuccess" class="alert alert-success mt-3" style="display: none;">
+                        Your swap application has been submitted successfully! We'll contact you soon.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submitSwapForm">Submit Application</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Area -->
+    <footer class="footer">
+        <!-- Footer Top -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer">
+                            <h2>About Us</h2>
+                            <p>JE TechHub provides quality tech education and resources.</p>
+                            <!-- Social -->
+                            <ul class="social">
+                                <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+                            </ul>
+                            <!-- End Social -->
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer f-link">
+                            <h2>Quick Links</h2>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="courses.html">Courses</a></li>
+                                <li><a href="programs.html">Programs</a></li>
+                                <li><a href="gadgets.html">Gadgets</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer">
+                            <h2>Open Hours</h2>
+                            <p>Visit us during our business hours.</p>
+                            <ul class="time-sidual">
+                                <li class="day">Monday - Friday <span>8.00-20.00</span></li>
+                                <li class="day">Saturday <span>9.00-18.30</span></li>
+                                <li class="day">Sunday <span>9.00-15.00</span></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer">
+                            <h2>Newsletter</h2>
+                            <p>Subscribe to our newsletter for updates.</p>
+                            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                                <input name="email" placeholder="Email Address" class="common-input" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'" required="" type="email">
+                                <button class="button"><i class="icofont icofont-paper-plane"></i></button>
+                            </form>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Top -->
+        <!-- Copyright -->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="copyright-content">
+                            <p>© Copyright 2025 | All Rights Reserved | JE TechHub</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!-- End Footer Area -->
+
+    <!-- Jquery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Jquery Slicknav -->
+    <script src="js/jquery.slicknav.min.js"></script>
+    <!-- Jquery Steller -->
+    <script src="js/steller.js"></script>
+    <!-- Jquery Easing -->
+    <script src="js/easing.js"></script>
+    <!-- Jquery ScrollUp -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Colors -->
+    <script src="js/colors.js"></script>
+    <!-- Slideshow JS -->
+    <script src="js/slideshow.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+    
+    <!-- Gadgets JS -->
+    <script>
+        // Handle the loading spinner
+        window.addEventListener('load', function() {
+            const loaderWrapper = document.querySelector('.loader-wrapper');
+            if (loaderWrapper) {
+                loaderWrapper.classList.add('hidden');
+                setTimeout(() => {
+                    loaderWrapper.style.display = 'none';
+                }, 500);
+            }
+        });
+        
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            const priceFilter = document.getElementById('priceFilter');
+            const gadgetItems = document.querySelectorAll('.gadget-item');
+            
+            function filterGadgets() {
+                const selectedCategory = categoryFilter.value;
+                const selectedPrice = priceFilter.value;
+                
+                gadgetItems.forEach(item => {
+                    const category = item.dataset.category;
+                    const price = parseInt(item.dataset.price);
+                    
+                    let showByCategory = selectedCategory === 'all' || category === selectedCategory;
+                    let showByPrice = true;
+                    
+                    if (selectedPrice !== 'all') {
+                        if (selectedPrice === '0-100' && (price < 0 || price > 100)) showByPrice = false;
+                        if (selectedPrice === '100-500' && (price < 100 || price > 500)) showByPrice = false;
+                        if (selectedPrice === '500-1000' && (price < 500 || price > 1000)) showByPrice = false;
+                        if (selectedPrice === '1000+' && price < 1000) showByPrice = false;
+                    }
+                    
+                    if (showByCategory && showByPrice) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            if (categoryFilter) categoryFilter.addEventListener('change', filterGadgets);
+            if (priceFilter) priceFilter.addEventListener('change', filterGadgets);
+            
+            // Contact seller function
+            window.contactSeller = function(gadgetId) {
+                alert(`Contact request sent for gadget #${gadgetId}. The seller will reach out to you soon.`);
+            };
+            
+            // Open swap modal
+            window.openSwapModal = function(gadgetId) {
+                const modal = $('#swapModal');
+                document.getElementById('gadgetId').value = gadgetId;
+                document.getElementById('swapSuccess').style.display = 'none';
+                document.getElementById('swapForm').reset();
+                modal.modal('show');
+            };
+            
+            // Submit swap form
+            document.getElementById('submitSwapForm').addEventListener('click', function() {
+                const form = document.getElementById('swapForm');
+                if (form.checkValidity()) {
+                    document.getElementById('swapSuccess').style.display = 'block';
+                    setTimeout(() => {
+                        $('#swapModal').modal('hide');
+                    }, 3000);
+                } else {
+                    form.reportValidity();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
