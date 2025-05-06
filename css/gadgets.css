@@ -23,9 +23,80 @@
   box-shadow: 0 0 10px rgba(26,118,209,0.2);
 }
 
+/* Hero Section for Gadgets Page */
+.hero-slider {
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slider .single-slider {
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-slider .single-slider::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-slider .hero-text {
+  padding: 0 30px;
+  margin-top: 120px;
+}
+
+.hero-slider .hero-text h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.hero-slider .hero-text p {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 35px;
+  line-height: 1.8;
+}
+
+.hero-slider .button {
+  display: flex;
+  gap: 15px;
+}
+
+.hero-slider .button .btn {
+  padding: 14px 25px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hero-slider .button .primary {
+  background: linear-gradient(to right, #1A76D1, #4A96F1);
+  color: #fff;
+  border: none;
+}
+
+.hero-slider .button .secondary {
+  background: linear-gradient(to right, #FF7B00, #FF9A40);
+  color: #fff;
+  border: none;
+}
+
 /* Gadget Cards */
 .gadget-item {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
 }
 
 .gadget-item:hover {
@@ -93,18 +164,22 @@
 
 .card-content {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .gadget-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 15px;
+  margin-top: auto;
+  padding-top: 15px;
 }
 
 /* Card buttons with improved styling */
 .card-button {
-  padding: 10px 15px;
+  padding: 12px 15px;
   font-size: 14px;
   font-weight: 600;
   border-radius: 6px;
@@ -141,21 +216,6 @@
 .buy-button:hover {
   background: linear-gradient(to right, #0D62B8, #3B87E2);
   box-shadow: 0 4px 8px rgba(26,118,209,0.25);
-}
-
-/* Responsive adjustments */
-@media only screen and (max-width: 767px) {
-  .gadget-actions {
-    flex-direction: column;
-  }
-  
-  .card-button {
-    width: 100%;
-  }
-  
-  .filter-container {
-    padding: 15px;
-  }
 }
 
 /* Modal styles with improved design */
@@ -224,6 +284,44 @@
   box-shadow: 0 3px 10px rgba(0,0,0,0.05);
 }
 
+/* Error message */
+.alert-danger {
+  background-color: #fdeded;
+  border-color: #f2c6c6;
+  color: #8c2e2e;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* Login/Signup modals */
+.modal-footer-alt {
+  text-align: center;
+  padding: 10px 20px 20px;
+  border-top: none;
+}
+
+.modal-footer-alt p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.modal-footer-alt a {
+  color: #1A76D1;
+  font-weight: 600;
+}
+
+.forgot-password {
+  color: #1A76D1;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
 /* Checkout details in buy modal */
 .checkout-details {
   background: #f5f7fa;
@@ -256,6 +354,7 @@
 /* Section title enhancements */
 .section-title {
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .section-title h2 {
@@ -316,4 +415,42 @@
   background-size: 18px;
   padding-right: 30px;
   cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 767px) {
+  .gadget-actions {
+    flex-direction: column;
+  }
+  
+  .card-button {
+    width: 100%;
+  }
+  
+  .filter-container {
+    padding: 15px;
+  }
+  
+  .hero-slider .single-slider {
+    height: 400px;
+  }
+  
+  .hero-slider .hero-text {
+    margin-top: 80px;
+    padding: 0 15px;
+  }
+  
+  .hero-slider .hero-text h1 {
+    font-size: 28px;
+  }
+  
+  .hero-slider .button {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .hero-slider .button .btn {
+    width: 100%;
+    text-align: center;
+  }
 }
