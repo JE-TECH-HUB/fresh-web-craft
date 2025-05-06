@@ -33,88 +33,7 @@ const users = [
         totalModules: 12
       }
     ],
-    profileImage: null,
-    role: 'user'
-  },
-  {
-    id: 2,
-    firstName: 'Admin',
-    lastName: 'User',
-    email: 'admin@example.com',
-    // Password: "admin123"
-    password: '$2a$10$vkrMG9pZ9yx/vZ.IJSXCFe5AY0T.vYREYpUe1cRkFYQlmsDGPJZb.',
-    course: 'Administration',
-    registrationDate: '2024-05-01T09:00:00Z',
-    lastLogin: '2024-05-06T08:00:00Z',
-    progress: [],
-    profileImage: null,
-    role: 'admin'
-  }
-];
-
-// Gadgets data
-const gadgets = [
-  {
-    id: 1,
-    name: 'Premium Smartphone X1',
-    category: 'phone',
-    price: 499,
-    description: 'The latest model with stunning camera features, 128GB storage, and all-day battery life. Perfect for professionals and photography enthusiasts.',
-    stock: 15,
-    images: [
-      'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&auto=format&fit=crop&q=60',
-      'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&auto=format&fit=crop&q=60',
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02ff9?w=800&auto=format&fit=crop&q=60'
-    ]
-  },
-  {
-    id: 2,
-    name: 'Developer Pro Laptop',
-    category: 'laptop',
-    price: 1299,
-    description: 'High-performance laptop with 16GB RAM, 512GB SSD, and dedicated graphics card. Ideal for programming, design, and gaming.',
-    stock: 8,
-    images: [
-      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&auto=format&fit=crop&q=60',
-      'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&auto=format&fit=crop&q=60',
-      'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60'
-    ]
-  },
-  {
-    id: 3,
-    name: 'Ultra-Slim Tablet',
-    category: 'tablet',
-    price: 349,
-    description: '10-inch display, perfect for reading, browsing, and entertainment. Includes stylus and protective case.',
-    stock: 12,
-    images: [
-      'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=60',
-      'https://images.unsplash.com/photo-1623126908029-58cb08a2b272?w=800&auto=format&fit=crop&q=60'
-    ]
-  }
-];
-
-// Orders data
-const orders = [
-  {
-    id: 'ORD-2024-001',
-    customerId: 1,
-    customerName: 'Demo User',
-    productId: 1,
-    productName: 'Premium Smartphone X1',
-    amount: 499,
-    date: '2024-05-03T14:30:00Z',
-    status: 'completed'
-  },
-  {
-    id: 'ORD-2024-002',
-    customerId: 1,
-    customerName: 'Demo User',
-    productId: 2,
-    productName: 'Developer Pro Laptop',
-    amount: 1299,
-    date: '2024-05-02T10:15:00Z',
-    status: 'processing'
+    profileImage: null
   }
 ];
 
@@ -163,15 +82,14 @@ app.post('/api/register', async (req, res) => {
                     totalModules: getCourseModules(course)
                 }
             ],
-            profileImage: null,
-            role: 'user'
+            profileImage: null
         };
 
         users.push(newUser);
         
         // Create JWT token
         const token = jwt.sign(
-            { id: newUser.id, email: newUser.email, role: newUser.role },
+            { id: newUser.id, email: newUser.email },
             JWT_SECRET,
             { expiresIn: TOKEN_EXPIRY }
         );
@@ -217,7 +135,7 @@ app.post('/api/login', async (req, res) => {
 
         // Create JWT token
         const token = jwt.sign(
-            { id: user.id, email: user.email, role: user.role },
+            { id: user.id, email: user.email },
             JWT_SECRET,
             { expiresIn: TOKEN_EXPIRY }
         );
@@ -352,107 +270,6 @@ app.get('/api/courses', (req, res) => {
     res.json(coursesData);
 });
 
-// Get all users (admin only)
-app.get('/api/users', authenticateToken, checkAdminRole, (req, res) => {
-    // Return all users without passwords
-    const usersWithoutPasswords = users.map(user => {
-        const { password, ...userWithoutPassword } = user;
-        return userWithoutPassword;
-    });
-    
-    res.json(usersWithoutPasswords);
-});
-
-// Get all gadgets
-app.get('/api/gadgets', (req, res) => {
-    res.json(gadgets);
-});
-
-// Get all orders (admin only)
-app.get('/api/orders', authenticateToken, checkAdminRole, (req, res) => {
-    res.json(orders);
-});
-
-// Add new gadget (admin only)
-app.post('/api/gadgets', authenticateToken, checkAdminRole, (req, res) => {
-    try {
-        const { name, category, price, description, stock, images } = req.body;
-        
-        // Basic validation
-        if (!name || !category || !price || !description || !stock) {
-            return res.status(400).json({ message: 'All fields are required' });
-        }
-        
-        const newGadget = {
-            id: gadgets.length > 0 ? Math.max(...gadgets.map(g => g.id)) + 1 : 1,
-            name,
-            category,
-            price: Number(price),
-            description,
-            stock: Number(stock),
-            images: images || []
-        };
-        
-        gadgets.push(newGadget);
-        
-        res.status(201).json({
-            message: 'Gadget added successfully',
-            gadget: newGadget
-        });
-    } catch (error) {
-        console.error('Add gadget error:', error);
-        res.status(500).json({ message: 'Server error' });
-    }
-});
-
-// Add new order
-app.post('/api/orders', authenticateToken, (req, res) => {
-    try {
-        const { productId, productName, amount } = req.body;
-        
-        // Basic validation
-        if (!productId || !productName || !amount) {
-            return res.status(400).json({ message: 'Product ID, name, and amount are required' });
-        }
-        
-        const user = users.find(user => user.id === req.user.id);
-        
-        const newOrder = {
-            id: `ORD-2024-${String(orders.length + 1).padStart(3, '0')}`,
-            customerId: user.id,
-            customerName: `${user.firstName} ${user.lastName}`,
-            productId,
-            productName,
-            amount: Number(amount),
-            date: new Date().toISOString(),
-            status: 'processing'
-        };
-        
-        orders.push(newOrder);
-        
-        res.status(201).json({
-            message: 'Order placed successfully',
-            order: newOrder
-        });
-    } catch (error) {
-        console.error('Add order error:', error);
-        res.status(500).json({ message: 'Server error' });
-    }
-});
-
-// Get dashboard stats (admin only)
-app.get('/api/admin/stats', authenticateToken, checkAdminRole, (req, res) => {
-    const stats = {
-        totalUsers: users.length,
-        totalGadgets: gadgets.length,
-        totalOrders: orders.length,
-        totalSales: orders.reduce((total, order) => total + order.amount, 0),
-        activeCourses: 5
-    };
-    
-    res.json(stats);
-});
-
 // Helper function to get course modules count
 function getCourseModules(course) {
     switch(course) {
@@ -481,17 +298,6 @@ function authenticateToken(req, res, next) {
         req.user = user;
         next();
     });
-}
-
-// Middleware to check admin role
-function checkAdminRole(req, res, next) {
-    const user = users.find(u => u.id === req.user.id);
-    
-    if (!user || user.role !== 'admin') {
-        return res.status(403).json({ message: 'Access denied. Admin role required.' });
-    }
-    
-    next();
 }
 
 // Start server

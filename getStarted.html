@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -62,10 +61,12 @@ flex-direction: row;
 
 
 form {
+
 padding: 25px;
 @media (width > 568px){width:100% !important;}	}
 
 input{
+
 font-weight: bold;
 font-size: x-large;
 padding: 5px;
@@ -202,6 +203,7 @@ padding: 20px;
 border-radius: 10px;
 text-align: center;
 color: #000;
+
 }
 
 /* Enhanced loader styles */
@@ -267,37 +269,6 @@ color: #000;
     margin-bottom: 20px;
     display: none;
 }
-
-/* Enhanced form styles */
-.auth-form-container {
-    background-image: linear-gradient(135deg, #1A76D1, #4A96F1);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.auth-form-container:hover {
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    transform: translateY(-5px);
-}
-
-.auth-title {
-    margin-bottom: 25px;
-    color: white;
-    text-align: center;
-}
-
-.auth-title h2 {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.auth-title p {
-    font-size: 16px;
-    opacity: 0.8;
-}
 </style>
 </head>
 <body>
@@ -327,7 +298,6 @@ color: #000;
 <li><a href="index.html" class="scroll">Home</a></li>
 <li><a href="index.html#about" class="scroll">About Us</a></li>
 <li><a href="programs.html" class="scroll">Programs</a></li>
-<li><a href="gadgets.html" class="scroll">Gadgets</a></li>
 <li><a href="contact.html" class="scroll">Contact Us</a></li>
 </ul>
 </nav>
@@ -378,7 +348,7 @@ color: #000;
 
 </div>
 
-<div class="auth-form-container col-lg-6 col-md-6 col-sm-12">
+<div style="background-color: #1A76D1;" class="col-lg-6 col-md-6 col-sm-12">
     <div class="auth-toggle">
         <button id="loginToggle" onclick="showForm('loginForm')">Login</button>
         <button id="registerToggle" class="active" onclick="showForm('registerForm')">Register</button>
@@ -386,10 +356,9 @@ color: #000;
 
     <!-- Login Form -->
     <form name="loginForm" id="loginForm" onsubmit="return handleLoginSubmit(event)">
-        <div class="auth-title">
+        <div class="title">
             <h2>Login to your account</h2>
-            <p>Welcome back! Enter your credentials to continue</p>
-            <div class="form-success">Login successful! Redirecting to dashboard...</div>
+            <div class="form-success">Login successful!</div>
             <div class="api-error" id="loginApiError"></div>
         </div>
         <div class="info">
@@ -400,17 +369,16 @@ color: #000;
             <div id="loginPasswordError" class="error"></div>
         </div>
         <button type="submit" id="loginButton">Login</button>
-        <p style="text-align: center; margin-top: 15px; color: white;">
-            Don't have an account? <a href="#" style="color: #fff; text-decoration: underline;" onclick="showForm('registerForm'); return false;">Register here</a>
+        <p style="text-align: center; margin-top: 15px;">
+            Don't have an account? <a href="#" onclick="showForm('registerForm'); return false;">Register here</a>
         </p>
     </form>
 
     <!-- Register Form -->
     <form name="registerForm" id="registerForm" class="active-form" onsubmit="return handleRegisterSubmit(event)">
-        <div class="auth-title">
+        <div class="title">
             <h2>Register here</h2>
-            <p>Create your account to get started</p>
-            <div class="form-success">Registration successful! Redirecting to dashboard...</div>
+            <div class="form-success">Registration successful!</div>
             <div class="api-error" id="registerApiError"></div>
         </div>
         <div class="info">
@@ -430,18 +398,18 @@ color: #000;
             
             <select name="course" required>
                 <option value="">Select Program</option>
-                <option value="Data Analysis">Data Analysis</option>
-                <option value="Software Development">Software Development</option>
-                <option value="Graphics Design & Video Editing">Video Editing / Graphics Design</option>
-                <option value="Forex Trading">Forex Trading</option>
-                <option value="Gadgets">Gadgets/Sales and Repairs</option>
-                <option value="Member">Join As A Member</option>
+                <option value="dataAnalysis">Data Analysis</option>
+                <option value="softwareDev">Software Development</option>
+                <option value="videoGraphics">Video Editing / Graphics Design</option>
+                <option value="forex">Forex Trading</option>
+                <option value="gadgets">Gadgets/Sales and Repairs</option>
+                <option value="member">Join As A Member</option>
             </select>
             <div id="courseError" class="error"></div>
         </div>
         <button type="submit" id="registerButton">Register</button>
-        <p style="text-align: center; margin-top: 15px; color: white;">
-            Already have an account? <a href="#" style="color: #fff; text-decoration: underline;" onclick="showForm('loginForm'); return false;">Login here</a>
+        <p style="text-align: center; margin-top: 15px;">
+            Already have an account? <a href="#" onclick="showForm('loginForm'); return false;">Login here</a>
         </p>
     </form>
 </div>
@@ -597,20 +565,12 @@ async function handleLoginSubmit(event) {
         localStorage.setItem('userProfile', JSON.stringify(data.user));
         
         // Show success message
-        document.querySelector('#loginForm .form-success').style.display = 'block';
+        document.querySelector('.form-success').style.display = 'block';
         
-        // For admin user, redirect to admin dashboard
-        const user = data.user;
-        if (email === 'admin@example.com') {
-            setTimeout(() => {
-                window.location.href = 'admin.html';
-            }, 1500);
-        } else {
-            // Redirect normal users to dashboard
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1500);
-        }
+        // Redirect to dashboard
+        setTimeout(() => {
+            window.location.href = 'dashboard.html';
+        }, 1500);
     } catch (error) {
         console.error('Login error:', error);
         const apiError = document.getElementById('loginApiError');
@@ -661,7 +621,7 @@ async function handleRegisterSubmit(event) {
             localStorage.setItem('userProfile', JSON.stringify(data.user));
             
             // Show success message
-            document.querySelector('#registerForm .form-success').style.display = 'block';
+            document.querySelector('.form-success').style.display = 'block';
             
             // Redirect to dashboard
             setTimeout(() => {
@@ -776,13 +736,7 @@ function goToAnotherPage() {
 function checkAuth() {
     const token = localStorage.getItem('jwtToken');
     if (token) {
-        // Check if user is admin
-        const user = JSON.parse(localStorage.getItem('userProfile') || '{}');
-        if (user.email === 'admin@example.com') {
-            window.location.href = 'admin.html';
-        } else {
-            window.location.href = 'dashboard.html';
-        }
+        window.location.href = 'dashboard.html';
     }
 }
 
