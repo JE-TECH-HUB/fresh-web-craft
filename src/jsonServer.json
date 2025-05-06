@@ -3,30 +3,11 @@
   "profiles": [
     {
       "id": "713c",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "phone": "+1234567890",
-      "subject": "Course Inquiry",
-      "message": "I would like more information about the Software Development course.",
-      "date": "2023-04-15T14:30:00Z"
-    },
-    {
-      "id": "814d",
-      "name": "Sarah Johnson",
-      "email": "sarah@example.com",
-      "phone": "+2345678901",
-      "subject": "Registration Issue",
-      "message": "I'm having trouble registering for the UI/UX Design course.",
-      "date": "2023-04-16T09:45:00Z"
-    },
-    {
-      "id": "915e",
-      "name": "Michael Brown",
-      "email": "michael@example.com",
-      "phone": "+3456789012",
-      "subject": "Payment Question",
-      "message": "I would like to know if you offer any payment plans for your courses.",
-      "date": "2023-04-17T11:20:00Z"
+      "name": "",
+      "email": "",
+      "phone": "",
+      "subject": "",
+      "message": ""
     }
   ],
   "courses": [
