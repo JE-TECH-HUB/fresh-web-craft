@@ -30,8 +30,12 @@
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
+    <!-- Cards CSS -->
+    <link rel="stylesheet" href="css/cards.css">
     <!-- Slideshow CSS -->
     <link rel="stylesheet" href="css/slideshow.css">
+    <!-- Gadgets CSS -->
+    <link rel="stylesheet" href="css/gadgets.css">
 </head>
 <body>
     <!-- Loading Spinner -->
@@ -67,6 +71,9 @@
                                         <li><a href="programs.html">Programs</a></li>
                                         <li class="active"><a href="gadgets.html">Gadgets</a></li>
                                         <li><a href="contact.html">Contact Us</a></li>
+                                        <li id="authNav">
+                                            <a href="getStarted.html">Login / Register</a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -79,6 +86,29 @@
         <!-- End Header Inner -->
     </header>
     <!-- End Header Area -->
+
+    <!-- Hero Section -->
+    <section class="hero-slider">
+        <!-- Hero Single Slider -->
+        <div class="single-slider" style="background-image:url('https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=60');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="hero-text">
+                            <h1>Find Your Perfect Tech Gadget</h1>
+                            <p>Browse our curated selection of high-quality tech gadgets or swap with other tech enthusiasts</p>
+                            <div class="button">
+                                <a href="#gadget-section" class="btn primary">Explore Gadgets</a>
+                                <a href="#" class="btn" id="addItemButton">Add Your Gadget</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Hero Single Slider -->
+    </section>
+    <!-- End Hero Area -->
 
     <!-- Breadcrumbs -->
     <div class="breadcrumbs">
@@ -99,7 +129,7 @@
     <!-- End Breadcrumbs -->
 
     <!-- Gadgets Section -->
-    <section class="section">
+    <section class="section" id="gadget-section">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -141,15 +171,15 @@
             </div>
             
             <!-- Gadgets Grid -->
-            <div class="row" id="gadgetsContainer">
+            <div class="row justify-content-center" id="gadgetsContainer">
                 <!-- Gadget Item 1 -->
                 <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="phone" data-price="499" data-name="Premium Smartphone X1">
                     <div class="card">
                         <div class="card-image">
                             <div class="card-slideshow">
-                                <img src="images/gadgets/smartphone1.jpg" alt="Smartphone" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02ff9?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/smartphone2.jpg" alt="Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/smartphone3.jpg" alt="Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&auto=format&fit=crop&q=60';">
+                                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02ff9?w=800&auto=format&fit=crop&q=60" alt="Smartphone" class="active">
+                                <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&auto=format&fit=crop&q=60" alt="Smartphone">
+                                <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&auto=format&fit=crop&q=60" alt="Smartphone">
                             </div>
                         </div>
                         <div class="card-content">
@@ -171,9 +201,9 @@
                     <div class="card">
                         <div class="card-image">
                             <div class="card-slideshow">
-                                <img src="images/gadgets/laptop1.jpg" alt="Laptop" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/laptop2.jpg" alt="Laptop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/laptop3.jpg" alt="Laptop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60';">
+                                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&auto=format&fit=crop&q=60" alt="Laptop" class="active">
+                                <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&auto=format&fit=crop&q=60" alt="Laptop">
+                                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60" alt="Laptop">
                             </div>
                         </div>
                         <div class="card-content">
@@ -195,8 +225,8 @@
                     <div class="card">
                         <div class="card-image">
                             <div class="card-slideshow">
-                                <img src="images/gadgets/tablet1.jpg" alt="Tablet" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/tablet2.jpg" alt="Tablet" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1623126908029-58cb08a2b272?w=800&auto=format&fit=crop&q=60';">
+                                <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=60" alt="Tablet" class="active">
+                                <img src="https://images.unsplash.com/photo-1623126908029-58cb08a2b272?w=800&auto=format&fit=crop&q=60" alt="Tablet">
                             </div>
                         </div>
                         <div class="card-content">
@@ -218,8 +248,8 @@
                     <div class="card">
                         <div class="card-image">
                             <div class="card-slideshow">
-                                <img src="images/gadgets/headphones1.jpg" alt="Headphones" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/headphones2.jpg" alt="Headphones" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&auto=format&fit=crop&q=60';">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=60" alt="Headphones" class="active">
+                                <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&auto=format&fit=crop&q=60" alt="Headphones">
                             </div>
                         </div>
                         <div class="card-content">
@@ -241,8 +271,8 @@
                     <div class="card">
                         <div class="card-image">
                             <div class="card-slideshow">
-                                <img src="images/gadgets/smartphone4.jpg" alt="Budget Smartphone" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1533228100845-08145b01de14?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/smartphone5.jpg" alt="Budget Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1550367083-9fa5411cb8a0?w=800&auto=format&fit=crop&q=60';">
+                                <img src="https://images.unsplash.com/photo-1533228100845-08145b01de14?w=800&auto=format&fit=crop&q=60" alt="Budget Smartphone" class="active">
+                                <img src="https://images.unsplash.com/photo-1550367083-9fa5411cb8a0?w=800&auto=format&fit=crop&q=60" alt="Budget Smartphone">
                             </div>
                         </div>
                         <div class="card-content">
@@ -264,8 +294,8 @@
                     <div class="card">
                         <div class="card-image">
                             <div class="card-slideshow">
-                                <img src="images/gadgets/laptop4.jpg" alt="Budget Laptop" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/laptop5.jpg" alt="Budget Laptop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&auto=format&fit=crop&q=60';">
+                                <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=60" alt="Budget Laptop" class="active">
+                                <img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&auto=format&fit=crop&q=60" alt="Budget Laptop">
                             </div>
                         </div>
                         <div class="card-content">
@@ -285,6 +315,85 @@
         </div>
     </section>
     <!-- End Gadgets Section -->
+    
+    <!-- Add Item Modal -->
+    <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addItemModalLabel">Add Your Gadget for Swap or Sale</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addItemForm">
+                        <div class="form-group">
+                            <label for="itemName">Gadget Name</label>
+                            <input type="text" class="form-control" id="itemName" name="itemName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemCategory">Category</label>
+                            <select class="form-control" id="itemCategory" name="itemCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="phone">Smartphone</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="accessory">Accessory</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemPrice">Price ($)</label>
+                            <input type="number" class="form-control" id="itemPrice" name="itemPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemDescription">Description</label>
+                            <textarea class="form-control" id="itemDescription" name="itemDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemImages">Upload Images (up to 3)</label>
+                            <input type="file" class="form-control-file" id="itemImages" name="itemImages" multiple accept="image/*">
+                            <small class="form-text text-muted">Select up to 3 clear images of your gadget.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="sellerName">Your Name</label>
+                            <input type="text" class="form-control" id="sellerName" name="sellerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sellerEmail">Email Address</label>
+                            <input type="email" class="form-control" id="sellerEmail" name="sellerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sellerPhone">Phone Number</label>
+                            <input type="text" class="form-control" id="sellerPhone" name="sellerPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Listing Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="forSale" name="forSale" checked>
+                                <label class="form-check-label" for="forSale">
+                                    Available for Sale
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="forSwap" name="forSwap" checked>
+                                <label class="form-check-label" for="forSwap">
+                                    Available for Swap
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="addItemSuccess" class="alert alert-success mt-3" style="display: none;">
+                        Your gadget has been added successfully! It will be visible after review.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submitAddItemForm">Submit Gadget</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- Swap Modal -->
     <div class="modal fade" id="swapModal" tabindex="-1" role="dialog" aria-labelledby="swapModalLabel" aria-hidden="true">
@@ -504,8 +613,8 @@
     
     <!-- Gadgets JS -->
     <script>
-        // Handle the loading spinner
-        window.addEventListener('load', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle the loading spinner
             const loaderWrapper = document.querySelector('.loader-wrapper');
             if (loaderWrapper) {
                 loaderWrapper.classList.add('hidden');
@@ -513,10 +622,72 @@
                     loaderWrapper.style.display = 'none';
                 }, 500);
             }
-        });
-        
-        // Filter and sort functionality
-        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Check if user is logged in
+            function checkAuthStatus() {
+                const token = localStorage.getItem('jwtToken');
+                const userProfile = localStorage.getItem('userProfile');
+                const authNavElement = document.getElementById('authNav');
+                
+                if (token && userProfile) {
+                    // User is logged in
+                    if (authNavElement) {
+                        try {
+                            const user = JSON.parse(userProfile);
+                            authNavElement.innerHTML = `<a href="dashboard.html">Welcome, ${user.firstName}</a>`;
+                        } catch (error) {
+                            console.error('Error parsing user profile:', error);
+                        }
+                    }
+                } else {
+                    // User is not logged in
+                    if (authNavElement) {
+                        authNavElement.innerHTML = '<a href="getStarted.html">Login / Register</a>';
+                    }
+                }
+            }
+            
+            // Call the auth status check function
+            checkAuthStatus();
+            
+            // Add Item Button Event
+            const addItemButton = document.getElementById('addItemButton');
+            if (addItemButton) {
+                addItemButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Check if user is logged in first
+                    const token = localStorage.getItem('jwtToken');
+                    if (!token) {
+                        alert('Please log in to add your gadget');
+                        window.location.href = 'getStarted.html';
+                        return;
+                    }
+                    
+                    // Open the add item modal if logged in
+                    $('#addItemModal').modal('show');
+                });
+            }
+            
+            // Submit Add Item Form
+            const submitAddItemButton = document.getElementById('submitAddItemForm');
+            if (submitAddItemButton) {
+                submitAddItemButton.addEventListener('click', function() {
+                    const form = document.getElementById('addItemForm');
+                    if (form.checkValidity()) {
+                        document.getElementById('addItemSuccess').style.display = 'block';
+                        setTimeout(() => {
+                            $('#addItemModal').modal('hide');
+                            // Optionally reload the page or update the UI
+                            // window.location.reload();
+                        }, 3000);
+                    } else {
+                        form.reportValidity();
+                    }
+                });
+            }
+            
+            // Filter and sort functionality
             const categoryFilter = document.getElementById('categoryFilter');
             const priceFilter = document.getElementById('priceFilter');
             const sortFilter = document.getElementById('sortFilter');
@@ -578,28 +749,79 @@
             if (priceFilter) priceFilter.addEventListener('change', filterAndSortGadgets);
             if (sortFilter) sortFilter.addEventListener('change', filterAndSortGadgets);
             
+            // Initialize slideshows
+            initSlideshows();
+            
             // Contact seller function
             window.contactSeller = function(gadgetId) {
+                // Check if user is logged in first
+                const token = localStorage.getItem('jwtToken');
+                if (!token) {
+                    alert('Please log in to contact the seller');
+                    window.location.href = 'getStarted.html';
+                    return;
+                }
+                
                 alert(`Contact request sent for gadget #${gadgetId}. The seller will reach out to you soon.`);
             };
             
             // Open swap modal
             window.openSwapModal = function(gadgetId) {
+                // Check if user is logged in first
+                const token = localStorage.getItem('jwtToken');
+                if (!token) {
+                    alert('Please log in to apply for swap');
+                    window.location.href = 'getStarted.html';
+                    return;
+                }
+                
                 const modal = $('#swapModal');
                 document.getElementById('gadgetId').value = gadgetId;
                 document.getElementById('swapSuccess').style.display = 'none';
                 document.getElementById('swapForm').reset();
+                
+                // Auto-fill form fields if user is logged in
+                try {
+                    const userProfile = JSON.parse(localStorage.getItem('userProfile'));
+                    if (userProfile) {
+                        document.getElementById('swapName').value = userProfile.firstName + ' ' + userProfile.lastName;
+                        document.getElementById('swapEmail').value = userProfile.email;
+                    }
+                } catch (error) {
+                    console.error('Error parsing user profile:', error);
+                }
+                
                 modal.modal('show');
             };
             
             // Open buy modal
             window.openBuyModal = function(gadgetId, productName, productPrice) {
+                // Check if user is logged in first
+                const token = localStorage.getItem('jwtToken');
+                if (!token) {
+                    alert('Please log in to purchase');
+                    window.location.href = 'getStarted.html';
+                    return;
+                }
+                
                 const modal = $('#buyModal');
                 document.getElementById('buyGadgetId').value = gadgetId;
                 document.getElementById('buyProductName').textContent = productName;
                 document.getElementById('buyProductPrice').textContent = productPrice;
                 document.getElementById('buySuccess').style.display = 'none';
                 document.getElementById('buyForm').reset();
+                
+                // Auto-fill form fields if user is logged in
+                try {
+                    const userProfile = JSON.parse(localStorage.getItem('userProfile'));
+                    if (userProfile) {
+                        document.getElementById('buyName').value = userProfile.firstName + ' ' + userProfile.lastName;
+                        document.getElementById('buyEmail').value = userProfile.email;
+                    }
+                } catch (error) {
+                    console.error('Error parsing user profile:', error);
+                }
+                
                 modal.modal('show');
             };
             
@@ -628,14 +850,46 @@
                     form.reportValidity();
                 }
             });
-            
-            // Check all images and replace broken ones with placeholders
-            document.querySelectorAll('.card-slideshow img').forEach(img => {
-                img.addEventListener('error', function() {
-                    this.src = 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60';
-                });
-            });
         });
+
+        // Initialize image slideshows
+        function initSlideshows() {
+            document.querySelectorAll('.card-slideshow').forEach(slideshow => {
+                const images = slideshow.querySelectorAll('img');
+                if (images.length <= 1) return;
+                
+                let currentIndex = 0;
+                images[currentIndex].classList.add('active');
+                
+                // Create dots for navigation
+                const dotsContainer = document.createElement('div');
+                dotsContainer.className = 'slideshow-controls';
+                
+                for (let i = 0; i < images.length; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+                    dot.addEventListener('click', () => {
+                        images[currentIndex].classList.remove('active');
+                        dotsContainer.children[currentIndex].classList.remove('active');
+                        currentIndex = i;
+                        images[currentIndex].classList.add('active');
+                        dotsContainer.children[currentIndex].classList.add('active');
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+                
+                slideshow.appendChild(dotsContainer);
+                
+                // Auto rotate images
+                setInterval(() => {
+                    images[currentIndex].classList.remove('active');
+                    dotsContainer.children[currentIndex].classList.remove('active');
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].classList.add('active');
+                    dotsContainer.children[currentIndex].classList.add('active');
+                }, 5000);
+            });
+        }
     </script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -10,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Title -->
-<title>JOEeXPRESS</title>
+<title>JE TechHub - Sign In / Register</title>
 
 <!-- Favicon -->
 <link rel="icon" href="images/JE Techhub logo - Copy.png">
@@ -58,15 +59,12 @@ flex-direction: row;
 }
 }		
 /* form   */
-
-
 form {
-
 padding: 25px;
-@media (width > 568px){width:100% !important;}	}
+@media (width > 568px){width:100% !important;}	
+}
 
 input{
-
 font-weight: bold;
 font-size: x-large;
 padding: 5px;
@@ -203,7 +201,6 @@ padding: 20px;
 border-radius: 10px;
 text-align: center;
 color: #000;
-
 }
 
 /* Enhanced loader styles */
@@ -283,7 +280,7 @@ color: #000;
 <div class="col-lg-3 col-md-3 col-12">
 <!-- Start Logo -->
 <div class="logo">
-<a href="index.html"><img src="images/JE Techhub logo.png#"></a>
+<a href="index.html"><img src="images/JE Techhub logo.png"></a>
 </div>
 <!-- End Logo -->
 <!-- Mobile Nav -->
@@ -299,6 +296,7 @@ color: #000;
 <li><a href="index.html#about" class="scroll">About Us</a></li>
 <li><a href="programs.html" class="scroll">Programs</a></li>
 <li><a href="contact.html" class="scroll">Contact Us</a></li>
+<li><a href="gadgets.html" class="scroll">Gadgets</a></li>
 </ul>
 </nav>
 </div>
@@ -369,8 +367,8 @@ color: #000;
             <div id="loginPasswordError" class="error"></div>
         </div>
         <button type="submit" id="loginButton">Login</button>
-        <p style="text-align: center; margin-top: 15px;">
-            Don't have an account? <a href="#" onclick="showForm('registerForm'); return false;">Register here</a>
+        <p style="text-align: center; margin-top: 15px; color: #fff;">
+            Don't have an account? <a href="#" style="color: #fff; text-decoration: underline;" onclick="showForm('registerForm'); return false;">Register here</a>
         </p>
     </form>
 
@@ -398,18 +396,17 @@ color: #000;
             
             <select name="course" required>
                 <option value="">Select Program</option>
-                <option value="dataAnalysis">Data Analysis</option>
-                <option value="softwareDev">Software Development</option>
-                <option value="videoGraphics">Video Editing / Graphics Design</option>
-                <option value="forex">Forex Trading</option>
-                <option value="gadgets">Gadgets/Sales and Repairs</option>
-                <option value="member">Join As A Member</option>
+                <option value="Data Analysis">Data Analysis</option>
+                <option value="Software Development">Software Development</option>
+                <option value="Graphics Design & Video Editing">Video Editing / Graphics Design</option>
+                <option value="Forex Trading">Forex Trading</option>
+                <option value="UI/UX Design">UI/UX Design</option>
             </select>
             <div id="courseError" class="error"></div>
         </div>
         <button type="submit" id="registerButton">Register</button>
-        <p style="text-align: center; margin-top: 15px;">
-            Already have an account? <a href="#" onclick="showForm('loginForm'); return false;">Login here</a>
+        <p style="text-align: center; margin-top: 15px; color: #fff;">
+            Already have an account? <a href="#" style="color: #fff; text-decoration: underline;" onclick="showForm('loginForm'); return false;">Login here</a>
         </p>
     </form>
 </div>
@@ -485,7 +482,7 @@ color: #000;
 <div class="row">
 <div class="col-lg-12 col-md-12 col-12">
 <div class="copyright-content">
-<p>© Copyright 2018  |  All Rights Reserved by Joe Express </p>
+<p>© Copyright 2025  |  All Rights Reserved by JE TechHub </p>
 </div>
 </div>
 </div>
@@ -567,9 +564,10 @@ async function handleLoginSubmit(event) {
         // Show success message
         document.querySelector('.form-success').style.display = 'block';
         
-        // Redirect to dashboard
+        // Redirect to dashboard or requested page
         setTimeout(() => {
-            window.location.href = 'dashboard.html';
+            const redirectUrl = new URLSearchParams(window.location.search).get('redirect') || 'index.html';
+            window.location.href = redirectUrl;
         }, 1500);
     } catch (error) {
         console.error('Login error:', error);
@@ -623,9 +621,9 @@ async function handleRegisterSubmit(event) {
             // Show success message
             document.querySelector('.form-success').style.display = 'block';
             
-            // Redirect to dashboard
+            // Redirect to dashboard or home page
             setTimeout(() => {
-                window.location.href = 'dashboard.html';
+                window.location.href = 'index.html';
             }, 1500);
         } catch (error) {
             console.error('Registration error:', error);
@@ -729,14 +727,29 @@ function checkPasswordStrength() {
 
 function goToAnotherPage() {
     document.getElementById("overlay").style.display = "none";
-    window.location.href = "dashboard.html";
+    window.location.href = "index.html";
 }
 
 // Check if user is already logged in
 function checkAuth() {
     const token = localStorage.getItem('jwtToken');
     if (token) {
-        window.location.href = 'dashboard.html';
+        // If the user is trying to go to the login page but is already logged in,
+        // redirect them to the home page or dashboard
+        if (!window.location.search.includes('redirect')) {
+            window.location.href = 'index.html';
+        }
+    }
+}
+
+// Handle login required pages
+function handleProtectedPage() {
+    const token = localStorage.getItem('jwtToken');
+    // If we're on a protected page that requires login
+    if (!token && document.body.classList.contains('requires-auth')) {
+        // Extract the current path to redirect back after login
+        const currentPath = window.location.pathname;
+        window.location.href = `getStarted.html?redirect=${encodeURIComponent(currentPath)}`;
     }
 }
 
@@ -748,6 +761,18 @@ window.addEventListener('load', function() {
     
     // Check if user is already logged in
     checkAuth();
+    
+    // Check if current page needs authentication
+    handleProtectedPage();
+    
+    // Handle URL parameters - show login or register form based on URL param
+    const urlParams = new URLSearchParams(window.location.search);
+    const action = urlParams.get('action');
+    if (action === 'login') {
+        showForm('loginForm');
+    } else if (action === 'register') {
+        showForm('registerForm');
+    }
 });
 </script>
 <!--/ End Copyright -->
