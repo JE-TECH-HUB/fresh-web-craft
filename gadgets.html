@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="css/custom.css">
     <!-- Slideshow CSS -->
     <link rel="stylesheet" href="css/slideshow.css">
+    <!-- Gadgets CSS -->
+    <link rel="stylesheet" href="css/gadgets.css">
 </head>
 <body>
     <!-- Loading Spinner -->
@@ -98,8 +100,32 @@
     </div>
     <!-- End Breadcrumbs -->
 
+    <!-- Hero Section -->
+    <div class="gadgets-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="gadgets-hero-content">
+                        <h1>Discover Premium Tech Gadgets</h1>
+                        <p>Explore our curated selection of high-quality smartphones, laptops, tablets, and accessories. Buy directly or swap with other tech enthusiasts in our community.</p>
+                        <div class="hero-buttons">
+                            <a href="#gadgetsSection" class="btn hero-btn">Browse Gadgets</a>
+                            <a href="#" class="btn hero-btn-alt" data-toggle="modal" data-target="#swapInfoModal">Learn About Swapping</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="gadgets-hero-image">
+                        <img src="https://images.unsplash.com/photo-1468436139062-f60a71c5c892?w=800&auto=format&fit=crop&q=60" alt="Tech Gadgets Collection" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+
     <!-- Gadgets Section -->
-    <section class="section">
+    <section class="section" id="gadgetsSection">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -141,15 +167,15 @@
             </div>
             
             <!-- Gadgets Grid -->
-            <div class="row" id="gadgetsContainer">
+            <div class="row justify-content-center" id="gadgetsContainer">
                 <!-- Gadget Item 1 -->
                 <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="phone" data-price="499" data-name="Premium Smartphone X1">
                     <div class="card">
                         <div class="card-image">
                             <div class="card-slideshow">
-                                <img src="images/gadgets/smartphone1.jpg" alt="Smartphone" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02ff9?w=800&auto=format&fit=crop&q=60';">
+                                <img src="images/gadgets/smartphone1.jpg" alt="Smartphone" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&auto=format&fit=crop&q=60';">
                                 <img src="images/gadgets/smartphone2.jpg" alt="Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/smartphone3.jpg" alt="Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&auto=format&fit=crop&q=60';">
+                                <img src="images/gadgets/smartphone3.jpg" alt="Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02ff9?w=800&auto=format&fit=crop&q=60';">
                             </div>
                         </div>
                         <div class="card-content">
@@ -285,6 +311,51 @@
         </div>
     </section>
     <!-- End Gadgets Section -->
+    
+    <!-- Swap Info Modal -->
+    <div class="modal fade" id="swapInfoModal" tabindex="-1" role="dialog" aria-labelledby="swapInfoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="swapInfoModalLabel">How Gadget Swapping Works</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="swap-info-step">
+                                <div class="step-number">1</div>
+                                <h5>Find a Gadget</h5>
+                                <p>Browse our collection and find a gadget you're interested in swapping for.</p>
+                            </div>
+                            <div class="swap-info-step">
+                                <div class="step-number">2</div>
+                                <h5>Submit an Application</h5>
+                                <p>Click "Apply for Swap" and fill out details about your device including its estimated value.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="swap-info-step">
+                                <div class="step-number">3</div>
+                                <h5>Get Approved</h5>
+                                <p>Our team reviews your application and contacts you if your swap is approved.</p>
+                            </div>
+                            <div class="swap-info-step">
+                                <div class="step-number">4</div>
+                                <h5>Complete the Swap</h5>
+                                <p>Meet at our location or arrange shipping to exchange devices safely.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Got It!</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- Swap Modal -->
     <div class="modal fade" id="swapModal" tabindex="-1" role="dialog" aria-labelledby="swapModalLabel" aria-hidden="true">
@@ -629,10 +700,86 @@
                 }
             });
             
-            // Check all images and replace broken ones with placeholders
-            document.querySelectorAll('.card-slideshow img').forEach(img => {
-                img.addEventListener('error', function() {
-                    this.src = 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60';
+            // Initialize card slideshows
+            document.querySelectorAll('.card-slideshow').forEach(function(slideshow) {
+                const images = slideshow.querySelectorAll('img');
+                let currentIndex = 0;
+                
+                // Create slideshow controls
+                const controls = document.createElement('div');
+                controls.className = 'slideshow-controls';
+                
+                // Add dots for each image
+                images.forEach((img, i) => {
+                    const dot = document.createElement('span');
+                    dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+                    dot.addEventListener('click', () => {
+                        goToSlide(i);
+                    });
+                    controls.appendChild(dot);
+                });
+                
+                // Add navigation arrows
+                const prevArrow = document.createElement('div');
+                prevArrow.className = 'slideshow-arrow prev';
+                prevArrow.innerHTML = '<i class="fa fa-angle-left"></i>';
+                prevArrow.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    prevSlide();
+                });
+                
+                const nextArrow = document.createElement('div');
+                nextArrow.className = 'slideshow-arrow next';
+                nextArrow.innerHTML = '<i class="fa fa-angle-right"></i>';
+                nextArrow.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    nextSlide();
+                });
+                
+                slideshow.appendChild(controls);
+                slideshow.appendChild(prevArrow);
+                slideshow.appendChild(nextArrow);
+                
+                function goToSlide(index) {
+                    images.forEach(img => img.classList.remove('active'));
+                    const dots = controls.querySelectorAll('.slideshow-dot');
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    
+                    images[index].classList.add('active');
+                    dots[index].classList.add('active');
+                    currentIndex = index;
+                }
+                
+                function nextSlide() {
+                    let nextIndex = currentIndex + 1;
+                    if (nextIndex >= images.length) nextIndex = 0;
+                    goToSlide(nextIndex);
+                }
+                
+                function prevSlide() {
+                    let prevIndex = currentIndex - 1;
+                    if (prevIndex < 0) prevIndex = images.length - 1;
+                    goToSlide(prevIndex);
+                }
+                
+                // Auto-rotate slides every 5 seconds
+                let slideInterval = setInterval(nextSlide, 5000);
+                
+                // Pause auto-rotation when hovering
+                slideshow.addEventListener('mouseenter', () => {
+                    clearInterval(slideInterval);
+                });
+                
+                // Resume auto-rotation when mouse leaves
+                slideshow.addEventListener('mouseleave', () => {
+                    slideInterval = setInterval(nextSlide, 5000);
+                });
+                
+                // Check all images and handle broken ones
+                images.forEach((img) => {
+                    if (!img.complete || img.naturalHeight === 0) {
+                        img.src = 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60';
+                    }
                 });
             });
         });
