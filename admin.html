@@ -1,0 +1,1118 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin Dashboard - JE TechHub</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/JE Techhub logo - Copy.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Icofont CSS -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        /* Admin Dashboard Styles */
+        .admin-sidebar {
+            background: linear-gradient(to bottom, #1A76D1, #243949);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px 0;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .admin-sidebar .logo {
+            padding: 10px 20px 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .admin-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .admin-nav li {
+            padding: 0;
+        }
+        
+        .admin-nav li a {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .admin-nav li a i {
+            margin-right: 10px;
+            font-size: 18px;
+            min-width: 25px;
+        }
+        
+        .admin-nav li a:hover, .admin-nav li.active a {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border-left: 3px solid #FF7B00;
+        }
+        
+        .admin-content {
+            padding: 20px;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .admin-title h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+            color: #333;
+        }
+        
+        .admin-user {
+            display: flex;
+            align-items: center;
+        }
+        
+        .admin-user .user-info {
+            margin-right: 15px;
+            text-align: right;
+        }
+        
+        .admin-user .user-info p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .admin-user .user-info h4 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .admin-user .user-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #eee;
+        }
+        
+        .admin-user .user-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .dashboard-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card {
+            display: flex;
+            align-items: center;
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+        }
+        
+        .icon-users { background: linear-gradient(135deg, #1A76D1, #4A96F1); }
+        .icon-gadgets { background: linear-gradient(135deg, #FF7B00, #FF9A40); }
+        .icon-sales { background: linear-gradient(135deg, #28a745, #5dd879); }
+        .icon-courses { background: linear-gradient(135deg, #6f42c1, #9c74e4); }
+        
+        .stat-info h3 {
+            font-size: 28px;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .stat-info p {
+            margin: 5px 0 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table thead th {
+            background: #f5f7fa;
+            padding: 15px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+            text-align: left;
+        }
+        
+        .data-table tbody td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .action-buttons .btn {
+            padding: 5px 10px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #eee;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .user-name {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .add-form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .form-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .btn-add {
+            background: linear-gradient(135deg, #1A76D1, #4A96F1);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .btn-add:hover {
+            background: linear-gradient(135deg, #1667b8, #3b87e2);
+        }
+        
+        /* Loading spinner */
+        .loader-wrapper {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader {
+            width: 70px;
+            height: 70px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #1A76D1;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        /* Status badges */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-active {
+            background-color: #e3fcef;
+            color: #28a745;
+        }
+        
+        .status-pending {
+            background-color: #fff8e1;
+            color: #ffa000;
+        }
+        
+        .status-inactive {
+            background-color: #ffebee;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-2 col-md-3 p-0">
+                <div class="admin-sidebar">
+                    <div class="logo">
+                        <a href="index.html"><img src="images/JE Techhub logo.png" alt="JE TechHub logo" class="img-fluid"></a>
+                    </div>
+                    <ul class="admin-nav">
+                        <li class="active"><a href="#" onclick="showTab('dashboard')"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                        <li><a href="#" onclick="showTab('users')"><i class="fa fa-users"></i> Users</a></li>
+                        <li><a href="#" onclick="showTab('gadgets')"><i class="fa fa-laptop"></i> Gadgets</a></li>
+                        <li><a href="#" onclick="showTab('courses')"><i class="fa fa-book"></i> Courses</a></li>
+                        <li><a href="#" onclick="showTab('orders')"><i class="fa fa-shopping-cart"></i> Orders</a></li>
+                        <li><a href="#" onclick="showTab('site')"><i class="fa fa-cog"></i> Site Settings</a></li>
+                        <li><a href="#" onclick="logout()"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-lg-10 col-md-9">
+                <div class="admin-content">
+                    <!-- Header -->
+                    <div class="admin-header">
+                        <div class="admin-title">
+                            <h1>Admin Dashboard</h1>
+                        </div>
+                        <div class="admin-user">
+                            <div class="user-info">
+                                <h4 id="adminName">Admin User</h4>
+                                <p>Administrator</p>
+                            </div>
+                            <div class="user-image">
+                                <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=100&auto=format&fit=crop&q=60" alt="Admin user">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Dashboard Tab -->
+                    <div class="tab-content active" id="dashboard-content">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="dashboard-card stat-card">
+                                    <div class="stat-icon icon-users">
+                                        <i class="fa fa-users fa-2x"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h3>24</h3>
+                                        <p>Total Users</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="dashboard-card stat-card">
+                                    <div class="stat-icon icon-gadgets">
+                                        <i class="fa fa-laptop fa-2x"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h3>18</h3>
+                                        <p>Total Gadgets</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="dashboard-card stat-card">
+                                    <div class="stat-icon icon-sales">
+                                        <i class="fa fa-money fa-2x"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h3>$5,280</h3>
+                                        <p>Total Sales</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="dashboard-card stat-card">
+                                    <div class="stat-icon icon-courses">
+                                        <i class="fa fa-book fa-2x"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h3>5</h3>
+                                        <p>Active Courses</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="dashboard-card">
+                                    <h4>Recent Users</h4>
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>User</th>
+                                                <th>Course</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="user-avatar">
+                                                        <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&auto=format&fit=crop&q=60" alt="User Avatar">
+                                                    </div>
+                                                    <span class="user-name">John Doe</span>
+                                                </td>
+                                                <td>Software Development</td>
+                                                <td>May 3, 2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="user-avatar">
+                                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="User Avatar">
+                                                    </div>
+                                                    <span class="user-name">Sarah Johnson</span>
+                                                </td>
+                                                <td>Data Analysis</td>
+                                                <td>May 2, 2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="user-avatar">
+                                                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=60" alt="User Avatar">
+                                                    </div>
+                                                    <span class="user-name">Michael Brown</span>
+                                                </td>
+                                                <td>UI/UX Design</td>
+                                                <td>May 1, 2024</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="dashboard-card">
+                                    <h4>Recent Orders</h4>
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Item</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#ORD-2024-001</td>
+                                                <td>Premium Smartphone X1</td>
+                                                <td>$499</td>
+                                                <td><span class="status-badge status-active">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-2024-002</td>
+                                                <td>Developer Pro Laptop</td>
+                                                <td>$1,299</td>
+                                                <td><span class="status-badge status-pending">Processing</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#ORD-2024-003</td>
+                                                <td>Ultra-Slim Tablet</td>
+                                                <td>$349</td>
+                                                <td><span class="status-badge status-active">Completed</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Users Tab -->
+                    <div class="tab-content" id="users-content">
+                        <button id="showUserForm" class="btn-add"><i class="fa fa-plus"></i> Add New User</button>
+                        
+                        <div class="add-form" id="addUserForm">
+                            <div class="form-title">Add New User</div>
+                            <form id="userForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <input type="text" class="form-control" id="firstName" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name</label>
+                                            <input type="text" class="form-control" id="lastName" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" id="password" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="course">Course</label>
+                                            <select class="form-control" id="course" required>
+                                                <option value="">Select Course</option>
+                                                <option value="Software Development">Software Development</option>
+                                                <option value="Data Analysis">Data Analysis</option>
+                                                <option value="UI/UX Design">UI/UX Design</option>
+                                                <option value="Forex Trading">Forex Trading</option>
+                                                <option value="Graphics Design & Video Editing">Graphics Design & Video Editing</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Save User</button>
+                                    <button type="button" class="btn btn-secondary" id="cancelUserForm">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <h4>All Users</h4>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Email</th>
+                                        <th>Course</th>
+                                        <th>Registration Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTableBody">
+                                    <tr>
+                                        <td>
+                                            <div class="user-avatar">
+                                                <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&auto=format&fit=crop&q=60" alt="User Avatar">
+                                            </div>
+                                            <span class="user-name">John Doe</span>
+                                        </td>
+                                        <td>john.doe@example.com</td>
+                                        <td>Software Development</td>
+                                        <td>May 1, 2024</td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-avatar">
+                                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="User Avatar">
+                                            </div>
+                                            <span class="user-name">Sarah Johnson</span>
+                                        </td>
+                                        <td>sarah.j@example.com</td>
+                                        <td>Data Analysis</td>
+                                        <td>April 28, 2024</td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-avatar">
+                                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=60" alt="User Avatar">
+                                            </div>
+                                            <span class="user-name">Michael Brown</span>
+                                        </td>
+                                        <td>m.brown@example.com</td>
+                                        <td>UI/UX Design</td>
+                                        <td>April 25, 2024</td>
+                                        <td><span class="status-badge status-inactive">Inactive</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Gadgets Tab -->
+                    <div class="tab-content" id="gadgets-content">
+                        <button id="showGadgetForm" class="btn-add"><i class="fa fa-plus"></i> Add New Gadget</button>
+                        
+                        <div class="add-form" id="addGadgetForm">
+                            <div class="form-title">Add New Gadget</div>
+                            <form id="gadgetForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="gadgetName">Gadget Name</label>
+                                            <input type="text" class="form-control" id="gadgetName" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="gadgetCategory">Category</label>
+                                            <select class="form-control" id="gadgetCategory" required>
+                                                <option value="">Select Category</option>
+                                                <option value="phone">Smartphone</option>
+                                                <option value="laptop">Laptop</option>
+                                                <option value="tablet">Tablet</option>
+                                                <option value="accessory">Accessory</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="gadgetPrice">Price ($)</label>
+                                            <input type="number" class="form-control" id="gadgetPrice" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="gadgetStock">Stock</label>
+                                            <input type="number" class="form-control" id="gadgetStock" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gadgetDescription">Description</label>
+                                    <textarea class="form-control" id="gadgetDescription" rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gadgetImage">Image URL</label>
+                                    <input type="url" class="form-control" id="gadgetImage">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Save Gadget</button>
+                                    <button type="button" class="btn btn-secondary" id="cancelGadgetForm">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <h4>All Gadgets</h4>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Stock</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="gadgetsTableBody">
+                                    <tr>
+                                        <td>
+                                            <div class="user-avatar">
+                                                <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=100&auto=format&fit=crop&q=60" alt="Gadget Image">
+                                            </div>
+                                        </td>
+                                        <td>Premium Smartphone X1</td>
+                                        <td>Smartphone</td>
+                                        <td>$499</td>
+                                        <td>15</td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-avatar">
+                                                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=100&auto=format&fit=crop&q=60" alt="Gadget Image">
+                                            </div>
+                                        </td>
+                                        <td>Developer Pro Laptop</td>
+                                        <td>Laptop</td>
+                                        <td>$1,299</td>
+                                        <td>8</td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-avatar">
+                                                <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=100&auto=format&fit=crop&q=60" alt="Gadget Image">
+                                            </div>
+                                        </td>
+                                        <td>Ultra-Slim Tablet</td>
+                                        <td>Tablet</td>
+                                        <td>$349</td>
+                                        <td>12</td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Courses Tab -->
+                    <div class="tab-content" id="courses-content">
+                        <button id="showCourseForm" class="btn-add"><i class="fa fa-plus"></i> Add New Course</button>
+                        
+                        <div class="add-form" id="addCourseForm">
+                            <div class="form-title">Add New Course</div>
+                            <form id="courseForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="courseTitle">Course Title</label>
+                                            <input type="text" class="form-control" id="courseTitle" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="courseModules">Total Modules</label>
+                                            <input type="number" class="form-control" id="courseModules" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="courseDescription">Description</label>
+                                    <textarea class="form-control" id="courseDescription" rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="courseImage">Image URL</label>
+                                    <input type="url" class="form-control" id="courseImage">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Save Course</button>
+                                    <button type="button" class="btn btn-secondary" id="cancelCourseForm">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <h4>All Courses</h4>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Course</th>
+                                        <th>Modules</th>
+                                        <th>Students</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Software Development</td>
+                                        <td>12 modules</td>
+                                        <td>8 students</td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Data Analysis</td>
+                                        <td>10 modules</td>
+                                        <td>6 students</td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>UI/UX Design</td>
+                                        <td>8 modules</td>
+                                        <td>5 students</td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Forex Trading</td>
+                                        <td>9 modules</td>
+                                        <td>3 students</td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Graphics Design & Video Editing</td>
+                                        <td>11 modules</td>
+                                        <td>2 students</td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Orders Tab -->
+                    <div class="tab-content" id="orders-content">
+                        <div class="dashboard-card">
+                            <h4>All Orders</h4>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Customer</th>
+                                        <th>Item</th>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#ORD-2024-001</td>
+                                        <td>John Doe</td>
+                                        <td>Premium Smartphone X1</td>
+                                        <td>May 3, 2024</td>
+                                        <td>$499</td>
+                                        <td><span class="status-badge status-active">Completed</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#ORD-2024-002</td>
+                                        <td>Sarah Johnson</td>
+                                        <td>Developer Pro Laptop</td>
+                                        <td>May 2, 2024</td>
+                                        <td>$1,299</td>
+                                        <td><span class="status-badge status-pending">Processing</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#ORD-2024-003</td>
+                                        <td>Michael Brown</td>
+                                        <td>Ultra-Slim Tablet</td>
+                                        <td>May 1, 2024</td>
+                                        <td>$349</td>
+                                        <td><span class="status-badge status-active">Completed</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#ORD-2024-004</td>
+                                        <td>Emily Davis</td>
+                                        <td>Premium Wireless Headphones</td>
+                                        <td>April 30, 2024</td>
+                                        <td>$89</td>
+                                        <td><span class="status-badge status-pending">Processing</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#ORD-2024-005</td>
+                                        <td>Robert Wilson</td>
+                                        <td>Budget-Friendly Smartphone</td>
+                                        <td>April 28, 2024</td>
+                                        <td>$299</td>
+                                        <td><span class="status-badge status-inactive">Cancelled</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-info"><i class="fa fa-eye"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Site Settings Tab -->
+                    <div class="tab-content" id="site-content">
+                        <div class="dashboard-card">
+                            <h4>Site Settings</h4>
+                            <form id="settingsForm">
+                                <div class="form-group">
+                                    <label for="siteName">Site Name</label>
+                                    <input type="text" class="form-control" id="siteName" value="JE TechHub">
+                                </div>
+                                <div class="form-group">
+                                    <label for="siteTagline">Site Tagline</label>
+                                    <input type="text" class="form-control" id="siteTagline" value="Your Gateway to Tech Excellence">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactEmail">Contact Email</label>
+                                    <input type="email" class="form-control" id="contactEmail" value="contact@jetechhub.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactPhone">Contact Phone</label>
+                                    <input type="text" class="form-control" id="contactPhone" value="+1 (234) 567-8900">
+                                </div>
+                                <div class="form-group">
+                                    <label for="siteDescription">Site Description</label>
+                                    <textarea class="form-control" id="siteDescription" rows="3">JE TechHub provides quality tech education and resources.</textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="facebookUrl">Facebook URL</label>
+                                            <input type="url" class="form-control" id="facebookUrl" value="https://facebook.com/jetechhub">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="twitterUrl">Twitter URL</label>
+                                            <input type="url" class="form-control" id="twitterUrl" value="https://twitter.com/jetechhub">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="instagramUrl">Instagram URL</label>
+                                            <input type="url" class="form-control" id="instagramUrl" value="https://instagram.com/jetechhub">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="linkedinUrl">LinkedIn URL</label>
+                                            <input type="url" class="form-control" id="linkedinUrl" value="https://linkedin.com/company/jetechhub">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Settings</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script>
+        // Admin dashboard functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is admin
+            checkAdminAuth();
+            
+            // Handle tab switching
+            window.showTab = function(tabId) {
+                const tabs = document.querySelectorAll('.tab-content');
+                tabs.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                const navItems = document.querySelectorAll('.admin-nav li');
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                document.getElementById(`${tabId}-content`).classList.add('active');
+                event.currentTarget.parentElement.classList.add('active');
+            };
+            
+            // Show/hide add forms
+            document.getElementById('showUserForm').addEventListener('click', function() {
+                document.getElementById('addUserForm').style.display = 'block';
+            });
+            
+            document.getElementById('cancelUserForm').addEventListener('click', function() {
+                document.getElementById('addUserForm').style.display = 'none';
+            });
+            
+            document.getElementById('showGadgetForm').addEventListener('click', function() {
+                document.getElementById('addGadgetForm').style.display = 'block';
+            });
+            
+            document.getElementById('cancelGadgetForm').addEventListener('click', function() {
+                document.getElementById('addGadgetForm').style.display = 'none';
+            });
+            
+            document.getElementById('showCourseForm').addEventListener('click', function() {
+                document.getElementById('addCourseForm').style.display = 'block';
+            });
+            
+            document.getElementById('cancelCourseForm').addEventListener('click', function() {
+                document.getElementById('addCourseForm').style.display = 'none';
+            });
+            
+            // Handle form submissions
+            document.getElementById('userForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real app, you would send this data to the server
+                alert('User added successfully!');
+                document.getElementById('addUserForm').style.display = 'none';
+                document.getElementById('userForm').reset();
+            });
+            
+            document.getElementById('gadgetForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Gadget added successfully!');
+                document.getElementById('addGadgetForm').style.display = 'none';
+                document.getElementById('gadgetForm').reset();
+            });
+            
+            document.getElementById('courseForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Course added successfully!');
+                document.getElementById('addCourseForm').style.display = 'none';
+                document.getElementById('courseForm').reset();
+            });
+            
+            document.getElementById('settingsForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Settings saved successfully!');
+            });
+            
+            // Hide loading spinner
+            const loader = document.querySelector('.loader-wrapper');
+            setTimeout(function() {
+                loader.classList.add('hidden');
+            }, 1000);
+            
+            // Display admin name from localStorage
+            displayAdminInfo();
+        });
+        
+        // Check if user is logged in and is an admin
+        function checkAdminAuth() {
+            const token = localStorage.getItem('jwtToken');
+            const user = JSON.parse(localStorage.getItem('userProfile') || '{}');
+            
+            if (!token || user.email !== 'admin@example.com') {
+                window.location.href = 'getStarted.html';
+            }
+        }
+        
+        // Display admin information from localStorage
+        function displayAdminInfo() {
+            const user = JSON.parse(localStorage.getItem('userProfile') || '{}');
+            if (user.firstName && user.lastName) {
+                document.getElementById('adminName').textContent = user.firstName + ' ' + user.lastName;
+            }
+        }
+        
+        // Logout functionality
+        function logout() {
+            localStorage.removeItem('jwtToken');
+            localStorage.removeItem('userProfile');
+            window.location.href = 'getStarted.html';
+        }
+    </script>
+</body>
+</html>
