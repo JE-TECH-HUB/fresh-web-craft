@@ -1,3 +1,4 @@
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -269,7 +270,7 @@ app.get('/api/courses', (req, res) => {
     res.json(coursesData);
 });
 
-// Helper function to get course modules count - update with more courses
+// Helper function to get course modules count
 function getCourseModules(course) {
     switch(course) {
         case 'Software Development': return 12;
