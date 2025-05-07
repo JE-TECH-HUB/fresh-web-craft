@@ -42,6 +42,8 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/responsive.css">
 
+<!-- Auth Service -->
+<script src="js/authService.js"></script>
 
 <style>
 /* container */
@@ -493,9 +495,6 @@ color: #000;
 </div>
 
 <script>
-// API base URL - Change this to your actual API URL in production
-const API_BASE_URL = 'http://localhost:5000/api';
-
 // Show the selected form and update toggle buttons
 function showForm(formId) {
     // Hide all forms
@@ -540,29 +539,28 @@ async function handleLoginSubmit(event) {
     const email = form["email"].value;
     const password = form["password"].value;
     
+    // Client-side validation
+    let isValid = true;
+    
+    if (!validateEmail(form["email"])) {
+        isValid = false;
+    }
+    
+    if (!form["password"].value) {
+        document.getElementById("loginPasswordError").textContent = "Password is required";
+        form["password"].classList.add('input-error');
+        isValid = false;
+    }
+    
+    if (!isValid) {
+        return false;
+    }
+    
     try {
         document.querySelector('.loader-wrapper').classList.remove('hidden');
         
-        const response = await fetch(`${API_BASE_URL}/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                password
-            })
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-            throw new Error(data.message || 'Login failed');
-        }
-        
-        // Save token and user data
-        localStorage.setItem('jwtToken', data.token);
-        localStorage.setItem('userProfile', JSON.stringify(data.user));
+        // Use auth service instead of direct fetch
+        await authService.login({ email, password });
         
         // Show success message
         document.querySelector('.form-success').style.display = 'block';
@@ -596,29 +594,15 @@ async function handleRegisterSubmit(event) {
             lastName: form["lastName"].value,
             email: form["email"].value,
             password: form["password"].value,
-            course: form["course"].value
+            course: form["course"].value,
+            phone: form["phone"].value || ''
         };
         
         try {
             document.querySelector('.loader-wrapper').classList.remove('hidden');
             
-            const response = await fetch(`${API_BASE_URL}/register`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-            
-            const data = await response.json();
-            
-            if (!response.ok) {
-                throw new Error(data.message || 'Registration failed');
-            }
-            
-            // Save token and user data
-            localStorage.setItem('jwtToken', data.token);
-            localStorage.setItem('userProfile', JSON.stringify(data.user));
+            // Use auth service instead of direct fetch
+            await authService.register(formData);
             
             // Show success message
             document.querySelector('.form-success').style.display = 'block';
@@ -678,6 +662,9 @@ function validateField(field, errorId, message) {
         field.classList.add('input-error');
         return false;
     }
+    
+    // Remove error class if field is valid
+    field.classList.remove('input-error');
     return true;
 }
 
@@ -688,6 +675,9 @@ function validateEmail(emailField) {
         emailField.classList.add('input-error');
         return false;
     }
+    
+    // Remove error class if field is valid
+    emailField.classList.remove('input-error');
     return true;
 }
 
@@ -698,6 +688,9 @@ function validatePassword(passwordField) {
         passwordField.classList.add('input-error');
         return false;
     }
+    
+    // Remove error class if field is valid
+    passwordField.classList.remove('input-error');
     return true;
 }
 
@@ -734,8 +727,7 @@ function goToAnotherPage() {
 
 // Check if user is already logged in
 function checkAuth() {
-    const token = localStorage.getItem('jwtToken');
-    if (token) {
+    if (authService.isAuthenticated()) {
         window.location.href = 'dashboard.html';
     }
 }

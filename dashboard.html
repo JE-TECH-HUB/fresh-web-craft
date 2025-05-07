@@ -1,409 +1,323 @@
 
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dashboard - JE Tech Hub</title>
+<!-- Meta Tags -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Title -->
+<title>Dashboard - JOEeXPRESS</title>
+
+<!-- Favicon -->
+<link rel="icon" href="images/JE Techhub logo - Copy.png">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<!-- icofont CSS -->
+<link rel="stylesheet" href="css/icofont.css">
+
+<!-- Auth Service -->
+<script src="js/authService.js"></script>
+
+<style>
+    /* Dashboard styles */
+    .dashboard-container {
+        padding: 30px;
+    }
     
-    <!-- Include all the existing CSS files -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/icofont.css">
-    <link rel="stylesheet" href="css/slicknav.min.css">
-    <link rel="stylesheet" href="css/owl-carousel.css">
-    <link rel="stylesheet" href="css/datepicker.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    .welcome-card {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
     
-    <style>
-        .dashboard-container {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .welcome-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .course-progress {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 1rem;
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: #f0f0f0;
-            border-radius: 5px;
-            margin: 1rem 0;
-        }
-        
-        .progress-bar-fill {
-            height: 100%;
-            background: darkblue;
-            border-radius: 5px;
-            transition: width 0.3s ease;
-        }
-        
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .stat-card {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .stat-card h3 {
-            color: darkblue;
-            margin-bottom: 0.5rem;
-        }
-        
-        .logout-btn {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            float: right;
-        }
-        
-        .logout-btn:hover {
-            background: #c82333;
-        }
+    .profile-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .course-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .progress-bar {
+        height: 20px;
+        border-radius: 10px;
+        margin-top: 10px;
+        background-color: #e9ecef;
+    }
+    
+    .progress-bar-fill {
+        height: 100%;
+        border-radius: 10px;
+        background-color: #007bff;
+        text-align: center;
+        color: white;
+        line-height: 20px;
+        font-size: 12px;
+    }
+    
+    .loader-wrapper {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
 
-        @media (max-width: 768px) {
-            .dashboard-container {
-                padding: 1rem;
-            }
-            
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Enhanced loader styles */
-        .loader-wrapper {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            top: 0;
-            left: 0;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
+    .loader {
+        width: 70px;
+        height: 70px;
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #1A76D1;
+        border-radius: 50%;
+        animation: spin 1.5s linear infinite;
+    }
 
-        .loader {
-            width: 70px;
-            height: 70px;
-            border: 6px solid #f3f3f3;
-            border-top: 6px solid darkblue;
-            border-radius: 50%;
-            animation: spin 1.5s linear infinite;
-        }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        /* API error message */
-        .api-error {
-            background: #dc3545;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: none;
-        }
-    </style>
+    .hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+</style>
 </head>
 <body>
-    <!-- Loading Spinner -->
-    <div class="loader-wrapper">
-        <div class="loader"></div>
-    </div>
 
-    <!-- Header -->
-    <header class="header">
-        <!-- Header Inner -->
-        <div class="header-inner">
-            <div class="container">
-                <div class="inner">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-12">
-                            <!-- Start Logo -->
-                            <div class="logo">
-                                <a href="index.html"><img src="images/JE Techhub logo.png"></a>
-                            </div>
-                            <!-- End Logo -->
-                            <!-- Mobile Nav -->
-                            <div class="mobile-nav"></div>
-                            <!-- End Mobile Nav -->
-                        </div>
-                        <div class="col-lg-7 col-md-9 col-12">
-                            <!-- Main Menu -->
-                            <div class="main-menu">
-                                <nav class="navigation">
-                                    <ul class="nav menu">
-                                        <li><a href="index.html" class="scroll">Home</a></li>
-                                        <li><a href="about.html" class="scroll">About Us</a></li>
-                                        <li><a href="programs.html" class="scroll">Programs</a></li>
-                                        <li><a href="contact.html" class="scroll">Contact Us</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!--/ End Main Menu -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ End Header Inner -->
-    </header>
+<!-- Header Area -->
+<header class="header">
+<div class="header-inner bg-dark text-white">
+<div class="container">
+<div class="inner">
+<div class="row">
+<div class="col-lg-3 col-md-3 col-12">
+<!-- Start Logo -->
+<div class="logo">
+<a href="index.html"><img src="images/JE Techhub logo.png" alt="Logo"></a>
+</div>
+<!-- End Logo -->
+<!-- Mobile Nav -->
+<div class="mobile-nav"></div>
+<!-- End Mobile Nav -->
+</div>
+<div class="col-lg-7 col-md-9 col-12">
+<!-- Main Menu -->
+<div class="main-menu">
+<nav class="navigation">
+<ul class="nav menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#about">About Us</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+</nav>
+</div>
+<!--/ End Main Menu -->
+</div>
+<div class="col-lg-2 col-12">
+<div class="get-quote">
+<a href="#" class="btn" id="logoutButton">Logout</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- End Header Area -->
 
-    <main class="dashboard-container">
+<!-- Loading Spinner -->
+<div class="loader-wrapper">
+    <div class="loader"></div>
+</div>
+
+<!-- Dashboard Content -->
+<section class="dashboard-container">
+    <div class="container">
         <div class="welcome-card">
-            <button class="logout-btn" onclick="handleLogout()">Logout</button>
-            <h1>Welcome, <span id="userName">Student</span>!</h1>
-            <p>Your learning journey begins here.</p>
-            <div class="api-error" id="dashboardApiError"></div>
+            <h2>Welcome, <span id="userFullName">Student</span>!</h2>
+            <p>This is your personal dashboard where you can track your progress and manage your profile.</p>
         </div>
-
-        <div class="dashboard-grid">
-            <div class="stat-card">
-                <h3>Your Course</h3>
-                <p id="userCourse">Loading...</p>
-            </div>
-            
-            <div class="stat-card">
-                <h3>Progress</h3>
-                <div class="progress-bar">
-                    <div class="progress-bar-fill" style="width: 0%"></div>
-                </div>
-                <p id="progressText">0% Complete</p>
-            </div>
-            
-            <div class="stat-card">
-                <h3>Next Class</h3>
-                <p>Scheduled for: TBA</p>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer id="footer" class="footer ">
-        <!-- Footer Top -->
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-footer">
-                            <!-- Social -->
-                            <ul class="social">
-                                <li><a href="https://www.instagram.com/joe.express1?igsh=NXZjcnFoZWI1bWI0&utm_source=qr"><i class="icofont-instagram"></i></a></li>
-                                <li><a href="#"><i class="icofont-google-plus"></i></a></li>
-                                <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                <li><a href="#"><i class="icofont-vimeo"></i></a></li>
-                                <li><a href="#"><i class="icofont-pinterest"></i></a></li>
-                            </ul>
-                            <!-- End Social -->
-                        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="profile-card">
+                    <h3>Profile Information</h3>
+                    <hr>
+                    <div id="profileInfo">
+                        <p><strong>First Name:</strong> <span id="userFirstName"></span></p>
+                        <p><strong>Last Name:</strong> <span id="userLastName"></span></p>
+                        <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                        <p><strong>Enrolled Course:</strong> <span id="userCourse"></span></p>
+                        <p><strong>Registered On:</strong> <span id="userRegistrationDate"></span></p>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-footer f-link">
-                            <h2>Quick Links</h2>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <ul>
-                                        <li><a href="index.html"><i class="fa fa-caret-right"
-                                            aria-hidden="true"></i>Home</a>
-                                        </li>
-                                        <li><a href="about.html"><i class="fa fa-caret-right"
-                                            aria-hidden="true"></i>About
-                                            Us</a></li>
-                                        <li><a href="Programs.html"><i class="fa fa-caret-right"
-                                            aria-hidden="true"></i>Services</a>
-                                        </li>
-                                        <li><a href="contact.html"><i class="fa fa-caret-right"
-                                            aria-hidden="true"></i>Contact
-                                            Us</a></li>
-                                    </ul>
-                                </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-8 col-md-6">
+                <div class="course-card">
+                    <h3>Course Progress</h3>
+                    <hr>
+                    <div id="courseProgress">
+                        <p>Loading course progress...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Area -->
+<footer class="footer">
+<div class="copyright bg-dark text-white">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<div class="copyright-content text-center">
+<p>&copy; 2024 JOEeXPRESS TechHub | All Rights Reserved</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+// Function to format dates in a more readable format
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
+// Function to format course display name
+function formatCourseName(courseCode) {
+    switch(courseCode) {
+        case 'softwareDev': return 'Software Development';
+        case 'dataAnalysis': return 'Data Analysis';
+        case 'videoGraphics': return 'Video Editing & Graphics Design';
+        case 'forex': return 'Forex Trading';
+        case 'gadgets': return 'Gadgets/Sales and Repairs';
+        case 'member': return 'Member';
+        default: return courseCode;
+    }
+}
+
+// Handle logout
+document.getElementById('logoutButton').addEventListener('click', function(e) {
+    e.preventDefault();
+    authService.logout();
+    window.location.href = 'index.html';
+});
+
+// Load user profile data
+async function loadUserProfile() {
+    try {
+        document.querySelector('.loader-wrapper').classList.remove('hidden');
+        
+        // Try to get profile from local storage first
+        let userProfile = authService.getUserProfile();
+        
+        // If token exists but no profile, fetch it from the server
+        if (authService.getToken() && !userProfile) {
+            userProfile = await authService.getProfile();
+        }
+        
+        // Redirect to login if no valid auth session
+        if (!userProfile) {
+            window.location.href = 'getStarted.html';
+            return;
+        }
+        
+        // Update profile information
+        document.getElementById('userFullName').textContent = userProfile.firstName + ' ' + userProfile.lastName;
+        document.getElementById('userFirstName').textContent = userProfile.firstName;
+        document.getElementById('userLastName').textContent = userProfile.lastName;
+        document.getElementById('userEmail').textContent = userProfile.email;
+        document.getElementById('userCourse').textContent = formatCourseName(userProfile.course);
+        document.getElementById('userRegistrationDate').textContent = formatDate(userProfile.registrationDate);
+        
+        // Update course progress
+        const progressContainer = document.getElementById('courseProgress');
+        
+        if (userProfile.progress && userProfile.progress.length > 0) {
+            let progressHTML = '';
+            
+            userProfile.progress.forEach(progress => {
+                const percentComplete = (progress.completed / progress.totalModules) * 100;
+                
+                progressHTML += `
+                    <div class="mb-4">
+                        <h5>${formatCourseName(progress.course)}</h5>
+                        <p>${progress.completed} of ${progress.totalModules} modules completed</p>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: ${percentComplete}%">
+                                ${percentComplete.toFixed(0)}%
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-footer">
-                            <h2>Open Hours</h2>
-
-                            <ul class="time-sidual">
-                                <li class="day">Mondays - Fridays <span>8.00-20.00</span></li>
-                                <li class="day">Saturdays <span>9.00-18.30</span></li>
-                            </li>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ End Footer Top -->
-        <!-- Copyright -->
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12">
-                        <div class="copyright-content">
-                            <p>© Copyright 2018 | All Rights Reserved  </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ End Copyright -->
-    </footer>
-
-    <!-- Scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.0.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/easing.js"></script>
-    <script src="js/colors.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/jquery.nav.js"></script>
-    <script src="js/slicknav.min.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/niceselect.js"></script>
-    <script src="js/tilt.jquery.min.js"></script>
-    <script src="js/owl-carousel.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/steller.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-
-    <script>
-    // API base URL - Change this to your actual API URL in production
-    const API_BASE_URL = 'http://localhost:5000/api';
-    
-    // Check authentication
-    document.addEventListener('DOMContentLoaded', async function() {
-        try {
-            // Show loader
-            document.querySelector('.loader-wrapper').classList.remove('hidden');
-            
-            // Get token from storage
-            const token = localStorage.getItem('jwtToken');
-            
-            // If no token, redirect to login
-            if (!token) {
-                window.location.href = 'getStarted.html';
-                return;
-            }
-            
-            // Fetch user profile from API
-            const response = await fetch(`${API_BASE_URL}/profile`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
+                `;
             });
             
-            // If unauthorized, clear storage and redirect
-            if (response.status === 401 || response.status === 403) {
-                localStorage.removeItem('jwtToken');
-                localStorage.removeItem('userProfile');
-                window.location.href = 'getStarted.html';
-                return;
-            }
-            
-            // Parse response data
-            const userProfile = await response.json();
-            
-            // Update UI with user data
-            document.getElementById('userName').textContent = userProfile.firstName;
-            document.getElementById('userCourse').textContent = formatCourseName(userProfile.course);
-            
-            // Simulate progress (in a real app, this would come from the backend)
-            setTimeout(() => {
-                document.querySelector('.progress-bar-fill').style.width = '25%';
-                document.getElementById('progressText').textContent = '25% Complete';
-            }, 500);
-            
-        } catch (error) {
-            console.error('Dashboard error:', error);
-            
-            // Show error message
-            const apiError = document.getElementById('dashboardApiError');
-            apiError.textContent = 'There was a problem loading your profile. Please try again later.';
-            apiError.style.display = 'block';
-            
-            // Fallback to localStorage if API fails
-            const fallbackProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
-            if (fallbackProfile.firstName) {
-                document.getElementById('userName').textContent = fallbackProfile.firstName;
-                document.getElementById('userCourse').textContent = formatCourseName(fallbackProfile.course);
-            }
-        } finally {
-            // Hide loader
-            setTimeout(() => {
-                document.querySelector('.loader-wrapper').classList.add('hidden');
-            }, 1000);
+            progressContainer.innerHTML = progressHTML;
+        } else {
+            progressContainer.innerHTML = '<p>No course progress available.</p>';
         }
-    });
+    } catch (error) {
+        console.error('Error loading profile:', error);
+        if (error.message.includes('token') || error.message.includes('login')) {
+            // Redirect to login page if authentication issue
+            window.location.href = 'getStarted.html';
+        }
+    } finally {
+        document.querySelector('.loader-wrapper').classList.add('hidden');
+    }
+}
 
-    function handleLogout() {
-        // Clear stored credentials
-        localStorage.removeItem('jwtToken');
-        localStorage.removeItem('userProfile');
-        
-        // Redirect to home
-        window.location.href = 'index.html';
+// Check authentication on page load
+window.addEventListener('load', function() {
+    if (!authService.isAuthenticated()) {
+        window.location.href = 'getStarted.html';
+        return;
     }
     
-    // Format course name for display
-    function formatCourseName(courseId) {
-        const courses = {
-            'dataAnalysis': 'Data Analysis',
-            'softwareDev': 'Software Development',
-            'videoGraphics': 'Video Editing & Graphics Design',
-            'forex': 'Forex Trading',
-            'gadgets': 'Gadgets Sales & Repairs',
-            'member': 'General Membership'
-        };
-        
-        return courses[courseId] || courseId || 'Not enrolled';
-    }
-    </script>
+    loadUserProfile();
+});
+</script>
+
+<!-- jquery Min JS -->
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
