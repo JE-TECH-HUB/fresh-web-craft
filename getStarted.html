@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -745,6 +746,255 @@ window.addEventListener('load', function() {
 <!--/ End Copyright -->
 </footer>
 <!--/ End Footer Area -->
+
+<script>
+// Show the selected form and update toggle buttons
+function showForm(formId) {
+    // Hide all forms
+    document.getElementById('loginForm').classList.remove('active-form');
+    document.getElementById('registerForm').classList.remove('active-form');
+    
+    // Show the selected form
+    document.getElementById(formId).classList.add('active-form');
+    
+    // Update toggle buttons
+    document.getElementById('loginToggle').classList.remove('active');
+    document.getElementById('registerToggle').classList.remove('active');
+    
+    if (formId === 'loginForm') {
+        document.getElementById('loginToggle').classList.add('active');
+    } else {
+        document.getElementById('registerToggle').classList.add('active');
+    }
+}
+
+// Clear all error messages
+function clearErrors(formId) {
+    if (formId === 'loginForm') {
+        document.getElementById("loginEmailError").textContent = "";
+        document.getElementById("loginPasswordError").textContent = "";
+        document.getElementById("loginApiError").style.display = "none";
+    } else {
+        document.getElementById("firstNameError").textContent = "";
+        document.getElementById("lastNameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("courseError").textContent = "";
+        document.getElementById("registerApiError").style.display = "none";
+    }
+}
+
+// Handle login form submission
+async function handleLoginSubmit(event) {
+    event.preventDefault();
+    clearErrors('loginForm');
+    const form = document.forms["loginForm"];
+    
+    const email = form["email"].value;
+    const password = form["password"].value;
+    
+    // Client-side validation
+    let isValid = true;
+    
+    if (!validateEmail(form["email"])) {
+        isValid = false;
+    }
+    
+    if (!form["password"].value) {
+        document.getElementById("loginPasswordError").textContent = "Password is required";
+        form["password"].classList.add('input-error');
+        isValid = false;
+    }
+    
+    if (!isValid) {
+        return false;
+    }
+    
+    try {
+        document.querySelector('.loader-wrapper').classList.remove('hidden');
+        
+        // Use auth service instead of direct fetch
+        await authService.login({ email, password });
+        
+        // Show success message
+        document.querySelector('.form-success').style.display = 'block';
+        
+        // Redirect to dashboard
+        setTimeout(() => {
+            window.location.href = 'dashboard.html';
+        }, 1500);
+    } catch (error) {
+        console.error('Login error:', error);
+        const apiError = document.getElementById('loginApiError');
+        apiError.textContent = error.message || 'An error occurred. Please try again.';
+        apiError.style.display = 'block';
+    } finally {
+        document.querySelector('.loader-wrapper').classList.add('hidden');
+    }
+    
+    return false;
+}
+
+// Handle registration form submission
+async function handleRegisterSubmit(event) {
+    event.preventDefault();
+    clearErrors('registerForm');
+    
+    if (validateForm()) {
+        const form = document.forms["registerForm"];
+        
+        const formData = {
+            firstName: form["firstName"].value,
+            lastName: form["lastName"].value,
+            email: form["email"].value,
+            password: form["password"].value,
+            course: form["course"].value,
+            phone: form["phone"].value || ''
+        };
+        
+        try {
+            document.querySelector('.loader-wrapper').classList.remove('hidden');
+            
+            // Use auth service instead of direct fetch
+            await authService.register(formData);
+            
+            // Show success message
+            document.querySelector('.form-success').style.display = 'block';
+            
+            // Redirect to dashboard
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1500);
+        } catch (error) {
+            console.error('Registration error:', error);
+            const apiError = document.getElementById('registerApiError');
+            apiError.textContent = error.message || 'An error occurred. Please try again.';
+            apiError.style.display = 'block';
+        } finally {
+            document.querySelector('.loader-wrapper').classList.add('hidden');
+        }
+    }
+    
+    return false;
+}
+
+function validateForm() {
+    let isValid = true;
+    const form = document.forms["registerForm"];
+    
+    // Validate first name
+    if (!validateField(form["firstName"], "firstNameError", "Please enter a valid first name")) {
+        isValid = false;
+    }
+    
+    // Validate last name
+    if (!validateField(form["lastName"], "lastNameError", "Please enter a valid last name")) {
+        isValid = false;
+    }
+    
+    // Validate email
+    if (!validateEmail(form["email"])) {
+        isValid = false;
+    }
+    
+    // Validate password
+    if (!validatePassword(form["password"])) {
+        isValid = false;
+    }
+    
+    // Validate course selection
+    if (!validateField(form["course"], "courseError", "Please select a course")) {
+        isValid = false;
+    }
+    
+    return isValid;
+}
+
+function validateField(field, errorId, message) {
+    if (!field.value.trim()) {
+        document.getElementById(errorId).textContent = message;
+        field.classList.add('input-error');
+        return false;
+    }
+    
+    // Remove error class if field is valid
+    field.classList.remove('input-error');
+    return true;
+}
+
+function validateEmail(emailField) {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$/;
+    if (!emailPattern.test(emailField.value)) {
+        document.getElementById("emailError").textContent = "Please enter a valid email address";
+        emailField.classList.add('input-error');
+        return false;
+    }
+    
+    // Remove error class if field is valid
+    emailField.classList.remove('input-error');
+    return true;
+}
+
+function validatePassword(passwordField) {
+    if (passwordField.value.length < 8) {
+        document.getElementById("passwordStrength").textContent = "Password must be at least 8 characters";
+        document.getElementById("passwordStrength").className = "error";
+        passwordField.classList.add('input-error');
+        return false;
+    }
+    
+    // Remove error class if field is valid
+    passwordField.classList.remove('input-error');
+    return true;
+}
+
+function checkPasswordStrength() {
+    const password = document.getElementById("passwordInput").value;
+    const strengthIndicator = document.getElementById("passwordStrength");
+    let strength = 0;
+
+    if (password.match(/[a-z]/)) strength++;
+    if (password.match(/[A-Z]/)) strength++;
+    if (password.match(/[0-9]/)) strength++;
+    if (password.length >= 8) strength++;
+
+    strengthIndicator.className = "";
+    
+    if (strength === 0) {
+        strengthIndicator.textContent = "";
+    } else if (strength <= 2) {
+        strengthIndicator.textContent = "Password Strength: Weak";
+        strengthIndicator.classList.add("weak");
+    } else if (strength === 3) {
+        strengthIndicator.textContent = "Password Strength: Medium";
+        strengthIndicator.classList.add("medium");
+    } else {
+        strengthIndicator.textContent = "Password Strength: Strong";
+        strengthIndicator.classList.add("strong");
+    }
+}
+
+function goToAnotherPage() {
+    document.getElementById("overlay").style.display = "none";
+    window.location.href = "dashboard.html";
+}
+
+// Check if user is already logged in
+function checkAuth() {
+    if (authService.isAuthenticated()) {
+        window.location.href = 'dashboard.html';
+    }
+}
+
+window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader-wrapper');
+    setTimeout(function() {
+        loader.classList.add('hidden');
+    }, 1000);
+    
+    // Check if user is already logged in
+    checkAuth();
+});
+</script>
 
 <!-- jquery Min JS -->
 <script src="js/jquery.min.js"></script>
