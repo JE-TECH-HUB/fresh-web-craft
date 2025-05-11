@@ -27,50 +27,158 @@
 <script src="js/authService.js"></script>
 
 <style>
+    :root {
+        --primary-color: #1A76D1;
+        --secondary-color: #FF8C00;
+        --success-color: #28a745;
+        --danger-color: #dc3545;
+        --dark-color: #343a40;
+        --light-color: #f8f9fa;
+        --card-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        --card-border-radius: 0.75rem;
+        --transition-speed: 0.3s;
+    }
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f5f7fa;
+    }
+    
     /* Dashboard styles */
     .dashboard-container {
-        padding: 30px;
+        padding: 30px 20px;
     }
     
     .welcome-card {
-        background: #f8f9fa;
-        border-radius: 10px;
-        padding: 20px;
+        background: linear-gradient(135deg, var(--primary-color), #3a8ee6);
+        border-radius: var(--card-border-radius);
+        padding: 30px;
         margin-bottom: 30px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--card-shadow);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .welcome-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: rotate(30deg);
     }
     
     .profile-card {
         background: white;
-        border-radius: 10px;
-        padding: 20px;
+        border-radius: var(--card-border-radius);
+        padding: 30px;
         margin-bottom: 30px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
+    }
+    
+    .profile-card:hover {
+        transform: translateY(-5px);
     }
     
     .course-card {
         background: white;
-        border-radius: 10px;
-        padding: 20px;
+        border-radius: var(--card-border-radius);
+        padding: 30px;
         margin-bottom: 30px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
+    }
+    
+    .course-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .stats-card {
+        background: white;
+        border-radius: var(--card-border-radius);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
+        text-align: center;
+    }
+    
+    .stats-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .stats-card i {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+    }
+    
+    .stats-value {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--dark-color);
+    }
+    
+    .stats-label {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+    
+    .card-title {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+        position: relative;
+    }
+    
+    .card-title::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        width: 50px;
+        background: var(--primary-color);
+    }
+    
+    .progress-container {
+        position: relative;
+        margin-bottom: 25px;
+    }
+    
+    .progress-label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
     }
     
     .progress-bar {
-        height: 20px;
-        border-radius: 10px;
+        height: 12px;
+        border-radius: 6px;
         margin-top: 10px;
         background-color: #e9ecef;
+        overflow: hidden;
     }
     
     .progress-bar-fill {
         height: 100%;
-        border-radius: 10px;
-        background-color: #007bff;
-        text-align: center;
-        color: white;
-        line-height: 20px;
-        font-size: 12px;
+        border-radius: 6px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        position: relative;
+        animation: progressAnimation 1s ease-in-out;
+        transition: width 0.6s ease;
+    }
+    
+    @keyframes progressAnimation {
+        0% {
+            width: 0;
+        }
     }
     
     .loader-wrapper {
@@ -91,7 +199,7 @@
         width: 70px;
         height: 70px;
         border: 6px solid #f3f3f3;
-        border-top: 6px solid #1A76D1;
+        border-top: 6px solid var(--primary-color);
         border-radius: 50%;
         animation: spin 1.5s linear infinite;
     }
@@ -104,6 +212,91 @@
     .hidden {
         opacity: 0;
         visibility: hidden;
+    }
+    
+    .action-btn {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color var(--transition-speed);
+        margin-top: 15px;
+    }
+    
+    .action-btn:hover {
+        background-color: #0d6efd;
+    }
+    
+    .upcoming-lessons {
+        margin-top: 15px;
+    }
+    
+    .lesson-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        background: #f8f9fa;
+        border-left: 4px solid var(--primary-color);
+        border-radius: 4px;
+    }
+    
+    .lesson-item:hover {
+        background: #e9ecef;
+    }
+    
+    .lesson-title {
+        font-weight: 500;
+    }
+    
+    .lesson-date {
+        color: #6c757d;
+    }
+    
+    .badge {
+        display: inline-block;
+        padding: 0.35em 0.65em;
+        font-size: .75em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 0.25rem;
+    }
+    
+    .badge-primary {
+        background-color: var(--primary-color);
+    }
+    
+    .badge-success {
+        background-color: var(--success-color);
+    }
+    
+    .badge-danger {
+        background-color: var(--danger-color);
+    }
+    
+    /* Responsive adjustments */
+    @media only screen and (max-width: 767px) {
+        .dashboard-container {
+            padding: 20px 10px;
+        }
+        
+        .welcome-card, .profile-card, .course-card, .stats-card {
+            padding: 20px;
+        }
+        
+        .stats-value {
+            font-size: 1.5rem;
+        }
+        
+        .stats-card i {
+            font-size: 2rem;
+        }
     }
 </style>
 </head>
@@ -160,31 +353,111 @@
 <section class="dashboard-container">
     <div class="container">
         <div class="welcome-card">
-            <h2>Welcome, <span id="userFullName">Student</span>!</h2>
-            <p>This is your personal dashboard where you can track your progress and manage your profile.</p>
+            <h2>Welcome, <span id="userFullName">Student</span>! <i class="fa fa-graduation-cap"></i></h2>
+            <p>Track your learning progress, view upcoming lessons, and manage your profile all in one place.</p>
         </div>
         
         <div class="row">
+            <!-- Stats Row -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-book"></i>
+                    <div class="stats-value" id="completedModules">0</div>
+                    <div class="stats-label">Completed Modules</div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-tasks"></i>
+                    <div class="stats-value" id="totalModules">0</div>
+                    <div class="stats-label">Total Modules</div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-clock-o"></i>
+                    <div class="stats-value">120</div>
+                    <div class="stats-label">Learning Hours</div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-certificate"></i>
+                    <div class="stats-value">1</div>
+                    <div class="stats-label">Certificate</div>
+                </div>
+            </div>
+            
+            <!-- Profile Info -->
             <div class="col-lg-4 col-md-6">
                 <div class="profile-card">
-                    <h3>Profile Information</h3>
-                    <hr>
+                    <h3 class="card-title">Profile Information</h3>
                     <div id="profileInfo">
-                        <p><strong>First Name:</strong> <span id="userFirstName"></span></p>
-                        <p><strong>Last Name:</strong> <span id="userLastName"></span></p>
-                        <p><strong>Email:</strong> <span id="userEmail"></span></p>
-                        <p><strong>Enrolled Course:</strong> <span id="userCourse"></span></p>
-                        <p><strong>Registered On:</strong> <span id="userRegistrationDate"></span></p>
+                        <p><strong><i class="fa fa-user"></i> First Name:</strong> <span id="userFirstName"></span></p>
+                        <p><strong><i class="fa fa-user"></i> Last Name:</strong> <span id="userLastName"></span></p>
+                        <p><strong><i class="fa fa-envelope"></i> Email:</strong> <span id="userEmail"></span></p>
+                        <p><strong><i class="fa fa-graduation-cap"></i> Enrolled Course:</strong> <span id="userCourse"></span></p>
+                        <p><strong><i class="fa fa-calendar"></i> Registered On:</strong> <span id="userRegistrationDate"></span></p>
+                    </div>
+                    <button class="action-btn">Edit Profile</button>
+                </div>
+            </div>
+            
+            <!-- Course Progress -->
+            <div class="col-lg-8 col-md-6">
+                <div class="course-card">
+                    <h3 class="card-title">Course Progress</h3>
+                    <div id="courseProgress">
+                        <p>Loading course progress...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Second Row -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="course-card">
+                    <h3 class="card-title">Upcoming Lessons</h3>
+                    <div class="upcoming-lessons">
+                        <div class="lesson-item">
+                            <div class="lesson-title">Introduction to React</div>
+                            <div class="lesson-date">
+                                <span class="badge badge-primary">Today</span> 10:00 AM
+                            </div>
+                        </div>
+                        <div class="lesson-item">
+                            <div class="lesson-title">Advanced JavaScript Concepts</div>
+                            <div class="lesson-date">
+                                <span class="badge badge-success">Tomorrow</span> 09:30 AM
+                            </div>
+                        </div>
+                        <div class="lesson-item">
+                            <div class="lesson-title">Database Design Principles</div>
+                            <div class="lesson-date">
+                                <span class="badge badge-danger">May 15</span> 11:00 AM
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-lg-8 col-md-6">
+            <div class="col-lg-6">
                 <div class="course-card">
-                    <h3>Course Progress</h3>
+                    <h3 class="card-title">Recent Announcements</h3>
+                    <div class="announcement">
+                        <h5>New Course Materials Available</h5>
+                        <p>We've added new resources for the Software Development track. Check them out in your learning portal.</p>
+                        <small class="text-muted">Posted 2 days ago</small>
+                    </div>
                     <hr>
-                    <div id="courseProgress">
-                        <p>Loading course progress...</p>
+                    <div class="announcement">
+                        <h5>Upcoming Workshop</h5>
+                        <p>Join us for a special workshop on UI/UX design principles this Friday at 2:00 PM.</p>
+                        <small class="text-muted">Posted 5 days ago</small>
                     </div>
                 </div>
             </div>
@@ -267,6 +540,10 @@ async function loadUserProfile() {
         document.getElementById('userCourse').textContent = formatCourseName(userProfile.course);
         document.getElementById('userRegistrationDate').textContent = formatDate(userProfile.registrationDate);
         
+        // Update stats
+        let totalModulesCompleted = 0;
+        let totalModulesCount = 0;
+
         // Update course progress
         const progressContainer = document.getElementById('courseProgress');
         
@@ -275,21 +552,27 @@ async function loadUserProfile() {
             
             userProfile.progress.forEach(progress => {
                 const percentComplete = (progress.completed / progress.totalModules) * 100;
+                totalModulesCompleted += progress.completed;
+                totalModulesCount += progress.totalModules;
                 
                 progressHTML += `
-                    <div class="mb-4">
-                        <h5>${formatCourseName(progress.course)}</h5>
-                        <p>${progress.completed} of ${progress.totalModules} modules completed</p>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>${formatCourseName(progress.course)}</span>
+                            <span>${progress.completed} of ${progress.totalModules} modules</span>
+                        </div>
                         <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: ${percentComplete}%">
-                                ${percentComplete.toFixed(0)}%
-                            </div>
+                            <div class="progress-bar-fill" style="width: ${percentComplete}%"></div>
                         </div>
                     </div>
                 `;
             });
             
             progressContainer.innerHTML = progressHTML;
+            
+            // Update stats cards
+            document.getElementById('completedModules').textContent = totalModulesCompleted;
+            document.getElementById('totalModules').textContent = totalModulesCount;
         } else {
             progressContainer.innerHTML = '<p>No course progress available.</p>';
         }
