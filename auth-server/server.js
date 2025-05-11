@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 
 const express = require('express');
@@ -7,7 +8,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { pool, setupDatabase } = require('./db');
 const auth = require('./middleware/auth');
-const validate = require('./middleware/validate');
+const { validateRegister, validateLogin } = require('./middleware/validate');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -46,7 +47,7 @@ const users = [
 ];
 
 // Register endpoint
-app.post('/api/register', validate.validateRegister, async (req, res) => {
+app.post('/api/register', validateRegister, async (req, res) => {
     try {
         const { firstName, lastName, email, password, course, phone } = req.body;
 
@@ -168,7 +169,7 @@ app.post('/api/register', validate.validateRegister, async (req, res) => {
 });
 
 // Login endpoint
-app.post('/api/login', validate.validateLogin, async (req, res) => {
+app.post('/api/login', validateLogin, async (req, res) => {
     try {
         const { email, password } = req.body;
 

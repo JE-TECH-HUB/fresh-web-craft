@@ -14,14 +14,32 @@
 <link rel="icon" href="images/JE Techhub logo - Copy.png">
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Nice Select CSS -->
+<link rel="stylesheet" href="css/nice-select.css">
 <!-- Font Awesome CSS -->
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <!-- icofont CSS -->
 <link rel="stylesheet" href="css/icofont.css">
+<!-- Slicknav -->
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="css/owl-carousel.css">
+<!-- Datepicker CSS -->
+<link rel="stylesheet" href="css/datepicker.css">
+<!-- Animate CSS -->
+<link rel="stylesheet" href="css/animate.min.css">
+<!-- Magnific Popup CSS -->
+<link rel="stylesheet" href="css/magnific-popup.css">
+
+<!-- Medipro CSS -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
 
 <!-- Auth Service -->
 <script src="js/authService.js"></script>
@@ -29,138 +47,156 @@
 <style>
     :root {
         --primary-color: #1A76D1;
-        --secondary-color: #f8f9fa;
-        --accent-color: #17a2b8;
-        --text-dark: #343a40;
-        --text-light: #6c757d;
+        --secondary-color: #FF8C00;
         --success-color: #28a745;
-        --warning-color: #ffc107;
         --danger-color: #dc3545;
-        --border-radius: 10px;
-        --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        --transition: all 0.3s ease;
+        --dark-color: #343a40;
+        --light-color: #f8f9fa;
+        --card-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        --card-border-radius: 0.75rem;
+        --transition-speed: 0.3s;
     }
     
     body {
         font-family: 'Poppins', sans-serif;
         background-color: #f5f7fa;
-        color: var(--text-dark);
     }
     
-    .header {
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    
+    /* Dashboard styles */
     .dashboard-container {
-        padding: 40px 0;
+        padding: 30px 20px;
     }
     
     .welcome-card {
-        background: linear-gradient(135deg, var(--primary-color), #2980b9);
-        border-radius: var(--border-radius);
+        background: linear-gradient(135deg, var(--primary-color), #3a8ee6);
+        border-radius: var(--card-border-radius);
         padding: 30px;
         margin-bottom: 30px;
-        box-shadow: var(--box-shadow);
+        box-shadow: var(--card-shadow);
         color: white;
         position: relative;
         overflow: hidden;
     }
     
-    .welcome-card::after {
+    .welcome-card::before {
         content: '';
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 150px;
-        height: 150px;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 200%;
         background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        transform: translate(50%, -50%);
+        transform: rotate(30deg);
     }
     
-    .welcome-card h2 {
-        font-weight: 700;
-        margin-bottom: 15px;
-    }
-    
-    .card {
+    .profile-card {
         background: white;
-        border-radius: var(--border-radius);
-        padding: 25px;
+        border-radius: var(--card-border-radius);
+        padding: 30px;
         margin-bottom: 30px;
-        box-shadow: var(--box-shadow);
-        border: none;
-        transition: var(--transition);
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
     }
     
-    .card:hover {
+    .profile-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
     
-    .card h3 {
+    .course-card {
+        background: white;
+        border-radius: var(--card-border-radius);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
+    }
+    
+    .course-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .stats-card {
+        background: white;
+        border-radius: var(--card-border-radius);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
+        text-align: center;
+    }
+    
+    .stats-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .stats-card i {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+    }
+    
+    .stats-value {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--dark-color);
+    }
+    
+    .stats-label {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+    
+    .card-title {
         color: var(--primary-color);
         font-weight: 600;
-        font-size: 1.4rem;
         margin-bottom: 20px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-    
-    .profile-info p {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
+        border-bottom: 2px solid #eee;
         padding-bottom: 10px;
-        border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+        position: relative;
     }
     
-    .profile-info p strong {
-        color: var(--text-dark);
-        font-weight: 600;
-    }
-    
-    .profile-info p span {
-        color: var(--text-light);
+    .card-title::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        width: 50px;
+        background: var(--primary-color);
     }
     
     .progress-container {
-        margin-bottom: 30px;
+        position: relative;
+        margin-bottom: 25px;
     }
     
-    .progress-container h5 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 10px;
+    .progress-label {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 5px;
     }
     
-    .progress-container h5 span {
-        font-size: 0.9rem;
-        color: var(--text-light);
-        font-weight: normal;
-    }
-    
-    .progress-bar-container {
-        height: 20px;
-        border-radius: 10px;
+    .progress-bar {
+        height: 12px;
+        border-radius: 6px;
+        margin-top: 10px;
         background-color: #e9ecef;
         overflow: hidden;
-        margin-bottom: 5px;
     }
     
     .progress-bar-fill {
         height: 100%;
-        border-radius: 10px;
-        background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 0.7rem;
-        font-weight: 600;
-        transition: width 1s ease;
+        border-radius: 6px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        position: relative;
+        animation: progressAnimation 1s ease-in-out;
+        transition: width 0.6s ease;
+    }
+    
+    @keyframes progressAnimation {
+        0% {
+            width: 0;
+        }
     }
     
     .loader-wrapper {
@@ -196,39 +232,88 @@
         visibility: hidden;
     }
     
-    .get-quote a {
+    .action-btn {
         background: var(--primary-color);
         color: white;
-        border-radius: 30px;
-        padding: 10px 25px;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color var(--transition-speed);
+        margin-top: 15px;
+    }
+    
+    .action-btn:hover {
+        background-color: #0d6efd;
+    }
+    
+    .upcoming-lessons {
+        margin-top: 15px;
+    }
+    
+    .lesson-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        background: #f8f9fa;
+        border-left: 4px solid var(--primary-color);
+        border-radius: 4px;
+    }
+    
+    .lesson-item:hover {
+        background: #e9ecef;
+    }
+    
+    .lesson-title {
         font-weight: 500;
-        transition: var(--transition);
     }
     
-    .get-quote a:hover {
-        background: #0d6efd;
-        transform: translateY(-3px);
+    .lesson-date {
+        color: #6c757d;
     }
     
-    .footer {
-        margin-top: 30px;
+    .badge {
+        display: inline-block;
+        padding: 0.35em 0.65em;
+        font-size: .75em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 0.25rem;
     }
     
-    .copyright {
-        padding: 25px 0;
+    .badge-primary {
+        background-color: var(--primary-color);
     }
     
-    @media (max-width: 768px) {
+    .badge-success {
+        background-color: var(--success-color);
+    }
+    
+    .badge-danger {
+        background-color: var(--danger-color);
+    }
+    
+    /* Responsive adjustments */
+    @media only screen and (max-width: 767px) {
         .dashboard-container {
-            padding: 20px 0;
+            padding: 20px 10px;
         }
         
-        .welcome-card {
+        .welcome-card, .profile-card, .course-card, .stats-card {
             padding: 20px;
         }
         
-        .card {
-            padding: 15px;
+        .stats-value {
+            font-size: 1.5rem;
+        }
+        
+        .stats-card i {
+            font-size: 2rem;
         }
     }
 </style>
@@ -240,7 +325,7 @@
 <div class="header-inner bg-dark text-white">
 <div class="container">
 <div class="inner">
-<div class="row align-items-center">
+<div class="row">
 <div class="col-lg-3 col-md-3 col-12">
 <!-- Start Logo -->
 <div class="logo">
@@ -282,64 +367,135 @@
     <div class="loader"></div>
 </div>
 
+<!-- Breadcrumbs -->
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="bread-inner">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Student Dashboard</h2>
+                    <ul class="bread-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><i class="icofont-simple-right"></i></li>
+                        <li class="active">Dashboard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
+
 <!-- Dashboard Content -->
-<section class="dashboard-container">
+<section class="dashboard-container section">
     <div class="container">
         <div class="welcome-card">
-            <h2>Welcome, <span id="userFullName">Student</span>!</h2>
-            <p>Track your learning progress and manage your personal information from your dashboard.</p>
+            <h2>Welcome, <span id="userFullName">Student</span>! <i class="fa fa-graduation-cap"></i></h2>
+            <p>Track your learning progress, view upcoming lessons, and manage your profile all in one place.</p>
         </div>
         
         <div class="row">
+            <!-- Stats Row -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-book"></i>
+                    <div class="stats-value" id="completedModules">0</div>
+                    <div class="stats-label">Completed Modules</div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-tasks"></i>
+                    <div class="stats-value" id="totalModules">0</div>
+                    <div class="stats-label">Total Modules</div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-clock-o"></i>
+                    <div class="stats-value">120</div>
+                    <div class="stats-label">Learning Hours</div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="stats-card">
+                    <i class="fa fa-certificate"></i>
+                    <div class="stats-value">1</div>
+                    <div class="stats-label">Certificate</div>
+                </div>
+            </div>
+            
+            <!-- Profile Info -->
             <div class="col-lg-4 col-md-6">
-                <div class="card">
-                    <h3><i class="fa fa-user-circle-o me-2"></i> Profile Information</h3>
-                    <div id="profileInfo" class="profile-info">
-                        <p><strong>First Name:</strong> <span id="userFirstName"></span></p>
-                        <p><strong>Last Name:</strong> <span id="userLastName"></span></p>
-                        <p><strong>Email:</strong> <span id="userEmail"></span></p>
-                        <p><strong>Enrolled Course:</strong> <span id="userCourse"></span></p>
-                        <p><strong>Registered On:</strong> <span id="userRegistrationDate"></span></p>
+                <div class="profile-card">
+                    <h3 class="card-title">Profile Information</h3>
+                    <div id="profileInfo">
+                        <p><strong><i class="fa fa-user"></i> First Name:</strong> <span id="userFirstName"></span></p>
+                        <p><strong><i class="fa fa-user"></i> Last Name:</strong> <span id="userLastName"></span></p>
+                        <p><strong><i class="fa fa-envelope"></i> Email:</strong> <span id="userEmail"></span></p>
+                        <p><strong><i class="fa fa-graduation-cap"></i> Enrolled Course:</strong> <span id="userCourse"></span></p>
+                        <p><strong><i class="fa fa-calendar"></i> Registered On:</strong> <span id="userRegistrationDate"></span></p>
+                    </div>
+                    <button class="action-btn">Edit Profile</button>
+                </div>
+            </div>
+            
+            <!-- Course Progress -->
+            <div class="col-lg-8 col-md-6">
+                <div class="course-card">
+                    <h3 class="card-title">Course Progress</h3>
+                    <div id="courseProgress">
+                        <p>Loading course progress...</p>
                     </div>
                 </div>
-                
-                <div class="card">
-                    <h3><i class="fa fa-bell me-2"></i> Announcements</h3>
-                    <div class="announcements">
-                        <div class="alert alert-info">
-                            <strong>New Module Released!</strong> Check out the latest content in your course.
+            </div>
+        </div>
+        
+        <!-- Second Row -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="course-card">
+                    <h3 class="card-title">Upcoming Lessons</h3>
+                    <div class="upcoming-lessons">
+                        <div class="lesson-item">
+                            <div class="lesson-title">Introduction to React</div>
+                            <div class="lesson-date">
+                                <span class="badge badge-primary">Today</span> 10:00 AM
+                            </div>
                         </div>
-                        <div class="alert alert-success">
-                            <strong>Upcoming Webinar:</strong> Join us this Friday for a special session with industry experts.
+                        <div class="lesson-item">
+                            <div class="lesson-title">Advanced JavaScript Concepts</div>
+                            <div class="lesson-date">
+                                <span class="badge badge-success">Tomorrow</span> 09:30 AM
+                            </div>
+                        </div>
+                        <div class="lesson-item">
+                            <div class="lesson-title">Database Design Principles</div>
+                            <div class="lesson-date">
+                                <span class="badge badge-danger">May 15</span> 11:00 AM
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-lg-8 col-md-6">
-                <div class="card">
-                    <h3><i class="fa fa-graduation-cap me-2"></i> Course Progress</h3>
-                    <div id="courseProgress">
-                        <p class="text-center">Loading course progress...</p>
+            <div class="col-lg-6">
+                <div class="course-card">
+                    <h3 class="card-title">Recent Announcements</h3>
+                    <div class="announcement">
+                        <h5>New Course Materials Available</h5>
+                        <p>We've added new resources for the Software Development track. Check them out in your learning portal.</p>
+                        <small class="text-muted">Posted 2 days ago</small>
                     </div>
-                </div>
-                
-                <div class="card">
-                    <h3><i class="fa fa-calendar me-2"></i> Upcoming Sessions</h3>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Advanced Programming Techniques
-                            <span class="badge bg-primary rounded-pill">May 15</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Database Management Workshop
-                            <span class="badge bg-primary rounded-pill">May 22</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            UI/UX Design Principles
-                            <span class="badge bg-primary rounded-pill">May 30</span>
-                        </li>
-                    </ul>
+                    <hr>
+                    <div class="announcement">
+                        <h5>Upcoming Workshop</h5>
+                        <p>Join us for a special workshop on UI/UX design principles this Friday at 2:00 PM.</p>
+                        <small class="text-muted">Posted 5 days ago</small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -347,19 +503,80 @@
 </section>
 
 <!-- Footer Area -->
-<footer class="footer">
-<div class="copyright bg-dark text-white">
+<footer id="footer" class="footer">
+<!-- Footer Top -->
+<div class="footer-top">
 <div class="container">
 <div class="row">
-<div class="col-12">
-<div class="copyright-content text-center">
-<p>&copy; 2024 JOEeXPRESS TechHub | All Rights Reserved</p>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>About Us</h2>
+<p>JE Tech Hub is dedicated to empowering individuals with cutting-edge technology skills through hands-on training and innovative solutions.</p>
+<!-- Social -->
+<ul class="social">
+<li><a href="https://www.instagram.com/je_techhub?igsh=dGZjc29oNnRsOGF2&utm_source=qr"><i class="icofont-instagram"></i></a></li>
+<li><a href="#"><i class="icofont-google-plus"></i></a></li>
+<li><a href="#"><i class="icofont-twitter"></i></a></li>
+</ul>
+<!-- End Social -->
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer f-link">
+<h2>Quick Links</h2>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-12">
+<ul>
+<li><a href="index.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
+<li><a href="about.html"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+<li><a href="courses.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Courses</a></li>
+<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Programs</a></li>
+<li><a href="contact.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>Our Services</h2>
+<ul>
+<li><a href="programs.html#webDev"><i class="fa fa-caret-right" aria-hidden="true"></i>Software Development</a></li>
+<li><a href="programs.html#dataAnalysis"><i class="fa fa-caret-right" aria-hidden="true"></i>Data Analysis</a></li>
+<li><a href="programs.html#UIUX"><i class="fa fa-caret-right" aria-hidden="true"></i>UI/UX Design</a></li>
+<li><a href="programs.html#trading"><i class="fa fa-caret-right" aria-hidden="true"></i>Forex Trading</a></li>
+<li><a href="programs.html#vidGraphics"><i class="fa fa-caret-right" aria-hidden="true"></i>Graphics & Video</a></li>
+</ul>
+</div>
+</div>
+<div class="col-lg-3 col-md-6 col-12">
+<div class="single-footer">
+<h2>Open Hours</h2>
+<ul class="time-sidual">
+<li class="day">Mondays - Fridays <span>8.00-20.00</span></li>
+<li class="day">Saturdays <span>9.00-18.30</span></li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 </div>
+<!--/ End Footer Top -->
+<!-- Copyright -->
+<div class="copyright">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-12">
+<div class="copyright-content">
+<p>© Copyright 2024 | All Rights Reserved by <a href="index.html">JE Tech Hub</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--/ End Copyright -->
 </footer>
+<!--/ End Footer Area -->
 
 <script>
 // Function to format dates in a more readable format
@@ -421,6 +638,10 @@ async function loadUserProfile() {
         document.getElementById('userCourse').textContent = formatCourseName(userProfile.course);
         document.getElementById('userRegistrationDate').textContent = formatDate(userProfile.registrationDate);
         
+        // Update stats
+        let totalModulesCompleted = 0;
+        let totalModulesCount = 0;
+
         // Update course progress
         const progressContainer = document.getElementById('courseProgress');
         
@@ -429,14 +650,17 @@ async function loadUserProfile() {
             
             userProfile.progress.forEach(progress => {
                 const percentComplete = (progress.completed / progress.totalModules) * 100;
+                totalModulesCompleted += progress.completed;
+                totalModulesCount += progress.totalModules;
                 
                 progressHTML += `
                     <div class="progress-container">
-                        <h5>${formatCourseName(progress.course)} <span>${progress.completed} of ${progress.totalModules} modules completed</span></h5>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" style="width: ${percentComplete}%">
-                                ${percentComplete.toFixed(0)}%
-                            </div>
+                        <div class="progress-label">
+                            <span>${formatCourseName(progress.course)}</span>
+                            <span>${progress.completed} of ${progress.totalModules} modules</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: ${percentComplete}%"></div>
                         </div>
                     </div>
                 `;
@@ -444,20 +668,11 @@ async function loadUserProfile() {
             
             progressContainer.innerHTML = progressHTML;
             
-            // Animate progress bars
-            setTimeout(() => {
-                const progressBars = document.querySelectorAll('.progress-bar-fill');
-                progressBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 200);
-                });
-            }, 300);
-            
+            // Update stats cards
+            document.getElementById('completedModules').textContent = totalModulesCompleted;
+            document.getElementById('totalModules').textContent = totalModulesCount;
         } else {
-            progressContainer.innerHTML = '<div class="alert alert-info">No course progress available yet. Start your learning journey today!</div>';
+            progressContainer.innerHTML = '<p>No course progress available.</p>';
         }
     } catch (error) {
         console.error('Error loading profile:', error);
@@ -483,7 +698,43 @@ window.addEventListener('load', function() {
 
 <!-- jquery Min JS -->
 <script src="js/jquery.min.js"></script>
+<!-- jquery Migrate JS -->
+<script src="js/jquery-migrate-3.0.0.js"></script>
+<!-- jquery Ui JS -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Easing JS -->
+<script src="js/easing.js"></script>
+<!-- Color JS -->
+<script src="js/colors.js"></script>
+<!-- Popper JS -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap Datepicker JS -->
+<script src="js/bootstrap-datepicker.js"></script>
+<!-- Jquery Nav JS -->
+<script src="js/jquery.nav.js"></script>
+<!-- Slicknav JS -->
+<script src="js/slicknav.min.js"></script>
+<!-- ScrollUp JS -->
+<script src="js/jquery.scrollUp.min.js"></script>
+<!-- Niceselect JS -->
+<script src="js/niceselect.js"></script>
+<!-- Tilt Jquery JS -->
+<script src="js/tilt.jquery.min.js"></script>
+<!-- Owl Carousel JS -->
+<script src="js/owl-carousel.js"></script>
+<!-- counterup JS -->
+<script src="js/jquery.counterup.min.js"></script>
+<!-- Steller JS -->
+<script src="js/steller.js"></script>
+<!-- Wow JS -->
+<script src="js/wow.min.js"></script>
+<!-- Magnific Popup JS -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- Counter Up CDN JS -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
 <!-- Bootstrap JS -->
 <script src="js/bootstrap.min.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
 </body>
 </html>
