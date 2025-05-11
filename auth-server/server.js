@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
@@ -8,6 +9,19 @@ const validateRegister = require('./middleware/validateRegister');
 const validateLogin = require('./middleware/validateLogin');
 require('dotenv').config();
 
+=======
+require('dotenv').config();
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { pool, setupDatabase } = require('./db');
+const auth = require('./middleware/auth');
+const validate = require('./middleware/validate');
+
+>>>>>>> 2966da3a22b1d6fa49111c7e1836f9a2456edb1c
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -19,9 +33,16 @@ const db = mysql.createPool({
   database: 'auth_api',
 });
 
+<<<<<<< HEAD
 // Register route
 app.post('/api/register', validateRegister, async (req, res) => {
   const { email, password, firstName, lastName, image } = req.body;
+=======
+// Register endpoint
+app.post('/api/register', validate.validateRegister, async (req, res) => {
+    try {
+        const { firstName, lastName, email, password, course, phone } = req.body;
+>>>>>>> 2966da3a22b1d6fa49111c7e1836f9a2456edb1c
 
   try {
     const [existingUser] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
@@ -46,9 +67,16 @@ app.post('/api/register', validateRegister, async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // Login route
 app.post('/api/login', validateLogin, async (req, res) => {
   const { email, password } = req.body;
+=======
+// Login endpoint
+app.post('/api/login', validate.validateLogin, async (req, res) => {
+    try {
+        const { email, password } = req.body;
+>>>>>>> 2966da3a22b1d6fa49111c7e1836f9a2456edb1c
 
   try {
     const [rows] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
