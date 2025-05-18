@@ -31,7 +31,6 @@
 }
 
 .hero-slider .single-slider {
-  height: 500px;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -69,11 +68,11 @@
 .hero-slider .button {
   display: flex;
   gap: 15px;
+  flex-direction: row;
 }
 
 .hero-slider .button .btn {
   padding: 14px 25px;
-  border-radius: 30px;
   font-size: 15px;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -188,7 +187,7 @@
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  flex: 1;
+  /*flex: 1;*/
   text-align: center;
 }
 
