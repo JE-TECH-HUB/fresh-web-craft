@@ -4,14 +4,13 @@
 /* Filter Controls */
 .filter-container {
   margin-bottom: 30px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(235, 33, 33, 0.05);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .form-control {
-  padding: 12px 15px;
   border-radius: 8px;
   border: 1px solid #e6e6e6;
   transition: all 0.3s ease;
@@ -19,7 +18,7 @@
 }
 
 .form-control:focus {
-  border-color: #1A76D1;
+  border-color: darkblue;
   box-shadow: 0 0 10px rgba(26,118,209,0.2);
 }
 
@@ -114,7 +113,7 @@
 .gadget-category, 
 .gadget-price {
   font-size: 14px;
-  color: #555;
+  color: #bd0d0d;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -123,7 +122,7 @@
 .gadget-category span,
 .gadget-price span {
   font-weight: 600;
-  color: #333;
+  color: #f50909;
   margin-left: 5px;
 }
 
@@ -132,7 +131,7 @@
   display: inline-block;
   width: 8px;
   height: 8px;
-  background: #1A76D1;
+  background: #d11a66;
   border-radius: 50%;
   margin-right: 8px;
 }
@@ -414,7 +413,15 @@
   background-size: 18px;
   padding-right: 30px;
   cursor: pointer;
+
+ 
+
+
+option{ background: #000;}
+
 }
+
+option:is(#select-popover-options){ background: #661010 !important; }
 
 /* Responsive adjustments */
 @media only screen and (max-width: 767px) {

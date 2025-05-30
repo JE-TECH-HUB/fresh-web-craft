@@ -50,7 +50,7 @@ rel="stylesheet">
 position: fixed;
 width: 100%;
 height: 100%;
-background: rgba(255, 255, 255, 0.95);
+background:darkblue;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -78,6 +78,42 @@ animation: spin 1.5s linear infinite;
 opacity: 0;
 visibility: hidden;
 }
+@media (width >= 768px){
+
+
+/*.about-section {
+	margin-top: 100px;
+}*/
+
+
+.aboutBox{
+	display:flex;
+	align-items:center;
+	
+	p{
+	padding-inline:2em;
+	width:65%;
+	margin-right:-2em;
+	z-index:1;
+	}
+	.aboutImg{
+	margin-left:-2em;
+	width:45%;
+
+	img{width: 100%;aspect-ratio: 16/9;}
+	}
+	}
+
+}
+.about-content h2 {
+	line-height: 32px;
+	font-size: 25px;
+}
+.about-content {
+	padding-bottom: 0;
+}
+
+
 
 /* Enhanced Hot Deals Section */
 .card {
@@ -205,6 +241,21 @@ font-weight: 500;
 color: var(--orange); 
 line-height:60px;
 }
+
+.flex{display: flex;justify-content:space-between;
+align-items:center;
+
+}
+
+.action-btns{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-right:10px;
+@media (width < 768px) {
+		display: none;
+	}
+}
 </style>
 
 </head>
@@ -233,9 +284,9 @@ TECH HUB</h1></div>
 <header class="header" >
 <!-- Header Inner -->
 <div class="header-inner">
-<div class="container">
+
 <div class="inner">
-<div class="row">
+<div class="row flex">
 <div class="col-lg-3 col-md-3 col-12">
 <!-- Start Logo -->
 <div class="logo">
@@ -246,9 +297,9 @@ TECH HUB</h1></div>
 <div class="mobile-nav"></div>
 <!-- End Mobile Nav -->
 </div>
-<div class="col-lg-7 col-md-9 col-12">
+
 <!-- Main Menu -->
-<div class="main-menu">
+<div class="main-menu col-sm-12 col-lg-6 col-md-6 ">
 <nav class="navigation">
 <ul class="nav menu">
 <li class="active"><a href="#" class="scroll">Home</a></li>
@@ -258,12 +309,16 @@ TECH HUB</h1></div>
 <li><a href="contact.html" class="scroll">Contact Us</a></li>
 </ul>
 </nav>
-</div>
-<!--/ End Main Menu -->
-</div>
 
 </div>
+<div class="action-btns col-3 ">
+
+<a href="contact.html" class="btn primary">Contact Now</a>
 </div>
+<!--/ End Main Menu -->
+
+
+
 </div>
 <!--/ End Header Inner -->
 </header>
@@ -281,7 +336,7 @@ style="background-image:url('https://images.unsplash.com/photo-1498050108023-c52
 <div class="row">
 <div class="col-lg-7">
 <div class="text">
-<h1>LEARN <span>GROW <br>AND EXPORE</span> ENDLESS
+<h1>LEARN <span>GROW AND EXPORE</span> ENDLESS
 <span>OPPORTUNITIES!</span></h1>
 <p>
 
@@ -449,14 +504,13 @@ individuals to transform their ideas into impactful, actionable opportunities.
 Whether you're an entrepreneur looking to scale, a tech enthusiast eager to
 explore new frontiers, or someone seeking to upskill,
 <br>
-<button class="card-button"><a href="getStarted.html">Join Us</a></button>
-<br>
 we offer the knowledge,
 tools, and mentorship to help you thrive in the ever-evolving digital
 landscape.
-</span>
-</p>
+</span><button class="card-button"><a href="getStarted.html">Join Us</a></button>
 
+</p>
+<br>
 
 
 
@@ -823,7 +877,10 @@ class="fa fa-long-arrow-right"></i></a>
 </div>
 </section>
 End Appointment-->
+</main>
 
+<br>
+<br>
 
 <!-- Footer Area -->
 <footer id="footer" class="footer ">
@@ -901,7 +958,6 @@ End Appointment-->
 <!--/ End Copyright -->
 </footer>
 <!--/ End Footer Area -->
-</main>
 
 <script>
 
