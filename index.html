@@ -1,29 +1,43 @@
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
 <!-- Meta Tags -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="keywords" content="Site keywords here">
-<meta name="description" content="">
-<meta name='copyright' content=''>
+<meta name="keywords" content="JE Tech Hub, technology education, software development, data analysis, UI/UX design, forex trading">
+<meta name="description" content="JE Tech Hub - Empowering the future with technology education. Learn software development, data analysis, UI/UX design, and more.">
+<meta name='copyright' content='JE Tech Hub'>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Title -->
-<title>JE TECH HUB</title>
+<title>JE TECH HUB - Technology Education & Training</title>
 
 <!-- Favicon -->
 <link rel="icon" href="img/favicon.png">
+
+<!-- Preloader -->
+<div class="preloader">
+    <div class="loader-wrapper">
+        <div style="width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #1A76D1; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+        <style>
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    </div>
+</div>
 
 <!-- Critical CSS - loads first -->
 <link rel="stylesheet" href="css/critical.css">
 
 <!-- Performance script - loads early -->
-<script src="js/performance.js" defer></script>
+<script src="js/performance.js"></script>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+<!-- Google Fonts with display=swap for better performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <!-- Essential CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -35,12 +49,6 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/custom.css">
-
-<!-- Non-critical CSS - loaded asynchronously -->
-<link rel="preload" href="css/nice-select.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/slicknav.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/owl-carousel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/datepicker.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
 </head>
 <body>
@@ -55,7 +63,9 @@
 <div class="col-lg-3 col-md-3 col-12">
 <!-- Start Logo -->
 <div class="logo">
-<a href="index.html"><img src="images/JE Techhub logo.png" alt="JE Tech Hub Logo"></a>
+<a href="index.html">
+    <img src="images/JE Techhub logo.png" alt="JE Tech Hub Logo" loading="eager" fetchpriority="high">
+</a>
 </div>
 <!-- End Logo -->
 <!-- Mobile Nav -->
@@ -115,7 +125,7 @@
 <div class="col-lg-12">
 <div class="section-title">
 <h2>About JE Tech Hub</h2>
-<img src="img/section-img.png" alt="#">
+<img src="img/section-img.png" alt="#" loading="lazy">
 <p>We are dedicated to providing world-class technology education and training programs that prepare students for the digital economy.</p>
 </div>
 </div>
@@ -136,7 +146,7 @@
 </div>
 <div class="col-lg-6 col-md-6 col-12">
 <div class="about-image">
-<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000" alt="About JE Tech Hub">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000" alt="About JE Tech Hub" loading="lazy">
 </div>
 </div>
 </div>
@@ -151,7 +161,7 @@
 <div class="col-lg-12">
 <div class="section-title">
 <h2>Our Programs</h2>
-<img src="img/section-img.png" alt="#">
+<img src="img/section-img.png" alt="#" loading="lazy">
 <p>Explore our comprehensive range of technology programs designed to meet industry demands.</p>
 </div>
 </div>
@@ -298,7 +308,7 @@
 <script src="js/steller.js" defer></script>
 <script src="js/wow.min.js" defer></script>
 <script src="js/jquery.magnific-popup.min.js" defer></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js" defer></script>
 <script src="js/bootstrap.min.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
