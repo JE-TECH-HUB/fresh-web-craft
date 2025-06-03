@@ -1,15 +1,19 @@
 {
-  "name": "fresh-web-craft",
+  "name": "je-tech-hub",
   "version": "1.0.0",
-  "description": "JE Tech Hub - Pure HTML/CSS/JavaScript Website",
-  "scripts": {
-    "dev": "python -m http.server 8000 || python3 -m http.server 8000 || npx serve .",
-    "build": "echo 'Build complete - no build step needed for static HTML site'",
-    "build:dev": "echo 'Build complete - no build step needed for static HTML site'",
-    "preview": "npx serve .",
-    "serve": "npx serve ."
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.0",
+    "@supabase/supabase-js": "^2.38.0"
   },
   "devDependencies": {
-     "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.2.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   }
 }
