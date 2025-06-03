@@ -18,7 +18,6 @@ export default defineConfig({
         admin: path.resolve(__dirname, 'admin.html')
       }
     },
-    target: 'es2015',
     minify: 'terser',
     cssMinify: true
   },
@@ -27,7 +26,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  esbuild: {
-    target: 'es2015'
-  }
 })
