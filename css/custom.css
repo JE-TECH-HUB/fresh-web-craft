@@ -1,10 +1,7 @@
 
-/* Optimized Custom CSS with improved loading */
+/* Custom CSS that imports all modular styles */
 
-/* Import critical CSS first */
-@import url('critical.css');
-
-/* Import other modular stylesheets */
+/* Import modular stylesheets */
 @import url('cards.css');
 @import url('slideshow.css');
 @import url('forms.css');
@@ -12,8 +9,9 @@
 @import url('utilities.css');
 @import url('loaders.css');
 @import url('gadgets.css');
+@import url('performance.css');
 
-/* Optimized Responsive Layout */
+/* Better Responsive Layout - Optimized */
 @media only screen and (max-width: 767px) {
   h1 {
     font-size: 24px !important;
@@ -53,7 +51,7 @@
   }
 }
 
-/* Optimized Tablet Layout */
+/* Tablet-specific improvements - Optimized */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .container {
     padding: 0 15px;
@@ -89,7 +87,7 @@
   }
 }
 
-/* Optimized Desktop Layout */
+/* Laptop-specific improvements - Optimized */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .container {
     padding: 0 20px;
@@ -113,27 +111,12 @@
   box-sizing: border-box;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Optimize animations */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* Hardware acceleration for smooth animations */
-.hero-slider,
-.testimonial-slider,
-.portfolio-slider,
-.clients-slider {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
+/* Optimize critical rendering path */
+.above-fold {
+  contain: layout style paint;
 }

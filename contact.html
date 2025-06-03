@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -15,50 +16,33 @@
 <!-- Favicon -->
 <link rel="icon" href="img/favicon.png">
 
-<!-- Preload critical resources -->
-<link rel="preload" href="css/critical.css" as="style">
-<link rel="preload" href="js/performance.js" as="script">
-
-<!-- Critical CSS (loaded immediately) -->
-<link rel="stylesheet" href="css/critical.css">
-
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-<!-- Non-critical CSS (deferred) -->
-<link rel="preload" href="css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/custom.css">
-</noscript>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Nice Select CSS -->
+<link rel="stylesheet" href="css/nice-select.css">
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<!-- icofont CSS -->
+<link rel="stylesheet" href="css/icofont.css">
+<!-- Slicknav -->
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="css/owl-carousel.css">
+<!-- Datepicker CSS -->
+<link rel="stylesheet" href="css/datepicker.css">
+<!-- Animate CSS -->
+<link rel="stylesheet" href="css/animate.min.css">
+<!-- Magnific Popup CSS -->
+<link rel="stylesheet" href="css/magnific-popup.css">
 
-<!-- Other CSS files (deferred) -->
-<link rel="preload" href="css/nice-select.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/icofont.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/slicknav.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/owl-carousel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/datepicker.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/magnific-popup.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/normalize.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-<noscript>
-  <link rel="stylesheet" href="css/nice-select.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/icofont.css">
-  <link rel="stylesheet" href="css/slicknav.min.css">
-  <link rel="stylesheet" href="css/owl-carousel.css">
-  <link rel="stylesheet" href="css/datepicker.css">
-  <link rel="stylesheet" href="css/animate.min.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-</noscript>
+<!-- Medipro CSS -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
 
 <style>
 .hero-section {
@@ -130,14 +114,7 @@
 </head>
 <body>
 
-<!-- Preloader -->
-<div class="preloader">
-    <div class="loader"></div>
-</div>
-
-<!-- Performance optimization script (loaded early) -->
-<script src="js/performance.js"></script>
-
+<!-- Header Area -->
 <!-- Header Area -->
 <header class="header" >
 <!-- Header Inner -->
@@ -169,6 +146,7 @@
 </div>
 <!--/ End Main Menu -->
 </div>
+
 </div>
 </div>
 </div>
@@ -188,24 +166,27 @@
 <li><i class="icofont-simple-right"></i></li>
 <li class="active">Contact Us</li>
 </ul>
+
 </div>
 </div>
 </div>
 </div>
 </div>
 <!-- End Breadcrumbs -->
-
 <!-- Start Contact Us -->
 <section class="contact-us section">
 <div class="container">
 <div class="inner">
 <div class="row"> 
+
 <div class="col-lg-6">
 <div class="contact-us-form">
 <h2>Contact With Us</h2>
+
 <p>Have questions about our programs or services? We're here to help! Fill out the form below and our team will get back to you promptly.</p>
 
 <!-- Form -->
+
 <form class="form" >
 <div class="row">
 <div class="col-lg-6">
@@ -240,7 +221,6 @@
 </div>
 </div>
 </div>
-
 <div class="contact-info">
 <div class="row">
 <!-- single-info -->
@@ -275,6 +255,7 @@
 </div>
 </div>
 </div>
+
 <!--/End single-info -->
 </div>
 </div>
@@ -358,53 +339,45 @@
 </footer>
 <!--/ End Footer Area -->
 
-<!-- Deferred JavaScript loading for better performance -->
-<script>
-// Load non-critical scripts after page load
-window.addEventListener('load', function() {
-    const scripts = [
-        'js/jquery.min.js',
-        'js/jquery-migrate-3.0.0.js',
-        'js/jquery-ui.min.js',
-        'js/easing.js',
-        'js/colors.js',
-        'js/popper.min.js',
-        'js/bootstrap-datepicker.js',
-        'js/jquery.nav.js',
-        'js/slicknav.min.js',
-        'js/jquery.scrollUp.min.js',
-        'js/niceselect.js',
-        'js/tilt.jquery.min.js',
-        'js/owl-carousel.js',
-        'js/jquery.counterup.min.js',
-        'js/steller.js',
-        'js/wow.min.js',
-        'js/jquery.magnific-popup.min.js',
-        'js/bootstrap.min.js',
-        'js/main.js'
-    ];
-    
-    let loadedScripts = 0;
-    scripts.forEach(function(src) {
-        const script = document.createElement('script');
-        script.src = src;
-        script.defer = true;
-        script.onload = function() {
-            loadedScripts++;
-            if (loadedScripts === scripts.length) {
-                // All scripts loaded
-                if (window.performanceUtils && window.performanceUtils.optimizeCriticalPath) {
-                    window.performanceUtils.optimizeCriticalPath();
-                }
-            }
-        };
-        document.body.appendChild(script);
-    });
-});
-</script>
-
-<!-- Critical CDN script (loaded immediately) -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js" defer></script>
-
+<!-- jquery Min JS -->
+<script src="js/jquery.min.js"></script>
+<!-- jquery Migrate JS -->
+<script src="js/jquery-migrate-3.0.0.js"></script>
+<!-- jquery Ui JS -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Easing JS -->
+<script src="js/easing.js"></script>
+<!-- Color JS -->
+<script src="js/colors.js"></script>
+<!-- Popper JS -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap Datepicker JS -->
+<script src="js/bootstrap-datepicker.js"></script>
+<!-- Jquery Nav JS -->
+<script src="js/jquery.nav.js"></script>
+<!-- Slicknav JS -->
+<script src="js/slicknav.min.js"></script>
+<!-- ScrollUp JS -->
+<script src="js/jquery.scrollUp.min.js"></script>
+<!-- Niceselect JS -->
+<script src="js/niceselect.js"></script>
+<!-- Tilt Jquery JS -->
+<script src="js/tilt.jquery.min.js"></script>
+<!-- Owl Carousel JS -->
+<script src="js/owl-carousel.js"></script>
+<!-- counterup JS -->
+<script src="js/jquery.counterup.min.js"></script>
+<!-- Steller JS -->
+<script src="js/steller.js"></script>
+<!-- Wow JS -->
+<script src="js/wow.min.js"></script>
+<!-- Magnific Popup JS -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- Counter Up CDN JS -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
 </body>
 </html>

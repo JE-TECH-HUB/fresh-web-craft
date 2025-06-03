@@ -1,83 +1,73 @@
 
 /*
- * Optimized Main JS file for JE TechHub website
+ * Main JS file for JE TechHub website - Optimized for Performance
  */
 
 (function($) {
     "use strict";
     
-    // Performance optimization: Use throttled scroll handler
-    const throttledScroll = window.performanceUtils ? 
-        window.performanceUtils.throttle : 
-        function(func, limit) {
-            let inThrottle;
-            return function() {
-                const args = arguments;
-                const context = this;
-                if (!inThrottle) {
-                    func.apply(context, args);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            }
-        };
+    // Cache frequently used DOM elements
+    const $window = $(window);
+    const $document = $(document);
+    const $body = $('body');
     
     /*==================================
-    // Optimized Button Click Enhancement
+    // Performance Optimized Button Click Enhancement
     ==================================*/ 
-    $(document).ready(function() {
-        // Delegate event handling for better performance
-        $(document).on('click', '.btn, .card-button, .action-btn', function(e) {
+    // Delegate event handling for better performance
+    $document.ready(function() {
+        // Use event delegation for all clickable elements
+        $body.on('click', '.btn, .card-button, .action-btn', function(e) {
             const href = $(this).attr('href');
             
-            if (href && href !== '#') {
+            // If the button has an href attribute and it's not just '#'
+            if (href && href !== '#' && href !== 'javascript:void(0)') {
+                e.preventDefault();
                 window.location.href = href;
             }
         });
     });
     
     /*=======================================
-    [Optimized Activation Code]
+    [Start Activation Code - Performance Optimized]
     ==========================================*/ 
-    $(document).on('ready', function() {
-    
-        /*====================================
-            Optimized Sticky Header JS
-        =======================================*/ 
-        const stickyHandler = throttledScroll(function() {
-            const scrollTop = $(this).scrollTop();
-            const headerInner = $('#header .header-inner');
-            const header = $('.header');
-            
-            if (scrollTop > 200 && headerInner.length) {
-                headerInner.addClass("sticky");
-            } else if (headerInner.length) {
-                headerInner.removeClass("sticky");
-            }
-            
-            if (scrollTop > 100 && header.length) {
-                header.addClass("sticky");
-            } else if (header.length) {
-                header.removeClass("sticky");
-            }
-        }, 16); // ~60fps
+    $document.on('ready', function() {
         
-        $(window).on('scroll', stickyHandler);
+        // Throttled scroll handler for better performance
+        let scrollTimeout;
+        $window.on('scroll', function() {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            scrollTimeout = setTimeout(function() {
+                const scrollTop = $window.scrollTop();
+                
+                // Sticky Header
+                if (scrollTop > 200) {
+                    $('#header .header-inner').addClass("sticky");
+                } else {
+                    $('#header .header-inner').removeClass("sticky");
+                }
+                
+                if (scrollTop > 100) {
+                    $('.header').addClass("sticky");
+                } else {
+                    $('.header').removeClass("sticky");
+                }
+            }, 16); // ~60fps
+        });
         
+        // Pro features toggle
         $('.pro-features .get-pro').on("click", function(){
             $('.pro-features').toggleClass('active');
         });
         
-        /*====================================
-            Search JS
-        =======================================*/ 
+        // Search toggle
         $('.search a').on("click", function(){
             $('.search-top').toggleClass('active');
         });
         
-        /*====================================
-            Optimized Mobile Menu
-        =======================================*/ 	
+        // Mobile Menu - Only initialize if slicknav is available
         if (typeof $.fn.slicknav !== 'undefined') {
             $('.menu').slicknav({
                 prependTo:".mobile-nav",
@@ -86,9 +76,7 @@
             });
         }
         
-        /*===============================
-            Optimized Hero Slider JS
-        ==================================*/ 
+        // Hero Slider - Only initialize if owlCarousel is available
         if (typeof $.fn.owlCarousel !== 'undefined') {
             $(".hero-slider").owlCarousel({
                 loop:true,
@@ -103,9 +91,7 @@
                 dots:false,
             });
 
-            /*===============================
-                Testimonial Slider JS
-            ==================================*/ 
+            // Testimonial Slider
             $('.testimonial-slider').owlCarousel({
                 items:3,
                 autoplay:true,
@@ -121,13 +107,11 @@
                     300: { items:1 },
                     480: { items:1 },
                     768: { items:2 },
-                    1170: { items:3 },
+                    1170: { items:3 }
                 }
             });
             
-            /*===============================
-                Portfolio Slider JS
-            ==================================*/ 
+            // Portfolio Slider
             $('.portfolio-slider').owlCarousel({
                 autoplay:true,
                 autoplayTimeout:4000,
@@ -141,13 +125,11 @@
                     300: { items:1 },
                     480: { items:2 },
                     768: { items:2 },
-                    1170: { items:4 },
+                    1170: { items:4 }
                 }
             });
             
-            /*===============================
-                Clients Slider JS
-            ==================================*/ 
+            // Clients Slider
             $('.clients-slider').owlCarousel({
                 items:5,
                 autoplay:true,
@@ -162,13 +144,11 @@
                     300: { items:1 },
                     480: { items:2 },
                     768: { items:3 },
-                    1170: { items:5 },
+                    1170: { items:5 }
                 }
             });
             
-            /*====================================
-                Single Portfolio Slider JS
-            =======================================*/ 
+            // Single Portfolio Slider
             $('.pf-details-slider').owlCarousel({
                 items:1,
                 autoplay:false,
@@ -183,9 +163,7 @@
             });
         }
         
-        /*=====================================
-            Optimized Counter Up JS
-        =======================================*/
+        // Counter Up - Only if available
         if (typeof $.fn.counterUp !== 'undefined') {
             $('.counter').counterUp({
                 delay:20,
@@ -193,9 +171,7 @@
             });
         }
         
-        /*===================
-            Accordion JS
-        ======================*/ 
+        // Accordion
         $('.accordion > li:eq(0) a').addClass('active').next().slideDown();
         $('.accordion a').on('click', function(j) {
             var dropDown = $(this).closest('li').find('p');
@@ -210,23 +186,17 @@
             j.preventDefault();
         });
         
-        /*====================================
-            Nice Select JS
-        =======================================*/ 	
+        // Nice Select - Only if available
         if (typeof $.fn.niceSelect !== 'undefined') {
             $('select').niceSelect();
         }
         
-        /*=====================================
-            Date Picker JS
-        =======================================*/ 
+        // Date Picker - Only if available
         if (typeof $.fn.datepicker !== 'undefined') {
             $("#datepicker").datepicker();
         }
         
-        /*===============================
-            Checkbox JS
-        ==================================*/  
+        // Checkbox handling
         $('input[type="checkbox"]').change(function(){
             if($(this).is(':checked')){
                 $(this).parent("label").addClass("checked");
@@ -235,9 +205,7 @@
             }
         });
         
-        /*===============================
-            Right Bar JS
-        ==================================*/ 
+        // Right Bar
         $('.right-bar .bar').on("click", function(){
             $('.sidebar-menu').addClass('active');
         });
@@ -245,28 +213,22 @@
             $('.sidebar-menu').removeClass('active');
         });
         
-        /*=====================
-            Video Popup JS
-        ========================*/ 
+        // Video Popup - Only if magnificPopup is available
         if (typeof $.fn.magnificPopup !== 'undefined') {
             $('.video-popup').magnificPopup({
                 type: 'video',	
             });
         }
         
-        /*================
-            Optimized Wow JS
-        ===================*/		
+        // Wow JS - Only if WOW is available
         if (typeof WOW !== 'undefined') {
-            var window_width = $(window).width();   
+            var window_width = $window.width();   
             if(window_width > 767){
                 new WOW().init();
             }
         }
 
-        /*===================
-            Scroll Up JS
-        ======================*/
+        // Scroll Up - Only if scrollUp is available
         if (typeof $.scrollUp !== 'undefined') {
             $.scrollUp({
                 scrollText: '<span><i class="fa fa-angle-up"></i></span>',
@@ -276,14 +238,16 @@
             }); 
         }
 
-        /*=======================
-            Optimized Animate Scroll JS
-        ==========================*/
+        // Smooth scroll handling with performance optimization
+        let scrollAnimating = false;
         $('.scroll').on("click", function (e) {
+            if (scrollAnimating) return;
+            
             e.preventDefault();
             
             const targetHref = $(this).attr('href');
             
+            // Handle external links
             if (!targetHref.includes('#') || targetHref === '#') {
                 window.location.href = targetHref;
                 return;
@@ -307,45 +271,50 @@
             const $target = $('#' + targetId);
             
             if ($target.length) {
+                scrollAnimating = true;
                 const headerHeight = $('.header').outerHeight() || 0;
                 
                 $('html, body').stop().animate({
                     scrollTop: $target.offset().top - headerHeight - 20
-                }, 1000, 'easeInOutExpo');
+                }, 1000, 'easeInOutExpo', function() {
+                    scrollAnimating = false;
+                });
                 
                 $('.nav.menu li a').removeClass('active');
                 $(this).addClass('active');
             }
         });
 
-        // Optimized scroll highlighting
-        const scrollHighlight = throttledScroll(function() {
-            const scrollPos = $(window).scrollTop();
-            const headerHeight = $('.header').outerHeight() || 0;
-            
-            $('section[id], div[id="services"], div[id="about"]').each(function() {
-                const sectionTop = $(this).offset().top - headerHeight - 100;
-                const sectionBottom = sectionTop + $(this).outerHeight();
-                const sectionId = $(this).attr('id');
+        // Optimized active link highlighting
+        let highlightTimeout;
+        $window.on('scroll', function() {
+            if (highlightTimeout) {
+                clearTimeout(highlightTimeout);
+            }
+            highlightTimeout = setTimeout(function() {
+                const scrollPos = $window.scrollTop();
+                const headerHeight = $('.header').outerHeight() || 0;
                 
-                if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-                    $('.nav.menu li a').removeClass('active');
+                $('section[id], div[id="services"], div[id="about"]').each(function() {
+                    const sectionTop = $(this).offset().top - headerHeight - 100;
+                    const sectionBottom = sectionTop + $(this).outerHeight();
+                    const sectionId = $(this).attr('id');
                     
-                    $('.nav.menu li a').each(function() {
-                        const href = $(this).attr('href');
-                        if (href && (href === '#' + sectionId || href.endsWith('#' + sectionId))) {
-                            $(this).addClass('active');
-                        }
-                    });
-                }
-            });
-        }, 100); // Reduced frequency for better performance
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        $('.nav.menu li a').removeClass('active');
+                        
+                        $('.nav.menu li a').each(function() {
+                            const href = $(this).attr('href');
+                            if (href && (href === '#' + sectionId || href.endsWith('#' + sectionId))) {
+                                $(this).addClass('active');
+                            }
+                        });
+                    }
+                });
+            }, 100); // Reduced frequency for better performance
+        });
         
-        $(window).on('scroll', scrollHighlight);
-        
-        /*=======================
-            Stellar JS
-        ==========================*/
+        // Stellar JS - Only if available
         if (typeof $.stellar !== 'undefined') {
             $.stellar({
               horizontalOffset: 0,
@@ -353,11 +322,10 @@
             });
         }
 
-        /*====================
-            Google Maps JS
-        =======================*/
+        // Google Maps - Only if GMaps is available
         if (typeof GMaps !== 'undefined') {
-            var map = new GMaps({
+            try {
+                var map = new GMaps({
                     el: '#map',
                     lat: 23.011245,
                     lng: 90.884780,
@@ -368,26 +336,27 @@
                     lng: 90.884780,
                     title: 'Marker with InfoWindow',
                     infoWindow: {
-                    content: '<p>welcome to Medipro</p>'
-                }
-            });
+                        content: '<p>welcome to JE TechHub</p>'
+                    }
+                });
+            } catch(e) {
+                console.log('Google Maps not available');
+            }
         }
     });
     
-    /*====================
-        Optimized Preloader JS
-    =======================*/
-    $(window).on('load', function() {
+    // Optimized preloader
+    $window.on('load', function() {
         $('.preloader').addClass('preloader-deactivate');
         
         setTimeout(function() {
             $('.loader-wrapper').addClass('hidden');
-        }, 1000);
+        }, 500); // Reduced delay
         
         initActiveMenuLink();
     });
     
-    // Function to initialize active menu link based on current URL
+    // Function to initialize active menu link
     function initActiveMenuLink() {
         const currentUrl = window.location.pathname;
         const currentHash = window.location.hash;
@@ -406,45 +375,14 @@
     
 })(jQuery);
 
-// Vanilla JS optimizations for better performance
-document.addEventListener('DOMContentLoaded', function() {
-    // Optimized smooth scrolling
-    const scrollLinks = document.querySelectorAll('a.scroll');
+// Vanilla JS optimizations for iOS Safari
+document.addEventListener("DOMContentLoaded", function() {
+    // Optimized iOS detection and fixes
+    function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
     
-    scrollLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            
-            if (!targetId.startsWith('#') && (targetId.includes('http') || !targetId.includes('#'))) {
-                window.location.href = targetId;
-                return;
-            }
-            
-            const hashPart = targetId.includes('#') ? targetId.split('#')[1] : targetId.replace('#', '');
-            const targetElement = document.getElementById(hashPart);
-            
-            if (targetElement) {
-                const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                scrollLinks.forEach(link => link.classList.remove('active'));
-                this.classList.add('active');
-            } else if (!targetId.includes('#')) {
-                window.location.href = targetId;
-            }
-        });
-    });
-    
-    // iOS Safari fix
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+    if (isIOS()) {
         const fadeSections = document.querySelectorAll('.fadeSection');
         fadeSections.forEach(section => {
             section.style.opacity = '1';
@@ -452,4 +390,18 @@ document.addEventListener('DOMContentLoaded', function() {
             section.style.visibility = 'visible';
         });
     }
+    
+    // Preload critical resources
+    const criticalImages = [
+        'img/slider/slider-bg1.jpg',
+        'img/slider/slider-bg2.jpg'
+    ];
+    
+    criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+    });
 });
