@@ -1,6 +1,5 @@
 
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
@@ -8,9 +7,20 @@ export default defineConfig({
     host: "::",
     port: 8080,
   },
-  plugins: [
-    react(),
-  ],
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        about: path.resolve(__dirname, 'about.html'),
+        gadgets: path.resolve(__dirname, 'gadgets.html'),
+        contact: path.resolve(__dirname, 'contact.html'),
+        dashboard: path.resolve(__dirname, 'dashboard.html'),
+        admin: path.resolve(__dirname, 'admin.html')
+      }
+    },
+    minify: 'terser',
+    cssMinify: true
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

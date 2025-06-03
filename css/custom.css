@@ -9,8 +9,9 @@
 @import url('utilities.css');
 @import url('loaders.css');
 @import url('gadgets.css');
+@import url('performance.css');
 
-/* Better Responsive Layout */
+/* Better Responsive Layout - Optimized */
 @media only screen and (max-width: 767px) {
   h1 {
     font-size: 24px !important;
@@ -27,7 +28,6 @@
   
   .single-slider {
     height: 60vh !important;
-    
   }
   
   .card-title {
@@ -37,8 +37,6 @@
   .card-description {
     font-size: 14px !important;
   }
-  
-  
   
   .section {
     padding: 40px 0 !important;
@@ -53,7 +51,7 @@
   }
 }
 
-/* Tablet-specific improvements */
+/* Tablet-specific improvements - Optimized */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .container {
     padding: 0 15px;
@@ -80,7 +78,6 @@
     margin-bottom: 20px;
   }
   
-  /* Dashboard responsiveness */
   .dashboard-container {
     padding: 25px 15px;
   }
@@ -90,7 +87,7 @@
   }
 }
 
-/* Laptop-specific improvements */
+/* Laptop-specific improvements - Optimized */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .container {
     padding: 0 20px;
@@ -104,8 +101,22 @@
     padding: 80px 0;
   }
   
-  /* Dashboard responsiveness */
   .dashboard-container {
     padding: 30px 20px;
   }
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize critical rendering path */
+.above-fold {
+  contain: layout style paint;
 }
