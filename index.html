@@ -1,26 +1,17 @@
 
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="zxx">
 <head>
-<!-- Critical Meta Tags -->
+<!-- Meta Tags -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="Site keywords here">
+<meta name="description" content="">
+<meta name='copyright' content=''>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Performance hints -->
-<link rel="dns-prefetch" href="//fonts.googleapis.com">
-<link rel="dns-prefetch" href="//fonts.gstatic.com">
-<link rel="dns-prefetch" href="//images.unsplash.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-
-<!-- SEO Meta Tags -->
-<meta name="keywords" content="JE Tech Hub, technology education, software development, data analysis, UI/UX design, forex trading">
-<meta name="description" content="JE Tech Hub - Empowering the future with technology education. Learn software development, data analysis, UI/UX design, and more.">
-<meta name='copyright' content='JE Tech Hub'>
-
 <!-- Title -->
-<title>JE TECH HUB - Technology Education & Training</title>
+<title>JE TECH HUB</title>
 
 <!-- Favicon -->
 <link rel="icon" href="img/favicon.png">
@@ -29,34 +20,15 @@
 <link rel="stylesheet" href="css/critical.css">
 
 <!-- Performance script - loads early -->
-<script>
-// Inline critical performance script for immediate execution
-(function() {
-  // Preload hero image immediately
-  const heroImg = new Image();
-  heroImg.src = 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2000';
-  
-  // Optimize font loading
-  if ('fonts' in document) {
-    const font = new FontFace('Poppins', 'url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2)');
-    font.load().then(function(loadedFont) {
-      document.fonts.add(loadedFont);
-    });
-  }
-})();
-</script>
+<script src="js/performance.js" defer></script>
 
-<!-- Load main performance script -->
-<script src="js/performance.js"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-<!-- Optimized Google Fonts -->
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"></noscript>
-
-<!-- Essential CSS with optimized loading -->
-<link rel="preload" href="css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="css/icofont.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<!-- Essential CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/icofont.css">
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="css/normalize.css">
@@ -64,45 +36,54 @@
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/custom.css">
 
+<!-- Non-critical CSS - loaded asynchronously -->
+<link rel="preload" href="css/nice-select.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/slicknav.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/owl-carousel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/datepicker.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
 </head>
 <body>
 
-<!-- Optimized Preloader -->
-<div class="preloader">
-    <div class="loader-wrapper"></div>
-</div>
-
 <!-- Header Area -->
-<header class="header">
+<header class="header" >
+<!-- Header Inner -->
 <div class="header-inner">
 <div class="container">
 <div class="inner">
 <div class="row">
 <div class="col-lg-3 col-md-3 col-12">
+<!-- Start Logo -->
 <div class="logo">
-<a href="index.html">
-    <img src="images/JE Techhub logo.png" alt="JE Tech Hub Logo" loading="eager" fetchpriority="high" width="200" height="50">
-</a>
+<a href="index.html"><img src="images/JE Techhub logo.png" alt="JE Tech Hub Logo"></a>
 </div>
+<!-- End Logo -->
+<!-- Mobile Nav -->
 <div class="mobile-nav"></div>
+<!-- End Mobile Nav -->
 </div>
 <div class="col-lg-7 col-md-9 col-12">
+<!-- Main Menu -->
 <div class="main-menu">
 <nav class="navigation">
 <ul class="nav menu">
 <li class="active"><a href="index.html">Home</a></li>
-<li><a href="index.html#about">About Us</a></li>
+<li><a href="index.html#about">About Us </a></li>
 <li><a href="programs.html">Programs</a></li>
 <li><a href="contact.html">Contact Us</a></li>
 </ul>
 </nav>
 </div>
+<!--/ End Main Menu -->
+</div>
+
 </div>
 </div>
 </div>
 </div>
-</div>
+<!--/ End Header Inner -->
 </header>
+<!-- End Header Area -->
 
 <!-- Hero Section -->
 <section class="hero-slider">
@@ -125,6 +106,7 @@
 </div>
 </div>
 </section>
+<!--/ End Hero Section -->
 
 <!-- About Section -->
 <section id="about" class="section">
@@ -133,7 +115,7 @@
 <div class="col-lg-12">
 <div class="section-title">
 <h2>About JE Tech Hub</h2>
-<img src="img/section-img.png" alt="#" loading="lazy" width="60" height="20">
+<img src="img/section-img.png" alt="#">
 <p>We are dedicated to providing world-class technology education and training programs that prepare students for the digital economy.</p>
 </div>
 </div>
@@ -154,12 +136,13 @@
 </div>
 <div class="col-lg-6 col-md-6 col-12">
 <div class="about-image">
-<img data-src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000" alt="About JE Tech Hub" loading="lazy" width="600" height="400">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000" alt="About JE Tech Hub">
 </div>
 </div>
 </div>
 </div>
 </section>
+<!--/ End About Section -->
 
 <!-- Services Section -->
 <section id="services" class="section">
@@ -168,7 +151,7 @@
 <div class="col-lg-12">
 <div class="section-title">
 <h2>Our Programs</h2>
-<img src="img/section-img.png" alt="#" loading="lazy" width="60" height="20">
+<img src="img/section-img.png" alt="#">
 <p>Explore our comprehensive range of technology programs designed to meet industry demands.</p>
 </div>
 </div>
@@ -219,9 +202,11 @@
 </div>
 </div>
 </section>
+<!--/ End Services Section -->
 
 <!-- Footer Area -->
 <footer id="footer" class="footer">
+<!-- Footer Top -->
 <div class="footer-top">
 <div class="container">
 <div class="row">
@@ -229,11 +214,13 @@
 <div class="single-footer">
 <h2>About Us</h2>
 <p>JE Tech Hub is dedicated to empowering individuals with cutting-edge technology skills through hands-on training and innovative solutions.</p>
+<!-- Social -->
 <ul class="social">
 <li><a href="https://www.instagram.com/je_techhub?igsh=dGZjc29oNnRsOGF2&utm_source=qr"><i class="icofont-instagram"></i></a></li>
 <li><a href="#"><i class="icofont-google-plus"></i></a></li>
 <li><a href="#"><i class="icofont-twitter"></i></a></li>
 </ul>
+<!-- End Social -->
 </div>
 </div>
 <div class="col-lg-3 col-md-6 col-12">
@@ -275,6 +262,9 @@
 </div>
 </div>
 </div>
+</div>
+<!--/ End Footer Top -->
+<!-- Copyright -->
 <div class="copyright">
 <div class="container">
 <div class="row">
@@ -286,31 +276,30 @@
 </div>
 </div>
 </div>
+<!--/ End Copyright -->
 </footer>
+<!--/ End Footer Area -->
 
-<!-- Optimized Scripts - load with priority -->
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-migrate-3.0.0.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
-
-<!-- Non-critical scripts - load asynchronously -->
-<script async src="js/easing.js"></script>
-<script async src="js/colors.js"></script>
-<script async src="js/popper.min.js"></script>
-<script async src="js/bootstrap-datepicker.js"></script>
-<script async src="js/jquery.nav.js"></script>
-<script async src="js/slicknav.min.js"></script>
-<script async src="js/jquery.scrollUp.min.js"></script>
-<script async src="js/niceselect.js"></script>
-<script async src="js/tilt.jquery.min.js"></script>
-<script async src="js/owl-carousel.js"></script>
-<script async src="js/jquery.counterup.min.js"></script>
-<script async src="js/steller.js"></script>
-<script async src="js/wow.min.js"></script>
-<script async src="js/jquery.magnific-popup.min.js"></script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-
+<!-- Scripts - deferred for better performance -->
+<script src="js/jquery.min.js" defer></script>
+<script src="js/jquery-migrate-3.0.0.js" defer></script>
+<script src="js/jquery-ui.min.js" defer></script>
+<script src="js/easing.js" defer></script>
+<script src="js/colors.js" defer></script>
+<script src="js/popper.min.js" defer></script>
+<script src="js/bootstrap-datepicker.js" defer></script>
+<script src="js/jquery.nav.js" defer></script>
+<script src="js/slicknav.min.js" defer></script>
+<script src="js/jquery.scrollUp.min.js" defer></script>
+<script src="js/niceselect.js" defer></script>
+<script src="js/tilt.jquery.min.js" defer></script>
+<script src="js/owl-carousel.js" defer></script>
+<script src="js/jquery.counterup.min.js" defer></script>
+<script src="js/steller.js" defer></script>
+<script src="js/wow.min.js" defer></script>
+<script src="js/jquery.magnific-popup.min.js" defer></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js" defer></script>
+<script src="js/bootstrap.min.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>

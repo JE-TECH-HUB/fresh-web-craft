@@ -2,25 +2,20 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  root: '.',
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
     rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['jquery']
-        }
+      input: {
+        main: './index.html',
+        contact: './contact.html',
+        about: './about.html',
+        programs: './programs.html'
       }
     }
   },
   server: {
-    port: 8080
+    port: 3000,
+    open: true
   }
 })

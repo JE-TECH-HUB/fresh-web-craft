@@ -9,7 +9,7 @@
     "preview": "npx serve .",
     "serve": "npx serve ."
   },
-  "devDependencies": {
-    "serve": "^14.2.1"
+ "dependencies": {
+    "vite": "^4.4.0"
   }
 }
