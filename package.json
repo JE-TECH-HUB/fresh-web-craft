@@ -1,0 +1,15 @@
+{
+  "name": "fresh-web-craft",
+  "version": "1.0.0",
+  "description": "JE Tech Hub - Pure HTML/CSS/JavaScript Website",
+  "scripts": {
+    "dev": "python -m http.server 8000 || python3 -m http.server 8000 || npx serve .",
+    "build": "echo 'Build complete - no build step needed for static HTML site'",
+    "build:dev": "echo 'Build complete - no build step needed for static HTML site'",
+    "preview": "npx serve .",
+    "serve": "npx serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
