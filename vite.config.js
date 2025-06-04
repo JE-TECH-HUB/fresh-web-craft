@@ -1,26 +1,19 @@
 
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig({
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['jquery']
-        }
-      }
-    }
-  },
   server: {
-    port: 8080
-  }
+    host: "::",
+    port: 8080,
+  },
+  plugins: [
+    react(),
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
 })

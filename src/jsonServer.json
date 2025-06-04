@@ -1,0 +1,130 @@
+
+{
+  "profiles": [
+    {
+      "id": "713c",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "subject": "",
+      "message": ""
+    }
+  ],
+  "courses": [
+    {
+      "id": "c001",
+      "title": "Software Development",
+      "description": "Learn to build responsive and dynamic websites using modern technologies like HTML, CSS, JavaScript, and frameworks.",
+      "duration": "10 Weeks",
+      "level": "Beginner to Intermediate",
+      "price": 299.99,
+      "enrolledStudents": 128,
+      "rating": 4.8,
+      "modules": 12,
+      "features": [
+        "Frontend Development",
+        "Responsive Design",
+        "Backend & Databases",
+        "Real-World Projects"
+      ],
+      "images": [
+        "images/soft.jpg",
+        "images/code1.jpg",
+        "images/code2.jpg",
+        "images/code3.jpg"
+      ]
+    },
+    {
+      "id": "c002",
+      "title": "Data Analysis",
+      "description": "Turn data into insights and make data-driven decisions. Learn how to use tools like Excel, Python, SQL, and Power BI.",
+      "duration": "8 Weeks",
+      "level": "All Levels",
+      "price": 249.99,
+      "enrolledStudents": 94,
+      "rating": 4.7,
+      "modules": 10,
+      "features": [
+        "Data Collection & Cleaning",
+        "Excel, Python & SQL",
+        "Data Visualization",
+        "Real-World Case Studies"
+      ],
+      "images": [
+        "images/analysis.jpg",
+        "images/data1.jpg",
+        "images/data2.jpg",
+        "images/data3.jpg"
+      ]
+    },
+    {
+      "id": "c003",
+      "title": "UI/UX Design",
+      "description": "Master the art of creating user-friendly and visually appealing interfaces using tools like Figma and Adobe XD.",
+      "duration": "6 Weeks",
+      "level": "Beginner to Intermediate",
+      "price": 199.99,
+      "enrolledStudents": 76,
+      "rating": 4.9,
+      "modules": 8,
+      "features": [
+        "Understanding User Behavior",
+        "Wireframing & Prototyping",
+        "Color Theory & Typography",
+        "User Testing & Research"
+      ],
+      "images": [
+        "images/Uiux.jpg",
+        "images/uiux1.jpg",
+        "images/uiux2.jpg",
+        "images/uiux3.jpg"
+      ]
+    },
+    {
+      "id": "c004",
+      "title": "Forex Trading",
+      "description": "Discover how to trade the global financial markets and make informed investment decisions with proper risk management.",
+      "duration": "6 Weeks",
+      "level": "All Levels",
+      "price": 349.99,
+      "enrolledStudents": 62,
+      "rating": 4.6,
+      "modules": 9,
+      "features": [
+        "Market Analysis & Trading Psychology",
+        "Technical & Fundamental Analysis",
+        "Risk Management Strategies",
+        "Live Trading Sessions"
+      ],
+      "images": [
+        "images/forex.jpeg",
+        "images/forex1.jpg",
+        "images/forex2.jpg",
+        "images/forex3.jpg"
+      ]
+    },
+    {
+      "id": "c005",
+      "title": "Graphics Design & Video Editing",
+      "description": "Unleash your creativity by mastering both video editing and graphic design using industry-standard software.",
+      "duration": "8 Weeks",
+      "level": "All Levels",
+      "price": 279.99,
+      "enrolledStudents": 85,
+      "rating": 4.8,
+      "modules": 11,
+      "features": [
+        "Adobe Photoshop & Illustrator",
+        "Canva & Digital Marketing Graphics",
+        "Video Editing with Premiere Pro",
+        "Motion Graphics & Animations"
+      ],
+      "images": [
+        "images/graphics1.jpg",
+        "images/graphics2.jpg",
+        "images/graphics3.jpg",
+        "images/graphics4.jpg"
+      ]
+    }
+  ]
+}
