@@ -1,10 +1,7 @@
 
-/* Optimized Custom CSS with improved loading */
+/* Custom CSS that imports all modular styles */
 
-/* Import critical CSS first */
-@import url('critical.css');
-
-/* Import other modular stylesheets */
+/* Import modular stylesheets */
 @import url('cards.css');
 @import url('slideshow.css');
 @import url('forms.css');
@@ -13,7 +10,7 @@
 @import url('loaders.css');
 @import url('gadgets.css');
 
-/* Optimized Responsive Layout */
+/* Better Responsive Layout */
 @media only screen and (max-width: 767px) {
   h1 {
     font-size: 24px !important;
@@ -30,6 +27,7 @@
   
   .single-slider {
     height: 60vh !important;
+    
   }
   
   .card-title {
@@ -39,6 +37,8 @@
   .card-description {
     font-size: 14px !important;
   }
+  
+  
   
   .section {
     padding: 40px 0 !important;
@@ -53,7 +53,7 @@
   }
 }
 
-/* Optimized Tablet Layout */
+/* Tablet-specific improvements */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .container {
     padding: 0 15px;
@@ -80,6 +80,7 @@
     margin-bottom: 20px;
   }
   
+  /* Dashboard responsiveness */
   .dashboard-container {
     padding: 25px 15px;
   }
@@ -89,7 +90,7 @@
   }
 }
 
-/* Optimized Desktop Layout */
+/* Laptop-specific improvements */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .container {
     padding: 0 20px;
@@ -103,37 +104,8 @@
     padding: 80px 0;
   }
   
+  /* Dashboard responsiveness */
   .dashboard-container {
     padding: 30px 20px;
   }
-}
-
-/* Performance optimizations */
-* {
-  box-sizing: border-box;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Optimize animations */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* Hardware acceleration for smooth animations */
-.hero-slider,
-.testimonial-slider,
-.portfolio-slider,
-.clients-slider {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
 }
