@@ -27,6 +27,7 @@
   
   .single-slider {
     height: 60vh !important;
+    
   }
   
   .card-title {
@@ -37,9 +38,7 @@
     font-size: 14px !important;
   }
   
-  .card-button {
-    width: 100%;
-  }
+  
   
   .section {
     padding: 40px 0 !important;
