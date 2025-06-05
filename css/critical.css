@@ -1,70 +1,106 @@
 
-/* Critical CSS for above-the-fold content - loads first for better performance */
+/* Critical CSS for above-the-fold content */
 
-/* Essential layout and typography */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Critical header styles */
+/* Essential Layout */
 .header {
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: all 0.3s ease;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.header-inner {
-  padding: 15px 0;
+/* Hero Section Critical Styles */
+.hero-slider {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
-.logo img {
-  max-height: 50px;
-  width: auto;
+.single-slider {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
-/* Critical navigation styles */
+/* Navigation Critical Styles */
 .nav.menu {
-  list-style: none;
-  display: flex;
-  align-items: center;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav.menu li {
-  margin: 0 15px;
+    margin: 0 15px;
 }
 
 .nav.menu li a {
-  color: #333;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.nav.menu li a:hover,
-.nav.menu li a.active {
-  color: #1A76D1;
+/* Button Critical Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
-/* Critical responsive styles */
-@media (max-width: 767px) {
-  .header-inner {
-    padding: 10px 0;
-  }
-  
-  .logo img {
-    max-height: 40px;
-  }
+.btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Container Critical Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Preloader Critical Styles */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader-deactivate {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+/* Mobile First Critical Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .single-slider {
+        height: 70vh;
+    }
+    
+    .hero-slider {
+        height: 70vh;
+    }
 }
