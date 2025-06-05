@@ -1,0 +1,75 @@
+
+/* Performance Optimization CSS */
+
+/* Critical CSS for above-the-fold content */
+.critical-content {
+  will-change: transform;
+}
+
+/* Optimize animations for better performance */
+.smooth-animation {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Efficient loading states */
+.loading-optimized {
+  content-visibility: auto;
+  contain-intrinsic-size: 300px;
+}
+
+/* Optimize images */
+img {
+  max-width: 100%;
+  height: auto;
+  loading: lazy;
+}
+
+/* Critical images should load immediately */
+.hero-image,
+.logo img {
+  loading: eager !important;
+}
+
+/* Reduce layout shifts */
+.hero-slider {
+  min-height: 500px;
+}
+
+/* Optimize fonts */
+@font-display: swap;
+
+/* Reduce repaints */
+.header.sticky {
+  transform: translateZ(0);
+}
+
+/* Efficient transitions */
+.btn,
+.card-button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover,
+.card-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Optimize scroll performance */
+.scroll-optimized {
+  overflow-anchor: none;
+  overscroll-behavior: contain;
+}
+
+/* Reduce JavaScript execution on animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -34,6 +34,448 @@
     <link rel="stylesheet" href="css/slideshow.css">
     <!-- Gadgets CSS -->
     <link rel="stylesheet" href="css/gadgets.css">
+
+    <style>
+	
+/* Hero Section */
+.hero-area {
+  background: linear-gradient(135deg, rgba(0, 20, 109, 0.9), darkblue), url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=2126') center/cover;
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.hero-content {
+  text-align: left;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color:orange;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-hero {
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, darkblue, blue);
+  color: white;
+}
+
+.btn-secondary {
+  background: orange;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-hero:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Filters */
+.filters-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 2rem 0;
+  margin: -40px 0 2rem;
+  position: relative;
+  z-index: 3;
+  border-radius: 20px 20px 0 0;
+}
+
+.filter-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.filter-title {
+  color: #2d3748;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: darkblue;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background: white;
+}
+
+option{
+background: darkblue;
+max-width: 100px;
+}
+
+option:hover{
+background: orange !important;
+}
+
+/* Enhanced Product Grid */
+.products-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 3rem 0;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  height: 200px;
+  background: linear-gradient(45deg, #f0f2f5, #e2e8f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image::before {
+  content: '📱';
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+.product-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(45deg, orange, #ee5a24);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.product-content {
+  padding: 1.5rem;
+}
+
+.product-category {
+  color: #667eea;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.product-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: orange;
+  margin-bottom: 1rem;
+}
+
+.product-description {
+  color: #718096;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.product-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-product {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-buy {
+  background: linear-gradient(45deg, #667eea, darkblue);
+  color: white;
+}
+
+.btn-swap {
+  background: linear-gradient(45deg, orange, #ee5a24);
+  color: white;
+}
+
+.btn-product:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Auth Buttons */
+.auth-section {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-auth {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.btn-login {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-signup {
+  background: linear-gradient(45deg, orange, #ee5a24);
+  color: white;
+}
+
+.btn-auth:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Modals */
+.modal-content {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: scroll;
+}
+
+.modal-header {
+  background: linear-gradient(45deg, #667eea, darkblue);
+  color: white;
+  border: none;
+  padding: 1rem;
+}
+
+.modal-title {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.modal-body {
+  padding: 2rem;
+  background: #f8fafc;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  font-weight: 400;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.modal .form-control {
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  /*padding: 12px 16px;*/
+  background: white;
+}
+
+.modal-footer {
+  background: white;
+  border: none;
+  padding: 1.5rem 2rem;
+}
+
+.modal-footer .btn {
+  border-radius: 10px;
+  padding: 12px 30px;
+  font-weight: 600;
+  border: none;
+}
+
+.btn-modal-primary {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+}
+
+.btn-modal-secondary {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .auth-section {
+    position: relative;
+    top: auto;
+    right: auto;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-hero {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #1e0281;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success Messages */
+.alert {
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+}
+
+.alert-success {
+  background: linear-gradient(45deg, #48bb78, #38a169);
+  color: white;
+}
+
+.alert-error {
+  background: linear-gradient(45deg, #f56565, #e53e3e);
+  color: white;
+}
+</style>
+
+  
+
 </head>
 <body>
     <!-- Loading Spinner -->
@@ -41,488 +483,424 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Header Area -->
-    <header class="header">
-        <!-- Header Inner -->
-        <div class="header-inner">
-            <div class="container">
-                <div class="inner">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-12">
-                            <!-- Logo -->
-                            <div class="logo">
-                                <a href="index.html"><img src="images/JE Techhub logo.png" alt="JE TechHub logo"></a>
-                            </div>
-                            <!-- End Logo -->
-                            <!-- Mobile Nav -->
-                            <div class="mobile-nav"></div>
-                            <!-- End Mobile Nav -->
-                        </div>
-                        <div class="col-lg-9 col-md-9 col-12">
-                            <!-- Main Menu -->
-                            <div class="main-menu">
-                                <nav class="navigation">
-                                    <ul class="nav menu">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="courses.html">Courses</a></li>
-                                        <li><a href="programs.html">Programs</a></li>
-                                        <li class="active"><a href="gadgets.html">Gadgets</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
-                                      
-                                        
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!-- End Main Menu -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Header Inner -->
-    </header>
-    <!-- End Header Area -->
+<!-- Header Area -->
+<header class="header">
+<!-- Header Inner -->
+<div class="header-inner">
+<div class="container">
+<div class="inner">
+<div class="row">
+<div class="col-lg-3 col-md-3 col-12">
+<!-- Logo -->
+<div class="logo">
+<a href="index.html"><img src="images/JE Techhub logo.png" alt="JE TechHub logo"></a>
+</div>
+<!-- End Logo -->
+<!-- Mobile Nav -->
+<div class="mobile-nav"></div>
+<!-- End Mobile Nav -->
+</div>
+<div class="col-lg-9 col-md-9 col-12">
+<!-- Main Menu -->
+<div class="main-menu">
+<nav class="navigation">
+<ul class="nav menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="programs.html">Programs</a></li>
+<li class="active"><a href="gadgets.html">Gadgets</a></li>
+<li><a href="contact.html">Contact Us</a></li>
 
-    <!-- Hero Section -->
-    <section class="hero-slider">
-        <!-- Single Slider -->
-        <div class="single-slider" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=60');">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7 col-md-8 col-12">
-                        <div class="hero-text">
-                            <h1>Explore Our Tech Gadgets Marketplace</h1>
-                            <p>Discover cutting-edge technology, trade your devices, or find great deals on quality electronics</p>
-                            <div class="button">
-                                <a href="#gadgetsSection" class="btn primary">Browse Gadgets</a>
-                                <a href="#" data-toggle="modal" data-target="#signupModal" class="btn secondary">Join Marketplace</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ End Single Slider -->
-    </section>
-    <!--/ End Hero Section -->
 
-    <!-- Breadcrumbs -->
-    <div class="breadcrumbs">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="bread-inner">
-                        <h2>Tech Gadgets Marketplace</h2>
-                        <ul class="bread-list">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active"><a href="gadgets.html">Gadgets</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Breadcrumbs -->
+</ul>
+</nav>
+</div>
+<!-- End Main Menu -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- End Header Inner -->
+</header>
+<!-- End Header Area -->
 
-    <!-- Gadgets Section -->
-    <section class="section" id="gadgetsSection">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <h2>Browse Tech Gadgets</h2>
-                        <p>Explore our selection of high-quality tech gadgets available for purchase or swap</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Filter Options -->
-            <div class="row mb-4 filter-container">
-                <div class="col-lg-4 col-md-4 col-12 mb-2">
-                    <select id="categoryFilter" class="form-control">
-                        <option value="all">All Categories</option>
-                        <option value="phone">Smartphones</option>
-                        <option value="laptop">Laptops</option>
-                        <option value="tablet">Tablets</option>
-                        <option value="accessory">Accessories</option>
-                    </select>
-                </div>
-                <div class="col-lg-4 col-md-4 col-12 mb-2">
-                    <select id="priceFilter" class="form-control">
-                        <option value="all">All Price Ranges</option>
-                        <option value="0-100">$0 - $100</option>
-                        <option value="100-500">$100 - $500</option>
-                        <option value="500-1000">$500 - $1000</option>
-                        <option value="1000+">$1000+</option>
-                    </select>
-                </div>
-                <div class="col-lg-4 col-md-4 col-12 mb-2">
-                    <select id="sortFilter" class="form-control">
-                        <option value="default">Sort By: Default</option>
-                        <option value="price-asc">Price: Low to High</option>
-                        <option value="price-desc">Price: High to Low</option>
-                        <option value="name-asc">Name: A to Z</option>
-                    </select>
-                </div>
-            </div>
-            
-            <!-- Gadgets Grid -->
-            <div class="row justify-content-center" id="gadgetsContainer">
-                <!-- Gadget Item 1 -->
-                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="phone" data-price="499" data-name="Premium Smartphone X1">
-                    <div class="card">
-                        <div class="card-image">
-                            <div class="card-slideshow">
-                                <img src="images/gadgets/smartphone1.jpg" alt="Smartphone" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02ff9?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/smartphone2.jpg" alt="Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/smartphone3.jpg" alt="Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&auto=format&fit=crop&q=60';">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="card-title">Premium Smartphone X1</h4>
-                            <div class="gadget-category">Category: <span>Smartphone</span></div>
-                            <div class="gadget-price">Price: <span>$499</span></div>
-                            <p class="card-description">The latest model with stunning camera features, 128GB storage, and all-day battery life. Perfect for professionals and photography enthusiasts.</p>
-                            <div class="gadget-actions">
-                                <button class="card-button" onclick="contactSeller(1)">Contact Seller</button>
-                                <button class="card-button buy-button" onclick="openBuyModal(1, 'Premium Smartphone X1', 499)">Buy Now</button>
-                                <button class="card-button swap-button" onclick="openSwapModal(1)">Apply for Swap</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Gadget Item 2 -->
-                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="laptop" data-price="1299" data-name="Developer Pro Laptop">
-                    <div class="card">
-                        <div class="card-image">
-                            <div class="card-slideshow">
-                                <img src="images/gadgets/laptop1.jpg" alt="Laptop" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/laptop2.jpg" alt="Laptop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/laptop3.jpg" alt="Laptop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60';">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="card-title">Developer Pro Laptop</h4>
-                            <div class="gadget-category">Category: <span>Laptop</span></div>
-                            <div class="gadget-price">Price: <span>$1,299</span></div>
-                            <p class="card-description">High-performance laptop with 16GB RAM, 512GB SSD, and dedicated graphics card. Ideal for programming, design, and gaming.</p>
-                            <div class="gadget-actions">
-                                <button class="card-button" onclick="contactSeller(2)">Contact Seller</button>
-                                <button class="card-button buy-button" onclick="openBuyModal(2, 'Developer Pro Laptop', 1299)">Buy Now</button>
-                                <button class="card-button swap-button" onclick="openSwapModal(2)">Apply for Swap</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Gadget Item 3 -->
-                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="tablet" data-price="349" data-name="Ultra-Slim Tablet">
-                    <div class="card">
-                        <div class="card-image">
-                            <div class="card-slideshow">
-                                <img src="images/gadgets/tablet1.jpg" alt="Tablet" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/tablet2.jpg" alt="Tablet" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1623126908029-58cb08a2b272?w=800&auto=format&fit=crop&q=60';">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="card-title">Ultra-Slim Tablet</h4>
-                            <div class="gadget-category">Category: <span>Tablet</span></div>
-                            <div class="gadget-price">Price: <span>$349</span></div>
-                            <p class="card-description">10-inch display, perfect for reading, browsing, and entertainment. Includes stylus and protective case.</p>
-                            <div class="gadget-actions">
-                                <button class="card-button" onclick="contactSeller(3)">Contact Seller</button>
-                                <button class="card-button buy-button" onclick="openBuyModal(3, 'Ultra-Slim Tablet', 349)">Buy Now</button>
-                                <button class="card-button swap-button" onclick="openSwapModal(3)">Apply for Swap</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Gadget Item 4 -->
-                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="accessory" data-price="89" data-name="Premium Wireless Headphones">
-                    <div class="card">
-                        <div class="card-image">
-                            <div class="card-slideshow">
-                                <img src="images/gadgets/headphones1.jpg" alt="Headphones" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/headphones2.jpg" alt="Headphones" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&auto=format&fit=crop&q=60';">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="card-title">Premium Wireless Headphones</h4>
-                            <div class="gadget-category">Category: <span>Accessory</span></div>
-                            <div class="gadget-price">Price: <span>$89</span></div>
-                            <p class="card-description">Noise-cancelling headphones with premium sound quality, Bluetooth 5.0, and 30-hour battery life.</p>
-                            <div class="gadget-actions">
-                                <button class="card-button" onclick="contactSeller(4)">Contact Seller</button>
-                                <button class="card-button buy-button" onclick="openBuyModal(4, 'Premium Wireless Headphones', 89)">Buy Now</button>
-                                <button class="card-button swap-button" onclick="openSwapModal(4)">Apply for Swap</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Gadget Item 5 -->
-                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="phone" data-price="299" data-name="Budget-Friendly Smartphone">
-                    <div class="card">
-                        <div class="card-image">
-                            <div class="card-slideshow">
-                                <img src="images/gadgets/smartphone4.jpg" alt="Budget Smartphone" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1533228100845-08145b01de14?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/smartphone5.jpg" alt="Budget Smartphone" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1550367083-9fa5411cb8a0?w=800&auto=format&fit=crop&q=60';">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="card-title">Budget-Friendly Smartphone</h4>
-                            <div class="gadget-category">Category: <span>Smartphone</span></div>
-                            <div class="gadget-price">Price: <span>$299</span></div>
-                            <p class="card-description">Great entry-level smartphone with excellent battery life, 64GB storage, and dual-camera system.</p>
-                            <div class="gadget-actions">
-                                <button class="card-button" onclick="contactSeller(5)">Contact Seller</button>
-                                <button class="card-button buy-button" onclick="openBuyModal(5, 'Budget-Friendly Smartphone', 299)">Buy Now</button>
-                                <button class="card-button swap-button" onclick="openSwapModal(5)">Apply for Swap</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Gadget Item 6 -->
-                <div class="col-lg-4 col-md-6 col-12 mb-4 gadget-item" data-category="laptop" data-price="599" data-name="Student Laptop">
-                    <div class="card">
-                        <div class="card-image">
-                            <div class="card-slideshow">
-                                <img src="images/gadgets/laptop4.jpg" alt="Budget Laptop" class="active" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=60';">
-                                <img src="images/gadgets/laptop5.jpg" alt="Budget Laptop" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&auto=format&fit=crop&q=60';">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="card-title">Student Laptop</h4>
-                            <div class="gadget-category">Category: <span>Laptop</span></div>
-                            <div class="gadget-price">Price: <span>$599</span></div>
-                            <p class="card-description">Perfect for students and everyday tasks. Features 8GB RAM, 256GB SSD, and lightweight design.</p>
-                            <div class="gadget-actions">
-                                <button class="card-button" onclick="contactSeller(6)">Contact Seller</button>
-                                <button class="card-button buy-button" onclick="openBuyModal(6, 'Student Laptop', 599)">Buy Now</button>
-                                <button class="card-button swap-button" onclick="openSwapModal(6)">Apply for Swap</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Hero Section -->
+<section class="hero-area">
+	<div class="container">
+	  <div class="hero-content">
+	    <h1>JE Gadgets</h1>
+	    <p>Discover the latest gadgets, get professional repairs, and trade your devices with our expert team</p>
+	    <div class="hero-buttons">
+	      <button class="btn-hero btn-primary" onclick="scrollToProducts()">Browse Gadgets</button>
+	      <button class="btn-hero btn-secondary" onclick="showDeliveryModal()">Book Delivery</button>
+	    </div>
+	  </div>
+	</div>
+        </section>
+        
+        <!-- Filters Section -->
+        <section class="filters-section">
+	<div class="container">
+	  <div class="filter-card">
+	    <h3 class="filter-title">Find Your Perfect Gadget</h3>
+	    <div class="row">
+	      <div class="col-md-4">
+	        <div class="filter-group">
+		<label for="categoryFilter">Category</label>
+		<select id="categoryFilter" class="form-control">
+		  <option value="">All Categories</option>
+		  <option value="phones">Smartphones</option>
+		  <option value="laptops">Laptops</option>
+		  <option value="tablets">Tablets</option>
+		  <option value="accessories">Accessories</option>
+		</select>
+	        </div>
+	      </div>
+	      <div class="col-md-4">
+	        <div class="filter-group">
+		<label for="priceFilter">Price Range</label>
+		<select id="priceFilter" class="form-control">
+		  <option value="">Any Price</option>
+		  <option value="0-50000">₦0 - ₦50,000</option>
+		  <option value="50000-100000">₦50,000 - ₦100,000</option>
+		  <option value="100000-200000">₦100,000 - ₦200,000</option>
+		  <option value="200000+">₦200,000+</option>
+		</select>
+	        </div>
+	      </div>
+	      <div class="col-md-4">
+	        <div class="filter-group">
+		<label for="sortFilter">Sort By</label>
+		<select id="sortFilter" class="form-control">
+		  <option value="newest">Newest First</option>
+		  <option value="price-low">Price: Low to High</option>
+		  <option value="price-high">Price: High to Low</option>
+		  <option value="popular">Most Popular</option>
+		</select>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+        </section>
+        
+        <!-- Products Section -->
+        <section class="products-section" id="productsSection">
+	<div class="container">
+	  <div class="row">
+	    <div class="col-12">
+	      <h2 class="text-center mb-4" style="font-weight: 700; color: #2d3748;">Featured Gadgets</h2>
+	    </div>
+	  </div>
+	  
+	  <div class="product-grid" id="productGrid">
+	    <!-- Sample Products -->
+	    <div class="product-card" data-category="phones" data-price="85000">
+	      <div class="product-image">
+	        <div class="product-badge">New</div>
+	      </div>
+	      <div class="product-content">
+	        <div class="product-category">Smartphones</div>
+	        <h3 class="product-title">iPhone 13 Pro</h3>
+	        <div class="product-price">₦85,000</div>
+	        <p class="product-description">Latest iPhone with advanced camera system and A15 Bionic chip</p>
+	        <div class="product-actions">
+		<button class="btn-product btn-buy" onclick="showBuyModal('iPhone 13 Pro', '85000')">Buy Now</button>
+		<button class="btn-product btn-swap" onclick="showSwapModal('iPhone 13 Pro')">Swap</button>
+	        </div>
+	      </div>
+	    </div>
+        
+	    <div class="product-card" data-category="laptops" data-price="150000">
+	      <div class="product-image">
+	        <div class="product-badge">Hot</div>
+	      </div>
+	      <div class="product-content">
+	        <div class="product-category">Laptops</div>
+	        <h3 class="product-title">MacBook Air M2</h3>
+	        <div class="product-price">₦150,000</div>
+	        <p class="product-description">Ultra-thin laptop with M2 chip and all-day battery life</p>
+	        <div class="product-actions">
+		<button class="btn-product btn-buy" onclick="showBuyModal('MacBook Air M2', '150000')">Buy Now</button>
+		<button class="btn-product btn-swap" onclick="showSwapModal('MacBook Air M2')">Swap</button>
+	        </div>
+	      </div>
+	    </div>
+        
+	    <div class="product-card" data-category="tablets" data-price="45000">
+	      <div class="product-image">
+	      </div>
+	      <div class="product-content">
+	        <div class="product-category">Tablets</div>
+	        <h3 class="product-title">iPad Air</h3>
+	        <div class="product-price">₦45,000</div>
+	        <p class="product-description">Powerful tablet for creativity and productivity</p>
+	        <div class="product-actions">
+		<button class="btn-product btn-buy" onclick="showBuyModal('iPad Air', '45000')">Buy Now</button>
+		<button class="btn-product btn-swap" onclick="showSwapModal('iPad Air')">Swap</button>
+	        </div>
+	      </div>
+	    </div>
+        
+	    <div class="product-card" data-category="accessories" data-price="25000">
+	      <div class="product-image">
+	      </div>
+	      <div class="product-content">
+	        <div class="product-category">Accessories</div>
+	        <h3 class="product-title">AirPods Pro</h3>
+	        <div class="product-price">₦25,000</div>
+	        <p class="product-description">Active noise cancellation wireless earbuds</p>
+	        <div class="product-actions">
+		<button class="btn-product btn-buy" onclick="showBuyModal('AirPods Pro', '25000')">Buy Now</button>
+		<button class="btn-product btn-swap" onclick="showSwapModal('AirPods Pro')">Swap</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+        </section>
+        
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <h5 class="modal-title">Welcome Back</h5>
+	      <button type="button" class="close" onclick="closeModal('loginModal')" style="color: white; opacity: 1;">
+	        <span>&times;</span>
+	      </button>
+	    </div>
+	    <div class="modal-body">
+	      <div id="loginError" class="alert alert-error" style="display: none;"></div>
+	      <form id="loginForm" onsubmit="handleLogin(event)">
+	        <div class="form-group">
+		<label for="loginEmail">Email Address</label>
+		<input type="email" class="form-control" id="loginEmail" required>
+	        </div>
+	        <div class="form-group">
+		<label for="loginPassword">Password</label>
+		<input type="password" class="form-control" id="loginPassword" required>
+	        </div>
+	      </form>
+	    </div>
+	    <div class="modal-footer">
+	      <button type="button" class="btn btn-modal-secondary" onclick="closeModal('loginModal')">Cancel</button>
+	      <button type="submit" form="loginForm" class="btn btn-modal-primary" id="loginBtn">
+	        Login
+	      </button>
+	    </div>
+	  </div>
+	</div>
         </div>
-    </section>
-    <!-- End Gadgets Section -->
-    
-    <!-- Swap Modal -->
-    <div class="modal fade" id="swapModal" tabindex="-1" role="dialog" aria-labelledby="swapModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="swapModalLabel">Apply for Swap</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="swapForm">
-                        <input type="hidden" id="gadgetId" name="gadgetId">
-                        <div class="form-group">
-                            <label for="swapName">Your Name</label>
-                            <input type="text" class="form-control" id="swapName" name="swapName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="swapEmail">Email Address</label>
-                            <input type="email" class="form-control" id="swapEmail" name="swapEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="swapPhone">Phone Number</label>
-                            <input type="text" class="form-control" id="swapPhone" name="swapPhone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="swapItemName">Your Item Name</label>
-                            <input type="text" class="form-control" id="swapItemName" name="swapItemName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="swapItemValue">Estimated Value ($)</label>
-                            <input type="number" class="form-control" id="swapItemValue" name="swapItemValue" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="swapItemImage">Upload Item Image</label>
-                            <input type="file" class="form-control-file" id="swapItemImage" name="swapItemImage">
-                            <small class="form-text text-muted">Upload a clear image of your item (optional)</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="swapItemDescription">Item Description</label>
-                            <textarea class="form-control" id="swapItemDescription" name="swapItemDescription" rows="3" required></textarea>
-                        </div>
-                    </form>
-                    <div id="swapSuccess" class="alert alert-success mt-3" style="display: none;">
-                        Your swap application has been submitted successfully! We'll contact you soon.
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="submitSwapForm">Submit Application</button>
-                </div>
-            </div>
+        
+        <!-- Signup Modal -->
+        <div class="modal fade" id="signupModal" tabindex="-1">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <h5 class="modal-title">Join JE Tech Hub</h5>
+	      <button type="button" class="close" onclick="closeModal('signupModal')" style="color: white; opacity: 1;">
+	        <span>&times;</span>
+	      </button>
+	    </div>
+	    <div class="modal-body">
+	      <div id="signupError" class="alert alert-error" style="display: none;"></div>
+	      <form id="signupForm" onsubmit="handleSignup(event)">
+	        <div class="row">
+		<div class="col-md-6">
+		  <div class="form-group">
+		    <label for="signupFirstName">First Name</label>
+		    <input type="text" class="form-control" id="signupFirstName" required>
+		  </div>
+		</div>
+		<div class="col-md-6">
+		  <div class="form-group">
+		    <label for="signupLastName">Last Name</label>
+		    <input type="text" class="form-control" id="signupLastName" required>
+		  </div>
+		</div>
+	        </div>
+	        <div class="form-group">
+		<label for="signupEmail">Email Address</label>
+		<input type="email" class="form-control" id="signupEmail" required>
+	        </div>
+	        <div class="form-group">
+		<label for="signupPhone">Phone Number</label>
+		<input type="tel" class="form-control" id="signupPhone">
+	        </div>
+	        <div class="form-group">
+		<label for="signupPassword">Password</label>
+		<input type="password" class="form-control" id="signupPassword" required minlength="8">
+	        </div>
+	      </form>
+	    </div>
+	    <div class="modal-footer">
+	      <button type="button" class="btn btn-modal-secondary" onclick="closeModal('signupModal')">Cancel</button>
+	      <button type="submit" form="signupForm" class="btn btn-modal-primary" id="signupBtn">
+	        Create Account
+	      </button>
+	    </div>
+	  </div>
+	</div>
         </div>
-    </div>
-    
-    <!-- Buy Now Modal -->
-    <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="buyModalLabel">Complete Your Purchase</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="checkout-details">
-                        <h5>Product: <span id="buyProductName"></span></h5>
-                        <h6>Price: $<span id="buyProductPrice"></span></h6>
-                    </div>
-                    <hr>
-                    <form id="buyForm">
-                        <input type="hidden" id="buyGadgetId" name="buyGadgetId">
-                        <div class="form-group">
-                            <label for="buyName">Full Name</label>
-                            <input type="text" class="form-control" id="buyName" name="buyName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="buyPhone">Phone Number</label>
-                            <input type="text" class="form-control" id="buyPhone" name="buyPhone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="buyEmail">Email Address</label>
-                            <input type="email" class="form-control" id="buyEmail" name="buyEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="buyAddress">Delivery Address</label>
-                            <textarea class="form-control" id="buyAddress" name="buyAddress" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="buyPaymentMethod">Payment Method</label>
-                            <select class="form-control" id="buyPaymentMethod" name="buyPaymentMethod" required>
-                                <option value="">Select Payment Method</option>
-                                <option value="credit">Credit Card</option>
-                                <option value="debit">Debit Card</option>
-                                <option value="paypal">PayPal</option>
-                                <option value="cod">Cash on Delivery</option>
-                            </select>
-                        </div>
-                    </form>
-                    <div id="buySuccess" class="alert alert-success mt-3" style="display: none;">
-                        Your order has been placed successfully! We'll process your purchase and contact you shortly.
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="submitBuyForm">Complete Purchase</button>
-                </div>
-            </div>
+        
+        <!-- Buy Modal -->
+        <div class="modal fade" id="buyModal" tabindex="-1">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <h5 class="modal-title">Purchase Gadget</h5>
+	      <button type="button" class="close" onclick="closeModal('buyModal')" style="color: white; opacity: 1;">
+	        <span>&times;</span>
+	      </button>
+	    </div>
+	    <div class="modal-body">
+	      <div id="buyItemDetails"></div>
+	      <div id="buyError" class="alert alert-error" style="display: none;"></div>
+	      <form id="buyForm" onsubmit="handlePurchase(event)">
+	        <div class="form-group">
+		<label for="buyerName">Full Name</label>
+		<input type="text" class="form-control" id="buyerName" required>
+	        </div>
+	        <div class="form-group">
+		<label for="buyerEmail">Email Address</label>
+		<input type="email" class="form-control" id="buyerEmail" required>
+	        </div>
+	        <div class="form-group">
+		<label for="buyerPhone">Phone Number</label>
+		<input type="tel" class="form-control" id="buyerPhone" required>
+	        </div>
+	        <div class="form-group">
+		<label for="deliveryAddress">Delivery Address</label>
+		<textarea class="form-control" id="deliveryAddress" rows="3" required></textarea>
+	        </div>
+	      </form>
+	    </div>
+	    <div class="modal-footer">
+	      <button type="button" class="btn btn-modal-secondary" onclick="closeModal('buyModal')">Cancel</button>
+	      <button type="submit" form="buyForm" class="btn btn-modal-primary" id="buyBtn">
+	        Complete Purchase
+	      </button>
+	    </div>
+	  </div>
+	</div>
         </div>
-    </div>
-
-    <!-- Login Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Login to Your Account</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="loginEmail">Email Address</label>
-                            <input type="email" class="form-control" id="loginEmail" name="loginEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="loginPassword">Password</label>
-                            <input type="password" class="form-control" id="loginPassword" name="loginPassword" required>
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                        </div>
-                        <div class="text-right">
-                            <a href="#" class="forgot-password">Forgot password?</a>
-                        </div>
-                    </form>
-                    <div id="loginError" class="alert alert-danger mt-3" style="display: none;">
-                        Invalid email or password. Please try again.
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="submitLoginForm">Login</button>
-                </div>
-                <div class="modal-footer-alt">
-                    <p>Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign up here</a></p>
-                </div>
-            </div>
+        
+        <!-- Swap Modal -->
+        <div class="modal fade" id="swapModal" tabindex="-1">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <h5 class="modal-title">Swap Your Device</h5>
+	      <button type="button" class="close" onclick="closeModal('swapModal')" style="color: white; opacity: 1;">
+	        <span>&times;</span>
+	      </button>
+	    </div>
+	    <div class="modal-body">
+	      <div id="swapItemDetails"></div>
+	      <div id="swapError" class="alert alert-error" style="display: none;"></div>
+	      <form id="swapForm" onsubmit="handleSwap(event)">
+	        <div class="form-group">
+		<label for="swapperName">Full Name</label>
+		<input type="text" class="form-control" id="swapperName" required>
+	        </div>
+	        <div class="form-group">
+		<label for="swapperEmail">Email Address</label>
+		<input type="email" class="form-control" id="swapperEmail" required>
+	        </div>
+	        <div class="form-group">
+		<label for="swapperPhone">Phone Number</label>
+		<input type="tel" class="form-control" id="swapperPhone" required>
+	        </div>
+	        <div class="form-group">
+		<label for="currentDevice">Your Current Device</label>
+		<input type="text" class="form-control" id="currentDevice" placeholder="e.g., iPhone 12" required>
+	        </div>
+	        <div class="form-group">
+		<label for="deviceCondition">Device Condition</label>
+		<select class="form-control" id="deviceCondition" required>
+		  <option value="">Select condition</option>
+		  <option value="excellent">Excellent</option>
+		  <option value="good">Good</option>
+		  <option value="fair">Fair</option>
+		  <option value="poor">Poor</option>
+		</select>
+	        </div>
+	        <div class="form-group">
+		<label for="additionalPayment">Additional Payment (if any)</label>
+		<input type="number" class="form-control" id="additionalPayment" placeholder="0">
+	        </div>
+	      </form>
+	    </div>
+	    <div class="modal-footer">
+	      <button type="button" class="btn btn-modal-secondary" onclick="closeModal('swapModal')">Cancel</button>
+	      <button type="submit" form="swapForm" class="btn btn-modal-primary" id="swapBtn">
+	        Submit Swap Request
+	      </button>
+	    </div>
+	  </div>
+	</div>
         </div>
-    </div>
-
-    <!-- Signup Modal -->
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="signupModalLabel">Create an Account</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="signupForm">
-                        <div class="form-group">
-                            <label for="signupFirstName">First Name</label>
-                            <input type="text" class="form-control" id="signupFirstName" name="signupFirstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupLastName">Last Name</label>
-                            <input type="text" class="form-control" id="signupLastName" name="signupLastName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupEmail">Email Address</label>
-                            <input type="email" class="form-control" id="signupEmail" name="signupEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupPassword">Password</label>
-                            <input type="password" class="form-control" id="signupPassword" name="signupPassword" required>
-                            <small class="form-text text-muted">Password must be at least 8 characters long.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupConfirmPassword">Confirm Password</label>
-                            <input type="password" class="form-control" id="signupConfirmPassword" name="signupConfirmPassword" required>
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="termsAgree" required>
-                            <label class="form-check-label" for="termsAgree">I agree to the <a href="#">Terms and Conditions</a></label>
-                        </div>
-                    </form>
-                    <div id="signupError" class="alert alert-danger mt-3" style="display: none;"></div>
-                    <div id="signupSuccess" class="alert alert-success mt-3" style="display: none;">
-                        Your account has been created successfully! You can now login.
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="submitSignupForm">Sign Up</button>
-                </div>
-                <div class="modal-footer-alt">
-                    <p>Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login here</a></p>
-                </div>
-            </div>
+        
+        <!-- Delivery Modal -->
+        <div class="modal fade" id="deliveryModal" tabindex="-1">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <h5 class="modal-title">Book Delivery Service</h5>
+	      <button type="button" class="close" onclick="closeModal('deliveryModal')" style="color: white; opacity: 1;">
+	        <span>&times;</span>
+	      </button>
+	    </div>
+	    <div class="modal-body">
+	      <div id="deliveryError" class="alert alert-error" style="display: none;"></div>
+	      <form id="deliveryForm" onsubmit="handleDelivery(event)">
+	        <div class="form-group">
+		<label for="deliveryName">Full Name</label>
+		<input type="text" class="form-control" id="deliveryName" required>
+	        </div>
+	        <div class="form-group">
+		<label for="deliveryEmail">Email Address</label>
+		<input type="email" class="form-control" id="deliveryEmail" required>
+	        </div>
+	        <div class="form-group">
+		<label for="deliveryPhone">Phone Number</label>
+		<input type="tel" class="form-control" id="deliveryPhone" required>
+	        </div>
+	        <div class="form-group">
+		<label for="pickupAddress">Pickup Address</label>
+		<textarea class="form-control" id="pickupAddress" rows="2" required></textarea>
+	        </div>
+	        <div class="form-group">
+		<label for="deliveryAddressField">Delivery Address</label>
+		<textarea class="form-control" id="deliveryAddressField" rows="2" required></textarea>
+	        </div>
+	        <div class="form-group">
+		<label for="deliveryType">Delivery Type</label>
+		<select class="form-control" id="deliveryType" required>
+		  <option value="">Select type</option>
+		  <option value="standard">Standard (2-3 days) - ₦500</option>
+		  <option value="express">Express (Same day) - ₦1,500</option>
+		  <option value="urgent">Urgent (2 hours) - ₦3,000</option>
+		</select>
+	        </div>
+	        <div class="form-group">
+		<label for="packageDescription">Package Description</label>
+		<textarea class="form-control" id="packageDescription" rows="2" placeholder="Describe what you're sending"></textarea>
+	        </div>
+	      </form>
+	    </div>
+	    <div class="modal-footer">
+	      <button type="button" class="btn btn-modal-secondary" onclick="closeModal('deliveryModal')">Cancel</button>
+	      <button type="submit" form="deliveryForm" class="btn btn-modal-primary" id="deliveryBtn">
+	        Book Delivery
+	      </button>
+	    </div>
+	  </div>
+	</div>
         </div>
-    </div>
-
-    <!-- Footer Area -->
+	  <!-- Footer Area -->
     <footer class="footer">
         <!-- Footer Top -->
         <div class="footer-top">
@@ -625,350 +1003,368 @@
     <script src="js/slideshow.js"></script>
     <!-- Main JS -->
     <script src="js/main.js"></script>
+   
+<!-- Scripts -->
+<script src="js/jquery.min.js" type="module"></script>
+<script src="js/bootstrap.min.js" type="module"></script>
+
+<script>
+// Global variables
+let currentUser = null;
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+  checkAuthStatus();
+  initializeFilters();
+});
+
+// Check authentication status
+function checkAuthStatus() {
+  if (authService && authService.isAuthenticated()) {
+    currentUser = authService.getUserProfile();
+    updateAuthUI(true);
+  } else {
+    updateAuthUI(false);
+  }
+}
+
+// Update authentication UI
+function updateAuthUI(isLoggedIn) {
+  const authButtons = document.getElementById('authButtons');
+  if (isLoggedIn && currentUser) {
+    authButtons.innerHTML = `
+      <div style="background: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 25px; color: #2d3748; font-weight: 600;">
+        Welcome, ${currentUser.firstName || 'User'}!
+      </div>
+      <button class="btn-auth btn-login" onclick="logout()">Logout</button>
+    `;
+  } else {
+    authButtons.innerHTML = `
+      <button class="btn-auth btn-login" onclick="showLoginModal()">Login</button>
+      <button class="btn-auth btn-signup" onclick="showSignupModal()">Sign Up</button>
+    `;
+  }
+}
+
+// Modal functions
+function showLoginModal() {
+  document.getElementById('loginModal').style.display = 'block';
+  document.getElementById('loginModal').classList.add('show');
+}
+
+function showSignupModal() {
+  document.getElementById('signupModal').style.display = 'block';
+  document.getElementById('signupModal').classList.add('show');
+}
+
+function showBuyModal(itemName, price) {
+  document.getElementById('buyItemDetails').innerHTML = `
+    <div style="background: #f8fafc; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+      <h6 style="margin: 0; color: #2d3748;">Purchasing: <strong>${itemName}</strong></h6>
+      <p style="margin: 0; color: #667eea; font-size: 1.2rem; font-weight: 600;">Price: ₦${parseInt(price).toLocaleString()}</p>
+    </div>
+  `;
+  document.getElementById('buyModal').style.display = 'block';
+  document.getElementById('buyModal').classList.add('show');
+}
+
+function showSwapModal(itemName) {
+  document.getElementById('swapItemDetails').innerHTML = `
+    <div style="background: #f8fafc; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+      <h6 style="margin: 0; color: #2d3748;">Swapping for: <strong>${itemName}</strong></h6>
+      <p style="margin: 0; color: orange;">Please provide details about your current device</p>
+    </div>
+  `;
+  document.getElementById('swapModal').style.display = 'block';
+  document.getElementById('swapModal').classList.add('show');
+}
+
+function showDeliveryModal() {
+  document.getElementById('deliveryModal').style.display = 'block';
+  document.getElementById('deliveryModal').classList.add('show');
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
+  document.getElementById(modalId).classList.remove('show');
+}
+
+// Authentication handlers
+async function handleLogin(event) {
+  event.preventDefault();
+  const btn = document.getElementById('loginBtn');
+  const errorDiv = document.getElementById('loginError');
+  
+  btn.innerHTML = '<span class="spinner"></span> Logging in...';
+  btn.disabled = true;
+  errorDiv.style.display = 'none';
+  
+  try {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
     
-    <!-- Gadgets JS -->
-    <script>
-        // Handle the loading spinner
-        window.addEventListener('load', function() {
-            const loaderWrapper = document.querySelector('.loader-wrapper');
-            if (loaderWrapper) {
-                loaderWrapper.classList.add('hidden');
-                setTimeout(() => {
-                    loaderWrapper.style.display = 'none';
-                }, 500);
-            }
-        });
-        
-        // Filter and sort functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryFilter = document.getElementById('categoryFilter');
-            const priceFilter = document.getElementById('priceFilter');
-            const sortFilter = document.getElementById('sortFilter');
-            const gadgetItems = document.querySelectorAll('.gadget-item');
-            
-            function filterAndSortGadgets() {
-                const selectedCategory = categoryFilter.value;
-                const selectedPrice = priceFilter.value;
-                const selectedSort = sortFilter.value;
-                
-                // Create array from gadget items for sorting
-                const gadgetsArray = Array.from(gadgetItems);
-                
-                // Sort items if needed
-                if (selectedSort !== 'default') {
-                    gadgetsArray.sort((a, b) => {
-                        if (selectedSort === 'price-asc') {
-                            return parseInt(a.dataset.price) - parseInt(b.dataset.price);
-                        } else if (selectedSort === 'price-desc') {
-                            return parseInt(b.dataset.price) - parseInt(a.dataset.price);
-                        } else if (selectedSort === 'name-asc') {
-                            return a.dataset.name.localeCompare(b.dataset.name);
-                        }
-                        return 0;
-                    });
-                    
-                    // Reorder elements in the DOM
-                    const container = document.getElementById('gadgetsContainer');
-                    gadgetsArray.forEach(item => {
-                        container.appendChild(item);
-                    });
-                }
-                
-                // Apply filters
-                gadgetItems.forEach(item => {
-                    const category = item.dataset.category;
-                    const price = parseInt(item.dataset.price);
-                    
-                    let showByCategory = selectedCategory === 'all' || category === selectedCategory;
-                    let showByPrice = true;
-                    
-                    if (selectedPrice !== 'all') {
-                        if (selectedPrice === '0-100' && (price < 0 || price > 100)) showByPrice = false;
-                        if (selectedPrice === '100-500' && (price < 100 || price > 500)) showByPrice = false;
-                        if (selectedPrice === '500-1000' && (price < 500 || price > 1000)) showByPrice = false;
-                        if (selectedPrice === '1000+' && price < 1000) showByPrice = false;
-                    }
-                    
-                    if (showByCategory && showByPrice) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            }
-            
-            // Event listeners
-            if (categoryFilter) categoryFilter.addEventListener('change', filterAndSortGadgets);
-            if (priceFilter) priceFilter.addEventListener('change', filterAndSortGadgets);
-            if (sortFilter) sortFilter.addEventListener('change', filterAndSortGadgets);
-            
-            // Contact seller function
-            window.contactSeller = function(gadgetId) {
-                alert(`Contact request sent for gadget #${gadgetId}. The seller will reach out to you soon.`);
-            };
-            
-            // Open swap modal
-            window.openSwapModal = function(gadgetId) {
-                const modal = $('#swapModal');
-                document.getElementById('gadgetId').value = gadgetId;
-                document.getElementById('swapSuccess').style.display = 'none';
-                document.getElementById('swapForm').reset();
-                modal.modal('show');
-            };
-            
-            // Open buy modal
-            window.openBuyModal = function(gadgetId, productName, productPrice) {
-                const modal = $('#buyModal');
-                document.getElementById('buyGadgetId').value = gadgetId;
-                document.getElementById('buyProductName').textContent = productName;
-                document.getElementById('buyProductPrice').textContent = productPrice;
-                document.getElementById('buySuccess').style.display = 'none';
-                document.getElementById('buyForm').reset();
-                modal.modal('show');
-            };
-            
-            // Submit swap form
-            document.getElementById('submitSwapForm').addEventListener('click', function() {
-                const form = document.getElementById('swapForm');
-                if (form.checkValidity()) {
-                    document.getElementById('swapSuccess').style.display = 'block';
-                    setTimeout(() => {
-                        $('#swapModal').modal('hide');
-                    }, 3000);
-                } else {
-                    form.reportValidity();
-                }
-            });
-            
-            // Submit buy form
-            document.getElementById('submitBuyForm').addEventListener('click', function() {
-                const form = document.getElementById('buyForm');
-                if (form.checkValidity()) {
-                    document.getElementById('buySuccess').style.display = 'block';
-                    setTimeout(() => {
-                        $('#buyModal').modal('hide');
-                    }, 3000);
-                } else {
-                    form.reportValidity();
-                }
-            });
+    await authService.login({ email, password });
+    currentUser = authService.getUserProfile();
+    updateAuthUI(true);
+    closeModal('loginModal');
+    
+    // Show success message
+    showAlert('Login successful! Welcome back.', 'success');
+  } catch (error) {
+    errorDiv.textContent = error.message || 'Login failed. Please try again.';
+    errorDiv.style.display = 'block';
+  } finally {
+    btn.innerHTML = 'Login';
+    btn.disabled = false;
+  }
+}
 
-            // Login form submission
-            document.getElementById('submitLoginForm').addEventListener('click', function() {
-                const form = document.getElementById('loginForm');
-                const email = document.getElementById('loginEmail').value;
-                const password = document.getElementById('loginPassword').value;
-                
-                if (form.checkValidity()) {
-                    // Make API call to the authentication server
-                    fetch('http://localhost:5000/api/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ email, password })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.token) {
-                            // Store token and user data
-                            localStorage.setItem('authToken', data.token);
-                            localStorage.setItem('user', JSON.stringify(data.user));
-                            
-                            // Close modal
-                            $('#loginModal').modal('hide');
-                            
-                            // Update UI to show logged in state
-                            updateAuthUI(true);
-                            
-                            // Reload page
-                            window.location.reload();
-                        } else {
-                            document.getElementById('loginError').style.display = 'block';
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Login error:', error);
-                        document.getElementById('loginError').textContent = 'An error occurred. Please try again.';
-                        document.getElementById('loginError').style.display = 'block';
-                    });
-                } else {
-                    form.reportValidity();
-                }
-            });
+async function handleSignup(event) {
+  event.preventDefault();
+  const btn = document.getElementById('signupBtn');
+  const errorDiv = document.getElementById('signupError');
+  
+  btn.innerHTML = '<span class="spinner"></span> Creating Account...';
+  btn.disabled = true;
+  errorDiv.style.display = 'none';
+  
+  try {
+    const formData = {
+      firstName: document.getElementById('signupFirstName').value,
+      lastName: document.getElementById('signupLastName').value,
+      email: document.getElementById('signupEmail').value,
+      phone: document.getElementById('signupPhone').value,
+      password: document.getElementById('signupPassword').value,
+      course: 'gadgets'
+    };
+    
+    await authService.register(formData);
+    currentUser = authService.getUserProfile();
+    updateAuthUI(true);
+    closeModal('signupModal');
+    
+    // Show success message
+    showAlert('Account created successfully! Welcome to JE Tech Hub.', 'success');
+  } catch (error) {
+    errorDiv.textContent = error.message || 'Registration failed. Please try again.';
+    errorDiv.style.display = 'block';
+  } finally {
+    btn.innerHTML = 'Create Account';
+    btn.disabled = false;
+  }
+}
 
-            // Signup form submission
-            document.getElementById('submitSignupForm').addEventListener('click', function() {
-                const form = document.getElementById('signupForm');
-                const firstName = document.getElementById('signupFirstName').value;
-                const lastName = document.getElementById('signupLastName').value;
-                const email = document.getElementById('signupEmail').value;
-                const password = document.getElementById('signupPassword').value;
-                const confirmPassword = document.getElementById('signupConfirmPassword').value;
-                
-                // Reset error messages
-                document.getElementById('signupError').style.display = 'none';
-                
-                if (form.checkValidity()) {
-                    // Validate password match
-                    if (password !== confirmPassword) {
-                        document.getElementById('signupError').textContent = 'Passwords do not match';
-                        document.getElementById('signupError').style.display = 'block';
-                        return;
-                    }
-                    
-                    // Make API call to the authentication server
-                    fetch('http://localhost:5000/api/register', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ 
-                            firstName, 
-                            lastName, 
-                            email, 
-                            password,
-                            course: 'Software Development' // Default course
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.token) {
-                            // Show success message
-                            document.getElementById('signupSuccess').style.display = 'block';
-                            
-                            // Store token and user data
-                            localStorage.setItem('authToken', data.token);
-                            localStorage.setItem('user', JSON.stringify(data.user));
-                            
-                            // Wait a moment and then close modal and open login
-                            setTimeout(() => {
-                                $('#signupModal').modal('hide');
-                                
-                                // Update UI to show logged in state
-                                updateAuthUI(true);
-                                
-                                // Reload page
-                                window.location.reload();
-                            }, 2000);
-                        } else if (data.message) {
-                            document.getElementById('signupError').textContent = data.message;
-                            document.getElementById('signupError').style.display = 'block';
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Signup error:', error);
-                        document.getElementById('signupError').textContent = 'An error occurred. Please try again.';
-                        document.getElementById('signupError').style.display = 'block';
-                    });
-                } else {
-                    form.reportValidity();
-                }
-            });
+function logout() {
+  authService.logout();
+  currentUser = null;
+  updateAuthUI(false);
+  showAlert('You have been logged out successfully.', 'success');
+}
 
-            // Check if user is already logged in on page load
-            function checkAuthStatus() {
-                const token = localStorage.getItem('authToken');
-                if (token) {
-                    // Validate the token with the server
-                    fetch('http://localhost:5000/api/profile', {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': `Bearer ${token}`
-                        }
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            updateAuthUI(true);
-                        } else {
-                            // Token is invalid, remove it
-                            localStorage.removeItem('authToken');
-                            localStorage.removeItem('user');
-                            updateAuthUI(false);
-                        }
-                    })
-                    .catch(() => {
-                        // Error checking token, assume logged out
-                        updateAuthUI(false);
-                    });
-                } else {
-                    updateAuthUI(false);
-                }
-            }
+// Purchase handler
+async function handlePurchase(event) {
+  event.preventDefault();
+  const btn = document.getElementById('buyBtn');
+  const errorDiv = document.getElementById('buyError');
+  
+  btn.innerHTML = '<span class="spinner"></span> Processing...';
+  btn.disabled = true;
+  errorDiv.style.display = 'none';
+  
+  try {
+    // Simulate purchase process
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    const purchaseData = {
+      id: 'PUR' + Date.now(),
+      buyerName: document.getElementById('buyerName').value,
+      buyerEmail: document.getElementById('buyerEmail').value,
+      buyerPhone: document.getElementById('buyerPhone').value,
+      deliveryAddress: document.getElementById('deliveryAddress').value,
+      timestamp: new Date().toISOString(),
+      status: 'Confirmed'
+    };
+    
+    // Save to localStorage
+    const purchases = JSON.parse(localStorage.getItem('purchases') || '[]');
+    purchases.push(purchaseData);
+    localStorage.setItem('purchases', JSON.stringify(purchases));
+    
+    closeModal('buyModal');
+    showAlert('Purchase confirmed! You will receive a confirmation email shortly.', 'success');
+    
+    // Reset form
+    document.getElementById('buyForm').reset();
+  } catch (error) {
+    errorDiv.textContent = 'Purchase failed. Please try again.';
+    errorDiv.style.display = 'block';
+  } finally {
+    btn.innerHTML = 'Complete Purchase';
+    btn.disabled = false;
+  }
+}
 
-            // Update UI based on authentication status
-            function updateAuthUI(isLoggedIn) {
-                const navMenu = document.querySelector('.nav.menu');
-                if (!navMenu) return;
-                
-                // Remove existing login/logout links
-                const loginItem = navMenu.querySelector('li a[data-target="#loginModal"]');
-                const signupItem = navMenu.querySelector('li a[data-target="#signupModal"]');
-                const logoutItem = navMenu.querySelector('li a#logoutBtn');
-                const profileItem = navMenu.querySelector('li a[href="dashboard.html"]');
-                
-                if (loginItem) loginItem.parentElement.remove();
-                if (signupItem) signupItem.parentElement.remove();
-                if (logoutItem) logoutItem.parentElement.remove();
-                if (profileItem) profileItem.parentElement.remove();
-                
-                if (isLoggedIn) {
-                    // Add profile and logout links
-                    const user = JSON.parse(localStorage.getItem('user') || '{}');
-                    
-                    const profileLi = document.createElement('li');
-                    const profileLink = document.createElement('a');
-                    profileLink.href = 'dashboard.html';
-                    profileLink.textContent = `My Profile`;
-                    profileLi.appendChild(profileLink);
-                    navMenu.appendChild(profileLi);
-                    
-                    const logoutLi = document.createElement('li');
-                    const logoutLink = document.createElement('a');
-                    logoutLink.href = '#';
-                    logoutLink.id = 'logoutBtn';
-                    logoutLink.textContent = 'Logout';
-                    logoutLink.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        localStorage.removeItem('authToken');
-                        localStorage.removeItem('user');
-                        updateAuthUI(false);
-                        window.location.reload();
-                    });
-                    logoutLi.appendChild(logoutLink);
-                    navMenu.appendChild(logoutLi);
-                } else {
-                    // Add login and signup links
-                    const loginLi = document.createElement('li');
-                    const loginLink = document.createElement('a');
-                    loginLink.href = '#';
-                    loginLink.setAttribute('data-toggle', 'modal');
-                    loginLink.setAttribute('data-target', '#loginModal');
-                    loginLink.textContent = 'Login';
-                    loginLi.appendChild(loginLink);
-                    navMenu.appendChild(loginLi);
-                    
-                    const signupLi = document.createElement('li');
-                    const signupLink = document.createElement('a');
-                    signupLink.href = '#';
-                    signupLink.setAttribute('data-toggle', 'modal');
-                    signupLink.setAttribute('data-target', '#signupModal');
-                    signupLink.textContent = 'Sign Up';
-                    signupLi.appendChild(signupLink);
-                    navMenu.appendChild(signupLi);
-                }
-            }
-            
-            // Check auth status on page load
-            checkAuthStatus();
-            
-            // Check all images and replace broken ones with placeholders
-            document.querySelectorAll('.card-slideshow img').forEach(img => {
-                img.addEventListener('error', function() {
-                    this.src = 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop&q=60';
-                });
-            });
-        });
-    </script>
+// Swap handler
+async function handleSwap(event) {
+  event.preventDefault();
+  const btn = document.getElementById('swapBtn');
+  const errorDiv = document.getElementById('swapError');
+  
+  btn.innerHTML = '<span class="spinner"></span> Processing...';
+  btn.disabled = true;
+  errorDiv.style.display = 'none';
+  
+  try {
+    // Simulate swap process
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    const swapData = {
+      id: 'SWP' + Date.now(),
+      swapperName: document.getElementById('swapperName').value,
+      swapperEmail: document.getElementById('swapperEmail').value,
+      swapperPhone: document.getElementById('swapperPhone').value,
+      currentDevice: document.getElementById('currentDevice').value,
+      deviceCondition: document.getElementById('deviceCondition').value,
+      additionalPayment: document.getElementById('additionalPayment').value || '0',
+      timestamp: new Date().toISOString(),
+      status: 'Pending Review'
+    };
+    
+    // Save to localStorage
+    const swaps = JSON.parse(localStorage.getItem('swaps') || '[]');
+    swaps.push(swapData);
+    localStorage.setItem('swaps', JSON.stringify(swaps));
+    
+    closeModal('swapModal');
+    showAlert('Swap request submitted! We will contact you within 24 hours.', 'success');
+    
+    // Reset form
+    document.getElementById('swapForm').reset();
+  } catch (error) {
+    errorDiv.textContent = 'Swap request failed. Please try again.';
+    errorDiv.style.display = 'block';
+  } finally {
+    btn.innerHTML = 'Submit Swap Request';
+    btn.disabled = false;
+  }
+}
+
+// Delivery handler
+async function handleDelivery(event) {
+  event.preventDefault();
+  const btn = document.getElementById('deliveryBtn');
+  const errorDiv = document.getElementById('deliveryError');
+  
+  btn.innerHTML = '<span class="spinner"></span> Booking...';
+  btn.disabled = true;
+  errorDiv.style.display = 'none';
+  
+  try {
+    // Simulate delivery booking
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    const deliveryData = {
+      id: 'DEL' + Date.now(),
+      customerName: document.getElementById('deliveryName').value,
+      customerEmail: document.getElementById('deliveryEmail').value,
+      customerPhone: document.getElementById('deliveryPhone').value,
+      pickupAddress: document.getElementById('pickupAddress').value,
+      deliveryAddress: document.getElementById('deliveryAddressField').value,
+      deliveryType: document.getElementById('deliveryType').value,
+      packageDescription: document.getElementById('packageDescription').value,
+      timestamp: new Date().toISOString(),
+      status: 'Confirmed'
+    };
+    
+    // Save to localStorage
+    const deliveries = JSON.parse(localStorage.getItem('deliveries') || '[]');
+    deliveries.push(deliveryData);
+    localStorage.setItem('deliveries', JSON.stringify(deliveries));
+    
+    closeModal('deliveryModal');
+    showAlert('Delivery booked successfully! Tracking ID: ' + deliveryData.id, 'success');
+    
+    // Reset form
+    document.getElementById('deliveryForm').reset();
+  } catch (error) {
+    errorDiv.textContent = 'Delivery booking failed. Please try again.';
+    errorDiv.style.display = 'block';
+  } finally {
+    btn.innerHTML = 'Book Delivery';
+    btn.disabled = false;
+  }
+}
+
+// Utility functions
+function scrollToProducts() {
+  document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
+}
+
+function showAlert(message, type) {
+  const alertDiv = document.createElement('div');
+  alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'error'}`;
+  alertDiv.style.position = 'fixed';
+  alertDiv.style.top = '20px';
+  alertDiv.style.right = '20px';
+  alertDiv.style.zIndex = '9999';
+  alertDiv.style.maxWidth = '400px';
+  alertDiv.textContent = message;
+  
+  document.body.appendChild(alertDiv);
+  
+  setTimeout(() => {
+    alertDiv.remove();
+  }, 5000);
+}
+
+// Filter functionality
+function initializeFilters() {
+  document.getElementById('categoryFilter').addEventListener('change', filterProducts);
+  document.getElementById('priceFilter').addEventListener('change', filterProducts);
+  document.getElementById('sortFilter').addEventListener('change', filterProducts);
+}
+
+function filterProducts() {
+  const category = document.getElementById('categoryFilter').value;
+  const priceRange = document.getElementById('priceFilter').value;
+  const sort = document.getElementById('sortFilter').value;
+  
+  const products = document.querySelectorAll('.product-card');
+  
+  products.forEach(product => {
+    let show = true;
+    
+    // Category filter
+    if (category && product.dataset.category !== category) {
+      show = false;
+    }
+    
+    // Price filter
+    if (priceRange) {
+      const price = parseInt(product.dataset.price);
+      const [min, max] = priceRange.split('-').map(p => parseInt(p.replace('+', '')));
+      
+      if (priceRange.includes('+')) {
+        if (price < min) show = false;
+      } else {
+        if (price < min || price > max) show = false;
+      }
+    }
+    
+    product.style.display = show ? 'block' : 'none';
+  });
+}
+
+// Close modals when clicking outside
+window.onclick = function(event) {
+  const modals = ['loginModal', 'signupModal', 'buyModal', 'swapModal', 'deliveryModal'];
+  modals.forEach(modalId => {
+    const modal = document.getElementById(modalId);
+    if (event.target === modal) {
+      closeModal(modalId);
+    }
+  });
+}
+</script>
 </body>
 </html>
