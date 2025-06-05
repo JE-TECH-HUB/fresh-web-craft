@@ -18,6 +18,6 @@ export default defineConfig({
     cssMinify: true
   },
   server: {
-    port: 3000
+    port: 8080
   }
 })
