@@ -16,38 +16,61 @@
 <!-- Favicon -->
 <link rel="icon" href="images/JE Techhub logo - Copy.png">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+<!-- Preload critical resources -->
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"></noscript>
 
-<!-- Bootstrap CSS -->
+<!-- Critical CSS - inline the most important styles -->
+<style>
+/* Critical above-the-fold styles */
+.header { position: relative; z-index: 999; }
+.logo { display: block; }
+.containerBox { display: flex; flex-direction: column; justify-content: space-around; align-items: start; gap: 2em; padding-inline: 5%; padding-top: 2em; }
+@media (width > 768px) { .containerBox { flex-direction: row; } }
+.loader-wrapper { position: fixed; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); display: flex; justify-content: center; align-items: center; z-index: 9999; top: 0; left: 0; transition: opacity 0.5s ease, visibility 0.5s ease; }
+.loader { width: 70px; height: 70px; border: 6px solid #f3f3f3; border-top: 6px solid #1A76D1; border-radius: 50%; animation: spin 1.5s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.hidden { opacity: 0; visibility: hidden; }
+</style>
+
+<!-- Defer non-critical CSS -->
+<link rel="preload" href="css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/nice-select.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/icofont.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/slicknav.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/owl-carousel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/datepicker.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/magnific-popup.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/normalize.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<!-- Fallback for browsers that don't support preload -->
+<noscript>
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<!-- Nice Select CSS -->
 <link rel="stylesheet" href="css/nice-select.css">
-<!-- Font Awesome CSS -->
 <link rel="stylesheet" href="css/font-awesome.min.css">
-<!-- icofont CSS -->
 <link rel="stylesheet" href="css/icofont.css">
-<!-- Slicknav -->
 <link rel="stylesheet" href="css/slicknav.min.css">
-<!-- Owl Carousel CSS -->
 <link rel="stylesheet" href="css/owl-carousel.css">
-<!-- Datepicker CSS -->
 <link rel="stylesheet" href="css/datepicker.css">
-<!-- Animate CSS -->
 <link rel="stylesheet" href="css/animate.min.css">
-<!-- Magnific Popup CSS -->
 <link rel="stylesheet" href="css/magnific-popup.css">
-
-<!--Other CSS -->
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/responsive.css">
+</noscript>
+
+<!-- Preload critical JavaScript -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" as="script">
 
 <!-- Auth Service -->
-<script src="js/authService.js"></script>
+<script src="js/authService.js" defer></script>
 
 <style>
-/* container */
+/* ... keep existing code (all the existing styles) */
 .containerBox{
 display: flex;
 flex-direction: column;
@@ -60,16 +83,12 @@ padding-top: 2em;
 flex-direction: row;
 }
 }		
-/* form   */
-
 
 form {
-
 padding: 25px;
 @media (width > 568px){width:100% !important;}	}
 
 input{
-
 font-weight: bold;
 font-size: x-large;
 padding: 5px;
@@ -130,14 +149,10 @@ p{color: #000;}
 padding-block: 1em;
 font-size: clamp(20px, 1em, 30px);
 text-align: center;
-/*@media (width > 568px){width: 40% !important;}*/
 button{
 background: darkblue;
 }
 }
-
-
-/* more */
 
 #passwordStrength {
 margin-top: 10px;
@@ -155,7 +170,6 @@ color: orange;
 color: green;
 }
 
-/* Login/Register toggle */
 .auth-toggle {
 display: flex;
 justify-content: center;
@@ -176,7 +190,6 @@ color: darkblue;
 border-bottom: 2px solid darkblue;
 }
 
-/* Form tabs */
 #loginForm, #registerForm {
 display: none;
 }
@@ -185,7 +198,6 @@ display: none;
 display: block !important;
 }
 
-/* Transparent overlay */
 #overlay {
 display: none;
 position: fixed;
@@ -193,23 +205,20 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-background-color: rgba(0, 0, 0, 0.5); /* Transparent black */
-z-index: 9999; /* Ensure it's above everything */
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 9999;
 justify-content: center;
 align-items: center;
 }
 
-/* Congratulations message */
 #congratsMessage {
 background-color: rgb(15, 11, 247);
 padding: 20px;
 border-radius: 10px;
 text-align: center;
 color: #000;
-
 }
 
-/* Enhanced loader styles */
 .loader-wrapper {
     position: fixed;
     width: 100%;
@@ -243,7 +252,6 @@ color: #000;
     visibility: hidden;
 }
 
-/* Enhanced form validation styles */
 .error {
     color: #dc3545;
     font-size: 14px;
@@ -263,7 +271,6 @@ color: #000;
     border-color: #dc3545 !important;
 }
 
-/* API error message */
 .api-error {
     background: #dc3545;
     color: white;
@@ -286,7 +293,7 @@ color: #000;
 <div class="col-lg-3 col-md-3 col-12">
 <!-- Start Logo -->
 <div class="logo">
-<a href="index.html"><img src="images/JE Techhub logo.png#"></a>
+<a href="index.html"><img src="images/JE Techhub logo.png#" loading="eager" alt="JOEeXPRESS Logo"></a>
 </div>
 <!-- End Logo -->
 <!-- Mobile Nav -->
@@ -426,6 +433,7 @@ color: #000;
 </div>
 
 </main>
+
 <!-- Footer Area -->
 <footer id="footer" class="footer ">
 <!-- Footer Top -->
@@ -494,12 +502,25 @@ color: #000;
 </div>
 </div>
 </div>
-   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+<!-- Critical JavaScript - load immediately -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
   const supabaseUrl  = 'https://icqzgoagqosthgipepdq.supabase.co';
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // your real key
   const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+  // Hide loader when page is fully loaded
+  window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader-wrapper');
+    if (loader) {
+      loader.classList.add('hidden');
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 500);
+    }
+  });
 
   function showForm(formId) {
     const loginForm = document.getElementById('loginForm');
@@ -643,51 +664,31 @@ color: #000;
 
   document.addEventListener('DOMContentLoaded', () => {
     showForm('registerForm');
-
     document.getElementById('registerForm')?.addEventListener('submit', handleRegisterSubmit);
     document.getElementById('loginForm')?.addEventListener('submit', handleLoginSubmit);
   });
 </script>
 
-<!-- jquery Min JS -->
-<script src="js/jquery.min.js"></script>
-<!-- jquery Migrate JS -->
-<script src="js/jquery-migrate-3.0.0.js"></script>
-<!-- jquery Ui JS -->
-<script src="js/jquery-ui.min.js"></script>
-<!-- Easing JS -->
-<script src="js/easing.js"></script>
-<!-- Color JS -->
-<script src="js/colors.js"></script>
-<!-- Popper JS -->
-<script src="js/popper.min.js"></script>
-<!-- Bootstrap Datepicker JS -->
-<script src="js/bootstrap-datepicker.js"></script>
-<!-- Jquery Nav JS -->
-<script src="js/jquery.nav.js"></script>
-<!-- Slicknav JS -->
-<script src="js/slicknav.min.js"></script>
-<!-- ScrollUp JS -->
-<script src="js/jquery.scrollUp.min.js"></script>
-<!-- Niceselect JS -->
-<script src="js/niceselect.js"></script>
-<!-- Tilt Jquery JS -->
-<script src="js/tilt.jquery.min.js"></script>
-<!-- Owl Carousel JS -->
-<script src="js/owl-carousel.js"></script>
-<!-- counterup JS -->
-<script src="js/jquery.counterup.min.js"></script>
-<!-- Steller JS -->
-<script src="js/steller.js"></script>
-<!-- Wow JS -->
-<script src="js/wow.min.js"></script>
-<!-- Magnific Popup JS -->
-<script src="js/jquery.magnific-popup.min.js"></script>
-<!-- Counter Up CDN JS -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Main JS -->
-<script src="js/main.js"></script>
+<!-- Defer non-critical JavaScript -->
+<script src="js/jquery.min.js" defer></script>
+<script src="js/jquery-migrate-3.0.0.js" defer></script>
+<script src="js/jquery-ui.min.js" defer></script>
+<script src="js/easing.js" defer></script>
+<script src="js/colors.js" defer></script>
+<script src="js/popper.min.js" defer></script>
+<script src="js/bootstrap-datepicker.js" defer></script>
+<script src="js/jquery.nav.js" defer></script>
+<script src="js/slicknav.min.js" defer></script>
+<script src="js/jquery.scrollUp.min.js" defer></script>
+<script src="js/niceselect.js" defer></script>
+<script src="js/tilt.jquery.min.js" defer></script>
+<script src="js/owl-carousel.js" defer></script>
+<script src="js/jquery.counterup.min.js" defer></script>
+<script src="js/steller.js" defer></script>
+<script src="js/wow.min.js" defer></script>
+<script src="js/jquery.magnific-popup.min.js" defer></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js" defer></script>
+<script src="js/bootstrap.min.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
