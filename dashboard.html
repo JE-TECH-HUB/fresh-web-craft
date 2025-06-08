@@ -1,740 +1,1116 @@
 
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="zxx">
 <head>
-<!-- Meta Tags -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Title -->
 <title>Dashboard - JOEeXPRESS</title>
 
-<!-- Favicon -->
-<link rel="icon" href="images/JE Techhub logo - Copy.png">
-
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-
-<!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<!-- Nice Select CSS -->
-<link rel="stylesheet" href="css/nice-select.css">
-<!-- Font Awesome CSS -->
 <link rel="stylesheet" href="css/font-awesome.min.css">
-<!-- icofont CSS -->
 <link rel="stylesheet" href="css/icofont.css">
-<!-- Slicknav -->
-<link rel="stylesheet" href="css/slicknav.min.css">
-<!-- Owl Carousel CSS -->
-<link rel="stylesheet" href="css/owl-carousel.css">
-<!-- Datepicker CSS -->
-<link rel="stylesheet" href="css/datepicker.css">
-<!-- Animate CSS -->
-<link rel="stylesheet" href="css/animate.min.css">
-<!-- Magnific Popup CSS -->
-<link rel="stylesheet" href="css/magnific-popup.css">
-
-<!-- Medipro CSS -->
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="css/custom.css">
 
-<!-- Auth Service -->
-<script src="js/authService.js"></script>
+<!-- Supabase -->
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<!-- Chart.js for analytics -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-    :root {
-        --primary-color: #1A76D1;
-        --secondary-color: #FF8C00;
-        --success-color: #28a745;
-        --danger-color: #dc3545;
-        --dark-color: #343a40;
-        --light-color: #f8f9fa;
-        --card-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-        --card-border-radius: 0.75rem;
-        --transition-speed: 0.3s;
-    }
-    
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #f5f7fa;
-    }
-    
-    /* Dashboard styles */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard-header {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.user-welcome h2 {
+    margin: 0;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.user-welcome p {
+    margin: 5px 0 0 0;
+    color: var(--secondary-color);
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.notification-bell {
+    position: relative;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s;
+}
+
+.notification-bell:hover {
+    transform: scale(1.1);
+    background: #0056b3;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--danger-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-btn {
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(45deg, var(--primary-color), var(--info-color));
+}
+
+.card-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin: 0;
+}
+
+.card-icon {
+    background: linear-gradient(45deg, var(--primary-color), var(--info-color));
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: var(--border-radius);
+    transition: all 0.3s;
+}
+
+.stat-item:hover {
+    transform: scale(1.05);
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: var(--secondary-color);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.progress-item {
+    margin-bottom: 20px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.progress-label {
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.progress-percentage {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary-color), var(--success-color));
+    transition: width 1s ease-in-out;
+    border-radius: 4px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 16px;
+    color: white;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-title {
+    font-weight: 500;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.activity-time {
+    font-size: 12px;
+    color: var(--secondary-color);
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.achievement-badge {
+    text-align: center;
+    padding: 20px 10px;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    border-radius: var(--border-radius);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.achievement-badge:hover {
+    transform: scale(1.05);
+}
+
+.achievement-badge.locked {
+    background: #e9ecef;
+    opacity: 0.6;
+}
+
+.achievement-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.achievement-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.action-btn {
+    padding: 15px;
+    background: linear-gradient(45deg, var(--primary-color), var(--info-color));
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,123,255,0.3);
+}
+
+.calendar-widget {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-nav {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.calendar-day:hover {
+    background: var(--light-color);
+}
+
+.calendar-day.today {
+    background: var(--primary-color);
+    color: white;
+}
+
+.calendar-day.has-event {
+    background: var(--warning-color);
+    color: var(--dark-color);
+}
+
+.event-item {
+    padding: 10px;
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+}
+
+.event-time {
+    font-size: 12px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.event-title {
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.leaderboard-rank {
+    width: 30px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.leaderboard-user {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.leaderboard-name {
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.leaderboard-course {
+    font-size: 12px;
+    color: var(--secondary-color);
+}
+
+.leaderboard-points {
+    font-weight: 600;
+    color: var(--success-color);
+}
+
+.forum-post {
+    padding: 15px;
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+}
+
+.forum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.forum-user {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.forum-time {
+    font-size: 12px;
+    color: var(--secondary-color);
+}
+
+.forum-content {
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.notification-panel {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 350px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    z-index: 1000;
+    display: none;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.notification-header {
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.notification-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e9ecef;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.notification-item:hover {
+    background: var(--light-color);
+}
+
+.notification-item.unread {
+    background: rgba(0,123,255,0.05);
+    border-left: 4px solid var(--primary-color);
+}
+
+@media (max-width: 768px) {
     .dashboard-container {
-        padding: 30px 20px;
+        padding: 10px;
     }
     
-    .welcome-card {
-        background: linear-gradient(135deg, var(--primary-color), #3a8ee6);
-        border-radius: var(--card-border-radius);
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: var(--card-shadow);
-        color: white;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .welcome-card::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 100%;
-        height: 200%;
-        background: rgba(255, 255, 255, 0.1);
-        transform: rotate(30deg);
-    }
-    
-    .profile-card {
-        background: white;
-        border-radius: var(--card-border-radius);
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: var(--card-shadow);
-        transition: transform var(--transition-speed);
-    }
-    
-    .profile-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .course-card {
-        background: white;
-        border-radius: var(--card-border-radius);
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: var(--card-shadow);
-        transition: transform var(--transition-speed);
-    }
-    
-    .course-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .stats-card {
-        background: white;
-        border-radius: var(--card-border-radius);
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: var(--card-shadow);
-        transition: transform var(--transition-speed);
+    .dashboard-header {
+        padding: 15px;
+        flex-direction: column;
+        gap: 15px;
         text-align: center;
     }
     
-    .stats-card:hover {
-        transform: translateY(-5px);
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
     
-    .stats-card i {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-        color: var(--primary-color);
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
     }
     
-    .stats-value {
-        font-size: 2rem;
-        font-weight: 600;
-        color: var(--dark-color);
+    .quick-actions {
+        grid-template-columns: 1fr;
     }
-    
-    .stats-label {
-        font-size: 1rem;
-        color: #6c757d;
-    }
-    
-    .card-title {
-        color: var(--primary-color);
-        font-weight: 600;
-        margin-bottom: 20px;
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
-        position: relative;
-    }
-    
-    .card-title::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        height: 2px;
-        width: 50px;
-        background: var(--primary-color);
-    }
-    
-    .progress-container {
-        position: relative;
-        margin-bottom: 25px;
-    }
-    
-    .progress-label {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 5px;
-    }
-    
-    .progress-bar {
-        height: 12px;
-        border-radius: 6px;
-        margin-top: 10px;
-        background-color: #e9ecef;
-        overflow: hidden;
-    }
-    
-    .progress-bar-fill {
-        height: 100%;
-        border-radius: 6px;
-        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-        position: relative;
-        animation: progressAnimation 1s ease-in-out;
-        transition: width 0.6s ease;
-    }
-    
-    @keyframes progressAnimation {
-        0% {
-            width: 0;
-        }
-    }
-    
-    .loader-wrapper {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.95);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        top: 0;
-        left: 0;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
+}
 
-    .loader {
-        width: 70px;
-        height: 70px;
-        border: 6px solid #f3f3f3;
-        border-top: 6px solid var(--primary-color);
-        border-radius: 50%;
-        animation: spin 1.5s linear infinite;
-    }
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
 
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
 
-    .hidden {
-        opacity: 0;
-        visibility: hidden;
-    }
-    
-    .action-btn {
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color var(--transition-speed);
-        margin-top: 15px;
-    }
-    
-    .action-btn:hover {
-        background-color: #0d6efd;
-    }
-    
-    .upcoming-lessons {
-        margin-top: 15px;
-    }
-    
-    .lesson-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 12px 15px;
-        margin-bottom: 10px;
-        background: #f8f9fa;
-        border-left: 4px solid var(--primary-color);
-        border-radius: 4px;
-    }
-    
-    .lesson-item:hover {
-        background: #e9ecef;
-    }
-    
-    .lesson-title {
-        font-weight: 500;
-    }
-    
-    .lesson-date {
-        color: #6c757d;
-    }
-    
-    .badge {
-        display: inline-block;
-        padding: 0.35em 0.65em;
-        font-size: .75em;
-        font-weight: 700;
-        line-height: 1;
-        color: #fff;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: baseline;
-        border-radius: 0.25rem;
-    }
-    
-    .badge-primary {
-        background-color: var(--primary-color);
-    }
-    
-    .badge-success {
-        background-color: var(--success-color);
-    }
-    
-    .badge-danger {
-        background-color: var(--danger-color);
-    }
-    
-    /* Responsive adjustments */
-    @media only screen and (max-width: 767px) {
-        .dashboard-container {
-            padding: 20px 10px;
-        }
-        
-        .welcome-card, .profile-card, .course-card, .stats-card {
-            padding: 20px;
-        }
-        
-        .stats-value {
-            font-size: 1.5rem;
-        }
-        
-        .stats-card i {
-            font-size: 2rem;
-        }
-    }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes countUp {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.animate-count {
+    animation: countUp 0.8s ease-out;
+}
 </style>
 </head>
 <body>
 
-<!-- Header Area -->
-<header class="header">
-<div class="header-inner bg-dark text-white">
-<div class="container">
-<div class="inner">
-<div class="row">
-<div class="col-lg-3 col-md-3 col-12">
-<!-- Start Logo -->
-<div class="logo">
-<a href="index.html"><img src="images/JE Techhub logo.png" alt="Logo"></a>
-</div>
-<!-- End Logo -->
-<!-- Mobile Nav -->
-<div class="mobile-nav"></div>
-<!-- End Mobile Nav -->
-</div>
-<div class="col-lg-7 col-md-9 col-12">
-<!-- Main Menu -->
-<div class="main-menu">
-<nav class="navigation">
-<ul class="nav menu">
-<li><a href="index.html">Home</a></li>
-<li><a href="index.html#about">About Us</a></li>
-<li><a href="programs.html">Programs</a></li>
-<li><a href="contact.html">Contact Us</a></li>
-</ul>
-</nav>
-</div>
-<!--/ End Main Menu -->
-</div>
-<div class="col-lg-2 col-12">
-<div class="get-quote">
-<a href="#" class="btn" id="logoutButton">Logout</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</header>
-<!-- End Header Area -->
+<div class="dashboard-container">
+    <!-- Dashboard Header -->
+    <div class="dashboard-header fade-in">
+        <div class="user-welcome">
+            <h2 id="welcomeMessage">Welcome back!</h2>
+            <p id="userRole">Student Dashboard</p>
+        </div>
+        <div class="header-actions">
+            <button class="notification-bell" onclick="toggleNotifications()">
+                <i class="fa fa-bell"></i>
+                <span class="notification-badge" id="notificationCount">3</span>
+            </button>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fa fa-sign-out"></i> Logout
+            </button>
+        </div>
+    </div>
 
-<!-- Loading Spinner -->
-<div class="loader-wrapper">
-    <div class="loader"></div>
-</div>
-
-<!-- Breadcrumbs -->
-<div class="breadcrumbs overlay">
-    <div class="container">
-        <div class="bread-inner">
-            <div class="row">
-                <div class="col-12">
-                    <h2>Student Dashboard</h2>
-                    <ul class="bread-list">
-                        <li><a href="index.html">Home</a></li>
-                        <li><i class="icofont-simple-right"></i></li>
-                        <li class="active">Dashboard</li>
-                    </ul>
-                </div>
+    <!-- User Statistics -->
+    <div class="dashboard-card fade-in">
+        <div class="card-header">
+            <h3 class="card-title">Your Progress Overview</h3>
+            <div class="card-icon">
+                <i class="fa fa-chart-line"></i>
+            </div>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-value animate-count" id="coursesCount">0</div>
+                <div class="stat-label">Courses Enrolled</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value animate-count" id="hoursCount">0</div>
+                <div class="stat-label">Hours Learned</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value animate-count" id="certificatesCount">0</div>
+                <div class="stat-label">Certificates</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value animate-count" id="xpPoints">0</div>
+                <div class="stat-label">XP Points</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value animate-count" id="daysJoined">0</div>
+                <div class="stat-label">Days with us</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value animate-count" id="currentLevel">1</div>
+                <div class="stat-label">Current Level</div>
             </div>
         </div>
     </div>
-</div>
-<!-- End Breadcrumbs -->
 
-<!-- Dashboard Content -->
-<section class="dashboard-container section">
-    <div class="container">
-        <div class="welcome-card">
-            <h2>Welcome, <span id="userFullName">Student</span>! <i class="fa fa-graduation-cap"></i></h2>
-            <p>Track your learning progress, view upcoming lessons, and manage your profile all in one place.</p>
-        </div>
-        
-        <div class="row">
-            <!-- Stats Row -->
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="stats-card">
-                    <i class="fa fa-book"></i>
-                    <div class="stats-value" id="completedModules">0</div>
-                    <div class="stats-label">Completed Modules</div>
+    <div class="dashboard-grid">
+        <!-- Course Progress -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 class="card-title">Course Progress</h3>
+                <div class="card-icon">
+                    <i class="fa fa-graduation-cap"></i>
                 </div>
             </div>
-            
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="stats-card">
-                    <i class="fa fa-tasks"></i>
-                    <div class="stats-value" id="totalModules">0</div>
-                    <div class="stats-label">Total Modules</div>
-                </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="stats-card">
-                    <i class="fa fa-clock-o"></i>
-                    <div class="stats-value">120</div>
-                    <div class="stats-label">Learning Hours</div>
-                </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="stats-card">
-                    <i class="fa fa-certificate"></i>
-                    <div class="stats-value">1</div>
-                    <div class="stats-label">Certificate</div>
-                </div>
-            </div>
-            
-            <!-- Profile Info -->
-            <div class="col-lg-4 col-md-6">
-                <div class="profile-card">
-                    <h3 class="card-title">Profile Information</h3>
-                    <div id="profileInfo">
-                        <p><strong><i class="fa fa-user"></i> First Name:</strong> <span id="userFirstName"></span></p>
-                        <p><strong><i class="fa fa-user"></i> Last Name:</strong> <span id="userLastName"></span></p>
-                        <p><strong><i class="fa fa-envelope"></i> Email:</strong> <span id="userEmail"></span></p>
-                        <p><strong><i class="fa fa-graduation-cap"></i> Enrolled Course:</strong> <span id="userCourse"></span></p>
-                        <p><strong><i class="fa fa-calendar"></i> Registered On:</strong> <span id="userRegistrationDate"></span></p>
-                    </div>
-                    <button class="action-btn">Edit Profile</button>
-                </div>
-            </div>
-            
-            <!-- Course Progress -->
-            <div class="col-lg-8 col-md-6">
-                <div class="course-card">
-                    <h3 class="card-title">Course Progress</h3>
-                    <div id="courseProgress">
-                        <p>Loading course progress...</p>
-                    </div>
-                </div>
+            <div id="courseProgress">
+                <!-- Progress items will be dynamically added -->
             </div>
         </div>
-        
-        <!-- Second Row -->
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="course-card">
-                    <h3 class="card-title">Upcoming Lessons</h3>
-                    <div class="upcoming-lessons">
-                        <div class="lesson-item">
-                            <div class="lesson-title">Introduction to React</div>
-                            <div class="lesson-date">
-                                <span class="badge badge-primary">Today</span> 10:00 AM
-                            </div>
-                        </div>
-                        <div class="lesson-item">
-                            <div class="lesson-title">Advanced JavaScript Concepts</div>
-                            <div class="lesson-date">
-                                <span class="badge badge-success">Tomorrow</span> 09:30 AM
-                            </div>
-                        </div>
-                        <div class="lesson-item">
-                            <div class="lesson-title">Database Design Principles</div>
-                            <div class="lesson-date">
-                                <span class="badge badge-danger">May 15</span> 11:00 AM
-                            </div>
-                        </div>
-                    </div>
+
+        <!-- Recent Activity -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 class="card-title">Recent Activity</h3>
+                <div class="card-icon">
+                    <i class="fa fa-clock"></i>
                 </div>
             </div>
-            
-            <div class="col-lg-6">
-                <div class="course-card">
-                    <h3 class="card-title">Recent Announcements</h3>
-                    <div class="announcement">
-                        <h5>New Course Materials Available</h5>
-                        <p>We've added new resources for the Software Development track. Check them out in your learning portal.</p>
-                        <small class="text-muted">Posted 2 days ago</small>
-                    </div>
-                    <hr>
-                    <div class="announcement">
-                        <h5>Upcoming Workshop</h5>
-                        <p>Join us for a special workshop on UI/UX design principles this Friday at 2:00 PM.</p>
-                        <small class="text-muted">Posted 5 days ago</small>
-                    </div>
+            <div id="recentActivity">
+                <!-- Activity items will be dynamically added -->
+            </div>
+        </div>
+
+        <!-- Achievement Badges -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 class="card-title">Achievements</h3>
+                <div class="card-icon">
+                    <i class="fa fa-trophy"></i>
                 </div>
+            </div>
+            <div class="achievement-grid" id="achievementBadges">
+                <!-- Achievement badges will be dynamically added -->
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 class="card-title">Quick Actions</h3>
+                <div class="card-icon">
+                    <i class="fa fa-bolt"></i>
+                </div>
+            </div>
+            <div class="quick-actions">
+                <button class="action-btn" onclick="startLearning()">
+                    <i class="fa fa-play"></i><br>Continue Learning
+                </button>
+                <button class="action-btn" onclick="browsePrograms()">
+                    <i class="fa fa-search"></i><br>Browse Programs
+                </button>
+                <button class="action-btn" onclick="downloadCertificate()">
+                    <i class="fa fa-download"></i><br>Download Certificate
+                </button>
+                <button class="action-btn" onclick="joinCommunity()">
+                    <i class="fa fa-users"></i><br>Join Community
+                </button>
+            </div>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 class="card-title">Upcoming Events</h3>
+                <div class="card-icon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+            </div>
+            <div id="upcomingEvents">
+                <!-- Events will be dynamically added -->
+            </div>
+        </div>
+
+        <!-- Community Forum -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 class="card-title">Community Discussions</h3>
+                <div class="card-icon">
+                    <i class="fa fa-comments"></i>
+                </div>
+            </div>
+            <div id="forumPosts">
+                <!-- Forum posts will be dynamically added -->
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 class="card-title">Leaderboard</h3>
+                <div class="card-icon">
+                    <i class="fa fa-medal"></i>
+                </div>
+            </div>
+            <div id="leaderboard">
+                <!-- Leaderboard items will be dynamically added -->
+            </div>
+        </div>
+
+        <!-- Performance Analytics -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 class="card-title">Learning Analytics</h3>
+                <div class="card-icon">
+                    <i class="fa fa-chart-bar"></i>
+                </div>
+            </div>
+            <div style="height: 300px;">
+                <canvas id="performanceChart"></canvas>
             </div>
         </div>
     </div>
-</section>
 
-<!-- Footer Area -->
-<footer id="footer" class="footer">
-<!-- Footer Top -->
-<div class="footer-top">
-<div class="container">
-<div class="row">
-<div class="col-lg-3 col-md-6 col-12">
-<div class="single-footer">
-<h2>About Us</h2>
-<p>JE Tech Hub is dedicated to empowering individuals with cutting-edge technology skills through hands-on training and innovative solutions.</p>
-<!-- Social -->
-<ul class="social">
-<li><a href="https://www.instagram.com/je_techhub?igsh=dGZjc29oNnRsOGF2&utm_source=qr"><i class="icofont-instagram"></i></a></li>
-<li><a href="#"><i class="icofont-google-plus"></i></a></li>
-<li><a href="#"><i class="icofont-twitter"></i></a></li>
-</ul>
-<!-- End Social -->
+    <!-- Notification Panel -->
+    <div class="notification-panel" id="notificationPanel">
+        <div class="notification-header">
+            Notifications
+            <button style="float: right; background: none; border: none; font-size: 18px;" onclick="toggleNotifications()">×</button>
+        </div>
+        <div id="notificationList">
+            <!-- Notifications will be dynamically added -->
+        </div>
+    </div>
 </div>
-</div>
-<div class="col-lg-3 col-md-6 col-12">
-<div class="single-footer f-link">
-<h2>Quick Links</h2>
-<div class="row">
-<div class="col-lg-6 col-md-6 col-12">
-<ul>
-<li><a href="index.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
-<li><a href="about.html"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
-<li><a href="courses.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Courses</a></li>
-<li><a href="programs.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Programs</a></li>
-<li><a href="contact.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-3 col-md-6 col-12">
-<div class="single-footer">
-<h2>Our Services</h2>
-<ul>
-<li><a href="programs.html#webDev"><i class="fa fa-caret-right" aria-hidden="true"></i>Software Development</a></li>
-<li><a href="programs.html#dataAnalysis"><i class="fa fa-caret-right" aria-hidden="true"></i>Data Analysis</a></li>
-<li><a href="programs.html#UIUX"><i class="fa fa-caret-right" aria-hidden="true"></i>UI/UX Design</a></li>
-<li><a href="programs.html#trading"><i class="fa fa-caret-right" aria-hidden="true"></i>Forex Trading</a></li>
-<li><a href="programs.html#vidGraphics"><i class="fa fa-caret-right" aria-hidden="true"></i>Graphics & Video</a></li>
-</ul>
-</div>
-</div>
-<div class="col-lg-3 col-md-6 col-12">
-<div class="single-footer">
-<h2>Open Hours</h2>
-<ul class="time-sidual">
-<li class="day">Mondays - Fridays <span>8.00-20.00</span></li>
-<li class="day">Saturdays <span>9.00-18.30</span></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!--/ End Footer Top -->
-<!-- Copyright -->
-<div class="copyright">
-<div class="container">
-<div class="row">
-<div class="col-lg-12 col-md-12 col-12">
-<div class="copyright-content">
-<p>© Copyright 2024 | All Rights Reserved by <a href="index.html">JE Tech Hub</a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!--/ End Copyright -->
-</footer>
-<!--/ End Footer Area -->
 
 <script>
-// Function to format dates in a more readable format
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-    });
-}
+// Initialize Supabase
+const supabaseUrl = 'https://icqzgoagqosthgipepdq.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImljcXpnb2FncW9zdGhnaXBlcGRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkwODI1NzAsImV4cCI6MjA2NDY1ODU3MH0.nzLqXrmUOmplR71fW-fumg58DiUOs_cKDqmjeuT8Yrg';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-// Function to format course display name
-function formatCourseName(courseCode) {
-    switch(courseCode) {
-        case 'softwareDev': return 'Software Development';
-        case 'dataAnalysis': return 'Data Analysis';
-        case 'videoGraphics': return 'Video Editing & Graphics Design';
-        case 'forex': return 'Forex Trading';
-        case 'gadgets': return 'Gadgets/Sales and Repairs';
-        case 'member': return 'Member';
-        default: return courseCode;
+let currentUser = null;
+let currentSession = null;
+let userProfile = null;
+
+// Check authentication state
+supabase.auth.onAuthStateChange((event, session) => {
+    currentSession = session;
+    currentUser = session?.user ?? null;
+    
+    if (!currentUser) {
+        window.location.href = 'getStarted.html';
+    } else {
+        loadUserProfile();
     }
-}
-
-// Handle logout
-document.getElementById('logoutButton').addEventListener('click', function(e) {
-    e.preventDefault();
-    authService.logout();
-    window.location.href = 'index.html';
 });
 
-// Load user profile data
+// Check for existing session
+supabase.auth.getSession().then(({ data: { session } }) => {
+    currentSession = session;
+    currentUser = session?.user ?? null;
+    
+    if (!currentUser) {
+        window.location.href = 'getStarted.html';
+    } else {
+        loadUserProfile();
+    }
+});
+
 async function loadUserProfile() {
     try {
-        document.querySelector('.loader-wrapper').classList.remove('hidden');
+        const { data, error } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', currentUser.id)
+            .single();
         
-        // Try to get profile from local storage first
-        let userProfile = authService.getUserProfile();
-        
-        // If token exists but no profile, fetch it from the server
-        if (authService.getToken() && !userProfile) {
-            userProfile = await authService.getProfile();
-        }
-        
-        // Redirect to login if no valid auth session
-        if (!userProfile) {
-            window.location.href = 'getStarted.html';
+        if (error && error.code !== 'PGRST116') {
+            console.error('Error loading profile:', error);
             return;
         }
         
-        // Update profile information
-        document.getElementById('userFullName').textContent = userProfile.firstName + ' ' + userProfile.lastName;
-        document.getElementById('userFirstName').textContent = userProfile.firstName;
-        document.getElementById('userLastName').textContent = userProfile.lastName;
-        document.getElementById('userEmail').textContent = userProfile.email;
-        document.getElementById('userCourse').textContent = formatCourseName(userProfile.course);
-        document.getElementById('userRegistrationDate').textContent = formatDate(userProfile.registrationDate);
-        
-        // Update stats
-        let totalModulesCompleted = 0;
-        let totalModulesCount = 0;
-
-        // Update course progress
-        const progressContainer = document.getElementById('courseProgress');
-        
-        if (userProfile.progress && userProfile.progress.length > 0) {
-            let progressHTML = '';
-            
-            userProfile.progress.forEach(progress => {
-                const percentComplete = (progress.completed / progress.totalModules) * 100;
-                totalModulesCompleted += progress.completed;
-                totalModulesCount += progress.totalModules;
-                
-                progressHTML += `
-                    <div class="progress-container">
-                        <div class="progress-label">
-                            <span>${formatCourseName(progress.course)}</span>
-                            <span>${progress.completed} of ${progress.totalModules} modules</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: ${percentComplete}%"></div>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            progressContainer.innerHTML = progressHTML;
-            
-            // Update stats cards
-            document.getElementById('completedModules').textContent = totalModulesCompleted;
-            document.getElementById('totalModules').textContent = totalModulesCount;
-        } else {
-            progressContainer.innerHTML = '<p>No course progress available.</p>';
-        }
+        userProfile = data;
+        initializeDashboard();
     } catch (error) {
-        console.error('Error loading profile:', error);
-        if (error.message.includes('token') || error.message.includes('login')) {
-            // Redirect to login page if authentication issue
-            window.location.href = 'getStarted.html';
-        }
-    } finally {
-        document.querySelector('.loader-wrapper').classList.add('hidden');
+        console.error('Error loading user profile:', error);
+        initializeDashboard();
     }
 }
 
-// Check authentication on page load
-window.addEventListener('load', function() {
-    if (!authService.isAuthenticated()) {
-        window.location.href = 'getStarted.html';
-        return;
+function initializeDashboard() {
+    updateWelcomeMessage();
+    animateCounters();
+    loadCourseProgress();
+    loadRecentActivity();
+    loadAchievements();
+    loadUpcomingEvents();
+    loadForumPosts();
+    loadLeaderboard();
+    loadNotifications();
+    initializeChart();
+    
+    // Add some animation delays
+    setTimeout(() => {
+        document.querySelectorAll('.dashboard-card').forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('fade-in');
+            }, index * 100);
+        });
+    }, 200);
+}
+
+function updateWelcomeMessage() {
+    const welcomeEl = document.getElementById('welcomeMessage');
+    const roleEl = document.getElementById('userRole');
+    
+    if (userProfile && userProfile.first_name) {
+        welcomeEl.textContent = `Welcome back, ${userProfile.first_name}!`;
+    } else if (currentUser && currentUser.email) {
+        welcomeEl.textContent = `Welcome back, ${currentUser.email.split('@')[0]}!`;
     }
     
-    loadUserProfile();
+    if (userProfile && userProfile.course) {
+        roleEl.textContent = `${userProfile.course} Student`;
+    } else {
+        roleEl.textContent = 'Exploring Our Programs';
+    }
+}
+
+function animateCounters() {
+    // Simulate user data - in a real app, this would come from the database
+    const userData = {
+        courses: userProfile?.course ? 1 : 0,
+        hours: Math.floor(Math.random() * 50) + 10,
+        certificates: Math.floor(Math.random() * 3),
+        xp: Math.floor(Math.random() * 1000) + 200,
+        days: Math.ceil((new Date() - new Date(userProfile?.created_at || new Date())) / (1000 * 60 * 60 * 24)),
+        level: Math.floor((Math.floor(Math.random() * 1000) + 200) / 100) + 1
+    };
+    
+    animateCounter('coursesCount', userData.courses);
+    animateCounter('hoursCount', userData.hours);
+    animateCounter('certificatesCount', userData.certificates);
+    animateCounter('xpPoints', userData.xp);
+    animateCounter('daysJoined', userData.days);
+    animateCounter('currentLevel', userData.level);
+}
+
+function animateCounter(elementId, target) {
+    const element = document.getElementById(elementId);
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current);
+    }, 30);
+}
+
+function loadCourseProgress() {
+    const progressContainer = document.getElementById('courseProgress');
+    const courses = [
+        { name: userProfile?.course || 'Web Development', progress: Math.floor(Math.random() * 80) + 20 },
+        { name: 'UI/UX Design', progress: Math.floor(Math.random() * 60) + 10 },
+        { name: 'Data Analysis', progress: Math.floor(Math.random() * 40) + 5 }
+    ];
+    
+    progressContainer.innerHTML = courses.map(course => `
+        <div class="progress-item">
+            <div class="progress-header">
+                <span class="progress-label">${course.name}</span>
+                <span class="progress-percentage">${course.progress}%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: ${course.progress}%"></div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function loadRecentActivity() {
+    const activityContainer = document.getElementById('recentActivity');
+    const activities = [
+        { icon: '🎓', bg: '#28a745', title: 'Completed: JavaScript Basics', time: '2 hours ago' },
+        { icon: '📚', bg: '#007bff', title: 'Started: React Components', time: '5 hours ago' },
+        { icon: '🏆', bg: '#ffc107', title: 'Earned: First Project Badge', time: '1 day ago' },
+        { icon: '💬', bg: '#17a2b8', title: 'Posted in Web Dev Forum', time: '2 days ago' },
+        { icon: '📝', bg: '#6f42c1', title: 'Submitted Assignment #3', time: '3 days ago' }
+    ];
+    
+    activityContainer.innerHTML = activities.map(activity => `
+        <div class="activity-item">
+            <div class="activity-icon" style="background: ${activity.bg}">
+                ${activity.icon}
+            </div>
+            <div class="activity-content">
+                <div class="activity-title">${activity.title}</div>
+                <div class="activity-time">${activity.time}</div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function loadAchievements() {
+    const achievementContainer = document.getElementById('achievementBadges');
+    const achievements = [
+        { icon: '🏆', name: 'First Course', unlocked: true },
+        { icon: '📚', name: 'Bookworm', unlocked: true },
+        { icon: '🎯', name: 'Goal Setter', unlocked: true },
+        { icon: '🔥', name: 'Streak Master', unlocked: false },
+        { icon: '👨‍🏫', name: 'Mentor', unlocked: false },
+        { icon: '🌟', name: 'All Star', unlocked: false }
+    ];
+    
+    achievementContainer.innerHTML = achievements.map(achievement => `
+        <div class="achievement-badge ${!achievement.unlocked ? 'locked' : ''}">
+            <div class="achievement-icon">${achievement.icon}</div>
+            <div class="achievement-name">${achievement.name}</div>
+        </div>
+    `).join('');
+}
+
+function loadUpcomingEvents() {
+    const eventsContainer = document.getElementById('upcomingEvents');
+    const events = [
+        { time: '10:00 AM', title: 'Web Development Workshop', date: 'Today' },
+        { time: '2:00 PM', title: 'UI/UX Design Masterclass', date: 'Tomorrow' },
+        { time: '11:00 AM', title: 'Career Guidance Session', date: 'Friday' },
+        { time: '3:00 PM', title: 'Project Showcase', date: 'Next Week' }
+    ];
+    
+    eventsContainer.innerHTML = events.map(event => `
+        <div class="event-item">
+            <div class="event-time">${event.time} - ${event.date}</div>
+            <div class="event-title">${event.title}</div>
+        </div>
+    `).join('');
+}
+
+function loadForumPosts() {
+    const forumContainer = document.getElementById('forumPosts');
+    const posts = [
+        { user: 'Sarah M.', time: '5 min ago', content: 'Just finished my first React project! Thanks for all the help 🎉' },
+        { user: 'Mike D.', time: '1 hour ago', content: 'Can someone explain the difference between flex and grid?' },
+        { user: 'Lisa K.', time: '3 hours ago', content: 'Great workshop today on responsive design!' }
+    ];
+    
+    forumContainer.innerHTML = posts.map(post => `
+        <div class="forum-post">
+            <div class="forum-header">
+                <span class="forum-user">${post.user}</span>
+                <span class="forum-time">${post.time}</span>
+            </div>
+            <div class="forum-content">${post.content}</div>
+        </div>
+    `).join('');
+}
+
+function loadLeaderboard() {
+    const leaderboardContainer = document.getElementById('leaderboard');
+    const leaders = [
+        { rank: 1, name: 'Alex Johnson', course: 'Web Development', points: 2450 },
+        { rank: 2, name: 'Maria Garcia', course: 'UI/UX Design', points: 2280 },
+        { rank: 3, name: 'David Chen', course: 'Data Analysis', points: 2150 },
+        { rank: 4, name: 'Emma Wilson', course: 'Web Development', points: 1980 },
+        { rank: 5, name: 'You', course: userProfile?.course || 'Student', points: 1750 }
+    ];
+    
+    leaderboardContainer.innerHTML = leaders.map(leader => `
+        <div class="leaderboard-item">
+            <div class="leaderboard-rank">#${leader.rank}</div>
+            <div class="leaderboard-user">
+                <div class="leaderboard-name">${leader.name}</div>
+                <div class="leaderboard-course">${leader.course}</div>
+            </div>
+            <div class="leaderboard-points">${leader.points} XP</div>
+        </div>
+    `).join('');
+}
+
+function loadNotifications() {
+    const notificationList = document.getElementById('notificationList');
+    const notifications = [
+        { title: 'Assignment Due Tomorrow', content: 'JavaScript Fundamentals Project', time: '2 hours ago', unread: true },
+        { title: 'New Course Available', content: 'Advanced React Patterns', time: '5 hours ago', unread: true },
+        { title: 'Weekly Progress Report', content: 'You completed 3 lessons this week!', time: '1 day ago', unread: false }
+    ];
+    
+    notificationList.innerHTML = notifications.map(notif => `
+        <div class="notification-item ${notif.unread ? 'unread' : ''}">
+            <div style="font-weight: 500; margin-bottom: 5px;">${notif.title}</div>
+            <div style="font-size: 14px; color: #6c757d; margin-bottom: 5px;">${notif.content}</div>
+            <div style="font-size: 12px; color: #adb5bd;">${notif.time}</div>
+        </div>
+    `).join('');
+}
+
+function initializeChart() {
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+            datasets: [{
+                label: 'Hours Studied',
+                data: [5, 8, 12, 7, 15, 18],
+                borderColor: '#007bff',
+                backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                tension: 0.4,
+                fill: true
+            }, {
+                label: 'XP Gained',
+                data: [120, 200, 300, 180, 350, 420],
+                borderColor: '#28a745',
+                backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                tension: 0.4,
+                fill: true,
+                yAxisID: 'y1'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    position: 'left'
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    grid: {
+                        drawOnChartArea: false,
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                }
+            }
+        }
+    });
+}
+
+// Dashboard Functions
+function toggleNotifications() {
+    const panel = document.getElementById('notificationPanel');
+    panel.style.display = panel.style.display === 'none' || !panel.style.display ? 'block' : 'none';
+}
+
+function startLearning() {
+    alert('Redirecting to your current course...');
+    // In a real app, this would redirect to the learning platform
+}
+
+function browsePrograms() {
+    window.location.href = 'programs.html';
+}
+
+function downloadCertificate() {
+    alert('Certificate download will be available after course completion.');
+    // In a real app, this would generate and download a certificate
+}
+
+function joinCommunity() {
+    alert('Joining community forum...');
+    // In a real app, this would redirect to the community forum
+}
+
+async function logout() {
+    try {
+        const { error } = await supabase.auth.signOut();
+        if (error) throw error;
+        window.location.href = 'getStarted.html';
+    } catch (error) {
+        console.error('Error logging out:', error);
+    }
+}
+
+// Close notifications when clicking outside
+document.addEventListener('click', function(event) {
+    const panel = document.getElementById('notificationPanel');
+    const button = document.querySelector('.notification-bell');
+    
+    if (!panel.contains(event.target) && !button.contains(event.target)) {
+        panel.style.display = 'none';
+    }
 });
 </script>
 
-<!-- jquery Min JS -->
-<script src="js/jquery.min.js"></script>
-<!-- jquery Migrate JS -->
-<script src="js/jquery-migrate-3.0.0.js"></script>
-<!-- jquery Ui JS -->
-<script src="js/jquery-ui.min.js"></script>
-<!-- Easing JS -->
-<script src="js/easing.js"></script>
-<!-- Color JS -->
-<script src="js/colors.js"></script>
-<!-- Popper JS -->
-<script src="js/popper.min.js"></script>
-<!-- Bootstrap Datepicker JS -->
-<script src="js/bootstrap-datepicker.js"></script>
-<!-- Jquery Nav JS -->
-<script src="js/jquery.nav.js"></script>
-<!-- Slicknav JS -->
-<script src="js/slicknav.min.js"></script>
-<!-- ScrollUp JS -->
-<script src="js/jquery.scrollUp.min.js"></script>
-<!-- Niceselect JS -->
-<script src="js/niceselect.js"></script>
-<!-- Tilt Jquery JS -->
-<script src="js/tilt.jquery.min.js"></script>
-<!-- Owl Carousel JS -->
-<script src="js/owl-carousel.js"></script>
-<!-- counterup JS -->
-<script src="js/jquery.counterup.min.js"></script>
-<!-- Steller JS -->
-<script src="js/steller.js"></script>
-<!-- Wow JS -->
-<script src="js/wow.min.js"></script>
-<!-- Magnific Popup JS -->
-<script src="js/jquery.magnific-popup.min.js"></script>
-<!-- Counter Up CDN JS -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Main JS -->
-<script src="js/main.js"></script>
 </body>
 </html>
