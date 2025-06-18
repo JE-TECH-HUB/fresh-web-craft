@@ -38,7 +38,14 @@
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/responsive.css">
+<style>
+	.flexBox{
+@media (width > 768px) {
+		text-align: left;		display: flex;
 
+}
+	}
+</style>
 </head>
 <body>
 
@@ -46,41 +53,46 @@
 <header class="header" >
 <!-- Header Inner -->
 <div class="header-inner">
-<div class="container">
+
 <div class="inner">
-<div class="row">
+<div class="row flex">
 <div class="col-lg-3 col-md-3 col-12">
 <!-- Start Logo -->
 <div class="logo">
-<a href="index.html"><img src="images/JE Techhub logo.png"></a>
+<a href="index.html"><img src="images/JE Techhub logo.png#"></a>
 </div>
 <!-- End Logo -->
 <!-- Mobile Nav -->
 <div class="mobile-nav"></div>
 <!-- End Mobile Nav -->
 </div>
-<div class="col-lg-7 col-md-9 col-12">
+
 <!-- Main Menu -->
-<div class="main-menu">
+<div class="main-menu col-sm-12 col-lg-6 col-md-6 ">
 <nav class="navigation">
 <ul class="nav menu">
-<li><a href="index.html" class="scroll">Home</a></li>
-<li class="active"><a href="index.html#about" class="scroll">About Us</a></li>
-<li><a href='programs.html' class="scroll">Programs</a></li>
+<li class="active"><a href="#" class="scroll">Home</a></li>
+<li><a href="about.html" class="scroll">About Us</a></li>
+<li><a href="programs.html" class="scroll">Programs</a></li>
+<!-- <li><a href="courses.html">Courses</a></li>  -->
 <li><a href="contact.html" class="scroll">Contact Us</a></li>
 </ul>
 </nav>
-</div>
-<!--/ End Main Menu -->
-</div>
 
 </div>
+<div class="action-btns col-3 ">
+
+<a href="contact.html" class="btn primary">Contact Now</a>
 </div>
-</div>
+<!--/ End Main Menu -->
+
+
+
 </div>
 <!--/ End Header Inner -->
 </header>
 <!-- End Header Area -->
+
 
 <!-- Slider Area -->
 <section class="slider">
@@ -199,7 +211,7 @@ interfaces.
 
 <div class="container">
 <div class="row">
-<div class="col-lg-8 col-12">
+<div class="col-12">
 <div class="row">
 <div class="col-12">
 <div class="single-main">
@@ -210,7 +222,8 @@ interfaces.
 JOE EXPRESS</h2>
 <h2 class="news-title card-title">delivering top-tier tech solutions</h2>	
 
-
+<div class="flexBox col-12">
+	
 <p class="largerParagraphs fadeSection lineHeight">
 
 At JE Tech Hub, we are driven by a single, powerful mission: to connect education and technology through innovative and practical tutoring that enhances tech skills for individuals and communities alike. 
@@ -223,7 +236,7 @@ At JE Tech Hub, we are driven by a single, powerful mission: to connect educatio
 Our goal is not just to teach technology but to inspire a deep, hands-on understanding that empowers learners to become proficient and confident in their technical abilities.
 
 </p>
-<div class=" col-12">
+<div class=" col-8">
 <div class="main-sidebar">
 <!-- Single Post -->
 <div class="single-post">
@@ -242,6 +255,7 @@ Our goal is not just to teach technology but to inspire a deep, hands-on underst
 </ul>
 </div></div>
 <!-- End Single Post -->
+</div>
 </div>
 </div>
 </div>
