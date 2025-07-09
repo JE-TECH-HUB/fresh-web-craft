@@ -44,7 +44,7 @@ rel="stylesheet">
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/custom.css">
 
-<style>git 
+<style>
 /* Loading Spinner */
 .loader-wrapper {
 position: fixed;
@@ -82,35 +82,35 @@ visibility: hidden;
 
 
 /*.about-section {
-	margin-top: 100px;
+margin-top: 100px;
 }*/
 
 
 .aboutBox{
-	display:flex;
-	align-items:center;
-	
-	p{
-	padding-inline:2em;
-	width:65%;
-	margin-right:-2em;
-	z-index:1;
-	}
-	.aboutImg{
-	margin-left:-2em;
-	width:45%;
+display:flex;
+align-items:center;
 
-	img{width: 100%;aspect-ratio: 16/9;}
-	}
-	}
+p{
+padding-inline:2em;
+width:65%;
+margin-right:-2em;
+z-index:1;
+}
+.aboutImg{
+margin-left:-2em;
+width:45%;
+
+img{width: 100%;aspect-ratio: 16/9;}
+}
+}
 
 }
 .about-content h2 {
-	line-height: 32px;
-	font-size: 25px;
+line-height: 32px;
+font-size: 25px;
 }
 .about-content {
-	padding-bottom: 0;
+padding-bottom: 0;
 }
 
 
@@ -248,13 +248,13 @@ align-items:center;
 }
 
 .action-btns{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-right:10px;
+display: flex;
+align-items: center;
+justify-content: center;
+padding-right:10px;
 @media (width < 768px) {
-		display: none;
-	}
+display: none;
+}
 }
 </style>
 
@@ -280,6 +280,424 @@ TECH HUB</h1></div>
 </div>
 <!-- End Preloader -->
 
+
+
+<main>
+<!-- New Hero Carousel Start -->
+<style>
+
+.carousel {
+position: relative;
+width: 100%;
+height: 100vh;
+overflow: hidden;
+}
+.slides-container {
+display: flex;
+height: 100%;
+transition: transform 0.7s ease-in-out;
+}
+.slide {
+min-width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+.slide-overlay {
+position: absolute;
+inset: 0;
+}
+.slide-content {
+position: relative;
+z-index: 10;
+text-align: center;
+color: white;
+padding: 0 1rem;
+max-width: 64rem;
+margin: 0 auto;
+}
+.slide-content-inner {
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+padding: 0.7em;
+animation: fadeIn 0.8s ease-out;
+background: #0000006e;
+border-radius: 1em;
+
+}
+.slide-subtitle {
+font-size: 1.125rem;
+font-weight: 300;
+letter-spacing: 0.05em;
+opacity: 0.9;
+color: darkblue;
+}
+.slide-title {
+	color: orangered;
+font-size: 3rem;
+font-weight: bold;
+line-height: 1.1;
+
+}
+.slide-description {
+font-size: 1.125rem;
+line-height: 1.7;
+opacity: 0.9;
+max-width: 32rem;
+margin: 0 auto;
+}
+.slide-buttons {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+justify-content: center;
+align-items: center;
+padding-top: 1.5rem;
+}
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 0.75rem 2rem;
+font-size: 1rem;
+font-weight: 500;
+border-radius: 0.375rem;
+text-decoration: none;
+transition: all 0.3s ease;
+border: none;
+cursor: pointer;
+min-width: 160px;
+width: 100%;
+}
+.btn-primary {
+background: darkblue;
+color: #8b5cf6;
+box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+}
+.btn-primary:hover {
+background: orangered;
+transform: scale(1.05);
+box-shadow: 0 20px 60px -10px rgba(26, 2, 80, 0.959);
+}
+.btn-secondary {
+background:orangered;
+color: white;
+border: 1px solid rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(20px);
+}
+.btn-secondary:hover {
+background:darkblue;
+transform: scale(1.05);
+}
+.nav-button {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+z-index: 20;
+background:darkblue;
+backdrop-filter: blur(20px);
+border: 1px solid;
+color: white;
+padding: 0.82rem;
+border-radius: 50%;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.nav-button:hover {
+background: orangered;
+transform: translateY(-50%) scale(1.1);
+}
+.nav-button:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
+.nav-prev {
+left: 2rem;
+}
+.nav-next {
+right: 2rem;
+}
+.indicators {
+position: absolute;
+bottom: 2rem;
+left: 50%;
+transform: translateX(-50%);
+z-index: 20;
+display: flex;
+gap: 0.75rem;
+}
+.indicator {
+width: 0.75rem;
+height: 0.75rem;
+border-radius: 50%;
+border: 1px solid rgba(255, 255, 255, 0.4);
+background: darkblue;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.indicator.active {
+background: orangered;
+transform: scale(1.25);
+}
+.indicator:hover:not(.active) {
+background:darkblue;
+}
+.progress-bar {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 4px;
+background: orangered;
+z-index: 20;
+}
+.progress-fill {
+height: 100%;
+background: darkblue;
+transition: width 3s linear;
+}
+.chevron {
+width: 1.5rem;
+height: 1.5rem;
+stroke: currentColor;
+stroke-width: 2;
+fill: none;
+}
+@keyframes fadeIn {
+0% {
+opacity: 0;
+transform: translateY(20px);
+}
+100% {
+opacity: 1;
+transform: translateY(0);
+}
+}
+@media (min-width: 640px) {
+.slide-content {
+padding: 0 1.5rem;
+}
+.slide-subtitle {
+font-size: 1.25rem;
+}
+.slide-title {
+font-size: 4rem;
+}
+.slide-description {
+font-size: 1.25rem;
+}
+.slide-buttons {
+flex-direction: row;
+}
+.btn {
+width: auto;
+}
+.nav-prev {
+left: 2rem;
+}
+.nav-next {
+right: 2rem;
+}
+.indicators {
+bottom: 2rem;
+}
+}
+@media (min-width: 768px) {
+.slide-title {
+font-size: 5rem;
+}
+}
+@media (min-width: 1024px) {
+.slide-content {
+padding: 0 2rem;
+}
+.slide-title {
+font-size: 6rem;
+}
+}
+</style>
+<div class="carousel">
+<div class="slides-container" id="slidesContainer">
+<!-- Slide 1 -->
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')">
+<div class="slide-overlay"></div>
+<div class="slide-content">
+<div class="slide-content-inner">
+<p class="slide-subtitle">Transforming Ideas into Reality</p>
+<h1 class="slide-title">Welcome to Innovation</h1>
+<p class="slide-description">
+Discover cutting-edge solutions that drive your business forward. Our innovative approach combines creativity with technology to deliver exceptional results that exceed expectations.
+</p></div>
+
+<div class="slide-buttons">
+<button class="btn btn-primary">Learn More</button>
+<button class="btn btn-secondary">Contact Us</button>
+</div>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+<div class="slide-overlay"></div>
+<div class="slide-content">
+<div class="slide-content-inner">
+<p class="slide-subtitle">Crafting Premium Experiences</p>
+<h1 class="slide-title">Excellence in Every Detail</h1>
+<p class="slide-description">
+Experience the difference that attention to detail makes. We meticulously design every aspect of our services to ensure you receive nothing but the finest quality and performance.
+</p></div>
+<div class="slide-buttons">
+<button class="btn btn-primary">Learn More</button>
+<button class="btn btn-secondary">Contact Us</button>
+
+</div>
+</div>
+</div>
+<!-- Slide 3 -->
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')">
+<div class="slide-overlay"></div>
+<div class="slide-content">
+<div class="slide-content-inner">
+<p class="slide-subtitle">Building Lasting Partnerships</p>
+<h1 class="slide-title">Your Success, Our Mission</h1>
+<p class="slide-description">
+Join thousands of satisfied clients who have achieved their goals with our expert guidance. Together, we'll create sustainable growth and lasting success for your business.
+</p></div>
+<div class="slide-buttons">
+<button class="btn btn-primary">Learn More</button>
+<button class="btn btn-secondary">Contact Us</button>
+
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Buttons -->
+<button class="nav-button nav-prev" id="prevBtn" aria-label="Previous slide">
+<svg class="chevron" viewBox="0 0 24 24">
+<polyline points="15,18 9,12 15,6"></polyline>
+</svg>
+</button>
+<button class="nav-button nav-next" id="nextBtn" aria-label="Next slide">
+<svg class="chevron" viewBox="0 0 24 24">
+<polyline points="9,18 15,12 9,6"></polyline>
+</svg>
+</button>
+<!-- Slide Indicators -->
+<div class="indicators" id="indicators">
+<button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+<button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+<button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+</div>
+<!-- Progress Bar -->
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+</div>
+<!-- New Hero Carousel End -->
+
+<script>
+class HeroCarousel {
+constructor() {
+this.currentSlide = 0;
+this.totalSlides = 3;
+this.isAnimating = false;
+this.autoSlideInterval = null;
+this.slidesContainer = document.getElementById('slidesContainer');
+this.prevBtn = document.getElementById('prevBtn');
+this.nextBtn = document.getElementById('nextBtn');
+this.indicators = document.querySelectorAll('.indicator');
+this.progressFill = document.getElementById('progressFill');
+this.init();
+}
+init() {
+this.prevBtn.addEventListener('click', () => this.prevSlide());
+this.nextBtn.addEventListener('click', () => this.nextSlide());
+this.indicators.forEach((indicator, index) => {
+indicator.addEventListener('click', () => this.goToSlide(index));
+});
+this.startAutoSlide();
+this.updateProgressBar();
+}
+nextSlide() {
+if (this.isAnimating) return;
+this.isAnimating = true;
+this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+this.updateSlide();
+setTimeout(() => {
+this.isAnimating = false;
+}, 600);
+}
+prevSlide() {
+if (this.isAnimating) return;
+this.isAnimating = true;
+this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+this.updateSlide();
+setTimeout(() => {
+this.isAnimating = false;
+}, 600);
+}
+goToSlide(index) {
+if (this.isAnimating || index === this.currentSlide) return;
+this.isAnimating = true;
+this.currentSlide = index;
+this.updateSlide();
+setTimeout(() => {
+this.isAnimating = false;
+}, 600);
+}
+updateSlide() {
+const translateX = -this.currentSlide * 100;
+this.slidesContainer.style.transform = `translateX(${translateX}%)`;
+this.indicators.forEach((indicator, index) => {
+if (index === this.currentSlide) {
+indicator.classList.add('active');
+} else {
+indicator.classList.remove('active');
+}
+});
+this.updateProgressBar();
+this.restartAutoSlide();
+}
+updateProgressBar() {
+const progress = ((this.currentSlide + 1) / this.totalSlides) * 100;
+this.progressFill.style.width = `${progress}%`;
+}
+startAutoSlide() {
+this.autoSlideInterval = setInterval(() => {
+this.nextSlide();
+}, 3000);
+}
+restartAutoSlide() {
+if (this.autoSlideInterval) {
+clearInterval(this.autoSlideInterval);
+}
+this.startAutoSlide();
+}
+pauseAutoSlide() {
+if (this.autoSlideInterval) {
+clearInterval(this.autoSlideInterval);
+}
+}
+resumeAutoSlide() {
+this.startAutoSlide();
+}
+}
+document.addEventListener('DOMContentLoaded', () => {
+const carousel = new HeroCarousel();
+const carouselElement = document.querySelector('.carousel');
+carouselElement.addEventListener('mouseenter', () => {
+carousel.pauseAutoSlide();
+});
+carouselElement.addEventListener('mouseleave', () => {
+carousel.resumeAutoSlide();
+});
+});
+</script>
 <!-- Header Area -->
 <header class="header" >
 <!-- Header Inner -->
@@ -323,77 +741,6 @@ TECH HUB</h1></div>
 <!--/ End Header Inner -->
 </header>
 <!-- End Header Area -->
-
-
-<main>
-<!-- Slider Area -->
-<section class="slider" id="home">
-<div class="hero-slider">
-<!-- Start Single Slider -->
-<div class="single-slider"
-style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
-<div class="container">
-<div class="row">
-<div class="col-lg-7">
-<div class="text">
-<h1>LEARN <span>GROW AND EXPORE</span> ENDLESS
-<span>OPPORTUNITIES!</span></h1>
-<p>
-
-Join a community of like-minded learners and industry
-professionals who are passionate about technology and...</p>
-<div class="button">
-<a href="getStarted.html" class="btn"> Join Now</a>
-<a href="about.html" class="btn primary">Learn More</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- End Single Slider -->
-<!-- Start Single Slider -->
-<div class="single-slider" style="background-image:url('images/OIP (1).jpeg')">
-<div class="container">
-<div class="row">
-<div class="col-lg-7">
-<div class="text">
-<h1>We Provide <span>Services</span> That You Can
-<span>Trust!</span></h1>
-<p> dedicated to empowering individuals and businesses with
-cutting-edge solutions </p>
-<div class="button">
-<a href="about.html#services" class="btn">Learn More</a>
-<a href="about.html" class="btn primary">About Us</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Start End Slider -->
-<!-- Start Single Slider -->
-<div class="single-slider" style="background-image:url('images/hero1.jpeg')">
-<div class="container">
-<div class="row">
-<div class="col-lg-7">
-<div class="text">
-<h1>
-Get the <span>skills</span> mentorship, and resources you
-need to thrive<span> in today's digital world. </span></h1>
-<div class="button">
-<a href="getStarted.html" class="btn">joinUs</a>
-<a href="contact.html" class="btn primary">Contact Now</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- End Single Slider -->
-</div>
-</section>
-<!--/ End Slider Area -->
 
 <!-- Start Schedule Area -->
 <section class="schedule">
@@ -627,8 +974,6 @@ Whether you need a brand-new, high-performance gadget or expert repairs for your
 <button class="card-button"><a href="contact.html">Contact Us</a></button>
 </div>
 </div>
-
-
 
 
 
