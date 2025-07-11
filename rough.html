@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+.container {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 80vh;
+}
+
+.container * {
+height: 150px;
+/*flex-grow: 1;*/
+outline: 2px solid green;
+/*width: 80px;*/
+justify-items: center;
+align-content: center;
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+
+<div style="background: #000;">1</div>
+<div style="background: red; flex-basis: 150px; ">2</div>
+<div style="background: #000000;">3</div>
+<div>4</div>
+<div style="background: #8b2929;  flex-basis: 150px; 
+flex-shrink: 2;
+">5</div>
+<div>6</div>
+
+</div>	
+</body>
+</html>
