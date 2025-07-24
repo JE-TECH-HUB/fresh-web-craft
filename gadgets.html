@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background-color: grey;
+}
+
+main{margin-top: 157px;}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header Styles */
+.hero-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.back-link {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-btn:hover {
+    color: white;
+}
+
+.back-arrow {
+    font-size: 1.2rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+/* Main Content */
+.main-content {
+    padding: 3rem 0;
+}
+
+/* Stats Section */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Gadgets Section */
+.gadgets-section {
+    margin-bottom: 4rem;
+}
+
+.gadgets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.gadget-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.gadget-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gadget-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.gadget-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gadget-badges {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.9);
+    color: #1a1a1a;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.badge.condition-new { background: #10b981; color: white; }
+.badge.condition-like-new { background: #3b82f6; color: white; }
+.badge.condition-good { background: #f59e0b; color: white; }
+.badge.condition-fair { background: #ef4444; color: white; }
+
+.stock-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #10b981;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.gadget-content {
+    padding: 1.5rem;
+}
+
+.gadget-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+
+.gadget-description {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.gadget-price {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #3b82f6;
+    margin-bottom: 1.5rem;
+}
+
+.gadget-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn-buy {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.btn-buy:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-2px);
+}
+
+.btn-swap {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+.btn-swap:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    transform: translateY(-2px);
+}
+
+.contact-options {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.contact-btn-small {
+    flex: 1;
+    padding: 0.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #666;
+}
+
+.contact-btn-small:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+/* Contact Section */
+.contact-section {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.contact-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.contact-description {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.contact-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.contact-btn.primary {
+    background: white;
+    color: #1a1a1a;
+}
+
+.contact-btn.primary:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+.contact-btn.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* Footer */
+.footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+.footer-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.footer-subtitle {
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .stats-section {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gadgets-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .footer-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .container {
+        padding: 0 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-header {
+        padding: 2rem 0;
+    }
+    
+    .main-content {
+        padding: 2rem 0;
+    }
+    
+    .contact-section {
+        padding: 2rem 1rem;
+    }
+    
+    .contact-title {
+        font-size: 2rem;
+    }
+}
+
+
+
+/* Header */
+ .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    /* backdrop-filter: blur(20px); */
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    padding: var(--spacing-sm) 0;
+    transition: var(--transition);
+}
+.header{display: grid;
+     align-items: center;justify-content: center;}
+
+@media (width > 768px){.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}}
+
+.nav-brand  {
+  margin: auto;  width: 50%; 
+  align-content: center;justify-items: center;
+}
+
+.nav-menu {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: var(--primary);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.contact-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: none;
+}
+.contact-buttons{background: #000;}
+
+    </style>
+</head>
+<body>
+    
+<!-- Header -->
+<header class="header">
+    <div class="nav-brand">
+<img src="images/JE Techhub logo.png" max-width="50%" height="100px" alt="je-tech-hub logo">
+    </div>
+<div class="container">
+
+<nav class="nav-menu" id="navMenu">
+<a href="index.html" class="nav-link">JE-Tech-Hub </a>
+<a href="aboutUs.html" class="nav-link">About</a>
+<a href="programs.html" class="nav-link">Programs</a>
+<a href="contactUs.html" class="nav-link">Contact</a>
+</nav>
+<button class="contact-btn"><a href="getStarted.html">Get Started</a></button>
+<button class="mobile-toggle" id="mobileToggle">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+</header>
+
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+ <!-- Header Section -->
+    <header class="hero-header">
+        <div class="container">
+            <div class="back-link">
+                <a href="#" class="back-btn">
+                    
+                    <a href="gadgetsHome.html" class="nav-link"><span class="back-arrow">← Back To Homepage</span>
+                </a>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">JE Gadgets</h1>
+                <p class="hero-subtitle">Buy or Swap Your Gadgets Easily</p>
+                <p class="hero-description">
+                    Discover premium tech gadgets at unbeatable prices. From the latest smartphones to powerful laptops, 
+                    we have everything you need to stay connected and productive.
+                </p>
+            </div>
+        </div>
+    </header>
+        <div class="container">
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number" id="gadget-count">5+</div>
+                    <div class="stat-label">Available Gadgets</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Genuine Products</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Customer Support</div>
+                </div>
+            </section>
+
+            <!-- Gadgets Grid -->
+            <section class="gadgets-section">
+                <div class="gadgets-grid" id="gadgets-container">
+                    <!-- Gadgets will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact-section">
+                <div class="contact-content">
+                    <h2 class="contact-title">Get in Touch</h2>
+                    <p class="contact-description">
+                        Have questions about our gadgets? Want to negotiate a price or discuss a swap? 
+                        We're here to help! Contact us through any of these channels.
+                    </p>
+                    <div class="contact-buttons">
+                        <button class="contact-btn primary" onclick="handleGeneralWhatsApp()">
+                            <span class="btn-icon">💬</span>
+                            WhatsApp Chat
+                        </button>
+                        <button class="contact-btn secondary" onclick="handleInstagram()">
+                            <span class="btn-icon">📷</span>
+                            Instagram
+                        </button>
+                        <button class="contact-btn secondary" onclick="handleGeneralEmail()">
+                            <span class="btn-icon">📧</span>
+                            Email Us
+                        </button>
+                        <button class="contact-btn secondary" onclick="handlePhone()">
+                            <span class="btn-icon">📞</span>
+                            Call Now
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">JE Gadgets</h3>
+                <p class="footer-subtitle">Your trusted source for premium tech gadgets</p>
+                <div class="footer-info">
+                    <span>📱 WhatsApp: +2348123456789</span>
+                    <span>📧 Email: hello@jegadgets.com</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+const gadgets = [
+    {
+        id: "1",
+        name: "iPhone 15 Pro",
+        description: "Latest iPhone with titanium design, 48MP camera, and A17 Pro chip. Excellent condition with original box.",
+        price: "₦850,000",
+        image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&h=300&fit=crop&crop=center",
+        category: "iPhone",
+        condition: "Like New",
+        inStock: true
+    },
+    {
+        id: "2", 
+        name: "MacBook Pro M3",
+        description: "14-inch MacBook Pro with M3 chip, 16GB RAM, 512GB SSD. Perfect for professional work and creative tasks.",
+        price: "₦1,200,000",
+        image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop&crop=center",
+        category: "Laptop",
+        condition: "New",
+        inStock: true
+    },
+    {
+        id: "3",
+        name: "Samsung Galaxy S24 Ultra",
+        description: "Premium Android smartphone with S Pen, 200MP camera, and 12GB RAM. Great for productivity and photography.",
+        price: "₦780,000",
+        image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=300&fit=crop&crop=center",
+        category: "Android",
+        condition: "Like New",
+        inStock: true
+    },
+    {
+        id: "4",
+        name: "HP EliteBook 840 G9",
+        description: "Business laptop with Intel i7 processor, 16GB RAM, 512GB SSD. Ideal for professional use.",
+        price: "₦650,000",
+        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&crop=center",
+        category: "Laptop",
+        condition: "Good",
+        inStock: true
+    },
+    {
+        id: "5",
+        name: "65W USB-C Charger",
+        description: "Universal fast charger compatible with laptops, phones, and tablets. Original brand with cable included.",
+        price: "₦25,000",
+        image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=300&fit=crop&crop=center",
+        category: "Accessories",
+        condition: "New",
+        inStock: true
+    }
+];
+
+// Contact information
+const contactInfo = {
+    whatsapp: "+2348123456789",
+    instagram: "https://instagram.com/jegadgets",
+    email: "hello@jegadgets.com",
+    phone: "+2348123456789"
+};
+
+// Helper function to get category icon
+function getCategoryIcon(category) {
+    switch (category.toLowerCase()) {
+        case "iphone":
+        case "android":
+            return "📱";
+        case "laptop":
+            return "💻";
+        case "accessories":
+            return "🔌";
+        default:
+            return "📱";
+    }
+}
+
+// Helper function to get condition class
+function getConditionClass(condition) {
+    switch (condition) {
+        case "New":
+            return "condition-new";
+        case "Like New":
+            return "condition-like-new";
+        case "Good":
+            return "condition-good";
+        case "Fair":
+            return "condition-fair";
+        default:
+            return "";
+    }
+}
+
+// Contact action handlers
+function handleWhatsApp(gadgetName, action) {
+    const message = `Hi! I'm interested in ${action === "buy" ? "buying" : "swapping"} the ${gadgetName}. Can you provide more details?`;
+    const whatsappUrl = `https://wa.me/${contactInfo.whatsapp.replace("+", "")}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+}
+
+function handleInstagram() {
+    window.open(contactInfo.instagram, "_blank");
+}
+
+function handleEmail(gadgetName, action) {
+    const subject = `Interested in ${action === "buy" ? "Buying" : "Swapping"} ${gadgetName}`;
+    const body = `Hi,\n\nI'm interested in ${action === "buy" ? "buying" : "swapping"} the ${gadgetName}. Could you please provide more details about the item?\n\nThanks!`;
+    const mailtoUrl = `mailto:${contactInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoUrl);
+}
+
+function handlePhone() {
+    window.open(`tel:${contactInfo.phone}`);
+}
+
+// General contact handlers
+function handleGeneralWhatsApp() {
+    handleWhatsApp("your gadgets", "buy");
+}
+
+function handleGeneralEmail() {
+    handleEmail("your gadgets", "buy");
+}
+
+// Function to create a gadget card
+function createGadgetCard(gadget) {
+    return `
+        <div class="gadget-card">
+            <div class="gadget-image-container">
+                <img src="${gadget.image}" alt="${gadget.name}" class="gadget-image">
+                <div class="gadget-badges">
+                    <div class="badge">
+                        <span>${getCategoryIcon(gadget.category)}</span>
+                        ${gadget.category}
+                    </div>
+                    <div class="badge ${getConditionClass(gadget.condition)}">
+                        ${gadget.condition}
+                    </div>
+                </div>
+                ${gadget.inStock ? '<div class="stock-badge">In Stock</div>' : ''}
+            </div>
+            
+            <div class="gadget-content">
+                <h3 class="gadget-name">${gadget.name}</h3>
+                <p class="gadget-description">${gadget.description}</p>
+                <div class="gadget-price">${gadget.price}</div>
+                
+                <div class="gadget-actions">
+                    <div class="action-buttons">
+                        <button class="btn btn-buy" onclick="handleWhatsApp('${gadget.name}', 'buy')">
+                            <span>🛒</span>
+                            Buy Now
+                        </button>
+                        <button class="btn btn-swap" onclick="handleWhatsApp('${gadget.name}', 'swap')">
+                            <span>🔄</span>
+                            Swap Now
+                        </button>
+                    </div>
+                    
+                    <div class="contact-options">
+                        <button class="contact-btn-small" onclick="handleEmail('${gadget.name}', 'buy')" title="Email">
+                            📧
+                        </button>
+                        <button class="contact-btn-small" onclick="handleInstagram()" title="Instagram">
+                            📷
+                        </button>
+                        <button class="contact-btn-small" onclick="handlePhone()" title="Phone">
+                            📞
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Function to render all gadgets
+function renderGadgets() {
+    const container = document.getElementById('gadgets-container');
+    const gadgetCards = gadgets.map(gadget => createGadgetCard(gadget)).join('');
+    container.innerHTML = gadgetCards;
+    
+    // Update gadget count in stats
+    document.getElementById('gadget-count').textContent = `${gadgets.length}+`;
+}
+
+// Initialize the page when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    renderGadgets();
+    
+    // Add smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Add loading animation for images
+    const images = document.querySelectorAll('.gadget-image');
+    images.forEach(img => {
+        img.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
+    });
+});
+
+// Optional: Add search functionality
+function searchGadgets(query) {
+    const filteredGadgets = gadgets.filter(gadget => 
+        gadget.name.toLowerCase().includes(query.toLowerCase()) ||
+        gadget.description.toLowerCase().includes(query.toLowerCase()) ||
+        gadget.category.toLowerCase().includes(query.toLowerCase())
+    );
+    
+    const container = document.getElementById('gadgets-container');
+    const gadgetCards = filteredGadgets.map(gadget => createGadgetCard(gadget)).join('');
+    container.innerHTML = gadgetCards || '<p style="text-align: center; grid-column: 1/-1;">No gadgets found matching your search.</p>';
+}
+
+// Optional: Add filter by category
+function filterByCategory(category) {
+    const filteredGadgets = category === 'all' 
+        ? gadgets 
+        : gadgets.filter(gadget => gadget.category.toLowerCase() === category.toLowerCase());
+    
+    const container = document.getElementById('gadgets-container');
+    const gadgetCards = filteredGadgets.map(gadget => createGadgetCard(gadget)).join('');
+    container.innerHTML = gadgetCards;
+}
+
+    </script>
+</body>
+
+</html>
