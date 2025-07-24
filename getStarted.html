@@ -59,24 +59,33 @@
     margin-bottom: 20px;
 }
 
-.form-control {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e1e5e9;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s;
+input{
+
+border: none !important;
+border-bottom: darkblue solid 2px !important;
+border-radius: 8px !important;
+margin-block: 3rem;
+padding-block:1rem !important;
 }
 
-.form-control:focus {
+.form-control {
+    width: 100%;
+    border: none;
     outline: none;
-    border-color: #007bff;
+    border-bottom: darkblue 2px solid;
+}
+
+input:focus {
+  outline: none !important;
+  border: none !important;
+    border-bottom: orangered 2px solid !important;
+
 }
 
 .btn-auth {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(45deg, #007bff, #0056b3);
+    background: linear-gradient(45deg, #007bff, #0012b3);
     color: white;
     border: none;
     border-radius: 8px;
@@ -123,40 +132,18 @@
     opacity: 0.7;
     pointer-events: none;
 }
+
+select{
+
+    border: none !important;
+    outline: none !important;
+
+
+}
 </style>
 </head>
 <body>
-
-<!-- Header Area -->
-<header class="header">
-<div class="header-inner">
-<div class="container">
-<div class="inner">
-<div class="row">
-<div class="col-lg-3 col-md-3 col-12">
-<div class="logo">
-<a href="index.html"><img src="images/JE Techhub logo.png"></a>
-</div>
-<div class="mobile-nav"></div>
-</div>
-<div class="col-lg-7 col-md-9 col-12">
-<div class="main-menu">
-<nav class="navigation">
-<ul class="nav menu">
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About Us</a></li>
-<li><a href="programs.html">Programs</a></li>
-<li><a href="contact.html">Contact Us</a></li>
-</ul>
-</nav>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</header>
-
+     
 <div class="container">
     <div class="auth-container">
         <div id="errorMessage" class="error-message"></div>
@@ -181,7 +168,7 @@
 
         <!-- Sign Up Form -->
         <div id="signUpForm" class="auth-form">
-            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Join JE TechHub</h2>
+            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Get Started</h2>
             <form id="signUpFormElement">
                 <div class="form-group">
                     <input type="text" id="firstName" class="form-control" placeholder="First Name" required>
