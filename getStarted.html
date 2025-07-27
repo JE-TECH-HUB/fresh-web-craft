@@ -60,12 +60,11 @@
 }
 
 input{
-
-border: none !important;
-border-bottom: darkblue solid 2px !important;
-border-radius: 8px !important;
-margin-block: 3rem;
-padding-block:1rem !important;
+    border: none !important;
+    border-bottom: darkblue solid 2px !important;
+    border-radius: 8px !important;
+    margin-block: 3rem;
+    padding-block:1rem !important;
 }
 
 .form-control {
@@ -76,10 +75,9 @@ padding-block:1rem !important;
 }
 
 input:focus {
-  outline: none !important;
-  border: none !important;
+    outline: none !important;
+    border: none !important;
     border-bottom: orangered 2px solid !important;
-
 }
 
 .btn-auth {
@@ -133,12 +131,56 @@ input:focus {
     pointer-events: none;
 }
 
-select{
-
+select {
     border: none !important;
     outline: none !important;
+}
 
+.user-type-selection {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
 
+.user-type-option {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.user-type-option:hover {
+    border-color: #007bff;
+    background-color: #f8f9fa;
+}
+
+.user-type-option.selected {
+    border-color: #007bff;
+    background-color: #007bff;
+    color: white;
+}
+
+.user-type-option h4 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+}
+
+.user-type-option p {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.course-selection {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.course-selection.show {
+    display: block;
 }
 </style>
 </head>
@@ -182,17 +224,38 @@ select{
                 <div class="form-group">
                     <input type="tel" id="phone" class="form-control" placeholder="Phone Number">
                 </div>
+                
+                <!-- User Type Selection -->
                 <div class="form-group">
-                    <select id="course" class="form-control">
-                        <option value="">Select a Course (Optional)</option>
-                        <option value="Web Development">Web Development</option>
-                        <option value="UI/UX Design">UI/UX Design</option>
-                        <option value="Data Analysis">Data Analysis</option>
-                        <option value="Graphics Design">Graphics Design</option>
-                        <option value="Video Editing">Video Editing</option>
-                        <option value="Forex Trading">Forex Trading</option>
-                    </select>
+                    <label style="margin-bottom: 10px; display: block; color: #333; font-weight: 500;">I am a:</label>
+                    <div class="user-type-selection">
+                        <div class="user-type-option" onclick="selectUserType('student')">
+                            <h4>Student</h4>
+                            <p>I want to take courses and learn new skills</p>
+                        </div>
+                        <div class="user-type-option" onclick="selectUserType('non-student')">
+                            <h4>Non-Student</h4>
+                            <p>I'm here to explore and connect</p>
+                        </div>
+                    </div>
+                    <input type="hidden" id="userType" required>
                 </div>
+
+                <!-- Course Selection (only for students) -->
+                <div class="course-selection" id="courseSelection">
+                    <div class="form-group">
+                        <select id="course" class="form-control">
+                            <option value="">Select a Course</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Data Analysis">Data Analysis</option>
+                            <option value="Graphics Design">Graphics Design</option>
+                            <option value="Video Editing">Video Editing</option>
+                            <option value="Forex Trading">Forex Trading</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <input type="password" id="signUpPassword" class="form-control" placeholder="Password" required>
                 </div>
@@ -243,6 +306,32 @@ supabase.auth.getSession().then(({ data: { session } }) => {
         window.location.href = 'dashboard.html';
     }
 });
+
+function selectUserType(type) {
+    // Remove selected class from all options
+    document.querySelectorAll('.user-type-option').forEach(option => {
+        option.classList.remove('selected');
+    });
+    
+    // Add selected class to clicked option
+    event.target.classList.add('selected');
+    
+    // Set hidden input value
+    document.getElementById('userType').value = type;
+    
+    // Show/hide course selection based on user type
+    const courseSelection = document.getElementById('courseSelection');
+    const courseSelect = document.getElementById('course');
+    
+    if (type === 'student') {
+        courseSelection.classList.add('show');
+        courseSelect.required = true;
+    } else {
+        courseSelection.classList.remove('show');
+        courseSelect.required = false;
+        courseSelect.value = '';
+    }
+}
 
 function switchToSignUp() {
     document.getElementById('signInForm').classList.remove('active');
@@ -323,12 +412,18 @@ document.getElementById('signUpFormElement').addEventListener('submit', async (e
     const lastName = document.getElementById('lastName').value;
     const email = document.getElementById('signUpEmail').value;
     const phone = document.getElementById('phone').value;
+    const userType = document.getElementById('userType').value;
     const course = document.getElementById('course').value;
     const password = document.getElementById('signUpPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
     
-    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+    if (!firstName || !lastName || !email || !password || !confirmPassword || !userType) {
         showError('Please fill in all required fields');
+        return;
+    }
+    
+    if (userType === 'student' && !course) {
+        showError('Please select a course');
         return;
     }
     
@@ -358,7 +453,8 @@ document.getElementById('signUpFormElement').addEventListener('submit', async (e
                     last_name: lastName,
                     full_name: `${firstName} ${lastName}`,
                     phone: phone,
-                    course: course
+                    course: userType === 'student' ? course : '',
+                    role: userType
                 }
             }
         });
